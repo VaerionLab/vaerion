@@ -40,6 +40,15 @@ v0.1 surfaces evolve additively — nothing removed or renamed.
   runs SUCCESS incl. signed-release; CI artifacts independently verified).
 
 ## [0.1.13-rc1] — 2026-09-03 — the ASCENSION XXV production-trust release (the first release signed by the production key)
+- Security (PHASE 32 key rotation, 2026-09-26): the release trust anchor
+  rotated under Founder authorization (PHASE 32, FINAL RELEASE CLOSURE) — the
+  repository moved to VaerionLab and the ASCENSION XXV private half is
+  unreachable by design (GitHub secrets are write-only; the local copy was
+  destroyed at ceremony close), so a fresh Ed25519 key was generated, provisioned
+  as `RELEASE_SIGNING_KEY`, and the key of record `keys/release-signing.pub`
+  rotated; new fingerprint `sha256(spki-der): df72f45e6c34ba507227843c22128d80`;
+  prior releases keep verifying against their shipped-beside keys
+  (docs/security/SIGNING-CEREMONY.md §7).
 
 - Security: **the production signing key ceremony (F-3/R-2 closed)** — the
   release trust anchor moved from the session-bound bootstrap key to the
