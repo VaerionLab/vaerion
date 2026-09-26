@@ -216,6 +216,14 @@ const report = {
   reproducibleTarball: { proven: reproducible, bytes: a.length, method: "git archive | gzip -n, built twice, byte-compared" },
   referenceBundle: { file: "vaerion-demo.vxn", bytes: statSync(vxnDst).size, blake3: await blake3File(vxnDst) },
   signatureProvenance: "the Ed25519 public key ships beside the artifacts (release-signing.pub, manifest-bound) — see VERIFY.md",
+  // Phase 31 (Founder-directed tripwire fix): the disclosure of record lives
+  // HERE — the release-publish tripwire greps THIS report for the bootstrap
+  // line. Without this field that grep was vacuous and a bootstrap-signed
+  // pack could have published; the second workflow leg additionally binds
+  // the shipped public half to the tracked key of record.
+  signingKey: generated
+    ? "bootstrap key GENERATED this run — session-bound, disclosed (NOT the production key of record)"
+    : "loaded from keys/release-signing.key — the publish tripwire enforces release-signing.pub equals the tracked key of record",
 };
 writeFileSync(join(DIST, "dist-report.json"), JSON.stringify(report, null, 2) + "\n");
 
