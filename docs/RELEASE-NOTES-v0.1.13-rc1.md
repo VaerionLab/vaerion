@@ -67,3 +67,11 @@ cross-check); artifacts carry the production key beside them.
   above and in `SIGNING-CEREMONY.md` §2).
 
 *Repository reality wins. Constitution wins. Evidence wins.*
+
+## Key of record (PHASE 32 rotation, 2026-09-26)
+
+This release is signed by the production key provisioned under the PHASE 32
+key rotation (Founder-authorized): fingerprint
+`sha256(spki-der): df72f45e6c34ba507227843c22128d80`. The shipped
+`release-signing.pub` is manifest-bound and byte-identical to the repository
+key of record — verify through the three legs in VERIFY.md.

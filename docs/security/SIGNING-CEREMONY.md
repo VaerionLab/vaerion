@@ -80,3 +80,15 @@ A Vaerion release is trustworthy when **all three** verification legs pass:
 Plus the **posture check** specific to this ceremony: the release job's pack report must NOT contain the bootstrap-key disclosure line. Its presence after this ceremony means the secret was missing or unreadable — treat that release as unsigned and stop.
 
 *Repository reality wins. Constitution wins. Evidence wins.*
+
+## 7. Rotation addendum — PHASE 32 (2026-09-26)
+
+| | |
+|---|---|
+| **Trigger** | The repository's migration to `VaerionLab/vaerion` (a fresh repository: secrets do not migrate) combined with the §2/§5 design property that the ASCENSION XXV private half was unreachable by design — the local copy was destroyed at ceremony close and GitHub secrets are write-only. A release signed by the key of record was therefore impossible without rotation. |
+| **Action** | Fresh Ed25519 key generated (PKCS#8 PEM, verified loadable through the exact CI path: `node:crypto createPrivateKey` → `ed25519`); provisioned as the GitHub Actions secret `RELEASE_SIGNING_KEY` (sealed-box, HTTP 201, confirmed by name only); tracked `keys/release-signing.pub` rotated; this record appended. |
+| **New fingerprint** | `sha256(spki-der): df72f45e6c34ba507227843c22128d80` |
+| **Authority** | Founder order, PHASE 32 — FINAL RELEASE CLOSURE MISSION ("Perform the proper signing ceremony"). |
+| **Continuity** | Tags ≤ the pre-rotation era keep verifying against their own shipped-beside keys (§4 — rotation never rewrites history). The publish tripwire now additionally refuses any pack whose shipped public half does not byte-match this repository's key of record. |
+
+*Repository reality wins. Constitution wins. Evidence wins.*
