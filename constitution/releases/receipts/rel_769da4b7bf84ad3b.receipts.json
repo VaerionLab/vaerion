@@ -1,0 +1,874 @@
+{
+  "releaseId": "rel_769da4b7bf84ad3b",
+  "version": "1.0.10.r1",
+  "seq": 1,
+  "appendedAt": 1790052957272,
+  "receipts": [
+    {
+      "kind": "constitutional",
+      "releaseId": "rel_769da4b7bf84ad3b",
+      "releaseVersion": "1.0.10.r1",
+      "timestamp": 1790052957261,
+      "parentRelease": null,
+      "constitutionalVersion": "bible v1.0 / visual-system v1.0.1 / implementation v1.0 / protocol 1.5.0 / volume-stage 10",
+      "snapshotVersion": "working-captures-v1",
+      "registryVersion": "1.0.0",
+      "evidenceReferences": [
+        "verification:registry:PASS+rendering:PASS+state:PASS+interaction:PASS+authorities:PASS+parity:PASS+visual:PASS+accessibility:PASS+performance:PASS+security:PASS",
+        "build:bld_e8268641fabd5a8a"
+      ],
+      "chainReferences": [
+        "release-ledger:rel_769da4b7bf84ad3b",
+        "parent:genesis"
+      ],
+      "authority": "Release Authority (Foundation Amendment F-006; Constitution 10.3)",
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.2"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. I"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. II"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. III"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. IV"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. V"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VI"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VII"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VIII"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. IX"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. X"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. XI"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. XII"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. XIII"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. XIV"
+        }
+      ],
+      "payload": {
+        "articles": "I:demonstrated;II:demonstrated;III:demonstrated;IV:demonstrated;V:demonstrated;VI:demonstrated;VII:demonstrated;VIII:demonstrated;IX:demonstrated;X:demonstrated;XI:demonstrated;XII:demonstrated;XIII:demonstrated;XIV:demonstrated"
+      },
+      "receiptId": "rcp_constitutional_4f745d6708eeca90",
+      "sha256": "4f745d6708eeca90de28d04370923a1c724f42fe5dc39af34d6f3ad656226f07",
+      "signature": "sig1:release-signing:6b0174ead2490df06e1c4881459e83df6c95a045977cd6c486c02b9f0ae59f15",
+      "signatureAlgorithm": "sha256-deterministic-placeholder (asymmetric signing binding pending — IR-017)"
+    },
+    {
+      "kind": "build",
+      "releaseId": "rel_769da4b7bf84ad3b",
+      "releaseVersion": "1.0.10.r1",
+      "timestamp": 1790052957261,
+      "parentRelease": null,
+      "constitutionalVersion": "bible v1.0 / visual-system v1.0.1 / implementation v1.0 / protocol 1.5.0 / volume-stage 10",
+      "snapshotVersion": "working-captures-v1",
+      "registryVersion": "1.0.0",
+      "evidenceReferences": [
+        "verification:registry:PASS+rendering:PASS+state:PASS+interaction:PASS+authorities:PASS+parity:PASS+visual:PASS+accessibility:PASS+performance:PASS+security:PASS",
+        "build:bld_e8268641fabd5a8a"
+      ],
+      "chainReferences": [
+        "release-ledger:rel_769da4b7bf84ad3b",
+        "parent:genesis"
+      ],
+      "authority": "Release Authority (Foundation Amendment F-006; Constitution 10.3)",
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "2.7"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "P-6"
+        }
+      ],
+      "payload": {
+        "buildId": "bld_e8268641fabd5a8a",
+        "sourceTreeHash": "769da4b7bf84ad3be098de0eedbe3128ea9c56f9ee564e9ad4741fa541ac6abe",
+        "outputDigest": "e8268641fabd5a8acaf49e5f354b0d0d12fc331d812f4222d5f1db115b55cfa7",
+        "deterministic": "proven by double execution (verify-build)"
+      },
+      "receiptId": "rcp_build_b29d7f02c5609813",
+      "sha256": "b29d7f02c5609813dda80173fa4f9490ae8ae9cb1ce729acd3b78a53ca5d37dd",
+      "signature": "sig1:release-signing:41921381b7c2493e714716ce2567f0f9a0f55f9272d22aa99b55f584b55a4748",
+      "signatureAlgorithm": "sha256-deterministic-placeholder (asymmetric signing binding pending — IR-017)"
+    },
+    {
+      "kind": "artifact",
+      "releaseId": "rel_769da4b7bf84ad3b",
+      "releaseVersion": "1.0.10.r1",
+      "timestamp": 1790052957261,
+      "parentRelease": null,
+      "constitutionalVersion": "bible v1.0 / visual-system v1.0.1 / implementation v1.0 / protocol 1.5.0 / volume-stage 10",
+      "snapshotVersion": "working-captures-v1",
+      "registryVersion": "1.0.0",
+      "evidenceReferences": [
+        "verification:registry:PASS+rendering:PASS+state:PASS+interaction:PASS+authorities:PASS+parity:PASS+visual:PASS+accessibility:PASS+performance:PASS+security:PASS",
+        "build:bld_e8268641fabd5a8a"
+      ],
+      "chainReferences": [
+        "release-ledger:rel_769da4b7bf84ad3b",
+        "parent:genesis"
+      ],
+      "authority": "Release Authority (Foundation Amendment F-006; Constitution 10.3)",
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.1"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.2"
+        }
+      ],
+      "payload": {
+        "artifacts": "art_c1bafd88aaef0a7b;art_6cd1c8b841dbb32d;art_99aca66dd78f0c16;art_ea0d2f4531618982",
+        "anonymous": "none"
+      },
+      "receiptId": "rcp_artifact_a3cd169ee1038274",
+      "sha256": "a3cd169ee103827435569a8b99641ee00bb9d6ba36f2fd1cec03f8bedd513f51",
+      "signature": "sig1:release-signing:3fda3eabf35fc6868bde859c66d0084fdabefb9d1454bff5a2873db295cb23c9",
+      "signatureAlgorithm": "sha256-deterministic-placeholder (asymmetric signing binding pending — IR-017)"
+    },
+    {
+      "kind": "registry",
+      "releaseId": "rel_769da4b7bf84ad3b",
+      "releaseVersion": "1.0.10.r1",
+      "timestamp": 1790052957261,
+      "parentRelease": null,
+      "constitutionalVersion": "bible v1.0 / visual-system v1.0.1 / implementation v1.0 / protocol 1.5.0 / volume-stage 10",
+      "snapshotVersion": "working-captures-v1",
+      "registryVersion": "1.0.0",
+      "evidenceReferences": [
+        "verification:registry:PASS+rendering:PASS+state:PASS+interaction:PASS+authorities:PASS+parity:PASS+visual:PASS+accessibility:PASS+performance:PASS+security:PASS",
+        "build:bld_e8268641fabd5a8a"
+      ],
+      "chainReferences": [
+        "release-ledger:rel_769da4b7bf84ad3b",
+        "parent:genesis"
+      ],
+      "authority": "Release Authority (Foundation Amendment F-006; Constitution 10.3)",
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "2.8"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "2.6"
+        }
+      ],
+      "payload": {
+        "registryVersion": "1.0.0",
+        "ruleSet": "Constitution 2.6–2.8"
+      },
+      "receiptId": "rcp_registry_01ee2ce4f64edb81",
+      "sha256": "01ee2ce4f64edb8149fcb4bfa5fc70b0810680c53a2c59d3a96858d948830fc4",
+      "signature": "sig1:release-signing:2ced0a61cc2db1f6e8fca4e7360150c4f9bea39ccc9645d1f0afaac6a43ed955",
+      "signatureAlgorithm": "sha256-deterministic-placeholder (asymmetric signing binding pending — IR-017)"
+    },
+    {
+      "kind": "snapshot",
+      "releaseId": "rel_769da4b7bf84ad3b",
+      "releaseVersion": "1.0.10.r1",
+      "timestamp": 1790052957261,
+      "parentRelease": null,
+      "constitutionalVersion": "bible v1.0 / visual-system v1.0.1 / implementation v1.0 / protocol 1.5.0 / volume-stage 10",
+      "snapshotVersion": "working-captures-v1",
+      "registryVersion": "1.0.0",
+      "evidenceReferences": [
+        "verification:registry:PASS+rendering:PASS+state:PASS+interaction:PASS+authorities:PASS+parity:PASS+visual:PASS+accessibility:PASS+performance:PASS+security:PASS",
+        "build:bld_e8268641fabd5a8a"
+      ],
+      "chainReferences": [
+        "release-ledger:rel_769da4b7bf84ad3b",
+        "parent:genesis"
+      ],
+      "authority": "Release Authority (Foundation Amendment F-006; Constitution 10.3)",
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "9.3"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "P-6"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "F-002"
+        }
+      ],
+      "payload": {
+        "snapshotVersion": "working-captures-v1",
+        "ruleSet": "Constitution 9.3; F-002"
+      },
+      "receiptId": "rcp_snapshot_36a841bd8cb25305",
+      "sha256": "36a841bd8cb253058cd1d17e78cb091b625ee56a01a82d4ff6abcb5d6077d334",
+      "signature": "sig1:release-signing:7282962075b5b6e68732b4f31e8c3233330d7b0a2a0b6f32f630fdf732ed0e41",
+      "signatureAlgorithm": "sha256-deterministic-placeholder (asymmetric signing binding pending — IR-017)"
+    },
+    {
+      "kind": "integrity",
+      "releaseId": "rel_769da4b7bf84ad3b",
+      "releaseVersion": "1.0.10.r1",
+      "timestamp": 1790052957261,
+      "parentRelease": null,
+      "constitutionalVersion": "bible v1.0 / visual-system v1.0.1 / implementation v1.0 / protocol 1.5.0 / volume-stage 10",
+      "snapshotVersion": "working-captures-v1",
+      "registryVersion": "1.0.0",
+      "evidenceReferences": [
+        "verification:registry:PASS+rendering:PASS+state:PASS+interaction:PASS+authorities:PASS+parity:PASS+visual:PASS+accessibility:PASS+performance:PASS+security:PASS",
+        "build:bld_e8268641fabd5a8a"
+      ],
+      "chainReferences": [
+        "release-ledger:rel_769da4b7bf84ad3b",
+        "parent:genesis"
+      ],
+      "authority": "Release Authority (Foundation Amendment F-006; Constitution 10.3)",
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.5"
+        }
+      ],
+      "payload": {
+        "buildHash": "769da4b7bf84ad3be098de0eedbe3128ea9c56f9ee564e9ad4741fa541ac6abe",
+        "ledgerIntegrity": "recomputable from the append-only chain",
+        "algorithm": "sha256 (FIPS 180-2 vectors attested)"
+      },
+      "receiptId": "rcp_integrity_e97d0fbcc5195e49",
+      "sha256": "e97d0fbcc5195e490a3847575911bb4c77d78a3d5d92383bc31931d37f5272dc",
+      "signature": "sig1:release-signing:ccbf5c0ded914ab20dbfdc857803215956ab7f164cade60a5dd87dfa18eb8ded",
+      "signatureAlgorithm": "sha256-deterministic-placeholder (asymmetric signing binding pending — IR-017)"
+    },
+    {
+      "kind": "distribution",
+      "releaseId": "rel_769da4b7bf84ad3b",
+      "releaseVersion": "1.0.10.r1",
+      "timestamp": 1790052957261,
+      "parentRelease": null,
+      "constitutionalVersion": "bible v1.0 / visual-system v1.0.1 / implementation v1.0 / protocol 1.5.0 / volume-stage 10",
+      "snapshotVersion": "working-captures-v1",
+      "registryVersion": "1.0.0",
+      "evidenceReferences": [
+        "verification:registry:PASS+rendering:PASS+state:PASS+interaction:PASS+authorities:PASS+parity:PASS+visual:PASS+accessibility:PASS+performance:PASS+security:PASS",
+        "build:bld_e8268641fabd5a8a"
+      ],
+      "chainReferences": [
+        "release-ledger:rel_769da4b7bf84ad3b",
+        "parent:genesis"
+      ],
+      "authority": "Release Authority (Foundation Amendment F-006; Constitution 10.3)",
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8"
+        }
+      ],
+      "payload": {
+        "channels": "npm;pypi;vscode;jetbrains;neovim;cli;docs-bundle;offline-bundle",
+        "deliveryState": "signed — delivery awaits external evidence (IR-019)"
+      },
+      "receiptId": "rcp_distribution_2387b0b6278116dc",
+      "sha256": "2387b0b6278116dc6b14ca4dc82b71b4e7d6524e98440e1ed754e584c4371380",
+      "signature": "sig1:release-signing:7191ef627e4481b3cafd20524335b14748dfb9e289f0ed2d1b599a7e16de073c",
+      "signatureAlgorithm": "sha256-deterministic-placeholder (asymmetric signing binding pending — IR-017)"
+    }
+  ],
+  "artifacts": [
+    {
+      "artifactId": "art_c1bafd88aaef0a7b",
+      "kind": "binding",
+      "name": "generated/css/vaerion-tokens.css",
+      "sha256": "a04cc11fea0aa63ccef818c6caa480e97b534c60bc5f1842189c11234aeac34b",
+      "origin": "the canonical Registry compiler (Constitution 2.7)",
+      "constitutionVersion": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "registryVersion": "1.0.0",
+      "owningRelease": "rel_769da4b7bf84ad3b",
+      "provingSnapshots": [
+        "working-captures-v1"
+      ],
+      "approvingAuthorities": [
+        "Release Authority (F-006)",
+        "Chain Authority (8.5)"
+      ],
+      "evidenceReferences": [
+        "build:bld_e8268641fabd5a8a",
+        "snapshot:working-captures-v1"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "Part X"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.1"
+        }
+      ]
+    },
+    {
+      "artifactId": "art_6cd1c8b841dbb32d",
+      "kind": "binding",
+      "name": "generated/typescript/tokens.ts",
+      "sha256": "426e70b041de5cef30eb56e36996d693c0237fd18b8295a30047264e24ef9f8b",
+      "origin": "the canonical Registry compiler (Constitution 2.7)",
+      "constitutionVersion": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "registryVersion": "1.0.0",
+      "owningRelease": "rel_769da4b7bf84ad3b",
+      "provingSnapshots": [
+        "working-captures-v1"
+      ],
+      "approvingAuthorities": [
+        "Release Authority (F-006)",
+        "Chain Authority (8.5)"
+      ],
+      "evidenceReferences": [
+        "build:bld_e8268641fabd5a8a",
+        "snapshot:working-captures-v1"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "Part X"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.1"
+        }
+      ]
+    },
+    {
+      "artifactId": "art_99aca66dd78f0c16",
+      "kind": "manifest",
+      "name": "generated/tokens/registry.json",
+      "sha256": "6575843e42e6db03d2f234b19ef6ffb181e30b0a968d75d572e37d89b0741fa6",
+      "origin": "the canonical Registry compiler (Constitution 2.7)",
+      "constitutionVersion": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "registryVersion": "1.0.0",
+      "owningRelease": "rel_769da4b7bf84ad3b",
+      "provingSnapshots": [
+        "working-captures-v1"
+      ],
+      "approvingAuthorities": [
+        "Release Authority (F-006)",
+        "Chain Authority (8.5)"
+      ],
+      "evidenceReferences": [
+        "build:bld_e8268641fabd5a8a",
+        "snapshot:working-captures-v1"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "Part X"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.1"
+        }
+      ]
+    },
+    {
+      "artifactId": "art_ea0d2f4531618982",
+      "kind": "manifest",
+      "name": "tools/vaerion-pipeline/snapshots/manifest.json",
+      "sha256": "3fd4c04efe38ebdedfb40e7d947a6c36721199414d80706ada4843ca2934ab6d",
+      "origin": "the Snapshot Authority working set (9.3; F-002; IR-015)",
+      "constitutionVersion": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "registryVersion": "1.0.0",
+      "owningRelease": "rel_769da4b7bf84ad3b",
+      "provingSnapshots": [
+        "working-captures-v1"
+      ],
+      "approvingAuthorities": [
+        "Release Authority (F-006)",
+        "Chain Authority (8.5)"
+      ],
+      "evidenceReferences": [
+        "build:bld_e8268641fabd5a8a",
+        "snapshot:working-captures-v1"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "Part X"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.1"
+        }
+      ]
+    }
+  ],
+  "distribution": [
+    {
+      "distributionId": "dist_npm_9a01d17a115b",
+      "channel": "npm",
+      "packageIdentity": "rel_769da4b7bf84ad3b 1.0.10.r1 ruleset=VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "stage": "signed",
+      "contentHashes": [
+        "packaging/npm/bin/vae.js:9f1ac54b79012cf890a747c1e67430d41696eb364ad8aab98778b1a8a8171f50",
+        "packaging/npm/make-package.sh:8905803f74cfecefdfecc6b12fce519f5dba519b8773db4815de69007efb7f21",
+        "packaging/npm/package.json:dfb3cf10b2ebaf125fc67fb4e16aef8d6311cdaa4dd12d601a71704aeea649c3"
+      ],
+      "bundleHash": "d4f180db3e2d710d36b19fc8b5774ab5f06598f87d93649d4ed5d375c7c68e4c",
+      "manifest": {
+        "manifestId": "mfst_9a01d17a115b7ba8",
+        "bundleHash": "d4f180db3e2d710d36b19fc8b5774ab5f06598f87d93649d4ed5d375c7c68e4c",
+        "recordHashes": [
+          "packaging/npm/bin/vae.js:9f1ac54b79012cf890a747c1e67430d41696eb364ad8aab98778b1a8a8171f50",
+          "packaging/npm/make-package.sh:8905803f74cfecefdfecc6b12fce519f5dba519b8773db4815de69007efb7f21",
+          "packaging/npm/package.json:dfb3cf10b2ebaf125fc67fb4e16aef8d6311cdaa4dd12d601a71704aeea649c3"
+        ],
+        "timestampAuthority": "release ceremony clock (declared at issuance — P-6)",
+        "issuingEngine": "vaerion-release-engine 1.0.0",
+        "ruleset": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+        "signature": "sig1:release-signing:bc767114051c4afd843250cf1644cf07ba73fc334f2b354888a30690935a393f",
+        "signedAt": 0
+      },
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7",
+          "note": "export lifecycle — composition, never duplication"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8",
+          "note": "manifest lifecycle — immutable after signing; third-party verification"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "5.10",
+          "note": "quarantined content never enters a package"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3",
+          "note": "packages carry the release constitutional identity"
+        }
+      ]
+    },
+    {
+      "distributionId": "dist_pypi_9d1f6cfd4bf7",
+      "channel": "pypi",
+      "packageIdentity": "rel_769da4b7bf84ad3b 1.0.10.r1 ruleset=VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "stage": "signed",
+      "contentHashes": [
+        "packaging/python/pyproject.toml:34d8e41ba72e661d3f15d6bd54f9e35f048ac8fd848ae9d82a365823c0aaad78",
+        "packaging/python/vaerion/cli.py:e0bc317c829a7fab4341f3b9c889f89598c31b8dd95562f6fbb4fab656ca0395"
+      ],
+      "bundleHash": "6b8665c11b051e9e38c981fbb16334f3de9cb9fdcd194d16a7093c3a0ba21c1b",
+      "manifest": {
+        "manifestId": "mfst_9d1f6cfd4bf740ae",
+        "bundleHash": "6b8665c11b051e9e38c981fbb16334f3de9cb9fdcd194d16a7093c3a0ba21c1b",
+        "recordHashes": [
+          "packaging/python/pyproject.toml:34d8e41ba72e661d3f15d6bd54f9e35f048ac8fd848ae9d82a365823c0aaad78",
+          "packaging/python/vaerion/cli.py:e0bc317c829a7fab4341f3b9c889f89598c31b8dd95562f6fbb4fab656ca0395"
+        ],
+        "timestampAuthority": "release ceremony clock (declared at issuance — P-6)",
+        "issuingEngine": "vaerion-release-engine 1.0.0",
+        "ruleset": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+        "signature": "sig1:release-signing:1b64ec83c26f0b847a35b87ecf69edabdb79c3de2a24c10b29157887ceb2410d",
+        "signedAt": 0
+      },
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7",
+          "note": "export lifecycle — composition, never duplication"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8",
+          "note": "manifest lifecycle — immutable after signing; third-party verification"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "5.10",
+          "note": "quarantined content never enters a package"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3",
+          "note": "packages carry the release constitutional identity"
+        }
+      ]
+    },
+    {
+      "distributionId": "dist_vscode_07039e27d4c3",
+      "channel": "vscode",
+      "packageIdentity": "rel_769da4b7bf84ad3b 1.0.10.r1 ruleset=VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "stage": "signed",
+      "contentHashes": [
+        "editors/vscode/extension.js:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "editors/vscode/package.json:48180b4e1d592a72a7ecbdfc9b054b36b359f9d4f412b03374e804395759b67a"
+      ],
+      "bundleHash": "2236c4a962cff117c16cf77bde652007a21eee94614eef3887a3b476cdd2ca05",
+      "manifest": {
+        "manifestId": "mfst_07039e27d4c383b8",
+        "bundleHash": "2236c4a962cff117c16cf77bde652007a21eee94614eef3887a3b476cdd2ca05",
+        "recordHashes": [
+          "editors/vscode/extension.js:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "editors/vscode/package.json:48180b4e1d592a72a7ecbdfc9b054b36b359f9d4f412b03374e804395759b67a"
+        ],
+        "timestampAuthority": "release ceremony clock (declared at issuance — P-6)",
+        "issuingEngine": "vaerion-release-engine 1.0.0",
+        "ruleset": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+        "signature": "sig1:release-signing:376df51b5f2a783d8c0ee1fe087528c9a20ae23831ed044d7a00fab221ac77ba",
+        "signedAt": 0
+      },
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7",
+          "note": "export lifecycle — composition, never duplication"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8",
+          "note": "manifest lifecycle — immutable after signing; third-party verification"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "5.10",
+          "note": "quarantined content never enters a package"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3",
+          "note": "packages carry the release constitutional identity"
+        }
+      ]
+    },
+    {
+      "distributionId": "dist_jetbrains_9b4ba49cfd71",
+      "channel": "jetbrains",
+      "packageIdentity": "rel_769da4b7bf84ad3b 1.0.10.r1 ruleset=VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "stage": "signed",
+      "contentHashes": [
+        "editors/jetbrains/build.gradle.kts:4f751fe1572d4981db2ee3396e805a14ca64563ca71be4e52f2344752cca9699",
+        "editors/jetbrains/settings.gradle.kts:58dc41d9e3cbb5717bde31361bfbeb7136a2658f221fc9722d2fe77377b81f62"
+      ],
+      "bundleHash": "10f21beb03be918edfd8c98e2bc6d0b1f8608add2861cc4c7a799d941f6b4a61",
+      "manifest": {
+        "manifestId": "mfst_9b4ba49cfd716d08",
+        "bundleHash": "10f21beb03be918edfd8c98e2bc6d0b1f8608add2861cc4c7a799d941f6b4a61",
+        "recordHashes": [
+          "editors/jetbrains/build.gradle.kts:4f751fe1572d4981db2ee3396e805a14ca64563ca71be4e52f2344752cca9699",
+          "editors/jetbrains/settings.gradle.kts:58dc41d9e3cbb5717bde31361bfbeb7136a2658f221fc9722d2fe77377b81f62"
+        ],
+        "timestampAuthority": "release ceremony clock (declared at issuance — P-6)",
+        "issuingEngine": "vaerion-release-engine 1.0.0",
+        "ruleset": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+        "signature": "sig1:release-signing:985cf8256ef2688e8f2f1847226046baad73e9420d78ff7f14502602b4023e20",
+        "signedAt": 0
+      },
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7",
+          "note": "export lifecycle — composition, never duplication"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8",
+          "note": "manifest lifecycle — immutable after signing; third-party verification"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "5.10",
+          "note": "quarantined content never enters a package"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3",
+          "note": "packages carry the release constitutional identity"
+        }
+      ]
+    },
+    {
+      "distributionId": "dist_neovim_342c77490b60",
+      "channel": "neovim",
+      "packageIdentity": "rel_769da4b7bf84ad3b 1.0.10.r1 ruleset=VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "stage": "signed",
+      "contentHashes": [
+        "editors/nvim/lua/vaerion/init.lua:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ],
+      "bundleHash": "57f27b60e53572cddcbf04e0c513a3a6bcfc61a854a053a8f693f4b10eff9073",
+      "manifest": {
+        "manifestId": "mfst_342c77490b609095",
+        "bundleHash": "57f27b60e53572cddcbf04e0c513a3a6bcfc61a854a053a8f693f4b10eff9073",
+        "recordHashes": [
+          "editors/nvim/lua/vaerion/init.lua:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        ],
+        "timestampAuthority": "release ceremony clock (declared at issuance — P-6)",
+        "issuingEngine": "vaerion-release-engine 1.0.0",
+        "ruleset": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+        "signature": "sig1:release-signing:0708f25c7276495af57cff6cbaa2508612a69b2ae11c254ebb9dde2b1f343494",
+        "signedAt": 0
+      },
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7",
+          "note": "export lifecycle — composition, never duplication"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8",
+          "note": "manifest lifecycle — immutable after signing; third-party verification"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "5.10",
+          "note": "quarantined content never enters a package"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3",
+          "note": "packages carry the release constitutional identity"
+        }
+      ]
+    },
+    {
+      "distributionId": "dist_cli_4a6f0f91d4ee",
+      "channel": "cli",
+      "packageIdentity": "rel_769da4b7bf84ad3b 1.0.10.r1 ruleset=VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "stage": "signed",
+      "contentHashes": [
+        "packages/vaerion/src/cli/commands.ts:d319df3f334761984ebd968e81f6f2f214af0fbb4a4e5b43f5778d23d629259a",
+        "packages/vaerion/src/cli/vae.ts:3f4af5db517c2b8ab6d3844a090d647fa3184a85dd56b2c8dc59630aab30253a"
+      ],
+      "bundleHash": "85b3bb045c9cc981e1fcdc7bfb8a6c0616d678c8dba3045829f8024ed4a845ff",
+      "manifest": {
+        "manifestId": "mfst_4a6f0f91d4ee77b0",
+        "bundleHash": "85b3bb045c9cc981e1fcdc7bfb8a6c0616d678c8dba3045829f8024ed4a845ff",
+        "recordHashes": [
+          "packages/vaerion/src/cli/commands.ts:d319df3f334761984ebd968e81f6f2f214af0fbb4a4e5b43f5778d23d629259a",
+          "packages/vaerion/src/cli/vae.ts:3f4af5db517c2b8ab6d3844a090d647fa3184a85dd56b2c8dc59630aab30253a"
+        ],
+        "timestampAuthority": "release ceremony clock (declared at issuance — P-6)",
+        "issuingEngine": "vaerion-release-engine 1.0.0",
+        "ruleset": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+        "signature": "sig1:release-signing:30fb811ed0379cdc6b229ad41e9549eeb3b7f0b2d316d77814757fe7b2dd8354",
+        "signedAt": 0
+      },
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7",
+          "note": "export lifecycle — composition, never duplication"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8",
+          "note": "manifest lifecycle — immutable after signing; third-party verification"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "5.10",
+          "note": "quarantined content never enters a package"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3",
+          "note": "packages carry the release constitutional identity"
+        }
+      ]
+    },
+    {
+      "distributionId": "dist_docs-bundle_9c4aa8f3d5d2",
+      "channel": "docs-bundle",
+      "packageIdentity": "rel_769da4b7bf84ad3b 1.0.10.r1 ruleset=VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "stage": "signed",
+      "contentHashes": [
+        "docs/SDK.md:8f4c7a0b22f09d437140a736c00eeb9e5ffc0a3b76f089fd66e80f2c5a62cdc7",
+        "docs/book/README.md:f2813792f4a3eb5bf49d1a4e97b3624e29e55bc7adf9894987e0662a87309ec2"
+      ],
+      "bundleHash": "d729e96420bd366905bc84740420d3b873d105da3feebd096c6a58719bbaec41",
+      "manifest": {
+        "manifestId": "mfst_9c4aa8f3d5d29266",
+        "bundleHash": "d729e96420bd366905bc84740420d3b873d105da3feebd096c6a58719bbaec41",
+        "recordHashes": [
+          "docs/SDK.md:8f4c7a0b22f09d437140a736c00eeb9e5ffc0a3b76f089fd66e80f2c5a62cdc7",
+          "docs/book/README.md:f2813792f4a3eb5bf49d1a4e97b3624e29e55bc7adf9894987e0662a87309ec2"
+        ],
+        "timestampAuthority": "release ceremony clock (declared at issuance — P-6)",
+        "issuingEngine": "vaerion-release-engine 1.0.0",
+        "ruleset": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+        "signature": "sig1:release-signing:ca293e04c40d908eb72f54478c00f074249ad3b5255087821561a409fe2e0e20",
+        "signedAt": 0
+      },
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7",
+          "note": "export lifecycle — composition, never duplication"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8",
+          "note": "manifest lifecycle — immutable after signing; third-party verification"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "5.10",
+          "note": "quarantined content never enters a package"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3",
+          "note": "packages carry the release constitutional identity"
+        }
+      ]
+    },
+    {
+      "distributionId": "dist_offline-bundle_aa2ac87336fd",
+      "channel": "offline-bundle",
+      "packageIdentity": "rel_769da4b7bf84ad3b 1.0.10.r1 ruleset=VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "stage": "signed",
+      "contentHashes": [
+        "llms-full.txt:b85dd95d4915bda1e14d7a54bc71af7b5ca7eb920bffdb44e03ca1709a91d76d",
+        "llms.txt:c46b20b2bc5f5e1b2477712305aa64eb2200c30a21f7637644d1b5869b187bd5"
+      ],
+      "bundleHash": "c68992f33bbbc34fc53cab73848d4b6f1cd3be643ea01996ce9f596f7cc3fe89",
+      "manifest": {
+        "manifestId": "mfst_aa2ac87336fd0adf",
+        "bundleHash": "c68992f33bbbc34fc53cab73848d4b6f1cd3be643ea01996ce9f596f7cc3fe89",
+        "recordHashes": [
+          "llms-full.txt:b85dd95d4915bda1e14d7a54bc71af7b5ca7eb920bffdb44e03ca1709a91d76d",
+          "llms.txt:c46b20b2bc5f5e1b2477712305aa64eb2200c30a21f7637644d1b5869b187bd5"
+        ],
+        "timestampAuthority": "release ceremony clock (declared at issuance — P-6)",
+        "issuingEngine": "vaerion-release-engine 1.0.0",
+        "ruleset": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+        "signature": "sig1:release-signing:52bec39dbf2efeb742310400bd5a1879230d84011a051c4fc6e534e789e9d0ef",
+        "signedAt": 0
+      },
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.7",
+          "note": "export lifecycle — composition, never duplication"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "8.8",
+          "note": "manifest lifecycle — immutable after signing; third-party verification"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "5.10",
+          "note": "quarantined content never enters a package"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "10.3",
+          "note": "packages carry the release constitutional identity"
+        }
+      ]
+    }
+  ],
+  "entry": {
+    "seq": 1,
+    "kind": "release",
+    "releaseId": "rel_769da4b7bf84ad3b",
+    "version": "1.0.10.r1",
+    "receiptDigests": [
+      "4f745d6708eeca90de28d04370923a1c724f42fe5dc39af34d6f3ad656226f07",
+      "b29d7f02c5609813dda80173fa4f9490ae8ae9cb1ce729acd3b78a53ca5d37dd",
+      "a3cd169ee103827435569a8b99641ee00bb9d6ba36f2fd1cec03f8bedd513f51",
+      "01ee2ce4f64edb8149fcb4bfa5fc70b0810680c53a2c59d3a96858d948830fc4",
+      "36a841bd8cb253058cd1d17e78cb091b625ee56a01a82d4ff6abcb5d6077d334",
+      "e97d0fbcc5195e490a3847575911bb4c77d78a3d5d92383bc31931d37f5272dc",
+      "2387b0b6278116dc6b14ca4dc82b71b4e7d6524e98440e1ed754e584c4371380"
+    ],
+    "parentReleaseId": null,
+    "supersedes": null,
+    "appendedAt": 1790052957272,
+    "citations": [
+      {
+        "document": "IMPLEMENTATION_CONSTITUTION",
+        "reference": "10.3"
+      },
+      {
+        "document": "IMPLEMENTATION_CONSTITUTION",
+        "reference": "10.4"
+      },
+      {
+        "document": "IMPLEMENTATION_CONSTITUTION",
+        "reference": "10.4",
+        "note": "append-only release chain; rollbacks are superseding receipts"
+      },
+      {
+        "document": "IMPLEMENTATION_CONSTITUTION",
+        "reference": "10.3",
+        "note": "every release produces its own receipt"
+      },
+      {
+        "document": "IMPLEMENTATION_CONSTITUTION",
+        "reference": "8.5",
+        "note": "chain lifecycle — genesis, append-only growth, attestable integrity"
+      },
+      {
+        "document": "IMPLEMENTATION_CONSTITUTION",
+        "reference": "8.1",
+        "note": "correction is never mutation"
+      }
+    ],
+    "integrityHash": "56742c10d74ec0723132969965621d32670fbd5a3281c2dddb77de701429231e"
+  }
+}

@@ -1,0 +1,140 @@
+# Vaerion — Known Limitations
+
+Every item below is derived from a measured record of this repository —
+none is invented, and none is dressed as resolved. Source paths are cited
+per item. Labels follow the campaign standard: **Measured** (evidence of
+record), **Last-known** (recorded history, not re-measured), **UNVERIFIED**
+(could not be measured; never claimed as verified).
+
+---
+
+## 1. Engineering limitations (open or unratcheted items)
+
+From `ROADMAP_PROGRESS.md` — "Technical risks (top)" (generated from the
+measured status of record; item numbering below matches that list):
+
+1. **Substrate is provisional.** The TypeScript-on-Bun reference
+   implementation is explicitly PROVISIONAL (ADR-0018) with a recorded
+   migration path; Founder ratification is pending (see §3, F-4).
+2. **Release signing uses the bootstrap Ed25519 key.** Rotation to a
+   held-offline key is Founder-gated (`docs/security/RISK-LEDGER.md` R-2;
+   see §3, F-3). Until then the bootstrap key is session-bound and
+   disclosed wherever it is used.
+3. **Exec-sandbox hardening is open.** The full per-platform sandbox
+   profile matrix (ADR-0015) and per-run token scoping remain open
+   engineering items (`docs/security/RISK-LEDGER.md` R-1/R-5).
+4. **Journal durability/throughput trade.** Per-record fsync trades
+   durability for throughput; a batching decision is needed before
+   agent-scale testing (`ROADMAP_PROGRESS.md`).
+5. **Provider price table is build-time data** (2026-08); provider drift
+   is a data update with a reviewed contract change
+   (`ROADMAP_PROGRESS.md`).
+6. **zstd determinism is toolchain-scoped.** Byte-determinism holds for
+   the pinned level (19) on the current toolchain; a toolchain bump could
+   change bytes — the format version in the magic is the escape hatch,
+   never a silent rebuild (`ROADMAP_PROGRESS.md`).
+7. **Breaker state is per-process by design.** Failures are journaled;
+   breaker state is not. Multi-process sharing is a daemon concern
+   needing an ADR (`ROADMAP_PROGRESS.md`).
+8. **Coverage floors: totals by bunfig, per-modules by the ratchet.**
+   `bunfig.toml` floors the totals; the `coverage-ratchet` gate (ASCENSION
+   XXVI+) floors every module from the checked-in baseline of record
+   (`packages/vaerion/coverage-baseline.json`, blessed deliberately). A
+   module more than 1pp below its floor fails the gate BY NAME — coverage
+   can never decrease silently.
+9. **MS-6 leftovers** (`ROADMAP_PROGRESS.md` — "Recommended next work"):
+   native single-binary installers (host-gated; see §2) are not done. The
+   daemon packages route group (pack/verify/import) **is done** — ASCENSION
+   XXVI+ closed it with wire-parity tests and `spec/openapi.json`
+   regeneration; `package.imported` joined the event registry additively.
+
+## 2. Platform verification gaps (UNVERIFIED until their hosts run them)
+
+The packaging files themselves carry honest UNVERIFIED markers; the
+verification matrix of record is `packaging/README.md` (measured
+2026-08-31).
+
+- **Homebrew / winget / .dmg / .pkg / rpm / AppImage channels: authored +
+  reviewed only — UNVERIFIED** until their host tooling executes them
+  (`packaging/README.md`; D-W carry-forwards recorded in the
+  Founder-side GA dossier).
+  Windows (`packaging/windows/`) and macOS (`packaging/macos/`,
+  incl. `SIGNING-PREP.md`) are authored; Developer ID signing and
+  notarization are additionally gated on the key ceremony (F-3).
+- **Cross-version upgrade: the vN → vN+1 leg is MEASURED** on the
+  source-install path — the real installer installed the tagged
+  `v0.1.12-rc1` source, a vN workspace journaled, then the real installer
+  upgraded the same prefix to vN+1: the shim serves vN+1, the vN tree is
+  retained, and the vN-written journal verifies under vN+1
+  (`cross-version-upgrade.test.ts`, ASCENSION XXVI+ B-4 — a permanent
+  regression test, not a one-off). A leg over the RELEASED artifacts of a
+  future train remains a release-train rehearsal step (the train must exist
+  first); the single-version anonymous download path was measured at
+  ASCENSION XXV Task 4.
+- **twine check: UNVERIFIED** — the host lacks twine; the Python wheel
+  itself was built and its install verified offline
+  (recorded in the Founder-side GA dossier, §6).
+- **Container and multi-CI templates (Dockerfile, .gitlab-ci.yml,
+  Jenkinsfile, .devcontainer): authored against the verified gate
+  contract — UNVERIFIED until a container host / GitLab / Jenkins agent
+  builds and runs them.** The entrypoint path and the frozen-lockfile
+  contract are verified against the tree; execution is not (honest
+  markers inside `Dockerfile`).
+- **GitHub branch protection: BLOCKED by plan** — API 403 "Upgrade to
+  GitHub Pro or make this repository public" (measured). A Founder
+  decision (public repo or Pro plan) is required;
+  nothing the engine can do.
+
+## 3. Founder-gated items (P4 — no automation may close these)
+
+From the GA GO/NO-GO dossier of record §2 and the final verified-reality
+report §4 (Founder-side; with severity and exit criteria):
+
+- **F-2 — Full legal name.** Packaging authorship carries the consistent
+  `Auren` identity; the legal-name insertion is a one-line Founder
+  follow-up.
+- **F-3 — The offline key ceremony.** Release signing must rotate from
+  the bootstrap Ed25519 key to a held-offline key before strangers are
+  asked to trust it (`docs/security/RISK-LEDGER.md` R-2). Until F-3, CI
+  release artifacts honestly disclose the bootstrap key generation (the
+  CI pack report says "bootstrap key GENERATED this run — session-bound,
+  disclosed"; measured).
+- **F-4 — Substrate ratification.** ADR-0018 (TypeScript-on-Bun) remains
+  PROVISIONAL pending the Founder decision; migration path recorded.
+- **F-5 — Publication.** npm/PyPI/homebrew-core/winget submissions,
+  installer URL, announce, and beta recruitment are release-train steps
+  the Founder executes (the publication-gap audit lists registry
+  publication and hosted deploy as BLOCKED in-sandbox).
+- **F-6 — Real-provider cassettes.** One sanctioned recording session per
+  adapter with provider credentials (`docs/security/RISK-LEDGER.md` R-4)
+  — required for end-to-end golden coverage of the ModelPlanner success
+  path (`ROADMAP_PROGRESS.md` risk 6).
+
+GA remains rehearsed and PENDING FOUNDER GO (P4)
+(the GA dossier of record, §3 decision block;
+`ROADMAP_PROGRESS.md` milestone board: GA 95%, pending).
+
+## 4. Environment limitations (this workspace, not the product)
+
+- **No provider network.** This environment has no access to model
+  providers; hermetic coverage uses MockBrain/cassettes, and real-provider
+  recording (F-6) cannot happen here (`ROADMAP_PROGRESS.md` risk 6; the
+  Empty Machine Test of record).
+- **Ephemeral host session boundaries.** The host's home directory is
+  wiped outside the checkout: the canonical bare store and env-only
+  credentials do not survive boundaries. Both losses are handled by law,
+  not luck — the canonical store restores deterministically (provision →
+  synchronize → adversarial probe, measured three times) and GitHub state
+  is recorded UNVERIFIED when `VAE_GITHUB_TOKEN` is absent, never dressed
+  (recorded in the Founder-side GA dossier).
+- **Recorded blemish, retained by law.** History is immutable under the
+  protected-main law: commit `03996c6` carries a UUID for a message
+  (session artifact from between phases), recorded rather than rewritten
+  (recorded in the Founder-side GA dossier, Ω.5).
+
+---
+
+*If a limitation above has been closed by later work, the closing record
+lives in the phase ledgers and the verification record
+(`.vaerion-verification.json`) — this file defers to the records, and any
+stale line here is a defect to be fixed, not a claim to be defended.*

@@ -1,0 +1,12 @@
+# Vaerion — code ownership (solo-maintainer posture, recorded in the GA audits).
+#
+# The repository of record is github.com/VaerionLab/vaerion; the
+# project identity of record is Auren (LEGAL.md, F-2 disclosure). Every
+# path is owned by the project owner; required status checks
+# (`verification (all gates)`) gate merges on top of this review
+# assignment (docs/RELEASE-NOTES-v0.1.13-rc1.md, branch protection).
+#
+# Scope updates to this file follow the same law as every other surface:
+# additive, versioned, and reviewed.
+
+*                                       @vaeriondev

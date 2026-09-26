@@ -1,0 +1,15 @@
+vae provenance ARTIFACT
+
+  Permanent provenance for anything Vaerion created — evidence, not
+  branding. Every digest that CAN be recomputed from the bytes IS
+  recomputed here, and the verification status is honest per kind:
+
+    .vxn bundle         the full pure format check — payload + entry
+                        digests recomputed and compared to the manifest
+    vaerion.lock        the seal, cross-checked against the on-disk bundle
+                        (E2205 findings when evidence does not hold)
+    *.ndjson export     the derivation header: source run + head hash,
+                        engine, config fingerprint, redaction version
+    MANIFEST.json       a release manifest, displayed as recorded
+
+  Exit 0 when the evidence holds; exit 5 with findings when it does not.

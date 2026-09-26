@@ -1,0 +1,98 @@
+{
+  "name": "vaerion-vscode",
+  "displayName": "Vaerion",
+  "description": "The Vaerion Developer Workspace Experience — this editor understands Vaerion because Vaerion understands itself. Status, one-click doctor, run history, journal viewer, snapshots, and the AI layer, all through the vae CLI (the CLI owns all business logic).",
+  "version": "0.1.13-rc1",
+  "publisher": "vaerion",
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Linters"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "Vaerion",
+      "properties": {
+        "vaerion.cliPath": {
+          "type": "string",
+          "default": "vae",
+          "description": "Path to the Vaerion CLI (vae). Must resolve to the same CLI that owns the workspace."
+        },
+        "vaerion.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Vaerion status bar item (workspace state, default model)."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "vaerion",
+          "title": "Vaerion",
+          "icon": "media/vaerion.png"
+        }
+      ]
+    },
+    "views": {
+      "vaerion": [
+        {
+          "id": "vaerion.overview",
+          "name": "Workspace",
+          "when": "true"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "vaerion.overview",
+        "contents": "No governed Vaerion workspace detected.\n\nVaerion is a local-first, deterministic engineering engine: every command is journaled, every decision crosses a permission broker, every claim carries evidence.\n\n[Scaffold a workspace](command:vaerion.init)\n[Take the two-minute tour](command:vaerion.tour)\n\nThe editor understands Vaerion because Vaerion understands itself — install the CLI first: see the Vaerion INSTALL guide."
+      }
+    ],
+    "commands": [
+      { "command": "vaerion.status", "title": "Show project status", "category": "Vaerion" },
+      { "command": "vaerion.doctor", "title": "One-click doctor (findings into Problems)", "category": "Vaerion" },
+      { "command": "vaerion.doctorTerminal", "title": "Doctor in terminal", "category": "Vaerion" },
+      { "command": "vaerion.report", "title": "Show insight report", "category": "Vaerion" },
+      { "command": "vaerion.run", "title": "Run… (demo/research/model/agent/workflow)", "category": "Vaerion" },
+      { "command": "vaerion.snapshot", "title": "Snapshot evidence state (plan, then write)", "category": "Vaerion" },
+      { "command": "vaerion.restore", "title": "Restore from snapshot", "category": "Vaerion" },
+      { "command": "vaerion.clean", "title": "Clean orphaned blobs (plan-first)", "category": "Vaerion" },
+      { "command": "vaerion.journal", "title": "Browse runs / open journal viewer", "category": "Vaerion" },
+      { "command": "vaerion.journalVerify", "title": "Verify a run's journal chain", "category": "Vaerion" },
+      { "command": "vaerion.aiStatus", "title": "Show AI layer status", "category": "Vaerion" },
+      { "command": "vaerion.aiSetup", "title": "Set up AI provider (you bring the key)", "category": "Vaerion" },
+      { "command": "vaerion.packageBuild", "title": "Package workspace (.vxn bundle)", "category": "Vaerion" },
+      { "command": "vaerion.init", "title": "Initialize workspace here", "category": "Vaerion" },
+      { "command": "vaerion.tour", "title": "Take the guided tour", "category": "Vaerion" },
+      { "command": "vaerion.refresh", "title": "Refresh status and workspace view", "category": "Vaerion" }
+    ],
+    "keybindings": [
+      { "command": "vaerion.doctor", "key": "ctrl+alt+v d", "mac": "cmd+alt+v d" },
+      { "command": "vaerion.status", "key": "ctrl+alt+v s", "mac": "cmd+alt+v s" }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "vaerion.doctor",
+          "when": "resourceFilename == vaerion.yaml",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "snippets": [
+      { "language": "yaml", "path": "./snippets/vaerion.yaml.json" }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://vaerion.dev/vaerion.git"
+  }
+}

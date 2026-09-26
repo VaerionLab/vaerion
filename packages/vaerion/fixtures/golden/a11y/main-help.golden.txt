@@ -1,0 +1,154 @@
+vae — Vaerion engine command line (v0.1.13-rc1)
+
+Usage: vae [global flags] <command> [args] [flags]
+(Bare `vae` opens the welcome front door: it measures this directory and
+ points at the next step — read-only, exit 0.)
+
+Command surface (the Daily Seven + additive commands):
+  init [--template T] [--name NAME] [--dry-run]
+                             scaffold vaerion.yaml + .vaerion/ from the
+                             deterministic template registry (templates:
+                             minimal|demo|agent; bare init is exactly
+                             --template minimal)
+  status                      the project dashboard: workspace, identity,
+                             AI, runs, next steps (read-only)
+  report                      a pure fold over every journal — runs,
+                             decisions, metering, evidence (read-only)
+  clean [--yes] [--dry-run]   reclaim orphaned blobs — plan-only by default;
+                             evidence-linked blobs never
+  run research --sources P[,P] --query Q [--max-docs N]
+  run demo [--sources P,P] [--query Q]
+                             index declared local sources; journal everything;
+                             close with a receipt
+  run model --model P/M [--prompt TEXT | --op embed --input-json JSON |
+             --op rerank --query Q --docs-json JSON] [--seed N] [--max-tokens N]
+                             invoke a model through the gateway single gate:
+                             broker decision → adapter → sanctioned transport →
+                             metered on the spine
+  run agent --goal TEXT [--planner inline|model] [--steps N]
+            [--plan-json JSON]
+                             the supervised agent loop: every step (model,
+                             tool, note, context) crosses its constitutional
+                             path — the gateway single gate, the broker tool
+                             pipeline, the reasoning scratchpad, the One
+                             Context Path — journaled, retried bounded,
+                             resumable after crashes and human gates
+  run workflow --dag FILE [--resume RUN_ID]
+                             deterministic DAG execution on the journal:
+                             nodes run in topological order (lexicographic
+                             tie-break), outputs are content-addressed,
+                             interrupted runs resume automatically
+  resume RUN_ID [--answer JSON]
+                             restore a run; resolve a pending human gate
+  explain RUN_ID             reconstruct the run's narrative from its journal
+  journal ls | show RUN | verify RUN | recover RUN | export RUN [--out P]
+                             append-only journal operations
+  doctor                     verify config, journals, blobs, audit chain, gateway
+                             matrix (no phone-home)
+  dev                        engine status: version, layers, gateway matrix,
+                             milestone position
+  serve [--port N] [--host ADDR]
+                             the local API daemon (MS-5): loopback HTTP/SSE
+                             over the same contracts this CLI exercises;
+                             first-run pairing token printed once (or
+                             pre-provision headlessly via VAE_TRUST)
+  package build [--out PATH] [--dry-run]
+                             build a reproducible .vxn bundle (MS-6,
+                             ADR-0016): a deterministic fold over the
+                             declared inputs + pin-verified extension
+                             artifacts — identical inputs, identical bytes;
+                             regenerates vaerion.lock
+  package verify BUNDLE [--dry-run]
+                             the pure check: digests recomputed, pins
+                             compared, content NEVER executed; honest
+                             per-check findings report
+  snapshot [--out FILE] [--dry-run]
+                             deterministic archive of the evidence state
+                             (whitelist: config, journals, audit chain,
+                             blob CAS) pinned by its blake3 digest —
+                             identical state, identical bytes; --dry-run
+                             plans without writing (the plan IS the
+                             outcome)
+  restore FILE [--force] [--dry-run]
+                             verify-then-restore an archive; conflicts
+                             refuse with the list until --force;
+                             journals re-verified after the bytes land
+  provenance ARTIFACT        permanent provenance for anything Vaerion
+                             created — .vxn bundle (digests recomputed),
+                             vaerion.lock (seal vs on-disk bundle), a
+                             redacted journal export, or a release
+                             MANIFEST. Evidence, not branding.
+  repo | repo verify         repository intelligence, measured never
+                             assumed (XVIII-8): branch, detached HEAD,
+                             staged/unstaged/untracked, conflicts,
+                             rebase/cherry-pick/bisect, worktrees,
+                             submodules, tags, identity audit, canonical
+                             state. verify reports trust findings only
+                             (identity law, canonical protection law).
+  ci validate                validate .github/workflows structurally: shape,
+                             single verification authority (D-R), env-if
+                             drift, supply-chain pins, secret hygiene
+  ci simulate --event EV [--ref NAME]
+                             deterministic pipeline projection (push,
+                             pull_request, workflow_dispatch, tag): which
+                             jobs would run, and why. A projection is not
+                             an execution — never claimed as one.
+  release readiness [--live-gates]
+                             the constitutional release evaluator (XVIII-8):
+                             can this repository ship? Which check blocks?
+                             Gates (from the measured record, or live),
+                             git trust, CI validity, version lockstep,
+                             tag binding, artifact set, ledger — fail-closed,
+                             honestly labeled.
+  tour                       a guided, read-only walk of the engine (XVIII-2):
+                             nine steps measured against this machine and
+                             this directory; it teaches by pointing at real
+                             commands, never by executing them
+  account create --name NAME [--email E]
+                             local-first identity: create, status, login,
+                             logout, export (optional by law). Read-only
+                             measures: who acts in this workspace (XVIII-3),
+                             the actors observed in the journals, the
+                             commit identity (D-P), and declared secret
+                             PROFILES — names only. Local identity,
+                             never a cloud account.
+  ai setup --provider P --model M [--set-default] [--dry-run]
+                             declare a provider ceiling in vaerion.yaml
+                             (and optionally the default selection)
+  ai ask --question Q [--sources P,P | --capability NAME] [--model P/M]
+          [--seed N] [--max-docs N]
+                             the grounded question (XVIII-4): the ONE research
+                             pipeline assembles a journaled, provenance-
+                             carrying context pack from declared local
+                             sources, then the answer crosses the gateway
+                             single gate — attributed, metered, receipted
+  ai models                  the gateway capability matrix (read-only)
+  ai status                  the developer-owned AI layer: providers,
+                             credential PRESENCE (never values), defaults
+  center                     the operator cockpit (XVIII-6): runs, receipts,
+                             gateway metering, audit + refusal-log integrity,
+                             referenced blobs, and the release readiness
+                             digest — one measured core, read-only
+  version                    print the engine version and exit
+  help [COMMAND]             the help frames for COMMAND (unknown topics
+                             fall back to this help — help always teaches)
+  completions <shell>        emit shell completions for
+                             bash|zsh|fish|powershell|nushell|xonsh
+                             (generated from the command registry of
+                             record; source into your shell profile)
+
+Global flags:
+  --json                     stable NDJSON output (machine mode, guaranteed)
+  --plain                    human-readable output (default)
+  --dry-run                  zero side effects — plan only, nothing written
+  --cwd DIR                  operate on DIR as the workspace (default: .)
+  --help                     show this help and exit (never executes)
+  --version                  print the engine version and exit (-V)
+  --quiet                    suppress decorative framing (banner/footer);
+                             data and errors are NEVER suppressed
+
+Exit codes: 0 ok · 1 internal · 2 usage · 3 broker-denied · 4 provider-down · 5 partial-with-repair-hint
+Debug: VAE_DEBUG=1 prints the underlying stack for engine errors (a
+diagnostics aid — never a data path).
+
+Learn more: docs/constitution/ — the ratified law of record · spec/ (contracts)

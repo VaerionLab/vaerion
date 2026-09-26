@@ -1,0 +1,52 @@
+{
+  "name": "vaerion",
+  "version": "0.1.13-rc1",
+  "private": true,
+  "description": "Vaerion — trust infrastructure for autonomous AI systems: deterministic runtime, broker-governed autonomy, hash-chained journals, receipts, and permanent provenance.",
+  "keywords": [
+    "ai",
+    "agents",
+    "determinism",
+    "audit",
+    "provenance",
+    "journal",
+    "broker",
+    "local-first",
+    "cli",
+    "reproducible-builds"
+  ],
+  "license": "Apache-2.0",
+  "author": "Auren <auren@vaerion.dev>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VaerionLab/vaerion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VaerionLab/vaerion/issues"
+  },
+  "homepage": "https://github.com/VaerionLab/vaerion#readme",
+  "engines": {
+    "bun": ">=1.3"
+  },
+  "workspaces": [
+    "packages/*",
+    "sdks/*",
+    "tools"
+  ],
+  "scripts": {
+    "verify": "bun run tools/verify.ts",
+    "status": "bun run tools/status.ts",
+    "test": "bun test packages/vaerion/tests/",
+    "typecheck": "tsc --noEmit -p packages/vaerion/tsconfig.json && tsc --noEmit -p sdks/typescript/tsconfig.json",
+    "lint": "eslint .",
+    "vae": "bun run packages/vaerion/src/cli/vae.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "@types/bun": "^1.3.0",
+    "bun-types": "^1.3.4",
+    "eslint": "^9",
+    "typescript": "^5",
+    "typescript-eslint": "^8"
+  }
+}

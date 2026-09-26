@@ -1,0 +1,38 @@
+{
+  "Vaerion gateway block": {
+    "prefix": "vaerion-gateway",
+    "description": "The single AI gateway block — one config system, provider + default model (validateConfig pre-validates; comments are preserved by `vae ai` operations)",
+    "body": [
+      "gateway:",
+      "  provider: ${1|mockbrain,anthropic,openai,ollama|}",
+      "  defaultModel: ${2:provider/model-id}"
+    ]
+  },
+  "Vaerion project block": {
+    "prefix": "vaerion-project",
+    "description": "Project identity block (name must satisfy the config law)",
+    "body": [
+      "schemaVersion: 0.1",
+      "project:",
+      "  name: ${1:my-project}",
+      "  description: ${2:A governed workspace}"
+    ]
+  },
+  "Vaerion research sources": {
+    "prefix": "vaerion-research",
+    "description": "Declared local research sources — the broker grants are derived from these; undeclared paths are refused by design",
+    "body": [
+      "research:",
+      "  docs:",
+      "    - ${1:./docs}"
+    ]
+  },
+  "Vaerion telemetry off": {
+    "prefix": "vaerion-telemetry",
+    "description": "Telemetry declaration — Vaerion is local-first and zero-telemetry by constitution",
+    "body": [
+      "telemetry:",
+      "  enabled: false"
+    ]
+  }
+}

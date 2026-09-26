@@ -1,0 +1,10 @@
+vae resume RUN_ID [--answer JSON]
+
+  Restore a run deterministically from its journal. If a durable human gate
+  is pending, resume WITHOUT --answer first: it renders the human review
+  (question, options, the linked decision, and a review diff when present).
+  Then resolve with --answer JSON (default when omitted: {"approved":true}).
+  Approval of a broker prompt records an elevation (journaled + audited).
+  AGENT runs CONTINUE after approval: the approved gate is durable elevation
+  authority and the loop resumes from its journaled steps. A denial ends
+  the run (exit 3). Exit 3 when the answer denies the gate.

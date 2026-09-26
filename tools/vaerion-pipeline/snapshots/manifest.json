@@ -1,0 +1,48 @@
+{
+  "manifestId": "working-captures-v1",
+  "algorithm": "sha256",
+  "pinnedAt": 0,
+  "pins": [
+    {
+      "snapshotId": "parity-desktop",
+      "sha256": "754faf54353f8df9131ee814cbb403c0887a1329575e04aac762c143ab86ce0f"
+    },
+    {
+      "snapshotId": "parity-mobile",
+      "sha256": "3cb3e2a5b3f38d63b11e4ac2cf1c90ceff210cea4f596ebeab5459af5e5bee97"
+    },
+    {
+      "snapshotId": "parity-print",
+      "sha256": "52a0e00f63ed9658d86ceacbd5bf7dd6e92f3f03256169ac96e2f3e17fb9625a"
+    },
+    {
+      "snapshotId": "parity-grayscale",
+      "sha256": "82edbd954d59cff13e32d3fc740687859cc839d3a9c2891f92c7c27f701a239e"
+    },
+    {
+      "snapshotId": "parity-forced-colors",
+      "sha256": "7506cb83c411f6c8f9ef224d26a171839d7a52bf64f5d132629c963547a9fd8c"
+    },
+    {
+      "snapshotId": "parity-reduced-motion",
+      "sha256": "bcbb5514afffea1e38b1707fc13e123f57b75a2baefe8e0aa4f03fade1a43d0a"
+    },
+    {
+      "snapshotId": "parity-export",
+      "sha256": "7afc7c912f093e75d8b024dc47b7bda30c26e466ad2ed94e13b31f065e6e0e07"
+    }
+  ],
+  "supersedes": null,
+  "citations": [
+    {
+      "document": "IMPLEMENTATION_CONSTITUTION",
+      "reference": "9.3",
+      "note": "Snapshot Authority engine — working capture set pinned for integrity verification"
+    },
+    {
+      "document": "IMPLEMENTATION_CONSTITUTION",
+      "reference": "9.1",
+      "note": "mechanical, binary, cited"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+name: Feature request
+description: Propose an additive capability. Contract evolution is additive-only — argue the law, then the feature.
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read `CONTRIBUTING.md` first: contracts live in `spec/` and lead the
+        code; every privileged action must cross the broker, journal, audit,
+        and replay path. A proposal that bypasses the Decide → Journal → Act
+        pipeline will be redesigned or refused — that is a feature of the
+        engine, not of the review process.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What can a user not do today? Quote the law or gate that stops them, if any.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed capability
+      description: |
+        Describe the behavior, the surface (CLI / daemon / SDK / package /
+        extension), and — if it adds observable events, error codes, or
+        config — where they would land in `spec/` additively.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and prior art
+      description: What exists today that comes close? Why is it not enough?
+  - type: textarea
+    id: verification
+    attributes:
+      label: How would you verify it?
+      description: |
+        The engine ships verification reports, not promises: sketch the
+        hermetic tests (MockBrain, cassettes, golden governance) that would
+        prove the capability.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Submitter attestations
+      options:
+        - label: This proposal is additive and does not require removing or renaming existing contracts.
+          required: true
+        - label: This proposal does not bypass the broker, journal, audit, metering, secrets boundary, or replay path.
+          required: true

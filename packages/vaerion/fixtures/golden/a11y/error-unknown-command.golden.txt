@@ -1,0 +1,1 @@
+E1600 unknown command: definitely-not-a-command Fix: Re-run with `--help`; help always teaches and never executes.

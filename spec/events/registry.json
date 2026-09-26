@@ -1,0 +1,174 @@
+{
+  "version": 1,
+  "envelope_version": 1,
+  "events": [
+    {
+      "type": "run.opened",
+      "description": "A run was opened and its journal chain began; the header meta record follows."
+    },
+    {
+      "type": "run.state.changed",
+      "description": "The run's lifecycle state changed (for example open, running, or closed)."
+    },
+    {
+      "type": "run.snapshot.taken",
+      "description": "A checkpoint snapshot of run state was recorded as a restore accelerator, never as truth."
+    },
+    {
+      "type": "run.restored",
+      "description": "Run state was restored from its journal, by full replay or snapshot-assisted restore."
+    },
+    {
+      "type": "run.closed",
+      "description": "The run finished; its journal is sealed and a receipt is issued."
+    },
+    {
+      "type": "journal.record.appended",
+      "description": "A record was appended to the run journal by the single journal writer."
+    },
+    {
+      "type": "journal.recovered",
+      "description": "The journal was recovered: a torn tail was truncated and the chain re-sealed, as an auditable event."
+    },
+    {
+      "type": "journal.verified",
+      "description": "The journal hash chain was verified end-to-end without finding a break."
+    },
+    {
+      "type": "receipt.issued",
+      "description": "The run's closing receipt was computed from its journal and sealed into it."
+    },
+    {
+      "type": "broker.decision.recorded",
+      "description": "A broker decision (allow, deny, or prompt) was journaled; decide precedes act."
+    },
+    {
+      "type": "broker.gate.opened",
+      "description": "A durable human gate was opened and the run paused awaiting human authority."
+    },
+    {
+      "type": "broker.gate.resolved",
+      "description": "A human resolved a durable gate; the answer is journaled and authoritative."
+    },
+    {
+      "type": "broker.elevation.recorded",
+      "description": "A human approval elevated a prompt decision into an authorized action; the elevation is journaled and audited."
+    },
+    {
+      "type": "broker.audit.appended",
+      "description": "A broker evaluation, allow or deny, was appended to the hash-chained audit ledger."
+    },
+    {
+      "type": "research.capability.declared",
+      "description": "A research capability (name, declared sources, fencing) was declared before use."
+    },
+    {
+      "type": "research.index.updated",
+      "description": "The research index was updated from declared local sources."
+    },
+    {
+      "type": "research.source.fetched",
+      "description": "Content was retrieved from a declared source and stored in the blob store under its blake3 digest."
+    },
+    {
+      "type": "research.evidence.recorded",
+      "description": "An evidence record was built from a fenced block with mandatory provenance and a blob_ref."
+    },
+    {
+      "type": "research.context.prepared",
+      "description": "A research context was assembled from provenance-carrying, fenced content."
+    },
+    {
+      "type": "gateway.invoke.recorded",
+      "description": "A model invocation completed through the gateway single gate; the payload carries usage, integer micro-USD cost, attempts, latency, the redacted assembled text, and the broker decision link."
+    },
+    {
+      "type": "gateway.invoke.failed",
+      "description": "A model invocation failed after its broker decision (secret unresolved, breaker open, transport refusal, budget stop); the payload carries the error code and the decision link."
+    },
+    {
+      "type": "tool.call.requested",
+      "description": "A tool invocation was requested and submitted for broker evaluation."
+    },
+    {
+      "type": "tool.call.completed",
+      "description": "A broker-approved tool invocation completed and returned its result."
+    },
+    {
+      "type": "tool.call.denied",
+      "description": "A tool invocation was refused by the broker and the denial was journaled."
+    },
+    {
+      "type": "agent.run.started",
+      "description": "A supervised agent run began over journaled decisions; the payload carries the goal, planner kind, and step ceiling."
+    },
+    {
+      "type": "agent.step.recorded",
+      "description": "One agent step (model invocation, tool call, note, or context pack) completed; the payload links the step to its decisions and carries usage when model-backed."
+    },
+    {
+      "type": "agent.step.failed",
+      "description": "An agent step failed after its retries; the payload carries the error code and the step coordinates."
+    },
+    {
+      "type": "agent.run.completed",
+      "description": "The agent run reached an outcome (goal, step_limit, failed, or awaiting_gate); every journaled step remains replayable."
+    },
+    {
+      "type": "workflow.started",
+      "description": "A deterministic workflow DAG execution began; the payload carries the workflow id and node count."
+    },
+    {
+      "type": "workflow.node.started",
+      "description": "A workflow node began executing after its dependencies completed."
+    },
+    {
+      "type": "workflow.node.completed",
+      "description": "A workflow node completed; its output is content-addressed in the blob store and referenced by blob_ref."
+    },
+    {
+      "type": "workflow.node.failed",
+      "description": "A workflow node failed after its retries; the payload carries the error code."
+    },
+    {
+      "type": "workflow.completed",
+      "description": "The workflow DAG finished; the payload summarizes completed and failed nodes for deterministic resume."
+    },
+    {
+      "type": "reasoning.note.recorded",
+      "description": "A scratchpad note was appended to the run's persistent reasoning session."
+    },
+    {
+      "type": "reasoning.folded",
+      "description": "Older scratchpad notes were folded into a deterministic summary checkpoint; the fold is recomputable from the journal alone."
+    },
+    {
+      "type": "extension.spawned",
+      "description": "An extension artifact was digest-verified and spawned by the host; the payload names the extension and the pinned digest."
+    },
+    {
+      "type": "extension.exited",
+      "description": "A spawned extension process exited; the payload carries the exit code (or signal)."
+    },
+    {
+      "type": "store.blob.put",
+      "description": "Content was stored in the blake3 content-addressed blob store; the payload carries the blob_ref."
+    },
+    {
+      "type": "package.built",
+      "description": "A .vxn bundle was built as a deterministic fold over declared inputs; the payload carries the bundle blake3 digest, entry count, and byte size."
+    },
+    {
+      "type": "package.verified",
+      "description": "A .vxn bundle was verified as a pure check (digests recomputed, pins compared; content never executed); the payload carries the outcome and the bundle blake3 digest."
+    },
+    {
+      "type": "package.imported",
+      "description": "An externally produced .vxn bundle was admitted into the workspace after a passing pure verification; the payload carries the bundle blake3 digest, the admitted path, and the regenerated lock digest."
+    },
+    {
+      "type": "release.readiness.evaluated",
+      "description": "A release readiness evaluation completed as a measured, evidence-carrying audit (gates, git trust, CI validity, version lockstep, artifacts); the payload carries the verdict, blockers, and honesty labels."
+    }
+  ]
+}

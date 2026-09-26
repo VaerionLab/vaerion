@@ -1,0 +1,25 @@
+vae ai ask --question TEXT [--sources P,P | --capability NAME]
+                [--model P/M] [--seed N] [--max-tokens N] [--max-docs N]
+                [--intent TEXT] [--dry-run]
+vae ai models
+
+  ask (constitution v1.6 A3, Phase 4; P8/D-J/D-O) — the grounded question:
+
+    1. capability: a vaerion.yaml research.capabilities entry (--capability)
+       or an explicit --sources declaration — never ambient, never network
+    2. ONE broker decision PER SOURCE (journaled; deny exits 3, a prompt
+       policy pauses with a durable gate for 'vae resume')
+    3. the ONE research pipeline (the same fold 'vae run research' executes):
+       fingerprint → fence → blob CAS → evidence → index → citations →
+       context pack, journaled and provenance-carrying
+    4. the answer crosses the gateway SINGLE GATE (decide model.invoke →
+       journal → act) with the fenced pack as the system prompt
+    5. metering (tokens + integer micro-USD) folded from the journal;
+       the run closes with a receipt
+
+  Default model: mockbrain/mock-1 — the local seeded virtual provider. No
+  network, byte-identical answers for the same question, sources, and seed.
+  Untrusted source content travels ONLY inside its fence; the answer face is
+  redacted like every other.
+
+  models reports the gateway capability matrix (secret NAMES only). Read-only.

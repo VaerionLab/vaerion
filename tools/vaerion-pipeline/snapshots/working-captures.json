@@ -1,0 +1,405 @@
+{
+  "storeId": "vaerion-snapshot-working-captures",
+  "law": "working capture set — pipeline artifacts pending Founder ratification into the fidelity canon (IR-015); snapshots are evidence, drift fails closed, no manual approval (F-002; 9.3)",
+  "records": [
+    {
+      "snapshotId": "parity-desktop",
+      "subject": {
+        "surface": "rendering-engine reference (console skeleton)",
+        "target": "desktop",
+        "mode": null,
+        "breakpoint": "standard",
+        "states": [
+          "verified",
+          "failed",
+          "pending",
+          "restricted",
+          "demo",
+          "idle",
+          "loading",
+          "skeleton",
+          "empty",
+          "offline",
+          "recovery",
+          "error"
+        ]
+      },
+      "invariants": [
+        "registry: 1.0.0 — 64 tokens, token-only rendering (1.3; 9.2)",
+        "strata: chrome→surface→region→primitive (7.1)",
+        "layers: ground.0→surface.1→sticky.2→veil.3→floating.4→ceremony.5→lens.6 (7.2; VS §3.4)",
+        "stacking: ordinal × 10, strictly increasing, shadows prohibited (7.2)",
+        "measurement: 10 intrinsic heights ladder-conformant; 4px baseline; ceremony distances registered (7.4)",
+        "breakpoints: ultra-wide→standard→tablet→narrow — evolution, never scaling; Margin Rail ultra-wide only (7.5; IR-010)",
+        "seals: verified=solid disc; unverified=hollow disc; failed=crossed disc; pending=pulse dot — four distinct shapes, grayscale survival (Art. IV; 7.7)",
+        "modes: six registered modes with full surface coverage (VS §11; 7.6–7.10)",
+        "lens: plane at ordinal 6; veil treatment registered; restricted hatched with notice (3.15; VS §12)",
+        "visibility: 12 state obligations resolve — attested or honestly labeled (7.3)",
+        "target: desktop — modes light, dark; breakpoint standard; reduced-motion false",
+        "structure: chrome→surface→region→primitive (7.1)",
+        "receipt anatomy: id strip→claim→subject→verdict seal→verification method→evidence[]→issued-at→chain parent (Art. VI)"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "9.3",
+          "note": "Snapshot Authority — visual regression against the canon"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "7.1",
+          "note": "structure remains identical"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VI",
+          "note": "receipt anatomy intact"
+        }
+      ],
+      "capturedAt": 0,
+      "sha256": "754faf54353f8df9131ee814cbb403c0887a1329575e04aac762c143ab86ce0f"
+    },
+    {
+      "snapshotId": "parity-mobile",
+      "subject": {
+        "surface": "rendering-engine reference (console skeleton)",
+        "target": "mobile",
+        "mode": null,
+        "breakpoint": "narrow",
+        "states": [
+          "verified",
+          "failed",
+          "pending",
+          "restricted",
+          "demo",
+          "idle",
+          "loading",
+          "skeleton",
+          "empty",
+          "offline",
+          "recovery",
+          "error"
+        ]
+      },
+      "invariants": [
+        "registry: 1.0.0 — 64 tokens, token-only rendering (1.3; 9.2)",
+        "strata: chrome→surface→region→primitive (7.1)",
+        "layers: ground.0→surface.1→sticky.2→veil.3→floating.4→ceremony.5→lens.6 (7.2; VS §3.4)",
+        "stacking: ordinal × 10, strictly increasing, shadows prohibited (7.2)",
+        "measurement: 10 intrinsic heights ladder-conformant; 4px baseline; ceremony distances registered (7.4)",
+        "breakpoints: ultra-wide→standard→tablet→narrow — evolution, never scaling; Margin Rail ultra-wide only (7.5; IR-010)",
+        "seals: verified=solid disc; unverified=hollow disc; failed=crossed disc; pending=pulse dot — four distinct shapes, grayscale survival (Art. IV; 7.7)",
+        "modes: six registered modes with full surface coverage (VS §11; 7.6–7.10)",
+        "lens: plane at ordinal 6; veil treatment registered; restricted hatched with notice (3.15; VS §12)",
+        "visibility: 12 state obligations resolve — attested or honestly labeled (7.3)",
+        "target: mobile — modes light, dark; breakpoint narrow; reduced-motion false",
+        "structure: chrome→surface→region→primitive (7.1)",
+        "receipt anatomy: id strip→claim→subject→verdict seal→verification method→evidence[]→issued-at→chain parent (Art. VI)"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "9.3",
+          "note": "Snapshot Authority — visual regression against the canon"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "7.1",
+          "note": "structure remains identical"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VI",
+          "note": "receipt anatomy intact"
+        }
+      ],
+      "capturedAt": 0,
+      "sha256": "3cb3e2a5b3f38d63b11e4ac2cf1c90ceff210cea4f596ebeab5459af5e5bee97"
+    },
+    {
+      "snapshotId": "parity-print",
+      "subject": {
+        "surface": "rendering-engine reference (console skeleton)",
+        "target": "print",
+        "mode": "print",
+        "breakpoint": null,
+        "states": [
+          "verified",
+          "failed",
+          "pending",
+          "restricted",
+          "demo",
+          "idle",
+          "loading",
+          "skeleton",
+          "empty",
+          "offline",
+          "recovery",
+          "error"
+        ]
+      },
+      "invariants": [
+        "registry: 1.0.0 — 64 tokens, token-only rendering (1.3; 9.2)",
+        "strata: chrome→surface→region→primitive (7.1)",
+        "layers: ground.0→surface.1→sticky.2→veil.3→floating.4→ceremony.5→lens.6 (7.2; VS §3.4)",
+        "stacking: ordinal × 10, strictly increasing, shadows prohibited (7.2)",
+        "measurement: 10 intrinsic heights ladder-conformant; 4px baseline; ceremony distances registered (7.4)",
+        "breakpoints: ultra-wide→standard→tablet→narrow — evolution, never scaling; Margin Rail ultra-wide only (7.5; IR-010)",
+        "seals: verified=solid disc; unverified=hollow disc; failed=crossed disc; pending=pulse dot — four distinct shapes, grayscale survival (Art. IV; 7.7)",
+        "modes: six registered modes with full surface coverage (VS §11; 7.6–7.10)",
+        "lens: plane at ordinal 6; veil treatment registered; restricted hatched with notice (3.15; VS §12)",
+        "visibility: 12 state obligations resolve — attested or honestly labeled (7.3)",
+        "target: print — modes print; breakpoint none; reduced-motion false",
+        "structure: chrome→surface→region→primitive (7.1)",
+        "receipt anatomy: id strip→claim→subject→verdict seal→verification method→evidence[]→issued-at→chain parent (Art. VI)"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "9.3",
+          "note": "Snapshot Authority — visual regression against the canon"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "7.1",
+          "note": "structure remains identical"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VI",
+          "note": "receipt anatomy intact"
+        }
+      ],
+      "capturedAt": 0,
+      "sha256": "52a0e00f63ed9658d86ceacbd5bf7dd6e92f3f03256169ac96e2f3e17fb9625a"
+    },
+    {
+      "snapshotId": "parity-grayscale",
+      "subject": {
+        "surface": "rendering-engine reference (console skeleton)",
+        "target": "grayscale",
+        "mode": "grayscale",
+        "breakpoint": null,
+        "states": [
+          "verified",
+          "failed",
+          "pending",
+          "restricted",
+          "demo",
+          "idle",
+          "loading",
+          "skeleton",
+          "empty",
+          "offline",
+          "recovery",
+          "error"
+        ]
+      },
+      "invariants": [
+        "registry: 1.0.0 — 64 tokens, token-only rendering (1.3; 9.2)",
+        "strata: chrome→surface→region→primitive (7.1)",
+        "layers: ground.0→surface.1→sticky.2→veil.3→floating.4→ceremony.5→lens.6 (7.2; VS §3.4)",
+        "stacking: ordinal × 10, strictly increasing, shadows prohibited (7.2)",
+        "measurement: 10 intrinsic heights ladder-conformant; 4px baseline; ceremony distances registered (7.4)",
+        "breakpoints: ultra-wide→standard→tablet→narrow — evolution, never scaling; Margin Rail ultra-wide only (7.5; IR-010)",
+        "seals: verified=solid disc; unverified=hollow disc; failed=crossed disc; pending=pulse dot — four distinct shapes, grayscale survival (Art. IV; 7.7)",
+        "modes: six registered modes with full surface coverage (VS §11; 7.6–7.10)",
+        "lens: plane at ordinal 6; veil treatment registered; restricted hatched with notice (3.15; VS §12)",
+        "visibility: 12 state obligations resolve — attested or honestly labeled (7.3)",
+        "target: grayscale — modes grayscale; breakpoint none; reduced-motion false",
+        "structure: chrome→surface→region→primitive (7.1)",
+        "receipt anatomy: id strip→claim→subject→verdict seal→verification method→evidence[]→issued-at→chain parent (Art. VI)"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "9.3",
+          "note": "Snapshot Authority — visual regression against the canon"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "7.1",
+          "note": "structure remains identical"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VI",
+          "note": "receipt anatomy intact"
+        }
+      ],
+      "capturedAt": 0,
+      "sha256": "82edbd954d59cff13e32d3fc740687859cc839d3a9c2891f92c7c27f701a239e"
+    },
+    {
+      "snapshotId": "parity-forced-colors",
+      "subject": {
+        "surface": "rendering-engine reference (console skeleton)",
+        "target": "forced-colors",
+        "mode": "forced-colors",
+        "breakpoint": null,
+        "states": [
+          "verified",
+          "failed",
+          "pending",
+          "restricted",
+          "demo",
+          "idle",
+          "loading",
+          "skeleton",
+          "empty",
+          "offline",
+          "recovery",
+          "error"
+        ]
+      },
+      "invariants": [
+        "registry: 1.0.0 — 64 tokens, token-only rendering (1.3; 9.2)",
+        "strata: chrome→surface→region→primitive (7.1)",
+        "layers: ground.0→surface.1→sticky.2→veil.3→floating.4→ceremony.5→lens.6 (7.2; VS §3.4)",
+        "stacking: ordinal × 10, strictly increasing, shadows prohibited (7.2)",
+        "measurement: 10 intrinsic heights ladder-conformant; 4px baseline; ceremony distances registered (7.4)",
+        "breakpoints: ultra-wide→standard→tablet→narrow — evolution, never scaling; Margin Rail ultra-wide only (7.5; IR-010)",
+        "seals: verified=solid disc; unverified=hollow disc; failed=crossed disc; pending=pulse dot — four distinct shapes, grayscale survival (Art. IV; 7.7)",
+        "modes: six registered modes with full surface coverage (VS §11; 7.6–7.10)",
+        "lens: plane at ordinal 6; veil treatment registered; restricted hatched with notice (3.15; VS §12)",
+        "visibility: 12 state obligations resolve — attested or honestly labeled (7.3)",
+        "target: forced-colors — modes forced-colors; breakpoint none; reduced-motion false",
+        "structure: chrome→surface→region→primitive (7.1)",
+        "receipt anatomy: id strip→claim→subject→verdict seal→verification method→evidence[]→issued-at→chain parent (Art. VI)"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "9.3",
+          "note": "Snapshot Authority — visual regression against the canon"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "7.1",
+          "note": "structure remains identical"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VI",
+          "note": "receipt anatomy intact"
+        }
+      ],
+      "capturedAt": 0,
+      "sha256": "7506cb83c411f6c8f9ef224d26a171839d7a52bf64f5d132629c963547a9fd8c"
+    },
+    {
+      "snapshotId": "parity-reduced-motion",
+      "subject": {
+        "surface": "rendering-engine reference (console skeleton)",
+        "target": "reduced-motion",
+        "mode": null,
+        "breakpoint": null,
+        "states": [
+          "verified",
+          "failed",
+          "pending",
+          "restricted",
+          "demo",
+          "idle",
+          "loading",
+          "skeleton",
+          "empty",
+          "offline",
+          "recovery",
+          "error"
+        ]
+      },
+      "invariants": [
+        "registry: 1.0.0 — 64 tokens, token-only rendering (1.3; 9.2)",
+        "strata: chrome→surface→region→primitive (7.1)",
+        "layers: ground.0→surface.1→sticky.2→veil.3→floating.4→ceremony.5→lens.6 (7.2; VS §3.4)",
+        "stacking: ordinal × 10, strictly increasing, shadows prohibited (7.2)",
+        "measurement: 10 intrinsic heights ladder-conformant; 4px baseline; ceremony distances registered (7.4)",
+        "breakpoints: ultra-wide→standard→tablet→narrow — evolution, never scaling; Margin Rail ultra-wide only (7.5; IR-010)",
+        "seals: verified=solid disc; unverified=hollow disc; failed=crossed disc; pending=pulse dot — four distinct shapes, grayscale survival (Art. IV; 7.7)",
+        "modes: six registered modes with full surface coverage (VS §11; 7.6–7.10)",
+        "lens: plane at ordinal 6; veil treatment registered; restricted hatched with notice (3.15; VS §12)",
+        "visibility: 12 state obligations resolve — attested or honestly labeled (7.3)",
+        "target: reduced-motion — modes light, dark; breakpoint none; reduced-motion true",
+        "structure: chrome→surface→region→primitive (7.1)",
+        "receipt anatomy: id strip→claim→subject→verdict seal→verification method→evidence[]→issued-at→chain parent (Art. VI)"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "9.3",
+          "note": "Snapshot Authority — visual regression against the canon"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "7.1",
+          "note": "structure remains identical"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VI",
+          "note": "receipt anatomy intact"
+        }
+      ],
+      "capturedAt": 0,
+      "sha256": "bcbb5514afffea1e38b1707fc13e123f57b75a2baefe8e0aa4f03fade1a43d0a"
+    },
+    {
+      "snapshotId": "parity-export",
+      "subject": {
+        "surface": "rendering-engine reference (console skeleton)",
+        "target": "export",
+        "mode": "export",
+        "breakpoint": null,
+        "states": [
+          "verified",
+          "failed",
+          "pending",
+          "restricted",
+          "demo",
+          "idle",
+          "loading",
+          "skeleton",
+          "empty",
+          "offline",
+          "recovery",
+          "error"
+        ]
+      },
+      "invariants": [
+        "registry: 1.0.0 — 64 tokens, token-only rendering (1.3; 9.2)",
+        "strata: chrome→surface→region→primitive (7.1)",
+        "layers: ground.0→surface.1→sticky.2→veil.3→floating.4→ceremony.5→lens.6 (7.2; VS §3.4)",
+        "stacking: ordinal × 10, strictly increasing, shadows prohibited (7.2)",
+        "measurement: 10 intrinsic heights ladder-conformant; 4px baseline; ceremony distances registered (7.4)",
+        "breakpoints: ultra-wide→standard→tablet→narrow — evolution, never scaling; Margin Rail ultra-wide only (7.5; IR-010)",
+        "seals: verified=solid disc; unverified=hollow disc; failed=crossed disc; pending=pulse dot — four distinct shapes, grayscale survival (Art. IV; 7.7)",
+        "modes: six registered modes with full surface coverage (VS §11; 7.6–7.10)",
+        "lens: plane at ordinal 6; veil treatment registered; restricted hatched with notice (3.15; VS §12)",
+        "visibility: 12 state obligations resolve — attested or honestly labeled (7.3)",
+        "target: export — modes export; breakpoint none; reduced-motion false",
+        "structure: chrome→surface→region→primitive (7.1)",
+        "receipt anatomy: id strip→claim→subject→verdict seal→verification method→evidence[]→issued-at→chain parent (Art. VI)"
+      ],
+      "citations": [
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "9.3",
+          "note": "Snapshot Authority — visual regression against the canon"
+        },
+        {
+          "document": "IMPLEMENTATION_CONSTITUTION",
+          "reference": "7.1",
+          "note": "structure remains identical"
+        },
+        {
+          "document": "BIBLE",
+          "reference": "Art. VI",
+          "note": "receipt anatomy intact"
+        }
+      ],
+      "capturedAt": 0,
+      "sha256": "7afc7c912f093e75d8b024dc47b7bda30c26e466ad2ed94e13b31f065e6e0e07"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+vae package build [--out PATH] [--dry-run]
+vae package verify BUNDLE [--dry-run]
+
+  build (MS-6, ADR-0016) folds the DECLARED inputs into a .vxn bundle:
+  package.include paths from vaerion.yaml (files carry themselves;
+  directories carry every file under them recursively) plus every declared
+  extension artifact — each pin-verified BEFORE it is bundled (a mismatched
+  artifact is never distributed, exactly as it is never executed). Entries
+  are canonically ordered; compression is zstd at the pinned level; content
+  identity is blake3. Identical inputs produce BYTE-IDENTICAL bundles — no
+  wall-clock, no ambient paths. The build also regenerates vaerion.lock
+  (generated, committed, never hand-edited). The build run is journaled and
+  closes with a receipt.
+
+  verify is the PURE check: it recomputes every digest, compares the
+  manifest pins against vaerion.yaml AND vaerion.lock (a mismatch is a hard
+  failure — the digest-swap defense), and reports an honest per-check
+  findings list. It NEVER executes package content. Exit 0 verified;
+  exit 5 with E2206 + findings when the bundle must be refused.

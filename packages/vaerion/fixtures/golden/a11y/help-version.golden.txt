@@ -1,0 +1,5 @@
+vae version [--json]
+
+  Print the engine version of record. In --json mode, stable NDJSON:
+  {"version":"..."}. The same literal as the banner and every packaging
+  surface — the version-register test pins them together.

@@ -1,0 +1,15 @@
+vae init [--template minimal|demo|agent] [--name NAME] [--dry-run]
+  Scaffold vaerion.yaml (strict schema 0.1) and the .vaerion/ workspace from
+  the deterministic template registry (constitution v1.6 A3, Phase 5):
+
+    minimal   the default scaffold: declared project docs, policy examples
+              in comments — bare 'vae init' is exactly this template
+    demo      a demo workspace: ./docs + ./sources capabilities, ready for
+              'vae run demo --sources ./sources --query "..."'
+    agent     an agent workspace: mockbrain planner, declared tools, and an
+              explicit policy rule for the agent's model.invoke grant
+
+  Every template is byte-stable (the only parameter is --name) and validates
+  against the strict config law; telemetry is structurally false. Refuses to
+  overwrite an existing vaerion.yaml. Unknown templates are a usage error
+  (E1203). --dry-run prints the plan and writes nothing.

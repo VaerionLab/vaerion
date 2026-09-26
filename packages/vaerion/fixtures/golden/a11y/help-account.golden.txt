@@ -1,0 +1,17 @@
+vae account
+
+  The identity & attribution surface (constitution v1.6 A3, Phase 3;
+  P5/D-D/D-P). Read-only. It MEASURES who acts here:
+
+    actor law          the canonical local actor and the broker principal
+                       ids — one identity module, no call-site literals
+    observed actors    who appears in this workspace's journals (a
+                       deterministic fold over every envelope's actor)
+    commit identity    the repository's HEAD author and the D-P audit of
+                       recent commits (the same primitives as vae repo)
+    secret profiles    the secret NAMES declared in vaerion.yaml and the
+                       principal patterns granted them — never their values
+                       (ADR-0013: values resolve only behind broker decisions)
+
+  Vaerion has no cloud accounts (P1): your identity is local, attributed,
+  and yours. Exit 0; the same workspace yields byte-identical --json output.

@@ -1,0 +1,4 @@
+[
+  { "kind": "note", "text": "the demo agent starts with a note step" },
+  { "kind": "tool", "tool": "echo", "args": { "value": "hello from the committed example" } }
+]

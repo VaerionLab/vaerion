@@ -1,0 +1,11 @@
+vae tour
+
+  A guided, read-only walk of the engine (ASCENSION XVIII Phase 2;
+  constitution v1.2 D-M′/A2). Nine steps — what Vaerion is, this directory,
+  the config law, the journal, doctor, the gateway single gate, your first
+  run, the trust surface, where to go next — each MEASURED against this
+  machine and this directory (no network, no writes, no wall-clock in the
+  payload). It teaches by pointing at real commands; it never executes
+  them. Read-only by law: the tour creates nothing, journals nothing, and
+  touches nothing beyond stat(). The same directory yields byte-identical
+  --json output.

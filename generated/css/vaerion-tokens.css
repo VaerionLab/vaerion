@@ -1,0 +1,103 @@
+/* ==========================================================================
+   VAERION GENERATED BINDINGS — DO NOT EDIT
+   ==========================================================================
+   This file is generated. It is never hand-authored (Constitution 2.7;
+   Foundation Amendment F-005). Any manual change is a violation and will
+   be detected by the reproducibility and drift checks:
+       bun run vaerion:compile-registry
+   Source: the canonical Registry (src/vaerion/registry), which compiles
+   values only from the ratified Visual System text (Constitution 2.1).
+   Registry version: 1.0.0
+   ========================================================================== */
+
+:root {
+  /* ── Elevation · the layer system (VS §3.4) · ordinals bound to stacking values (Constitution 7.2) ── */
+  --vx-elevation-ground-0: 0; /* ordinal 0 — shadows prohibited (VS §3.4) */
+  --vx-elevation-surface-1: 10; /* ordinal 1 — shadows prohibited (VS §3.4) */
+  --vx-elevation-sticky-2: 20; /* ordinal 2 — shadows prohibited (VS §3.4) */
+  --vx-elevation-veil-3: 30; /* ordinal 3 — shadows prohibited (VS §3.4) */
+  --vx-elevation-floating-4: 40; /* ordinal 4 — shadows prohibited (VS §3.4) */
+  --vx-elevation-ceremony-5: 50; /* ordinal 5 — shadows prohibited (VS §3.4) */
+  --vx-elevation-lens-6: 60; /* ordinal 6 — shadows prohibited (VS §3.4) */
+  /* ── Space · the Gauge Ladder and page architecture (VS §1) ── */
+  --vx-space-0: 0px; /* Rest <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-1: 2px; /* Hairline Breath <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-2: 4px; /* Gauge Step <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-3: 8px; /* Tight Measure <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-4: 12px; /* Compact Measure <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-5: 16px; /* Standard Measure <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-6: 24px; /* Comfortable Measure <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-7: 32px; /* Seal Isolation <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-8: 48px; /* Wide Measure <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-9: 64px; /* Receipt Ceremony <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-10: 96px; /* Sectional Distance <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.2 (the Gauge Ladder — the ratified spacing ramp); VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (ceremonial distances corroborate the sequential mapping (space.7 = 32 px, space.9 = 64 px)) */
+  --vx-space-seal-isolation: 32px; /* Seal Isolation <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (seal isolation — ≥ 32 px (space.7)) */
+  --vx-space-receipt-ceremony: 64px; /* Receipt Ceremony <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.3 (Receipt Viewer ceremony — 64 px (space.9)) */
+  --vx-space-margin-rail: 320px; /* The Margin Rail <- VAERION_VISUAL_SYSTEM_v1.0.1 §1.4 (the Margin Rail — 320 px on ultra-wide) */
+  --vx-space-ledger-row: 36px; /* The Ledger Rhythm <- VAERION_VISUAL_SYSTEM_v1.0.1 §5 (Ledger Row — fixed 36 px rhythm); VAERION_DESIGN_BIBLE_v1.0 Art. X (the sliced ledger keeps a stable physical act) */
+  --vx-space-touch-minimum: 44px; /* The Equal Instrument Minimum <- VAERION_VISUAL_SYSTEM_v1.0.1 §9 (touch targets meet registered minimums (44 px)) */
+  /* ── Type · the two voices (VS §2) ── */
+  --vx-type-voice-machine: var(--vx-provision-machine, 'Berkeley Mono'), 'Spline Sans Mono', monospace; /* The Machine Voice <- VAERION_VISUAL_SYSTEM_v1.0.1 §2.1 (the two voices — families and line heights) */
+  --vx-type-voice-human: var(--vx-provision-human, 'Instrument Sans'), 'Söhne', sans-serif; /* The Human Voice <- VAERION_VISUAL_SYSTEM_v1.0.1 §2.1 (the two voices — families and line heights) */
+  --vx-type-leading-machine: 1.45; /* Machine Measure <- VAERION_VISUAL_SYSTEM_v1.0.1 §2.1 (the two voices — families and line heights) */
+  --vx-type-leading-human: 1.55; /* Human Measure <- VAERION_VISUAL_SYSTEM_v1.0.1 §2.1 (the two voices — families and line heights) */
+  --vx-type-numeric-tabular: tabular-nums; /* The Numerals <- VAERION_VISUAL_SYSTEM_v1.0.1 §2.3 (numerals and literals — tabular alignment in the Machine Voice) */
+  /* ── Shape · radii, hairlines, chain and seal geometry (VS §3) ── */
+  --vx-shape-radius-0: 0px; /* The Structural Edge <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.2 (the Radius Ladder and registered roles) */
+  --vx-shape-radius-2: 2px; /* The 2 Pixel Edge <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.2 (the Radius Ladder and registered roles) */
+  --vx-shape-radius-4: 4px; /* The 4 Pixel Edge <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.2 (the Radius Ladder and registered roles) */
+  --vx-shape-radius-8: 8px; /* The 8 Pixel Edge <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.2 (the Radius Ladder and registered roles) */
+  --vx-shape-radius-seal: 9999px; /* The Seal Radius <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.2 (the Radius Ladder and registered roles) */
+  --vx-shape-hairline-width: 1px; /* The Hairline <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.3 (1 px hairlines at registered ink strengths) */
+  --vx-shape-chainline-width: 1px; /* The Chainline <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.5 (the Chainline geometry); VAERION_DESIGN_BIBLE_v1.0 Art. IX (chain is walkable) */
+  --vx-shape-chainline-node: 2px; /* The Chain Node <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.5 (the Chainline geometry); VAERION_DESIGN_BIBLE_v1.0 Art. IX (chain is walkable) */
+  --vx-shape-chainline-break-gap: 8px; /* The Break Gap <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.5 (the Chainline geometry); VAERION_DESIGN_BIBLE_v1.0 Art. IX (chain is walkable) */
+  --vx-shape-seal-size-16: 16px; /* The Whisper Seal <- VAERION_VISUAL_SYSTEM_v1.0.1 §5.2 (registered seal sizes 16 / 20 / 28 / 44); VAERION_DESIGN_BIBLE_v1.0 Art. III (seal geometry carries verdict identity) */
+  --vx-shape-seal-size-20: 20px; /* The Ledger Seal <- VAERION_VISUAL_SYSTEM_v1.0.1 §5.2 (registered seal sizes 16 / 20 / 28 / 44); VAERION_DESIGN_BIBLE_v1.0 Art. III (seal geometry carries verdict identity) */
+  --vx-shape-seal-size-28: 28px; /* The Standing Seal <- VAERION_VISUAL_SYSTEM_v1.0.1 §5.2 (registered seal sizes 16 / 20 / 28 / 44); VAERION_DESIGN_BIBLE_v1.0 Art. III (seal geometry carries verdict identity) */
+  --vx-shape-seal-size-44: 44px; /* The Ceremony Seal <- VAERION_VISUAL_SYSTEM_v1.0.1 §5.2 (registered seal sizes 16 / 20 / 28 / 44); VAERION_DESIGN_BIBLE_v1.0 Art. III (seal geometry carries verdict identity) */
+  /* ── Motion · durations, curves, canonical motions (VS §7) ── */
+  --vx-motion-bound-max: 400ms; /* The Motion Ceiling <- VAERION_VISUAL_SYSTEM_v1.0.1 §7.2 (motion law: 400 ms bound; settle-out curve); VAERION_VISUAL_SYSTEM_v1.0.1 §7.1 (exactly three canonical motions) */
+  --vx-motion-curve-settle-out: cubic-bezier(0.2, 0, 0, 1); /* The Settle-Out Curve <- VAERION_VISUAL_SYSTEM_v1.0.1 §7.2 (motion law: 400 ms bound; settle-out curve); VAERION_VISUAL_SYSTEM_v1.0.1 §7.1 (exactly three canonical motions) */
+  --vx-motion-canonical-seal: 400ms on cubic-bezier(0.2, 0, 0, 1); /* The Seal Motion <- VAERION_VISUAL_SYSTEM_v1.0.1 §7.2 (motion law: 400 ms bound; settle-out curve); VAERION_VISUAL_SYSTEM_v1.0.1 §7.1 (exactly three canonical motions) */
+  --vx-motion-canonical-sweep: 400ms on cubic-bezier(0.2, 0, 0, 1); /* The Sweep Motion <- VAERION_VISUAL_SYSTEM_v1.0.1 §7.2 (motion law: 400 ms bound; settle-out curve); VAERION_VISUAL_SYSTEM_v1.0.1 §7.1 (exactly three canonical motions) */
+  --vx-motion-canonical-append: 400ms on cubic-bezier(0.2, 0, 0, 1); /* The Append Motion <- VAERION_VISUAL_SYSTEM_v1.0.1 §7.2 (motion law: 400 ms bound; settle-out curve); VAERION_VISUAL_SYSTEM_v1.0.1 §7.1 (exactly three canonical motions) */
+  --vx-motion-delay-gauge: 300ms; /* The Gauge Threshold <- VAERION_VISUAL_SYSTEM_v1.0.1 §5 (Gauge — renders after 300 ms); VAERION_VISUAL_SYSTEM_v1.0.1 §10 (latency contract) */
+  --vx-motion-life-return: 6s; /* The Return Life <- VAERION_VISUAL_SYSTEM_v1.0.1 §5 (Return — 6 s registered life); VAERION_VISUAL_SYSTEM_v1.0.1 §10 (Returns live 6 s) */
+  --vx-motion-hold-affirm: 600ms; /* The Affirmation Hold <- VAERION_VISUAL_SYSTEM_v1.0.1 §13.2 (hold-to-affirm — 600 ms hold) */
+  --vx-motion-acknowledge: 100ms; /* The Acknowledgment Bound <- VAERION_VISUAL_SYSTEM_v1.0.1 §10 (< 100 ms acknowledgment) */
+  /* ── Icon · stroke and sizes (VS §8) ── */
+  --vx-icon-stroke: 1px; /* The Hairline Stroke <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.3 (1 px hairlines at registered ink strengths) */
+  --vx-icon-size-16: 16px; /* The Inline Glyph <- VAERION_VISUAL_SYSTEM_v1.0.1 §5.2 (registered seal sizes 16 / 20 / 28 / 44); VAERION_DESIGN_BIBLE_v1.0 Art. III (seal geometry carries verdict identity) */
+  --vx-icon-size-20: 20px; /* The Row Glyph <- VAERION_VISUAL_SYSTEM_v1.0.1 §5.2 (registered seal sizes 16 / 20 / 28 / 44); VAERION_DESIGN_BIBLE_v1.0 Art. III (seal geometry carries verdict identity) */
+  --vx-icon-size-28: 28px; /* The Panel Glyph <- VAERION_VISUAL_SYSTEM_v1.0.1 §5.2 (registered seal sizes 16 / 20 / 28 / 44); VAERION_DESIGN_BIBLE_v1.0 Art. III (seal geometry carries verdict identity) */
+  --vx-icon-size-44: 44px; /* The Ceremony Glyph <- VAERION_VISUAL_SYSTEM_v1.0.1 §5.2 (registered seal sizes 16 / 20 / 28 / 44); VAERION_DESIGN_BIBLE_v1.0 Art. III (seal geometry carries verdict identity) */
+}
+
+[data-chamber='light'] { /* the light chamber — the reading room (VS §4.1) */
+  --vx-color-ground: #F5F4F0; /* The Reading Room / The War Room <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-ink-100: #1A1917; /* Full Ink <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-ink-16: rgba(26, 25, 23, 0.16); /* Hairline Ink (16) <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.3 (1 px hairlines at registered ink strengths) */
+  --vx-color-ink-32: rgba(26, 25, 23, 0.32); /* Hairline Ink (32) <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.3 (1 px hairlines at registered ink strengths) */
+  --vx-color-verdict-verified: #17663F; /* Assay Green <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-verdict-pending: #7A5200; /* Hold Amber <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-verdict-failed: #9E2B20; /* Fault Red <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-accent-brass-text: #7A4E1D; /* Signal Brass (Text) <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-accent-brass-glyph: #9C6220; /* Signal Brass (Glyph) <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+}
+
+[data-chamber='dark'] { /* the dark chamber — the war room (VS §4.1) */
+  --vx-color-ground: #141312; /* The Reading Room / The War Room <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-ink-100: #E9E6E0; /* Full Ink <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-ink-16: rgba(233, 230, 224, 0.16); /* Hairline Ink (16) <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.3 (1 px hairlines at registered ink strengths) */
+  --vx-color-ink-32: rgba(233, 230, 224, 0.32); /* Hairline Ink (32) <- VAERION_VISUAL_SYSTEM_v1.0.1 §3.3 (1 px hairlines at registered ink strengths) */
+  --vx-color-verdict-verified: #3FA873; /* Assay Green <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-verdict-pending: #D19A3A; /* Hold Amber <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-verdict-failed: #C65B4E; /* Fault Red <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-accent-brass-text: #C98A4B; /* Signal Brass (Text) <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+  --vx-color-accent-brass-glyph: #9C6220; /* Signal Brass (Glyph) <- VAERION_VISUAL_SYSTEM_v1.0.1 §4.2 (Paper and Graphite grounds); VAERION_VISUAL_SYSTEM_v1.0.1 §4.7 (reference value tables) */
+}
+
+/* Reductions: prefers-reduced-motion receives complete informational parity —
+   every motion renders as an instant state change with full explainability
+   (VS §7.3; Bible Art. V). Enforcement lives with the consuming primitives. */

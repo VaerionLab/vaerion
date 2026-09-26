@@ -1,0 +1,5 @@
+vae help [COMMAND]
+
+  The help frames for COMMAND (the same text --help shows for that topic).
+  An unknown topic falls back to the main help — help always teaches and
+  never executes. Alias of the global --help flag.

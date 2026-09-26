@@ -1,0 +1,18 @@
+vae ci validate
+vae ci simulate --event push|pull_request|workflow_dispatch|tag [--ref NAME]
+
+  CI understanding (D-R): the workflows under .github/workflows are the
+  remote projection of the single verification authority — tools/verify.ts.
+  No surface may re-implement the gates.
+
+  validate parses every workflow (the same YAML parser the config uses) and
+  reports structural findings with stable codes: unparsable YAML (E2307),
+  shape defects (E2304), gate logic without the authority (E2305), the
+  step-own-env-in-if drift class where an `if:` reads a variable defined in
+  the same step's env and is therefore permanently false (E2306), unpinned
+  substrate versions, and secret material echoed toward logs.
+
+  simulate projects which workflows trigger and which jobs would run for a
+  measured event/ref — deterministically, from the workflow text alone. A
+  projection is NOT an execution: remote outcomes are NEVER EXECUTED (D-S),
+  and the output says so.

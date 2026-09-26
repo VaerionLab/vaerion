@@ -1,0 +1,77 @@
+{
+  "$id": "vaerion/registry/registries",
+  "title": "VAERION Registry Definitions — The Seven Sub-Registries",
+  "authority": [
+    "VAERION_VISUAL_SYSTEM_v1.0.1 §0 (all visual decisions resolve through exactly seven registries; a value that does not resolve through a registry does not exist)",
+    "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0 2.1 (one canonical Registry; no mirror, copy, or derivative)",
+    "Foundation Amendment F-004"
+  ],
+  "count": 7,
+  "registries": [
+    {
+      "ordinal": 1,
+      "name": "Space",
+      "identifierPrefix": "space",
+      "governs": "all spacing, page architecture, ceremonial distance",
+      "scaleAuthority": "Gauge Ladder — VS §1.2 (ratified ramp: 0 / 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 96 / 128 px; index record ambiguity filed as IR-004)",
+      "offScaleRule": "Off-ladder spacing is a violation (VS §1.2)."
+    },
+    {
+      "ordinal": 2,
+      "name": "Type",
+      "identifierPrefix": "type",
+      "governs": "the two voices, sizes, weights, tracking, line heights",
+      "scaleAuthority": "Type Scale — VS §2.2 (the scale exists in law; its numeric sizes are not enumerated in the ratified text — numeric pins are pending governance, IR-005; no size token may be compiled until ruled)",
+      "offScaleRule": "Off-scale sizes are violations (VS §2.2)."
+    },
+    {
+      "ordinal": 3,
+      "name": "Shape",
+      "identifierPrefix": "shape",
+      "governs": "radii, hairlines, geometry vocabulary, chain geometry, seal geometry",
+      "scaleAuthority": "Radius Ladder — VS §3.2 (0 / 2 px / 4 px / 8 px / seal (∞)); hairline width VS §3.3; Chainline VS §3.5; registered seal sizes VS §5.2",
+      "offScaleRule": "A radius used outside its registered role is a violation (VS §3.2)."
+    },
+    {
+      "ordinal": 4,
+      "name": "Color",
+      "identifierPrefix": "color",
+      "governs": "grounds, ink, verdict chromatics, accent, budget",
+      "scaleAuthority": "VS §4.7 reference value tables — the sole ratified color-value source",
+      "offScaleRule": "No surface, code path, or document may introduce a color value outside the §4.7 tables (VS §4.7; Bible Art. XI; Constitution 1.3)."
+    },
+    {
+      "ordinal": 5,
+      "name": "Motion",
+      "identifierPrefix": "motion",
+      "governs": "durations, curves, the three canonical motions",
+      "scaleAuthority": "Motion Registry — VS §7.1 (exactly three canonical motions); Motion Law VS §7.2 (max 400 ms; settle-out curve cubic-bezier(0.2, 0, 0, 1))",
+      "offScaleRule": "No fourth motion may be invented (VS §7.1); registered curves only (VS §7.2)."
+    },
+    {
+      "ordinal": 6,
+      "name": "Elevation",
+      "identifierPrefix": "elevation",
+      "governs": "the layer system and its ordinals",
+      "scaleAuthority": "Layer system — VS §3.4 (ground.0 → surface.1 → sticky.2 → veil.3 → floating.4 → ceremony.5 → lens.6)",
+      "offScaleRule": "Shadows are prohibited; glass is prohibited (VS §3.4)."
+    },
+    {
+      "ordinal": 7,
+      "name": "Icon",
+      "identifierPrefix": "icon",
+      "governs": "grid, stroke, sizes, families",
+      "scaleAuthority": "Icon law — VS §8 (registered grid; stroke hairline-consistent per §3.3; sizes matching the registered seal sizes where paired with verdicts)",
+      "offScaleRule": "Icons never carry verdict color, never replace seals, never decorate (VS §8)."
+    }
+  ],
+  "governanceReferences": {
+    "owner": "Design Systems Authority (Constitution 11.1)",
+    "amendmentPath": "Constitution 11.2–11.3 only",
+    "requestPath": "interpretation requests resolve how existing law applies (Constitution 11.2)",
+    "validationLaw": "authority §4 (Constitution 2.6)",
+    "bindingLaw": "authority §5 (Constitution 2.7)",
+    "versioningLaw": "authority §6 (Constitution 2.8)",
+    "valueSource": "authority §8 (the ratified Visual System text, digest-pinned by the Snapshot Authority)"
+  }
+}

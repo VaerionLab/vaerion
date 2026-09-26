@@ -1,0 +1,19 @@
+{
+  "registry": "ANNOUNCEMENT & COPY REGISTRY",
+  "status": "PROPOSED — IR-012 (inert until the Founder ratifies; changes then follow the amendment pathway, Constitution 11.2–11.3)",
+  "authority": "Foundation Amendment F-003; Implementation Constitution 6.11",
+  "voiceLaw": "every entry declares its voice (Bible Art. VII); honesty constraints bind (Art. VIII)",
+  "consumedBy": "src/vaerion/interaction/copy.ts — by identifier only; no string is composed at render time (6.11; 4.7)",
+  "strings": [
+    { "id": "interaction.undoWindow", "voice": "human", "text": "Undo available for ten seconds. This act is reversible.", "constitution": "6.4 — reversible acts hold a ten-second undo window surfaced as a Return" },
+    { "id": "interaction.undoExecuted", "voice": "human", "text": "Act undone. The pre-act state was restored exactly; no partial artifacts remain.", "constitution": "6.4; 5.8 — undo restores the pre-act state exactly" },
+    { "id": "interaction.undoClosed", "voice": "human", "text": "The undo window has closed. The act stands as recorded.", "constitution": "6.4 — the window is ten seconds" },
+    { "id": "interaction.cancelled", "voice": "human", "text": "Act cancelled. The prior state was restored exactly. No partial artifacts remain.", "constitution": "5.8 — a cancelled act issues a Return naming the cancellation" },
+    { "id": "interaction.cancellationRefused", "voice": "human", "text": "Cancellation refused — the act already reached an authority. It resolves as a receipt.", "constitution": "5.8 — truth over convenience" },
+    { "id": "interaction.actFailed", "voice": "human", "text": "The act failed. A Failure Receipt records it with its receipt id.", "constitution": "5.2; 6.5 — every failed act resolves to a Failure Receipt" },
+    { "id": "state.offline", "voice": "machine", "text": "AUTHORITY UNREACHABLE — reads continue; writes halt", "constitution": "5.2; 5.7 — the offline chrome announcement" },
+    { "id": "state.recovery", "voice": "machine", "text": "RECOVERY — revalidating chain integrity before live resumption", "constitution": "5.2; 5.9 — reconnection in progress" },
+    { "id": "interaction.holdToAffirm", "voice": "human", "text": "Hold to affirm, or use the click-path ceremony. Releasing early cancels with no partial effect.", "constitution": "6.6 — hold-to-affirm with an equivalent click-path ceremony" },
+    { "id": "interaction.lensEscape", "voice": "machine", "text": "ESC RETURNS TO THE CLAIM", "constitution": "6.8 — Escape returns focus to the originating claim" }
+  ]
+}

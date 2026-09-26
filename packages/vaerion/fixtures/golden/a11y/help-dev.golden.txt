@@ -1,0 +1,4 @@
+vae dev
+
+  Engine status: version, substrate (ADR-0018), layer map, workspace state,
+  milestone position. Read-only.

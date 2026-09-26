@@ -1,0 +1,82 @@
+{
+  "$id": "vaerion/registry/token-schema",
+  "title": "VAERION Token Record Schema — Constitutional Law",
+  "authority": [
+    "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0 2.2 (token anatomy: exactly seven fields, no more, no fewer)",
+    "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0 2.3 (dual naming: identifier and instrumentName resolve to one record)",
+    "VAERION_VISUAL_SYSTEM_v1.0.1 §0 (systematic identifier domain.property.variant; instrument name; never separated)",
+    "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0 P-4 + VAERION_DESIGN_BIBLE_v1.0 Art. XI (an uncitabled token is void)",
+    "Foundation Amendment F-004 (this authority defines law; src/vaerion/registry executes it)"
+  ],
+  "type": "object",
+  "required": [
+    "identifier",
+    "instrumentName",
+    "value",
+    "constraints",
+    "governingCitation",
+    "version",
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Systematic identifier. Format domain.property.variant; the seven ratified space tokens are the ratified exception, named space.0–space.10 by Visual System §1.2 itself.",
+      "pattern": "^(space|type|shape|color|motion|elevation|icon)\\.[A-Za-z0-9.\\-]+$"
+    },
+    "instrumentName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The human-rememberable name of the thing. Dual naming is inseparable (VS §0)."
+    },
+    "value": {
+      "description": "The value or formula (Constitution 2.2). A scalar (with unit), a chambered pair for the two chambers (VS §4.1), or a formula referencing other tokens. Values are compiled ONLY from the ratified Visual System text (Constitution 2.1; authority §8).",
+      "oneOf": [
+        { "type": "string" },
+        { "type": "number" },
+        {
+          "type": "object",
+          "description": "Chambered value (VS §4.1, §4.7).",
+          "required": ["light", "dark"],
+          "additionalProperties": false,
+          "properties": {
+            "light": { "type": ["string", "number"] },
+            "dark": { "type": ["string", "number"] }
+          }
+        }
+      ]
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Scale membership, contrast minima, usage restrictions (Constitution 2.2)."
+    },
+    "governingCitation": {
+      "type": "array",
+      "minItems": 1,
+      "description": "At least one citation into ratified law; an uncitabled token is void (P-4; Bible Art. XI).",
+      "items": {
+        "type": "object",
+        "required": ["document", "reference"],
+        "additionalProperties": false,
+        "properties": {
+          "document": {
+            "enum": ["BIBLE", "VISUAL_SYSTEM", "IMPLEMENTATION_CONSTITUTION"]
+          },
+          "reference": { "type": "string", "minLength": 1 },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "The Registry version that introduced the current value (Constitution 2.2, 2.8)."
+    },
+    "status": {
+      "enum": ["proposed", "ratified", "active", "deprecated", "retired"],
+      "description": "Lifecycle status (Constitution 2.5; authority §3)."
+    }
+  }
+}

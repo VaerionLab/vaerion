@@ -1,0 +1,9 @@
+vae journal ls
+vae journal show RUN_ID
+vae journal verify RUN_ID
+vae journal recover RUN_ID [--dry-run]
+vae journal export RUN_ID [--out PATH] [--dry-run]
+
+  Append-only journal operations. recover truncates ONLY a torn crash tail
+  and re-seals the chain with an auditable note. export produces a redacted,
+  independently verifiable derivation.

@@ -1,0 +1,80 @@
+name: Bug report
+description: Something verified broke — or something claimed does not reproduce. Reports drive the root-cause law.
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for a verified bug report. Two requests born of the project's law:
+
+        1. **Never attach secret material.** If the bug involves run behavior,
+           attach a *redacted* journal export (`vae journal export --redacted RUN_ID`)
+           — never raw journals, blob files, or your `vaerion.yaml`.
+        2. **Say what you ran and what you saw**, not what you assume.
+
+        A maintainer reproduces every report before it is fixed; the clearer
+        the steps, the faster the root cause.
+  - type: input
+    id: version
+    attributes:
+      label: Engine version
+      description: Output of `vae version` (or the tarball/commit you installed).
+      placeholder: 0.1.7
+    validations:
+      required: true
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Affected surface
+      options:
+        - CLI (vae)
+        - local API daemon (vae serve)
+        - TypeScript SDK
+        - packaging (.vxn build/verify, installer)
+        - extension host
+        - model gateway
+        - documentation / examples
+        - other
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal, deterministic steps. Include the exact commands and flags.
+      placeholder: |
+        vae init demo && cd demo
+        vae run agent --goal "..." --planner inline --plan-json '[{"kind":"note","text":"hi"}]'
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result
+      description: |
+        Include the honest exit code, any E#### code, and (if the journal is
+        involved) the relevant lines from the redacted export.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Bun version (`bun --version`), and whether the daemon was running.
+    validations:
+      required: true
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Reporter attestations
+      options:
+        - label: This report contains no secret material (keychain values, tokens, unredacted journals).
+          required: true
+        - label: The steps above reproduce from a clean workspace.
+          required: true

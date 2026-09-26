@@ -1,0 +1,14 @@
+vae serve [--port N] [--host ADDR]
+
+  Start the local API daemon (MS-5, ADR-0010/ADR-0020): loopback HTTP/SSE
+  over the SAME engine contracts the CLI exercises — run starts, durable
+  gate answers, continuations, cancellations, event streams with journal
+  cursor replay, the gateway capability matrix (secret NAMES only), and the
+  generated OpenAPI description at /openapi.json.
+
+  Authentication: a pairing token is generated at start and printed ONCE
+  ('Authorization: Bearer <token>' on every call except /health, /version,
+  /openapi.json). Headless starts pre-provision via VAE_TRUST=<token> —
+  the token is then never printed. Shutdown: POST /shutdown with the token
+  echoed in the body. Non-loopback binds are REFUSED (E2001): remote
+  exposure requires a ratified transport-security ADR, never a flag.

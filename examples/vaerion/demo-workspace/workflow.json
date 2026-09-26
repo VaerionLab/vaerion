@@ -1,0 +1,24 @@
+{
+  "id": "demo-flow",
+  "nodes": [
+    {
+      "id": "hello",
+      "deps": [],
+      "step": { "kind": "tool", "tool": "echo", "args": { "value": "node hello executed through the broker" } }
+    },
+    {
+      "id": "ask-model",
+      "deps": ["hello"],
+      "step": {
+        "kind": "model",
+        "model": "mockbrain/mock-1",
+        "messages": [{ "role": "user", "content": "Reply with exactly: demo ok" }]
+      }
+    },
+    {
+      "id": "signoff",
+      "deps": ["ask-model"],
+      "step": { "kind": "note", "text": "demo-flow complete" }
+    }
+  ]
+}

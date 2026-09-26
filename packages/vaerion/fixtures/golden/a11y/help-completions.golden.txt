@@ -1,0 +1,18 @@
+vae completions <bash|zsh|fish|powershell|nushell|xonsh>
+
+  Emit shell completion code for the chosen shell, generated from the ONE
+  completion model pinned against the command registry
+  (tests/integration/dx-surface.test.ts keeps model and registry disagreeing
+  from ever compiling). Install:
+
+    bash        source <(vae completions bash)   (measured: bash -n here)
+    zsh         save to ~/.vae/completions/_vae, fpath+=(~/.vae/completions),
+                then compinit                    (UNVERIFIED — ZSH)
+    fish        save to ~/.config/fish/completions/vae.fish
+                                                 (UNVERIFIED — FISH)
+    powershell  dot-source in $PROFILE           (UNVERIFIED — POWERSHELL)
+    nushell     source in $nu.config-path        (UNVERIFIED — NUSHELL)
+    xonsh       import in ~/.xonshrc             (UNVERIFIED — XONSH)
+
+  Every script except bash carries the honest platform marker: no host for
+  it exists in the generating environment.

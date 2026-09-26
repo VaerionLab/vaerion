@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 480" role="img" aria-labelledby="arch-title arch-desc" font-family="ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace">
+  <title id="arch-title">Vaerion architecture — one action, end to end</title>
+  <desc id="arch-desc">Flow diagram: an AI agent acts through the vae CLI or SDK, the fail-closed permission broker decides, model I/O passes the single sanctioned gateway, every step lands on the append-only blake3-chained event spine, the receipt is folded from the journal, deliverables build into reproducible .vxn bundles, and a pure verifier checks everything without executing it.</desc>
+  <rect width="1180" height="480" fill="#0B0B0E"/>
+  <text x="40" y="52" fill="#E8E4D8" font-size="20" font-weight="bold">VAERION — one action, end to end</text>
+  <text x="40" y="76" fill="#8B8B95" font-size="12">every step lands on the spine · every spine ends in a receipt</text>
+
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8B8B95"/></marker>
+    <marker id="arrg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#D4AF37"/></marker>
+  </defs>
+
+  <!-- row 1 boxes -->
+  <g font-size="13">
+    <rect x="40" y="120" width="170" height="84" rx="10" fill="#141419" stroke="#D4AF37" stroke-width="1.5"/>
+    <text x="125" y="156" fill="#E8E4D8" text-anchor="middle" font-weight="bold">AI AGENT</text>
+    <text x="125" y="176" fill="#8B8B95" text-anchor="middle" font-size="11">acts</text>
+
+    <rect x="270" y="120" width="190" height="84" rx="10" fill="#141419" stroke="#2C2C34"/>
+    <text x="365" y="150" fill="#E8E4D8" text-anchor="middle" font-weight="bold">vae CLI / SDK</text>
+    <text x="365" y="170" fill="#8B8B95" text-anchor="middle" font-size="11">one contract, no side door</text>
+
+    <rect x="520" y="120" width="200" height="84" rx="10" fill="#141419" stroke="#2C2C34"/>
+    <text x="620" y="150" fill="#E8E4D8" text-anchor="middle" font-weight="bold">PERMISSION BROKER</text>
+    <text x="620" y="170" fill="#8B8B95" text-anchor="middle" font-size="11">fail-closed · every decision journaled</text>
+
+    <rect x="780" y="120" width="200" height="84" rx="10" fill="#141419" stroke="#D4AF37" stroke-width="1.5"/>
+    <text x="880" y="150" fill="#E8E4D8" text-anchor="middle" font-weight="bold">EVENT SPINE</text>
+    <text x="880" y="170" fill="#8B8B95" text-anchor="middle" font-size="11">append-only journal · blake3 chain</text>
+
+    <rect x="1040" y="120" width="110" height="84" rx="10" fill="#141419" stroke="#2C2C34"/>
+    <text x="1095" y="146" fill="#E8E4D8" text-anchor="middle" font-weight="bold" font-size="12">RECEIPT</text>
+    <text x="1095" y="164" fill="#8B8B95" text-anchor="middle" font-size="10">folded from</text>
+    <text x="1095" y="178" fill="#8B8B95" text-anchor="middle" font-size="10">the journal</text>
+  </g>
+
+  <!-- row 1 arrows -->
+  <line x1="210" y1="162" x2="264" y2="162" stroke="#8B8B95" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="460" y1="162" x2="514" y2="162" stroke="#8B8B95" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="720" y1="162" x2="774" y2="162" stroke="#8B8B95" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="980" y1="162" x2="1034" y2="162" stroke="#D4AF37" stroke-width="1.5" marker-end="url(#arrg)"/>
+
+  <!-- row 2 boxes -->
+  <g font-size="13">
+    <rect x="520" y="290" width="200" height="84" rx="10" fill="#0B0B0E" stroke="#2C2C34" stroke-dasharray="5 4"/>
+    <text x="620" y="320" fill="#E8E4D8" text-anchor="middle" font-weight="bold" font-size="12">MODEL GATEWAY</text>
+    <text x="620" y="340" fill="#8B8B95" text-anchor="middle" font-size="10.5">single sanctioned egress · ADR-0019</text>
+    <text x="620" y="356" fill="#8B8B95" text-anchor="middle" font-size="10.5">metered · recorded</text>
+
+    <rect x="780" y="290" width="200" height="84" rx="10" fill="#141419" stroke="#2C2C34"/>
+    <text x="880" y="320" fill="#E8E4D8" text-anchor="middle" font-weight="bold" font-size="12">.vxn BUNDLE</text>
+    <text x="880" y="340" fill="#8B8B95" text-anchor="middle" font-size="10.5">reproducible · ADR-0016</text>
+    <text x="880" y="356" fill="#8B8B95" text-anchor="middle" font-size="10.5">identical inputs → identical bytes</text>
+
+    <rect x="1040" y="290" width="110" height="84" rx="10" fill="#141419" stroke="#D4AF37" stroke-width="1.5"/>
+    <text x="1095" y="316" fill="#E8E4D8" text-anchor="middle" font-weight="bold" font-size="11">VERIFIER</text>
+    <text x="1095" y="334" fill="#8B8B95" text-anchor="middle" font-size="9.5">pure check</text>
+    <text x="1095" y="348" fill="#8B8B95" text-anchor="middle" font-size="9.5">journal verify</text>
+    <text x="1095" y="362" fill="#8B8B95" text-anchor="middle" font-size="9.5">provenance</text>
+  </g>
+
+  <!-- row 2 arrows -->
+  <line x1="620" y1="290" x2="620" y2="210" stroke="#2C2C34" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#arr)"/>
+  <line x1="880" y1="204" x2="880" y2="284" stroke="#8B8B95" stroke-width="1.5" marker-end="url(#arr)"/>
+  <line x1="1095" y1="204" x2="1095" y2="284" stroke="#D4AF37" stroke-width="1.5" marker-end="url(#arrg)"/>
+
+  <text x="40" y="440" fill="#8B8B95" font-size="11.5">verify, don't trust:  vae journal verify &lt;RUN_ID&gt;   ·   vae provenance &lt;BUNDLE&gt;.vxn</text>
+  <text x="40" y="460" fill="#5B5B64" font-size="10.5">derived from the ADR set of record — docs/adr/ · the mark is never redrawn; identity lives in brand/official/</text>
+</svg>

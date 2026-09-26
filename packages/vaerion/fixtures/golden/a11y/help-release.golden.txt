@@ -1,0 +1,21 @@
+vae release readiness [--live-gates]
+
+  The constitutional release evaluator (D-S/D-T): can this repository ship,
+  measured only. Each check carries an honesty label and a Fix:
+
+    verification-gates     the measured verify.ts record (--live-gates re-runs
+                           the gates live through the single authority)
+    git-tree-clean         a release is cut from a clean, fully committed tree
+    git-identity-head      HEAD authored by the ratified identity (D-P)
+    git-identity-history   identity audit of recent commits (recorded, immutable)
+    release-tag-binding    HEAD exactly at a v* tag (reproducible artifact binding)
+    version-lockstep       every version surface agrees
+    ci-validity            workflows structurally valid (via vae ci validate)
+    canonical-sync         canonical store reachable, in sync, protection enforced
+    release-artifacts      the packed, signed artifact set of record
+    worklog-ledger         the phase ledger of record exists (D-T)
+    reports-present        truthful reports on disk
+
+  Fail-closed (P6): unmeasurable ⇒ blocked. Exit 0 READY; exit 5 BLOCKED with
+  the blocker list. The evaluation is journaled with a receipt when the
+  repository is a Vaerion workspace, and says so when it is not.

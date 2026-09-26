@@ -1,0 +1,42 @@
+vae run research --sources P[,P] --query Q [--max-docs N] [--dry-run]
+vae run demo [--sources P,P] [--query Q]
+vae run model --model P/M [--prompt TEXT] [--system TEXT] [--seed N]
+              [--op chat|embed|rerank] [--input-json JSON] [--query Q]
+              [--docs-json JSON] [--max-tokens N] [--intent TEXT] [--dry-run]
+
+  research/demo execute a local research run through the full
+  constitutional pipeline: declared capability → broker decision PER SOURCE
+  (journaled) → fingerprint → fence → blob CAS → evidence → local index →
+  query → citations → context pack → snapshot → receipt. Every step is
+  attributed and hash-chained. Config policy rules (vaerion.yaml policy:)
+  evaluate first: deny stops the run (exit 3), prompt pauses it with a
+  durable gate (exit 0, awaiting) for 'vae resume'.
+
+  demo defaults to ./docs/constitution + ./docs/adr with a fixed query.
+  Exit 3 if the broker denies; 5 if the journal fails final verification.
+
+  model invokes through the gateway SINGLE GATE: broker decision
+  (model.invoke, journaled; ceiling = gateway.providers in vaerion.yaml) →
+  secret.read decision when the provider needs a credential (value resolved
+  at call time, never journaled) → adapter over the sanctioned transport →
+  usage + integer micro-USD cost metered on the spine → receipt.
+  mockbrain/* models are the local seeded virtual provider (no network,
+  byte-identical outputs for the same seed). A prompt policy pauses the run
+  with a durable gate; a deny exits 3; budget overrun exits with E1703.
+
+  agent runs the supervised agent loop (MS-4). Every step is journaled
+  (agent.step.recorded | failed, with round/index coordinates). --planner
+  inline requires --plan-json (a declared JSON step array — the hermetic
+  determinism device); --planner model plans through the gateway single
+  gate (agents.plannerModel, default mockbrain/mock-1). Tools must be
+  declared in vaerion.yaml AND granted by policy rules; undeclared tool
+  calls are refused fail-closed (E1801). Declared extensions (MS-5) are
+  reachable as tools after their pinned artifact digest verifies; their
+  own power requests cross the broker with the extension as principal.
+  Broker refusals are fatal; the step ceiling stops loudly (E1804); gates
+  pause for 'vae resume'.
+
+  workflow executes a DAG: {id, nodes:[{id, deps, step, maxAttempts?}]}
+  validated fail-closed (E1803); deterministic topological scheduling;
+  node outputs content-addressed (blob CAS) + journaled; --resume RUN_ID
+  continues an interrupted run from its journal fold (crash-safe).

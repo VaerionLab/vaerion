@@ -1,0 +1,26 @@
+{
+  "$id": "vaerion/registry/lifecycle",
+  "title": "VAERION Token Lifecycle Law",
+  "authority": [
+    "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0 2.5 (token lifecycle; transitions only by governance)",
+    "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0 2.9 (deprecation discipline)",
+    "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0 Part XI (governance; amendment pathway)",
+    "VAERION_VISUAL_SYSTEM_v1.0.1 §23 (protocol versioning)",
+    "Foundation Amendment F-004"
+  ],
+  "statuses": ["proposed", "ratified", "active", "deprecated", "retired"],
+  "transitions": [
+    { "from": "proposed", "to": "ratified", "actor": "governance", "guard": "review against every prior Article (Constitution 11.3)" },
+    { "from": "ratified", "to": "active", "actor": "governance", "guard": "bindings generated from a conformant Registry version (Constitution 2.7)" },
+    { "from": "active", "to": "deprecated", "actor": "governance", "guard": "announced in the changelog; must alias to a successor (Constitution 2.9)" },
+    { "from": "deprecated", "to": "retired", "actor": "governance", "guard": "persists one full release cycle; removal only at major ratification (Constitution 2.9, 11.4)" }
+  ],
+  "invariants": [
+    "A token exists in exactly one status (Constitution 2.5).",
+    "Unlisted transitions are violations (Constitution 2.5; Part XI).",
+    "Deprecated tokens alias to a successor and render identically during the deprecation window (Constitution 2.5).",
+    "Retired tokens must not resolve (authority §3).",
+    "Any change to the value or meaning of an active token is a breaking change requiring a ratified amendment (Constitution 2.8).",
+    "Additions of new tokens are additive versions (Constitution 2.8)."
+  ]
+}

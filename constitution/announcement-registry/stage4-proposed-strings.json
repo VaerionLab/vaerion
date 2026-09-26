@@ -1,0 +1,80 @@
+{
+  "$id": "vaerion/announcement-registry/stage4-proposed-strings",
+  "title": "Stage 4 Proposed String Set — Announcement & Copy Registry",
+  "status": "PROPOSED (IR-009) — inert until ratified by the Founder / Design Systems Authority",
+  "authority": [
+    "Foundation Amendment F-003 (Announcement & Copy Registry — constitutional authority)",
+    "Implementation Constitution 4.7 (no surface invents language), 6.11 (announcement ownership)",
+    "Bible Art. VII (two voices), Art. VIII (honesty constraints), Art. XIII (teach the states)"
+  ],
+  "consumption": "consumed by identifier only via src/vaerion/surfaces/copy.ts — no string is composed at render time (F-003 law 5)",
+  "strings": [
+    {
+      "id": "explainer.verified",
+      "voice": "human",
+      "text": "A named verifier checked this claim against a named rule set, and the check holds.",
+      "mandate": "Bible Art. XIII — one-line plain-language explainer, permanent"
+    },
+    {
+      "id": "explainer.unverified",
+      "voice": "human",
+      "text": "No verification has been performed yet. This is not an error — it is the honest default.",
+      "mandate": "Bible Art. XIII; Bible Part Three (UNVERIFIED at equal dignity)"
+    },
+    {
+      "id": "explainer.failed",
+      "voice": "human",
+      "text": "A named verifier checked this claim and it did not hold. A failed measurement, not an accusation.",
+      "mandate": "Bible Art. XIII; Bible Part Three (FAILED is precise, not emotional)"
+    },
+    {
+      "id": "explainer.pending",
+      "voice": "human",
+      "text": "Verification is in flight. The result will be shown when an authority returns it — never before.",
+      "mandate": "Bible Art. XIII; Art. VIII (no optimistic verdicts)"
+    },
+    {
+      "id": "notice.demoQuarantine",
+      "voice": "machine",
+      "text": "DEMO QUARANTINE — demonstration records only; no authority is bound at this stage; exports disabled",
+      "mandate": "Constitution 5.10 (demo quarantine), 8.7 (demo exports refused by construction)"
+    },
+    {
+      "id": "empty.ledger",
+      "voice": "human",
+      "text": "No records match the current criteria. Narrow the formula above, or wait for appends.",
+      "mandate": "Constitution 5.2 (Empty — lawful absence, rendered as teaching)"
+    },
+    {
+      "id": "empty.queue",
+      "voice": "human",
+      "text": "The queue is empty. Lawful absence — nothing is awaiting verification.",
+      "mandate": "Constitution 5.2"
+    },
+    {
+      "id": "guidance.search",
+      "voice": "human",
+      "text": "Paste a receipt id or hash. Identifiers resolve first — hash-first resolution, per the Caliper grammar.",
+      "mandate": "Constitution 4.6 (Search — hash-first resolution); VS §5.14"
+    },
+    {
+      "id": "guidance.lens",
+      "voice": "human",
+      "text": "Press and hold any claim — or focus it and press L — and its evidence chain lights up. The Lens adds light, never access.",
+      "mandate": "Bible Art. XII; Constitution 3.15; VS §12"
+    },
+    {
+      "id": "guidance.verification",
+      "voice": "human",
+      "text": "Select a record with J / K. Verify with V, review with R, inspect evidence with E. Every decision issues a receipt.",
+      "mandate": "Constitution 4.6 (keyboard verbs fixed), 6.5, 6.7; VS §6.5"
+    },
+    {
+      "id": "status.fourQuestions",
+      "voice": "machine",
+      "text": "WHAT ENGINE · WHAT RULES · WHAT ENVIRONMENT · WHAT GATES · WHAT CHAIN HEALTH",
+      "mandate": "Constitution 4.6 (Status — four governing questions; fields per VS §13.3; see IR-010)"
+    }
+  ],
+  "honestyReview": "every string checked against Bible Art. VIII: none overstates state, softens failure, implies verification, or promises what the system has not measured"
+}

@@ -1,0 +1,1 @@
+{"error":{"code":"E1600","name":"usage_error","message":"unknown command: definitely-not-a-command","fix":"Re-run with `--help`; help always teaches and never executes.","detail":null}}

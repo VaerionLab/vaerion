@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="cap-title cap-desc" font-family="ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace">
+  <title id="cap-title">Real terminal capture — bare vae, the welcome front door (exit 0)</title>
+  <desc id="cap-desc">Rendered capture of the real output of running bare vae: the welcome door prints engine version 0.1.13-rc1 and the full command catalog.</desc>
+  <rect width="900" height="540" rx="12" fill="#0B0B0E" stroke="#2C2C34"/>
+  <circle cx="34" cy="34" r="6" fill="#3A3A42"/><circle cx="56" cy="34" r="6" fill="#3A3A42"/><circle cx="78" cy="34" r="6" fill="#D4AF37"/>
+  <text x="450" y="39" fill="#8B8B95" font-size="12" text-anchor="middle">vae — the welcome front door · exit 0 · 86 ms</text>
+  <line x1="0" y1="56" x2="900" y2="56" stroke="#1C1C22"/>
+  <g font-size="13">
+    <text x="30" y="96" fill="#D4AF37">$ vae</text>
+    <text x="30" y="122" fill="#E8E4D8">command: welcome</text>
+    <text x="30" y="144" fill="#E8E4D8">engine_version: 0.1.13-rc1</text>
+    <text x="30" y="166" fill="#E8E4D8">version: 0.1.13-rc1</text>
+    <text x="30" y="188" fill="#E8E4D8">state: workspace</text>
+    <text x="30" y="210" fill="#E8E4D8">commands:</text>
+    <text x="30" y="232" fill="#E8E4D8">  0:</text>
+    <text x="30" y="254" fill="#E8E4D8">    command: init</text>
+    <text x="30" y="276" fill="#E8E4D8">    family: WORKSPACE</text>
+    <text x="30" y="298" fill="#E8E4D8">    usage: init [--template T] [--name NAME] [--dry-run]</text>
+    <text x="30" y="320" fill="#E8E4D8">    summary: scaffold a governed workspace — deterministic template registry, conflict law</text>
+    <text x="30" y="342" fill="#E8E4D8">  1:</text>
+    <text x="30" y="364" fill="#E8E4D8">    command: status</text>
+    <text x="30" y="392" fill="#5B5B64">  ⋮  (full command catalog — 147 lines, measured)</text>
+    <text x="30" y="426" fill="#5B5B64">run demo · journal verify · doctor · provenance — the tour continues in</text>
+    <text x="30" y="446" fill="#5B5B64">docs/launch/demo-flow.md</text>
+    <text x="30" y="480" fill="#D4AF37">$ <tspan fill="#5B5B64">█</tspan></text>
+  </g>
+</svg>

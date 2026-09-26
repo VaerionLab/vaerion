@@ -1,0 +1,19 @@
+vae repo
+vae repo verify
+
+  Repository intelligence, measured never assumed (ASCENSION XVIII Phase 8;
+  Constitution v1.1 D-P/D-Q/D-S). Read-only: every git invocation runs with
+  --no-optional-locks and fixed argv, so a measurement can never mutate the
+  repository it measures.
+
+  The summary reports the branch, detached HEAD, staged/unstaged/untracked
+  paths, merge conflicts, merge/rebase/cherry-pick/bisect state, worktrees,
+  submodules, tags at HEAD, the commit-identity audit of the last 50 commits
+  against the ratified identity (D-P), and the canonical remote state —
+  reachability, main sync, tag push, and the pre-receive protection hook
+  (D-Q), each VERIFIED when measured here and UNVERIFIED when it cannot be.
+
+  verify reports the trust findings only (identity law, conflict state,
+  canonical protection). Exit 0 when no blocker-severity finding exists;
+  exit 5 otherwise. History is immutable: violations are recorded, never
+  rewritten.

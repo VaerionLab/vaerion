@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" role="img" aria-labelledby="cap3-title cap3-desc" font-family="ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace">
+  <title id="cap3-title">Real terminal capture — vae journal verify, the chain holds (exit 0)</title>
+  <desc id="cap2-desc">Rendered capture of the real output of vae journal verify: ok true, 14 records, 10 events, blake3 headHash, torn false, issues empty.</desc>
+  <rect width="900" height="480" rx="12" fill="#0B0B0E" stroke="#2C2C34"/>
+  <circle cx="34" cy="34" r="6" fill="#3A3A42"/><circle cx="56" cy="34" r="6" fill="#3A3A42"/><circle cx="78" cy="34" r="6" fill="#D4AF37"/>
+  <text x="450" y="39" fill="#8B8B95" font-size="12" text-anchor="middle">vae journal verify — the chain holds · exit 0 · 85 ms</text>
+  <line x1="0" y1="56" x2="900" y2="56" stroke="#1C1C22"/>
+  <g font-size="13">
+    <text x="30" y="96" fill="#D4AF37">$ vae journal verify crn_run_01M3DDZY13X91QSVVJYJ0JJ4FC</text>
+    <text x="30" y="122" fill="#E8E4D8">command: journal</text>
+    <text x="30" y="144" fill="#E8E4D8">sub: verify</text>
+    <text x="30" y="166" fill="#E8E4D8">run_id: crn_run_01M3DDZY13X91QSVVJYJ0JJ4FC</text>
+    <text x="30" y="188" fill="#E8E4D8">report:</text>
+    <text x="30" y="210" fill="#D4AF37">  ok: true</text>
+    <text x="30" y="232" fill="#E8E4D8">  records: 14</text>
+    <text x="30" y="254" fill="#E8E4D8">  events: 10</text>
+    <text x="30" y="276" fill="#E8E4D8">  maxSeq: 10</text>
+    <text x="30" y="298" fill="#E8E4D8">  headHash: e47a0bbc77e0275b2b277aa74c53a79689250b672581767808973542aeb56a44</text>
+    <text x="30" y="320" fill="#D4AF37">  torn: false</text>
+    <text x="30" y="342" fill="#E8E4D8">  issues:</text>
+    <text x="30" y="364" fill="#E8E4D8">    []</text>
+    <text x="30" y="398" fill="#5B5B64">change one byte anywhere in history — the headHash changes.</text>
+    <text x="30" y="418" fill="#5B5B64">the verifier is a pure check: it reads and recomputes, never executes.</text>
+    <text x="30" y="446" fill="#D4AF37">$ <tspan fill="#5B5B64">█</tspan></text>
+  </g>
+</svg>

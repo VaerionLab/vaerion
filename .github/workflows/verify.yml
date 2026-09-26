@@ -1,0 +1,113 @@
+# Vaerion CI — the verification pipeline.
+#
+# Every push and pull request re-runs the ENTIRE verification suite via
+# tools/verify.ts — the same single entrypoint the maintainers run locally.
+# The job fails on any violation (non-zero gate exit):
+#   typecheck-engine · typecheck-sdk · tests (coverage floors) ·
+#   layerlint · constitutional-check · perf-budget · a11y-structural ·
+#   repo-lint
+# and uploads the measured verification record.
+#
+# On a `v*` tag push, a second job re-runs the gates and produces the
+# signed release artifact set (tools/dist-pack.ts, fail-closed) and
+# uploads it. The release signing key is provisioned from the
+# RELEASE_SIGNING_KEY secret (PEM PKCS8); without the secret the packager
+# generates a bootstrap key and the report says so (key ceremony: RISK-LEDGER R-2).
+
+name: verify
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: verification (all gates)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Least privilege (v1.6 A6, Phase 12): the pipeline needs only read access
+    # — uploads use the runtime token, not GITHUB_TOKEN.
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout (full history — the repository is the evidence)
+        # SHA-pinned (immutable reference — the supply-chain law; the
+        # comment carries the human-readable tag of record).
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun (pinned — the verified substrate)
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: "1.3.14"
+
+      - name: Install (frozen lockfile — supply-chain law)
+        run: bun install --frozen-lockfile
+
+      - name: Run the full verification suite (all gates; fails on any violation)
+        run: bun run tools/verify.ts
+
+      - name: Upload the measured verification record
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: vaerion-verification-${{ github.run_id }}
+          path: |
+            .vaerion-verification.json
+          # The CI truth law (v1.6 A6, Phase 11): the record path is a DOTFILE,
+          # and upload-artifact@v4 (>= 4.4.0) excludes hidden files by default —
+          # the historical root cause of 6/6 red CI runs on otherwise-green
+          # trees. This flag is load-bearing; pinned by ci-truth contract tests.
+          include-hidden-files: true
+          if-no-files-found: error
+
+  release:
+    name: signed release artifacts
+    needs: verify
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
+        with:
+          bun-version: "1.3.14"
+
+      - name: Install (frozen lockfile)
+        run: bun install --frozen-lockfile
+
+      - name: Provision the release signing key (secret → untracked key file)
+        # Shell-truth law (Phase 8, E2306): a step's own env is invisible to
+        # its own `if:` — the decision lives in the shell where the variable
+        # is real. dist-pack fails closed to a bootstrap key when the file
+        # is absent, and the report discloses it (RISK-LEDGER R-2).
+        env:
+          RELEASE_SIGNING_KEY: ${{ secrets.RELEASE_SIGNING_KEY }}
+        run: |
+          if [ -n "$RELEASE_SIGNING_KEY" ]; then
+            mkdir -p keys
+            printf '%s' "$RELEASE_SIGNING_KEY" > keys/release-signing.key
+            chmod 600 keys/release-signing.key
+          else
+            echo "RELEASE_SIGNING_KEY not set — the packager will fail closed to a bootstrap key (disclosed in the report)"
+          fi
+
+      - name: Package the release (fail-closed; re-runs all gates internally)
+        run: bun run tools/dist-pack.ts
+
+      - name: Upload release artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: vaerion-release-${{ github.ref_name }}
+          path: dist/
+          if-no-files-found: error

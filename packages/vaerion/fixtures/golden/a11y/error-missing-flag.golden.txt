@@ -1,0 +1,1 @@
+E1600 missing required flag --sources (comma-separated local paths) Fix: Re-run with `--help`; help always teaches and never executes.

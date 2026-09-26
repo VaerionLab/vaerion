@@ -1,0 +1,40 @@
+# Vaerion project configuration — the committed example workspace.
+# Unknown keys are rejected by law — see spec/schemas/vaerion-yaml.schema.json
+schemaVersion: "0.1"
+project:
+  name: vaerion-demo
+  description: "The committed, test-proven example workspace (examples/vaerion)"
+# The seeded hermetic provider (ADR-0012) — no network, no keys, deterministic.
+gateway:
+  providers:
+    mockbrain: { enabled: true, models: ["mock-1"] }
+tools:
+  - name: echo
+    description: "Deterministic builtin demo tool"
+agents:
+  maxSteps: 12
+# Fail-closed broker policy: first match wins; unmatched requests deny.
+# Declaring tools/models grants NOTHING — only these rules do.
+policy:
+  rules:
+    - id: allow-echo-tool
+      principalKinds: [agent]
+      domain: tool.call
+      scope: echo
+      effect: allow
+      rationale: "the demo's only tool call is the declared echo builtin"
+    - id: allow-mockbrain-model
+      principalKinds: [agent]
+      domain: model.invoke
+      scope: "mockbrain/mock-1"
+      effect: allow
+      rationale: "the demo's model steps run the seeded hermetic provider"
+# Reproducible packaging (ADR-0016): the build folds exactly these inputs;
+# identical inputs produce byte-identical .vxn bundles.
+package:
+  include:
+    - vaerion.yaml
+    - workflow.json
+    - plans/echo-plan.json
+telemetry:
+  enabled: false

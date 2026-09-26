@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" role="img" aria-labelledby="cap2-title cap2-desc" font-family="ui-monospace, 'JetBrains Mono', Menlo, Consolas, monospace">
+  <title id="cap2-title">Real terminal capture — vae run demo, receipt folded, journal_verified true (exit 0)</title>
+  <desc id="cap2-desc">Rendered capture of the real output of vae run demo: run id, trace id, broker decision counts, blake3 blob refs, journal head hash, and the folded receipt ending with journal_verified true.</desc>
+  <rect width="900" height="700" rx="12" fill="#0B0B0E" stroke="#2C2C34"/>
+  <circle cx="34" cy="34" r="6" fill="#3A3A42"/><circle cx="56" cy="34" r="6" fill="#3A3A42"/><circle cx="78" cy="34" r="6" fill="#D4AF37"/>
+  <text x="450" y="39" fill="#8B8B95" font-size="12" text-anchor="middle">vae run demo — receipt folded · exit 0 · 131 ms</text>
+  <line x1="0" y1="56" x2="900" y2="56" stroke="#1C1C22"/>
+  <g font-size="13">
+    <text x="30" y="96" fill="#D4AF37">$ vae run demo --sources ./sources --query "determinism"</text>
+    <text x="30" y="122" fill="#E8E4D8">command: run</text>
+    <text x="30" y="144" fill="#E8E4D8">kind: demo</text>
+    <text x="30" y="166" fill="#E8E4D8">run_id: <tspan fill="#D4AF37">crn_run_01M3DDZY13X91QSVVJYJ0JJ4FC</tspan></text>
+    <text x="30" y="188" fill="#E8E4D8">trace_id: t_vjyj0jj4fd</text>
+    <text x="30" y="210" fill="#E8E4D8">documents: 1</text>
+    <text x="30" y="232" fill="#E8E4D8">query: determinism</text>
+    <text x="30" y="254" fill="#E8E4D8">context:</text>
+    <text x="30" y="276" fill="#E8E4D8">  pack_fingerprint: c7709bfe1e52e42354da7025e347993ae8a056eff56b4b2fecc7e1c9d130e68b</text>
+    <text x="30" y="298" fill="#E8E4D8">receipt:</text>
+    <text x="30" y="320" fill="#E8E4D8">  engine_version: 0.1.13-rc1</text>
+    <text x="30" y="342" fill="#E8E4D8">  counts:</text>
+    <text x="30" y="364" fill="#E8E4D8">    records: 13</text>
+    <text x="30" y="386" fill="#E8E4D8">    decisions_allow: 1   ·   decisions_deny: 0</text>
+    <text x="30" y="408" fill="#E8E4D8">    snapshots: 1</text>
+    <text x="30" y="430" fill="#E8E4D8">  blob_refs:</text>
+    <text x="30" y="452" fill="#E8E4D8">    0: { alg: blake3, hash: a1ca3c65d06d6fde…, size: 291 }</text>
+    <text x="30" y="474" fill="#E8E4D8">  journal:</text>
+    <text x="30" y="496" fill="#E8E4D8">    head_hash: e222e3b33a8fc4b56bfd279e67acfbff0d854df596a6581395d8ed24dfdabecc</text>
+    <text x="30" y="518" fill="#E8E4D8">  summary: indexed 1 documents; 0 hits for "determinism"</text>
+    <text x="30" y="546" fill="#D4AF37">journal_verified: true</text>
+    <text x="30" y="580" fill="#5B5B64">the receipt is computed from the journal — not written by the run</text>
+    <text x="30" y="614" fill="#D4AF37">$ <tspan fill="#5B5B64">█</tspan></text>
+  </g>
+</svg>

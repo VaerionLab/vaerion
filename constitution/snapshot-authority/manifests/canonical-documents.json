@@ -1,0 +1,46 @@
+{
+  "$schema": "snapshot-authority/manifest-schema/v1",
+  "manifestId": "canonical-documents",
+  "purpose": "Integrity pin of the three ratified constitutional documents. Repository transcriptions are identical to the ratified originals relative to this pin; any change to a pinned file breaks its digest and is a constitutional event requiring the amendment pathway (Implementation Constitution 11.2-11.3). Authority: Foundation Amendment F-001 (canonical authority completion) and F-002 (Snapshot Authority).",
+  "algorithm": "sha256",
+  "pinnedAt": "Stage 1 Foundation Amendments (Volume IV)",
+  "documents": [
+    {
+      "id": "BIBLE",
+      "title": "VAERION_DESIGN_BIBLE_v1.0",
+      "version": "v1.0",
+      "status": "RATIFIED",
+      "path": "constitution/bible/VAERION_DESIGN_BIBLE_v1.0.md",
+      "sha256": "b8926b911881dee9fb2bff32d1f472864f227347e21603900b9d937c8e12cc35",
+      "bytes": 18346,
+      "transcriptionItem": "DP-1",
+      "amendment": "F-001"
+    },
+    {
+      "id": "VISUAL_SYSTEM",
+      "title": "VAERION_VISUAL_SYSTEM_v1.0.1",
+      "version": "v1.0.1",
+      "status": "RATIFIED",
+      "path": "constitution/visual-system/VAERION_VISUAL_SYSTEM_v1.0.1.md",
+      "sha256": "682c7cc8cc81be41d40a45e9f8d2cbb0925c6d180ad13f8b63f60d5814758454",
+      "bytes": 25619,
+      "transcriptionItem": "DP-2",
+      "amendment": "F-001"
+    },
+    {
+      "id": "IMPLEMENTATION_CONSTITUTION",
+      "title": "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+      "version": "v1.0",
+      "status": "RATIFIED",
+      "path": "constitution/implementation-constitution/VAERION_IMPLEMENTATION_CONSTITUTION_v1.0.md",
+      "sha256": "00aa020bc3d7a3bfe48452a6ee30bb9bfadd5a9914ec7e385f0bf8a2cc34706e",
+      "bytes": 42209,
+      "transcriptionItem": null,
+      "amendment": null
+    }
+  ],
+  "verification": {
+    "command": "bun run vaerion:verify-constitution",
+    "semantics": "Recompute sha256 of every pinned path and compare to this manifest. Any mismatch is a ConstitutionalViolationError (rule: F-001/SNAPSHOT). This manifest records the ratified originals' digests at transcription time and is therefore the binding identity proof between the ratified texts and the repository copies."
+  }
+}

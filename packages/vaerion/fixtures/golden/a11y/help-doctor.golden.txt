@@ -1,0 +1,9 @@
+vae doctor
+
+  Verifies config validity, every journal's hash chain, every referenced
+  blob in the CAS, evidence↔blob↔fingerprint triangulation, audit-ledger
+  continuity, the Refusal Log chain, and the gateway picture: provider
+  capability matrix, declared providers/secret NAMES/budgets. Performs NO
+  network access and resolves NO secret values — zero telemetry is
+  constitutional and secret reads are broker-mediated by law. Exit 5 with
+  Fix: hints on failures.

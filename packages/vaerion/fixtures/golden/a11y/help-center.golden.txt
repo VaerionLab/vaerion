@@ -1,0 +1,16 @@
+vae center
+
+  The operator cockpit (constitution v1.6 A3, Phase 6; P7/D-S). Read-only.
+  ONE measured core folds this workspace's artifacts into an honest
+  operations snapshot:
+
+    operations          runs (records, events, verification, receipt), the
+                        gateway metering rollup (tokens + integer micro-USD,
+                        folded from the journals), and every referenced blob
+    integrity           the audit-ledger and refusal-log hash chains
+    release digest      the release readiness verdict when this workspace is
+                        a repository checkout (measured, fail-closed, D-S)
+
+  Exit 0 when journals, both chains, and every blob verify; exit 5 with the
+  failing section otherwise. The web face command-center section consumes
+  the same fold through tools/status.ts — never a second implementation.

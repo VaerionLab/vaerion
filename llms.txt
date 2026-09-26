@@ -1,0 +1,24 @@
+# Vaerion
+
+The AI-native development engine that is local-first, deterministic, and provable:
+a permission broker that fails closed, hash-chained journals that replay byte-identically,
+a model gateway with honest micro-USD metering, and reproducible packaging.
+This corpus is generated from the repository book; the book is the source.
+
+## Documents
+
+- [The Vaerion Book](docs/book/README.md): The documentation set for the Vaerion engine. Every claim here is checked
+- [Accessibility](docs/book/accessibility.md): The Vaerion CLI accessibility contract — what is guaranteed for screen
+- [Concept — The broker model](docs/book/concepts/broker-model.md): *(grounded in ADR-0004 centralized permission broker)*
+- [Concept — Checkpoint math](docs/book/concepts/checkpoint-math.md): *(grounded in ADR-0006 event-sourced run journals / checkpoint chaining, and
+- [Concept — The event spine](docs/book/concepts/event-spine.md): *(grounded in ADR-0002 versioned event spine / envelope, ADR-0006 event-sourced
+- [Concept — Tiered intelligence](docs/book/concepts/tiered-intel.md): *(grounded in ADR-0005 tiered intelligence / progressive enhancement, ADR-0008
+- [Guide — Extension kit](docs/book/guides/extension-kit.md): Extensions let a workspace add tools implemented as separate processes —
+- [Guide — Models and auth](docs/book/guides/models-and-auth.md): How model invocations work in Vaerion: one gate, journaled decisions, honest
+- [Guide — Packaging](docs/book/guides/packaging.md): Reproducible bundles (ADR-0016): identical inputs produce **byte-identical**
+- [Guide — Research and intel](docs/book/guides/research-and-intel.md): How Vaerion turns local documents into cited, replayable context for agents
+- [Guide — Security posture](docs/book/guides/security-posture.md): What protects a Vaerion workspace, in one page: fail-closed by construction,
+- [Installation](docs/book/tutorials/00-install.md): Install the Vaerion engine, prove the install, and learn the three command
+- [Tutorial 1 — Init and the first run](docs/book/tutorials/01-init.md): Hour one with Vaerion. By the end you will have scaffolded a workspace,
+- [Tutorial 2 — Your first agent](docs/book/tutorials/02-first-agent.md): The Vaerion agent loop is **supervised**: every step (model, tool, note,
+- [Tutorial 3 — Workflows](docs/book/tutorials/03-workflow.md): The workflow engine executes a DAG **deterministically**: nodes run in

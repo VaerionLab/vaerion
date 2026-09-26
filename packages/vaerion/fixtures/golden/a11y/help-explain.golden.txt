@@ -1,0 +1,6 @@
+vae explain RUN_ID
+
+  Reconstruct the run's narrative (decisions, gates, events, receipt) from
+  its hash-chained journal, plus the gateway metering rollup (tokens and
+  integer micro-USD per model) folded from the same journal. Exit 5 if the
+  journal fails verification.

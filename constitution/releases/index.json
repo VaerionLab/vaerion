@@ -1,0 +1,32 @@
+{
+  "indexId": "vaerion-release-index",
+  "entries": [
+    {
+      "releaseId": "rel_769da4b7bf84ad3b",
+      "version": "1.0.10.r1",
+      "seq": 1,
+      "kind": "release",
+      "appendedAt": 1790052957272,
+      "receiptDigests": [
+        "4f745d6708eeca90de28d04370923a1c724f42fe5dc39af34d6f3ad656226f07",
+        "b29d7f02c5609813dda80173fa4f9490ae8ae9cb1ce729acd3b78a53ca5d37dd",
+        "a3cd169ee103827435569a8b99641ee00bb9d6ba36f2fd1cec03f8bedd513f51",
+        "01ee2ce4f64edb8149fcb4bfa5fc70b0810680c53a2c59d3a96858d948830fc4",
+        "36a841bd8cb253058cd1d17e78cb091b625ee56a01a82d4ff6abcb5d6077d334",
+        "e97d0fbcc5195e490a3847575911bb4c77d78a3d5d92383bc31931d37f5272dc",
+        "2387b0b6278116dc6b14ca4dc82b71b4e7d6524e98440e1ed754e584c4371380"
+      ],
+      "receiptsFile": "rel_769da4b7bf84ad3b.receipts.json",
+      "parentReleaseId": null,
+      "supersedes": null,
+      "citations": [
+        "IMPLEMENTATION_CONSTITUTION:10.3",
+        "IMPLEMENTATION_CONSTITUTION:10.4",
+        "IMPLEMENTATION_CONSTITUTION:10.4",
+        "IMPLEMENTATION_CONSTITUTION:10.3",
+        "IMPLEMENTATION_CONSTITUTION:8.5",
+        "IMPLEMENTATION_CONSTITUTION:8.1"
+      ]
+    }
+  ]
+}
