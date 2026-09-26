@@ -78,13 +78,22 @@ jobs:
       - name: Assert the production key signed this pack (the tripwire, inverted)
         # Shell-truth law (Phase 8, E2306): the bootstrap disclosure line must
         # be ABSENT — its presence means the secret was unreadable and this
-        # release must not be published.
+        # release must not be published. Phase 31: dist-pack.ts now writes
+        # the disclosure into THIS report (the grep is non-vacuous), and a
+        # second fail-closed leg binds the pack to the repository's key of
+        # record: the shipped public half must be byte-identical to the
+        # tracked keys/release-signing.pub, so a pack signed by any other
+        # key (bootstrap, stale key file, or mismatched secret) never publishes.
         run: |
           if grep -q "bootstrap key GENERATED this run" dist/dist-report.json; then
             echo "REFUSING to publish: the pack report discloses a BOOTSTRAP key" >&2
             exit 2
           fi
-          echo "production key confirmed (no bootstrap disclosure in dist-report.json)"
+          if ! cmp -s dist/release-signing.pub keys/release-signing.pub; then
+            echo "REFUSING to publish: the signed public key does not match the repository key of record (keys/release-signing.pub) — provision RELEASE_SIGNING_KEY or rotate per docs/security/SIGNING-CEREMONY.md" >&2
+            exit 2
+          fi
+          echo "production key confirmed (no bootstrap disclosure in dist-report.json; signed public key matches the key of record)"
 
       - name: Publish the GitHub Release (idempotent per tag)
         env:
