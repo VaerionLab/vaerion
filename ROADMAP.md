@@ -9,7 +9,7 @@
 - 9/9 verification gates green — 632 tests passing, 0 failures
 - The engine: event spine, fail-closed broker, blake3-chained journals, receipts, reproducible `.vxn` bundles
 - The CLI (`vae`), the TypeScript SDK (`@vaerion/sdk`), the verification law (`tools/verify.ts`)
-- The public birth of `VaerionLab/vaerion` (this repository) — prepared, pending Founder go
+- Live: the repository of record (`VaerionLab/vaerion`) and the published package `vaerion@0.1.13-rc1` on npm (`--tag rc`) — installable today
 
 ## Next — in order of record
 

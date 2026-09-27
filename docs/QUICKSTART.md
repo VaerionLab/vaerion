@@ -1,5 +1,11 @@
 # Vaerion Quickstart — 15 minutes to a verified run
 
+> **Fast path:** just want the proof? The 10-minute quickstart —
+> npm install → first verified run → byte-identical bundle — lives at
+> **[`getting-started/quickstart.md`](getting-started/quickstart.md)**.
+> This document is the extended journey (daemon, SDK, CI, release
+> readiness).
+
 Vaerion is a local-first, AI-native development engine: one versioned event
 spine, append-only blake3-chained journals, a fail-closed permission
 broker, deterministic replay, receipts folded from journals, and

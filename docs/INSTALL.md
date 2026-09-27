@@ -9,7 +9,7 @@ exit-code contract. The engine executes on the [Bun](https://bun.sh) runtime
 
 | Channel | Command | Status |
 |---|---|---|
-| npm | `npm install -g vaerion` | package build + local install **verified**; registry publish is release-train (Founder-gated) |
+| npm | `npm install -g vaerion@rc` | **LIVE** — `0.1.13-rc1` published and consumer-verified on registry.npmjs.org |
 | PyPI | `pip install vaerion` | wheel build + venv install **verified**; publish is release-train (Founder-gated) |
 | Universal installer | `curl -fsSL https://vaerion.dev/install \| sh` | install/update/uninstall **verified** end-to-end; the `vaerion.dev` URL goes live with the release train |
 | Debian | `packaging/linux/make-deb.sh` → `.deb` | build + extraction **verified** (`dpkg-deb`) |
@@ -43,7 +43,8 @@ exit-code contract → clean uninstall leaves nothing behind.
 ## Option B — npm
 
 ```sh
-npm install -g vaerion        # requires Bun 1.2+ on PATH
+npm install -g vaerion@rc     # requires Bun 1.3+ on PATH (live on the registry)
+vae --version                 # → vae 0.1.13-rc1
 vae --help
 ```
 
@@ -72,7 +73,7 @@ vae --help
 ```sh
 git clone <repository-url> vaerion && cd vaerion
 bun install                      # workspace-internal resolution, no global state
-bun run tools/verify.ts          # the six verification gates
+bun run tools/verify.ts          # the verification gates — all must be green
 bun run packages/vaerion/src/cli/vae.ts --version
 alias vae="bun run packages/vaerion/src/cli/vae.ts"
 ```
@@ -117,10 +118,12 @@ verification: `tools/dist-verify.ts` against the release's signed
 manifest (the trust chain law). The release trust chain
 (who signs, rotation, recovery): `docs/security/SIGNING-CEREMONY.md`.
 
-> Registry channels (npm/PyPI/Homebrew/winget/Chocolatey/Scoop/APT/RPM)
-> remain authored + version-locked but are not published yet — that is the
-> Founder-gated F-5 publication step. Until they land, GitHub Releases and
-> the source paths above are the real download surface.
+> Registry status (honest labels): **npm is live** — `vaerion@0.1.13-rc1`
+> published from the exact sha256-verified artifact of record
+> (`15329bb4…`; registry bytes ≡ release bytes). GitHub Releases and the
+> source paths remain the signed-download surface. The remaining registry
+> channels (PyPI/Homebrew/winget/Chocolatey/Scoop/APT/RPM) are authored +
+> version-locked; their publication lands with the release train.
 
 ## What installation does NOT do
 

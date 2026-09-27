@@ -1,34 +1,51 @@
 # Vaerion Documentation
 
-**AI agents act. Vaerion turns those actions into cryptographic evidence.**
+Organized around journeys, not internals. Everything is measured against
+the engine of record (`v0.1.13-rc1`); the deep engineering records (ADRs,
+security, GA packets) keep their historical authority.
 
-This tree is the public documentation front door. It is written so that a developer
-who has never met the project can understand Vaerion, install it, run it, and verify
-its evidence — without access to any private knowledge.
+## I just want to try it
 
-## The ten doors
-
-| Door | Start here when you want to… |
+| Read | For |
 |---|---|
-| [introduction](introduction/README.md) | understand what Vaerion is and why it exists |
-| [installation](installation/README.md) | put the engine on your machine |
-| [quickstart](quickstart/README.md) | create a project and earn your first verified receipt in minutes |
-| [concepts](concepts/README.md) | learn the vocabulary: manifest, spine, broker, journal, receipt |
-| [runtime](runtime/README.md) | operate the engine day to day |
-| [sdk](sdk/README.md) | build on Vaerion from TypeScript |
-| [receipts](receipts/README.md) | understand what a receipt is made of |
-| [verification](verification/README.md) | prove the evidence yourself, end to end |
-| [examples](examples/README.md) | see real, test-executed example workspaces |
-| [security](security/README.md) | read the threat model and the reporting policy |
+| [getting-started/installation.md](getting-started/installation.md) | every install path, with measured status |
+| [getting-started/quickstart.md](getting-started/quickstart.md) | **first verified run in under 10 minutes** |
+| [QUICKSTART.md](QUICKSTART.md) | the extended 15-minute journey (daemon + SDK + CI) |
+| [../examples/README.md](../examples/README.md) | three two-minute proofs: Verifiable Agent · Refused Action · Replay Machine |
+| [FAQ.md](FAQ.md) | quick answers |
 
-## The wider corpus
+## I want to understand it
 
-- **Tutorials, concepts, guides:** [`docs/book/`](book/README.md)
-- **Architecture decision records:** [`docs/adr/`](adr/README.md) (21 records)
-- **Security corpus:** [`docs/security/`](security/README.md) → threat model, mitigations, risk ledger
-- **Governance:** [`docs/constitution/`](constitution/)
-- **Launch evidence (real runs only):** [`docs/launch/`](launch/README.md)
-- **Reference pages:** [INSTALL](INSTALL.md) · [QUICKSTART](QUICKSTART.md) · [CLI](CLI.md) · [SDK](SDK.md) · [FAQ](FAQ.md) · [LIMITATIONS](LIMITATIONS.md) · [TROUBLESHOOTING](TROUBLESHOOTING.md)
+| Read | For |
+|---|---|
+| [concepts/architecture.md](concepts/architecture.md) | the layer model, the event spine, the contracts |
+| [concepts/runtime.md](concepts/runtime.md) | determinism, journal folds, resume, workflows |
+| [concepts/journals.md](concepts/journals.md) | hash chains, receipts, recovery, exports |
+| [concepts/security.md](concepts/security.md) | the broker, the gateway gate, zero telemetry, signing |
+| [book/](book/) | tutorials → concepts → operator guides (the long form) |
+| [adr/README.md](adr/README.md) | every architecture decision and its status |
 
-**No hype without proof.** Every claim in these pages traces to a measured record or
-an honest limitations document.
+## I want to build with it
+
+| Read | For |
+|---|---|
+| [guides/building-agents.md](guides/building-agents.md) | agent plans, tools, ceilings, workflows |
+| [guides/permissions.md](guides/permissions.md) | policy rules, refusals, human gates |
+| [guides/verification.md](guides/verification.md) | journals, doctor, package verify, provenance, release verification |
+| [SDK.md](SDK.md) | the TypeScript SDK (`@vaerion/sdk`), wire-parity with the CLI |
+
+## I need the exact truth
+
+| Read | For |
+|---|---|
+| [reference/cli.md](reference/cli.md) | the command surface and global flags |
+| [reference/errors.md](reference/errors.md) | exit codes and the E-code diagnostics catalog |
+| [CLI.md](CLI.md) | the full generated CLI manual |
+| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | recovery paths for every failure family |
+| [LIMITATIONS.md](LIMITATIONS.md) | what is measured — and what is honestly not done |
+| [security/](security/) | threat model, mitigations, remaining-risk ledger, signing ceremony |
+
+## Project law and process
+
+[constitution/](constitution/) — the ratified engineering constitution ·
+[../CHANGELOG.md](../CHANGELOG.md) — version history of record.

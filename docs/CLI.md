@@ -1,7 +1,7 @@
 # Vaerion CLI Manual — `vae`
 
 > **Provenance and honesty note.** This manual was generated for engine
-> `0.1.12-rc1` from the CLI's single source of truth — the `COMMAND_HELP`
+> `0.1.13-rc1` from the CLI's single source of truth — the `COMMAND_HELP`
 > registry in `packages/vaerion/src/cli/vae.ts` — and cross-checked against
 > `packages/vaerion/src/cli/commands.ts`, `src/cli/io.ts` (exit codes), and
 > `src/cli/ui.ts` (rendering profiles). Every command topic listed here was

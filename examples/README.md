@@ -3,6 +3,17 @@
 Runnable workspaces for the Vaerion engine (`0.1.13-rc1`). Each example is a
 real directory in this repository — measured, not narrated.
 
+## The three two-minute proofs
+
+Each is a short journey with measured expected output, built on the
+canonical demo-workspace assets below:
+
+| Example | Proves |
+|---|---|
+| [`verifiable-agent/`](verifiable-agent/) | an AI agent action with cryptographic proof — execution → receipt → `journal verify` → `ok: true` |
+| [`refused-action/`](refused-action/) | Vaerion stops unauthorized actions — flip one policy word, watch the broker refuse, the refusal log chain, and the failed run still verify |
+| [`replay-machine/`](replay-machine/) | same input creates same verified execution — two builds, byte-identical; one flipped byte, refused with exit 5 |
+
 ## vaerion-demo/ — the 15-minute demo workspace
 
 The canonical external-tester workspace referenced by `docs/QUICKSTART.md` and
