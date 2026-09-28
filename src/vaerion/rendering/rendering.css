@@ -1,0 +1,317 @@
+/**
+ * Vaerion — Rendering layer stylesheet (skeletons, chrome regions, surfaces)
+ *
+ * LAW OF THIS FILE (same gate as primitives.css):
+ *   - Every value resolves through var() from the generated bindings (1.3; 2.7).
+ *   - No font-size, font-weight, shadows, glass, raw colors, raw durations.
+ *   - Only the three canonical skeletons exist (4.1); a fourth layout is a
+ *     violation.
+ *   - Chrome (Environment Stamp + Spine) is authored once, inherited
+ *     everywhere (4.3).
+ *   - Media-query breakpoints are the Stage 4 structural pins recorded in
+ *     IR-010 (proposed; behavior thresholds pending governance).
+ *
+ * Citation: Constitution Part IV, Part VII; Visual System §1.4, §9, §11.
+ */
+
+/* ═══════════════════ the shell — chrome inheritance (4.3) ═══════════════════ */
+
+.vx-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* The stamp bar holds the Environment Stamp; sticky chrome (VS §3.4 sticky.2). */
+.vx-shell-stamp {
+  position: sticky;
+  top: 0;
+  background: var(--vx-color-ground);
+  z-index: var(--vx-elevation-sticky-2);
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--vx-space-2) var(--vx-space-4);
+}
+
+/* The chamber declaration is an operational choice (VS §4.1). */
+.vx-chamber-switch {
+  display: inline-flex;
+  gap: var(--vx-space-2);
+  padding-right: var(--vx-space-5);
+}
+
+/* ═══════════════════ skeleton 1 — Console (VS §1.4) ═══════════════════ */
+
+/* Operational surfaces: dense, hairline-ruled, instrument-first. */
+.vx-console {
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.vx-console-main {
+  padding: var(--vx-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--vx-space-6);
+  min-width: 0;
+}
+
+/* Sliced rendering is mandatory above the rendering threshold (Art. XIII; 4.6):
+   the ledger list scrolls inside a bounded region with its slice statement. */
+.vx-slice {
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* The Criteria Bar is sticky on the Ledger (4.6). */
+.vx-criteria-sticky {
+  position: sticky;
+  top: 0;
+  background: var(--vx-color-ground);
+  z-index: var(--vx-elevation-sticky-2);
+  padding: var(--vx-space-3) 0;
+}
+
+/* The integrity strip is a read-only Chainline summary instance (3.4; 4.6). */
+.vx-integrity-strip {
+  display: flex;
+  align-items: center;
+  gap: var(--vx-space-4);
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  border-radius: var(--vx-shape-radius-2);
+  padding: var(--vx-space-3) var(--vx-space-4);
+}
+
+/* ═══════════════════ skeleton 2 — Document (VS §1.4) ═══════════════════ */
+
+/* Reading surfaces: one column of record, generous gauge, print-true.
+   Content columns do not stretch to fill; they gain rails (VS §1.4). */
+.vx-document {
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+}
+
+.vx-document-reading {
+  padding: var(--vx-space-8) var(--vx-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--vx-space-6);
+  min-width: 0;
+  /* The reading column holds a fixed measure and does not stretch. */
+  max-width: 88ch;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* The Margin Rail — hidden by default, grows at ultra-wide (IR-010 pin: ≥ 1440px). */
+.vx-document-rail { display: none; }
+
+@media (min-width: 1440px) {
+  .vx-document {
+    grid-template-columns: auto minmax(0, 1fr) var(--vx-space-margin-rail);
+  }
+  .vx-document-rail {
+    display: flex;
+    border-left: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+    padding: var(--vx-space-6) var(--vx-space-5);
+    flex-direction: column;
+    gap: var(--vx-space-5);
+    max-height: calc(100vh - var(--vx-space-9));
+    position: sticky;
+    top: var(--vx-space-9);
+  }
+}
+
+/* Statute-book structure: the Constitution surface's volume list.
+   Machine-voice literals are exact to the character (Art. VII) and wrap by
+   breaking anywhere rather than overflowing the reading measure. */
+.vx-statute {
+  border-left: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  padding-left: var(--vx-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--vx-space-3);
+}
+.vx-statute .vx-machine, .vx-drift-marker .vx-machine { overflow-wrap: anywhere; }
+
+/* Drift markers bind to affected receipts (8.4; 4.6). */
+.vx-drift-marker {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vx-space-2);
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-accent-brass-glyph);
+  padding: 0 var(--vx-space-2);
+}
+
+/* ═══════════════════ skeleton 3 — Status (VS §1.4) ═══════════════════ */
+
+/* At-a-glance surfaces: verdict-first, minimal navigation. One screen, no
+   scrolling narrative (VS §13.3 System Attestation). */
+.vx-status {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: var(--vx-space-8) var(--vx-space-5);
+}
+
+.vx-status-main {
+  width: 100%;
+  max-width: 96ch;
+  display: flex;
+  flex-direction: column;
+  gap: var(--vx-space-5);
+  min-width: 0;
+}
+
+.vx-attestation-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--vx-space-4);
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  padding: var(--vx-space-3) 0;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════ surface plumbing ═══════════════════ */
+
+.vx-surface-title {
+  display: flex;
+  align-items: baseline;
+  gap: var(--vx-space-4);
+  flex-wrap: wrap;
+}
+
+.vx-run-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 34ch), 1fr));
+  gap: var(--vx-space-5);
+}
+
+.vx-row-list { display: flex; flex-direction: column; }
+
+/* Verification queue: age-sorted, keyboard verbs fixed (4.6; VS §6.5). */
+.vx-queue { display: flex; flex-direction: column; }
+.vx-queue-entry {
+  display: flex;
+  align-items: center;
+  gap: var(--vx-space-4);
+  border-left: calc(var(--vx-shape-hairline-width) * 2) solid transparent;
+}
+.vx-queue-entry[data-selected='true'] {
+  border-left-color: var(--vx-color-accent-brass-glyph);
+  background: var(--vx-color-ink-16);
+}
+
+/* Search results: grouped, sealed (4.6). */
+.vx-search-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vx-space-2);
+  padding: var(--vx-space-4) 0;
+  border-top: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+}
+
+/* Teaching empty states: lawful absence, rendered as teaching (Part V; VS §5.25). */
+.vx-empty {
+  border: var(--vx-shape-hairline-width) dashed var(--vx-color-ink-32);
+  border-radius: var(--vx-shape-radius-2);
+  padding: var(--vx-space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--vx-space-3);
+  align-items: flex-start;
+}
+
+/* ═══════════════════ responsive evolution (VS §9; 7.5) ═══════════════════ */
+
+/* Narrow / touch (< IR-010 pin 768px): the instrument degrades honestly —
+   density reduces by registered gauge steps; the ledger rhythm (36 px) and
+   seal clearances never compress below registration. */
+@media (max-width: 767px) {
+  .vx-console, .vx-document { grid-template-columns: minmax(0, 1fr); }
+  .vx-console-main { padding: var(--vx-space-4); gap: var(--vx-space-5); }
+  .vx-document-reading { padding: var(--vx-space-6) var(--vx-space-4); }
+  .vx-status { padding: var(--vx-space-6) var(--vx-space-4); }
+  .vx-spine {
+    border-right: none;
+    border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--vx-space-4);
+    padding: var(--vx-space-3) var(--vx-space-4);
+  }
+  .vx-spine-territory { flex-direction: row; align-items: center; gap: var(--vx-space-2); flex-wrap: wrap; }
+  .vx-timeline { flex-wrap: wrap; row-gap: var(--vx-space-4); }
+}
+
+/* Tablet and below (IR-010 pin 1024px): the spine collapses into its
+   registered horizontal position (Constitution 3.11; Part VII). */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .vx-console, .vx-document { grid-template-columns: minmax(0, 1fr); }
+  .vx-spine {
+    border-right: none;
+    border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--vx-space-5);
+    padding: var(--vx-space-4) var(--vx-space-5);
+  }
+  .vx-spine-territory { flex-direction: row; align-items: center; gap: var(--vx-space-3); flex-wrap: wrap; }
+}
+
+/* Print: chrome yields; the record remains (7.6). Interactive-only
+   affordances — the chamber switch, veils, the Lens plane, and the Return
+   host — are absent from the delivered artifact (7.6; VS §11.6). Seals,
+   hatching, and DEMO stamps persist: they are rendered record markup, and
+   no print rule suppresses them. */
+@media print {
+  .vx-shell-stamp, .vx-spine,
+  .vx-chamber-switch, .vx-veil, .vx-lens-plane, .vx-return-host { display: none; }
+}
+
+/* ═══════════════════ Stage 7 — rendering targets (7.6–7.10; VS §11) ═══════════════════ */
+
+/* The rendering target binding hook (Constitution 1.5): a declared target
+   scopes the operational mode stylesheets below. It adds no visual
+   decision of its own. */
+.vx-render-target { position: relative; }
+
+/* Grayscale target (7.7; VS §4.4): all chromatic tokens suppressed. The
+   verdict survives on seal shape, label, and position — never on hue
+   (Art. IV). The suppression coefficient is a mode mechanism, not a
+   visual value (1.3 governs dimensions, durations, curves, colors, radii,
+   sizes, weights). */
+.vx-render-target[data-mode='grayscale'] { filter: grayscale(1); }
+
+/* Export target (7.10; VS §11.6): the registered export treatment renders
+   the record, its chain, its verifier names, and the Environment Stamp,
+   without interactive-only affordances. */
+.vx-render-target[data-mode='export'] .vx-chamber-switch,
+.vx-render-target[data-mode='export'] .vx-veil,
+.vx-render-target[data-mode='export'] .vx-lens-plane,
+.vx-render-target[data-mode='export'] .vx-return-host { display: none; }
+
+/* Forced colors (7.8; VS §11.5): hairlines resolve to full ink, washes are
+   dropped, and the focus ring remains visible. The system colors are the
+   forced palette itself — the platform's registered mapping, not product
+   color values. Seals gain outlines in the primitives stylesheet. */
+@media (forced-colors: active) {
+  .vx-shell-stamp,
+  .vx-integrity-strip,
+  .vx-document-rail,
+  .vx-statute,
+  .vx-drift-marker,
+  .vx-empty { border-color: CanvasText; }
+  .vx-queue-entry[data-selected='true'] { background: transparent; }
+  .vx-root :focus-visible { outline-color: CanvasText; }
+}

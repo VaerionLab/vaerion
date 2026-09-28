@@ -21,6 +21,7 @@ export type ErrorCode =
   | "E1007" // blob_not_found
   | "E1008" // blob_digest_mismatch
   | "E1009" // journal_export_derivation_invalid
+  | "E1010" // journal_completeness_anchor_invalid
   // 11xx — event spine
   | "E1100" // envelope_invalid
   | "E1101" // event_type_unknown
@@ -124,6 +125,7 @@ export const ERROR_CATALOG: Readonly<Record<ErrorCode, ErrorDescriptor>> = {
   E1007: { code: "E1007", name: "blob_not_found", summary: "Referenced blob is missing from the content-addressed store.", fix: "Run `vae doctor` to scan blob integrity; re-produce the blob from its originating step." },
   E1008: { code: "E1008", name: "blob_digest_mismatch", summary: "Blob content does not match its digest.", fix: "The store is corrupt at this ref; restore from backup or re-run the producing step." },
   E1009: { code: "E1009", name: "journal_export_derivation_invalid", summary: "Redacted export derivation metadata does not match its records.", fix: "Re-export from the source journal; never mutate exported files." },
+  E1010: { code: "E1010", name: "journal_completeness_anchor_invalid", summary: "The run closed but its receipt-certified completeness anchor is missing or does not match the journal prefix.", fix: "Records were removed or altered after close. Compare against the receipt printed at run close or a `vae snapshot` archive; restore the run's evidence; never hand-edit a journal." },
   E1100: { code: "E1100", name: "envelope_invalid", summary: "Event envelope failed validation.", fix: "Check the envelope against spec/schemas/envelope.schema.json; fix the emitting site." },
   E1101: { code: "E1101", name: "event_type_unknown", summary: "Event type is not in the registry.", fix: "Register the type in spec/events/registry.json (additive-only) or fix the emitting site." },
   E1102: { code: "E1102", name: "envelope_seq_regression", summary: "Envelope seq went backwards or repeated within a run.", fix: "Emit through the journal writer, which allocates seq; never allocate seq at call sites." },

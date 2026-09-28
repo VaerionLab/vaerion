@@ -1,0 +1,727 @@
+/**
+ * Vaerion — Primitives stylesheet (the consuming implementation layer)
+ *
+ * LAW OF THIS FILE (gated by tools/vaerion-pipeline/verify-primitives.ts):
+ *   - Every value resolves through var() from the generated bindings
+ *     (Constitution 1.3, 2.7). No hex colors, no raw px/ms/s durations, no
+ *     font-size, no font-weight, no shadows, no glass, no invented curves.
+ *   - No font-size and no font-weight declarations exist anywhere: the Type
+ *     Scale and weights are registered by VS §2.2 but their numbers are not
+ *     enumerated by the ratified text; nothing is invented (Bible Art. XI;
+ *     IR-005). Hierarchy is carried by voice, caps, hairlines, and layers.
+ *   - Circles appear only on verdict seals and pulse dots (VS §3.1).
+ *   - 45° lines appear only in hatch textures and failure/break glyphs (VS §3.1).
+ *   - The pulse is the only breathing element (Bible Part Three); every
+ *     animation is ≤ the motion bound and mirrored under reduced motion
+ *     (VS §7; Bible Art. V).
+ *   - Media-query breakpoint and reduced-motion blocks carry the Stage 4
+ *     structural pins recorded as IR-010 (behavior thresholds, not visual values).
+ *
+ * Citation: Constitution 1.3, 2.7(c), Part VII; Visual System §3, §5, §7, §11.
+ */
+
+/* ═══════════════════════════════ base: the two chambers ═══════════════════════════════ */
+
+.vx-root {
+  background: var(--vx-color-ground);
+  color: var(--vx-color-ink-100);
+  font-family: var(--vx-type-voice-human);
+  line-height: var(--vx-type-leading-human);
+  min-height: 100vh;
+}
+
+.vx-machine {
+  font-family: var(--vx-type-voice-machine);
+  line-height: var(--vx-type-leading-machine);
+  font-variant-numeric: var(--vx-type-numeric-tabular);
+}
+
+.vx-micro {
+  font-family: var(--vx-type-voice-machine);
+  line-height: var(--vx-type-leading-machine);
+  font-variant-numeric: var(--vx-type-numeric-tabular);
+  text-transform: uppercase;
+}
+
+/* The brass-ring focus contract (Constitution 6.8): focus is visible, never animated, never removed. */
+.vx-root :focus-visible {
+  outline: var(--vx-shape-hairline-width) solid var(--vx-color-accent-brass-glyph);
+  outline-offset: var(--vx-space-1);
+}
+
+/* Instrument scrollbars: hairline track, ink thumb — no decorative chrome. */
+.vx-scroll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--vx-color-ink-16) transparent;
+}
+
+/* ═══════════════════════════════ Seal (Constitution 3.3) ═══════════════════════════════ */
+
+.vx-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vx-space-3);
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: inherit;
+}
+
+.vx-seal-disc {
+  position: relative;
+  flex: none;
+  border-radius: var(--vx-shape-radius-seal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vx-seal-16 .vx-seal-disc { width: var(--vx-shape-seal-size-16); height: var(--vx-shape-seal-size-16); }
+.vx-seal-20 .vx-seal-disc { width: var(--vx-shape-seal-size-20); height: var(--vx-shape-seal-size-20); }
+.vx-seal-28 .vx-seal-disc { width: var(--vx-shape-seal-size-28); height: var(--vx-shape-seal-size-28); }
+.vx-seal-44 .vx-seal-disc { width: var(--vx-shape-seal-size-44); height: var(--vx-shape-seal-size-44); }
+
+/* VERIFIED — the solid seal: full fill, full commitment (Bible Part Three). */
+.vx-seal[data-verdict='verified'] .vx-seal-disc { background: var(--vx-color-verdict-verified); }
+
+/* UNVERIFIED — the hollow seal: ink, not color; equal dignity (VS §4.3; Bible Part Three). */
+.vx-seal[data-verdict='unverified'] .vx-seal-disc {
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-100);
+  background: transparent;
+}
+
+/* FAILED — the crossed seal: outline + the registered cross. */
+.vx-seal[data-verdict='failed'] .vx-seal-disc {
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-verdict-failed);
+  background: transparent;
+}
+.vx-seal[data-verdict='failed'] .vx-seal-cross {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* PENDING — the pulse: the only element permitted to breathe (Bible Part Three). */
+.vx-seal[data-verdict='pending'] .vx-seal-disc {
+  background: transparent;
+}
+.vx-seal[data-verdict='pending'] .vx-seal-pulse {
+  width: 50%;
+  height: 50%;
+  border-radius: var(--vx-shape-radius-seal);
+  background: var(--vx-color-verdict-pending);
+  animation: vx-pulse var(--vx-motion-bound-max) var(--vx-motion-curve-settle-out) infinite alternate;
+}
+
+@keyframes vx-pulse {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0.35; transform: scale(0.72); }
+}
+
+/* The seal word — verdict identity rides the seal glyph (Bible Part Three; Art. IV: never color alone). */
+.vx-seal-word { color: var(--vx-color-ink-100); }
+
+/* The Sweep motion — a verification pass traveling its scope and settling (VS §7.1). */
+.vx-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.vx-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 25%;
+  background: var(--vx-color-ink-16);
+  animation: vx-sweep var(--vx-motion-bound-max) var(--vx-motion-curve-settle-out) 1;
+  pointer-events: none;
+}
+@keyframes vx-sweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(500%); }
+}
+
+/* ═══════════════════════════════ Panel (Constitution 3.2) ═══════════════════════════════ */
+
+/* The only container. There are no cards (VS §5.6). Hairline-framed surface.1 plane. */
+.vx-panel {
+  background: transparent;
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  border-radius: var(--vx-shape-radius-0);
+  padding: var(--vx-space-6);
+  position: relative;
+  z-index: var(--vx-elevation-surface-1);
+}
+
+.vx-panel-title {
+  color: var(--vx-color-ink-100);
+  padding-bottom: var(--vx-space-4);
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  margin-bottom: var(--vx-space-5);
+}
+
+/* ═══════════════════════════════ Receipt (Constitution 3.1) ═══════════════════════════════ */
+
+/* The sacred object. Anatomy order is composition law (Bible Art. VI; 4.2). */
+.vx-receipt {
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  border-radius: var(--vx-shape-radius-0);
+  background: transparent;
+  display: block;
+  color: var(--vx-color-ink-100);
+}
+
+.vx-receipt-page { padding: var(--vx-space-9); border-radius: var(--vx-shape-radius-8); }
+.vx-receipt-card { padding: var(--vx-space-6); }
+.vx-receipt-row {
+  padding: 0 var(--vx-space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--vx-space-4);
+  min-height: var(--vx-space-ledger-row);
+  flex-wrap: wrap;
+}
+
+/* id strip — Machine Voice (Bible Art. VII: measurement, exact to the character). */
+.vx-receipt-id {
+  color: var(--vx-color-ink-100);
+  display: flex;
+  align-items: baseline;
+  gap: var(--vx-space-3);
+}
+
+.vx-receipt-sealblock {
+  /* Seal isolation is ceremonial and may not be compressed (VS §1.3). */
+  margin: var(--vx-space-7) 0;
+}
+
+.vx-receipt-segment {
+  padding: var(--vx-space-4) 0;
+  border-top: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+}
+
+/* The extensions zone — the only lawful growth area (Constitution 3.1; Art. VI). */
+.vx-receipt-extensions {
+  border-top: var(--vx-shape-hairline-width) solid var(--vx-color-ink-32);
+  padding-top: var(--vx-space-4);
+  margin-top: var(--vx-space-4);
+}
+
+/* Evidence stacks in registered rhythm (VS §5 Evidence Item). */
+.vx-receipt-evidence { display: flex; flex-direction: column; gap: var(--vx-space-4); }
+
+/* Restricted evidence renders hatched with its honest notice (Part V; 3.15). */
+.vx-restricted {
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--vx-color-ink-16) 0,
+    var(--vx-color-ink-16) var(--vx-shape-hairline-width),
+    transparent var(--vx-shape-hairline-width),
+    transparent var(--vx-space-3)
+  );
+}
+
+/* The DEMO quarantine stamp travels with the record and renders wherever it appears (5.10). */
+.vx-demo-stamp {
+  color: var(--vx-color-accent-brass-text);
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-accent-brass-glyph);
+  padding: 0 var(--vx-space-2);
+  display: inline-block;
+}
+
+/* ═══════════════════════════════ Chainline (Constitution 3.4) ═══════════════════════════════ */
+
+.vx-chainline {
+  display: flex;
+  align-items: center;
+  color: var(--vx-color-ink-100);
+}
+
+.vx-chainline[data-orientation='vertical'] {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.vx-chainline-segment {
+  flex: none;
+  background: var(--vx-color-ink-32);
+  /* 1 px ink.32 line (VS §3.5) */
+}
+.vx-chainline[data-orientation='horizontal'] .vx-chainline-segment {
+  height: var(--vx-shape-chainline-width);
+  width: var(--vx-space-6);
+}
+.vx-chainline[data-orientation='vertical'] .vx-chainline-segment {
+  width: var(--vx-shape-chainline-width);
+  height: var(--vx-space-6);
+}
+
+.vx-chainline-node {
+  flex: none;
+  width: var(--vx-shape-chainline-node);
+  height: var(--vx-shape-chainline-node);
+  background: var(--vx-color-ink-100);
+  /* 2 px square nodes (VS §3.5) */
+}
+
+.vx-chainline-break {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--vx-shape-chainline-break-gap);
+  height: var(--vx-shape-chainline-break-gap);
+  position: relative;
+  /* A break renders as an 8 px gap with the break glyph at the gap (VS §3.5);
+     the glyph draws from the failure-cross family (45° hairlines, VS §3.1). */
+}
+.vx-chainline-break::before,
+.vx-chainline-break::after {
+  content: '';
+  position: absolute;
+  width: var(--vx-shape-chainline-break-gap);
+  height: var(--vx-shape-hairline-width);
+  background: var(--vx-color-verdict-failed);
+}
+.vx-chainline-break::before { transform: rotate(45deg); }
+.vx-chainline-break::after { transform: rotate(-45deg); }
+
+/* ═══════════════════════════════ Button (Constitution 3.5) ═══════════════════════════════ */
+
+.vx-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--vx-space-2);
+  min-height: var(--vx-space-touch-minimum);
+  padding: 0 var(--vx-space-5);
+  border-radius: var(--vx-shape-radius-4);
+  border: var(--vx-shape-hairline-width) solid transparent;
+  cursor: pointer;
+  color: var(--vx-color-ink-100);
+  background: transparent;
+  /* Control states use ink, never verdict color (Constitution 3.5). */
+  transition: background var(--vx-motion-acknowledge) linear, color var(--vx-motion-acknowledge) linear, border-color var(--vx-motion-acknowledge) linear;
+}
+
+.vx-button[data-hierarchy='primary'] {
+  /* Primary takes ink — never a verdict or accent color (VS §5.7). */
+  background: var(--vx-color-ink-100);
+  color: var(--vx-color-ground);
+}
+.vx-button[data-hierarchy='primary']:hover { background: var(--vx-color-ink-32); color: var(--vx-color-ink-100); }
+
+.vx-button[data-hierarchy='secondary'] {
+  border-color: var(--vx-color-ink-32);
+}
+.vx-button[data-hierarchy='secondary']:hover { background: var(--vx-color-ink-16); }
+
+.vx-button[data-hierarchy='quiet'] {
+  padding: 0 var(--vx-space-2);
+  text-decoration: underline;
+  text-underline-offset: var(--vx-space-1);
+  text-decoration-color: var(--vx-color-ink-32);
+}
+.vx-button[data-hierarchy='quiet']:hover { text-decoration-color: var(--vx-color-ink-100); }
+
+.vx-button[data-hierarchy='control'] {
+  min-height: auto;
+  padding: var(--vx-space-1) var(--vx-space-3);
+  border-color: var(--vx-color-ink-16);
+}
+.vx-button[data-hierarchy='control']:hover { background: var(--vx-color-ink-16); }
+
+.vx-button:disabled { opacity: 0.5; cursor: not-allowed; }
+.vx-button:active { transition: none; }
+
+/* Destructive coloration appears only at the confirmation step (Constitution 3.5). */
+.vx-button[data-destructive='true'] {
+  border-color: var(--vx-color-verdict-failed);
+  color: var(--vx-color-verdict-failed);
+}
+
+/* Hold-to-affirm renders its progress on the registered meter (VS §13.2). */
+.vx-hold {
+  position: relative;
+  overflow: hidden;
+}
+.vx-hold-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  background: var(--vx-color-ink-16);
+  pointer-events: none;
+}
+
+/* The hold progress meter: fills over the registered 600 ms hold; releasing
+   early cancels with no partial effect (VS §13.2). */
+@keyframes vx-hold-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ═══════════════════════════════ Field Frame (Constitution 3.6) ═══════════════════════════════ */
+
+/* Every input is a frame with its micro-label set into the top-left edge (VS §5.8). */
+.vx-field {
+  position: relative;
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-32);
+  border-radius: var(--vx-shape-radius-2);
+  padding: var(--vx-space-5) var(--vx-space-4) var(--vx-space-3);
+  background: transparent;
+  color: var(--vx-color-ink-100);
+}
+
+.vx-field-label {
+  position: absolute;
+  top: calc(-1 * var(--vx-type-leading-machine) * 0.5em);
+  left: var(--vx-space-3);
+  background: var(--vx-color-ground);
+  padding: 0 var(--vx-space-2);
+  color: var(--vx-color-ink-100);
+}
+
+.vx-field-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: var(--vx-color-ink-100);
+  font: inherit;
+  outline: none;
+  min-height: var(--vx-space-touch-minimum);
+}
+
+/* Validation speaks verdict language through the Seal grammar (Constitution 3.6). */
+.vx-field-note {
+  display: flex;
+  align-items: center;
+  gap: var(--vx-space-2);
+  margin-top: var(--vx-space-2);
+  color: var(--vx-color-ink-100);
+}
+
+/* ═══════════════════════════════ Records: Table · Log · Timeline · Rows (Part III) ═══════════════════════════════ */
+
+/* Audit Table (3.7): horizontal rules only; numerals right-aligned, tabular; unit column.
+   The table scrolls within its slice region at narrow widths — honest degradation
+   (VS §9), never a squeezed, unreadable table. */
+.vx-table-scroll { overflow-x: auto; }
+.vx-table { width: 100%; border-collapse: collapse; color: var(--vx-color-ink-100); }
+.vx-table th {
+  text-align: left;
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-32);
+  padding: var(--vx-space-3) var(--vx-space-4);
+  color: var(--vx-color-ink-100);
+}
+.vx-table td {
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  padding: var(--vx-space-3) var(--vx-space-4);
+  vertical-align: middle;
+}
+.vx-table tr[data-attestation-group='true'] td {
+  border-top: var(--vx-shape-hairline-width) solid var(--vx-color-ink-32);
+}
+.vx-table .vx-num { text-align: right; font-variant-numeric: var(--vx-type-numeric-tabular); }
+
+/* Ledger Row (VS §5): fixed 36 px rhythm, hairline-ruled, never changes between surfaces.
+   The rhythm is the row's min-height — content wraps, the rhythm never compresses. */
+.vx-ledger-row {
+  display: flex;
+  align-items: center;
+  gap: var(--vx-space-4);
+  min-height: var(--vx-space-ledger-row);
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  padding: var(--vx-space-1) var(--vx-space-4);
+  color: var(--vx-color-ink-100);
+  flex-wrap: wrap;
+}
+
+/* Machine-voice literals are exact to the character (Art. VII): at narrow
+   widths they wrap by breaking anywhere — never truncated without the
+   elided mark (Art. II). */
+.vx-ledger-row .vx-machine,
+.vx-receipt-row .vx-machine,
+.vx-log-line .vx-machine,
+.vx-panel-title,
+.vx-drift-marker .vx-machine { overflow-wrap: anywhere; min-width: 0; }
+
+/* Narrow / touch: the compressed receipt row degrades honestly by stacking —
+   compression, never suppression of anatomy (Art. VI; VS §9). */
+@media (max-width: 767px) {
+  .vx-receipt-row { flex-direction: column; align-items: flex-start; }
+}
+
+/* Log (3.8): fixed timestamp gutter, anchored lines, hang-indent wrap. */
+.vx-log { display: flex; flex-direction: column; color: var(--vx-color-ink-100); }
+.vx-log-line {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--vx-space-4);
+  padding: var(--vx-space-1) var(--vx-space-4);
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+}
+/* Appended logs are immutable like the ledger they attest (Constitution 3.8). */
+.vx-log-line { word-break: break-word; }
+.vx-log-severity { display: inline-flex; align-items: center; gap: var(--vx-space-2); }
+
+/* Timeline (3.9): state-shaped nodes; gaps render as breaks; scrubbing pairs with step controls. */
+.vx-timeline { display: flex; align-items: center; gap: 0; color: var(--vx-color-ink-100); }
+.vx-timeline-event { display: flex; align-items: center; }
+
+/* ═══════════════════════════════ Hash Line (VS §5) ═══════════════════════════════ */
+
+/* Evidence's literal address. Full value reveals on click only — never on hover (VS §5; §14 amendment 1). */
+.vx-hashline {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--vx-space-2);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--vx-color-ink-100);
+  font: inherit;
+}
+.vx-hashline-compact { text-decoration: underline dotted; text-decoration-color: var(--vx-color-ink-32); text-underline-offset: var(--vx-space-1); }
+.vx-hashline-elided { color: var(--vx-color-ink-100); }
+
+/* ═══════════════════════════════ Chrome: Environment Stamp · Spine (3.10 / 3.11) ═══════════════════════════════ */
+
+/* Chrome is authored once and inherited everywhere (Constitution 4.3). */
+.vx-stamp {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--vx-space-2) var(--vx-space-3);
+  color: var(--vx-color-ink-100);
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  padding: var(--vx-space-2) var(--vx-space-4);
+  position: relative;
+  z-index: var(--vx-elevation-sticky-2);
+}
+.vx-stamp-field { display: inline-flex; gap: var(--vx-space-2); align-items: baseline; }
+.vx-stamp-link { color: var(--vx-color-ink-100); text-decoration: underline dotted; text-decoration-color: var(--vx-color-ink-32); }
+
+.vx-spine {
+  border-right: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  padding: var(--vx-space-6) var(--vx-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--vx-space-6);
+  position: relative;
+  z-index: var(--vx-elevation-sticky-2);
+}
+
+.vx-spine-territory { display: flex; flex-direction: column; gap: var(--vx-space-2); }
+
+.vx-spine-entry {
+  display: flex;
+  align-items: center;
+  gap: var(--vx-space-3);
+  padding: var(--vx-space-2) var(--vx-space-3);
+  min-height: var(--vx-space-touch-minimum);
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--vx-color-ink-100);
+  width: 100%;
+  border-left: var(--vx-shape-hairline-width) solid transparent;
+}
+.vx-spine-entry:hover { background: var(--vx-color-ink-16); }
+.vx-spine-entry[aria-current='true'] {
+  /* Active-state brass tick (Constitution 3.11). */
+  border-left: calc(var(--vx-shape-hairline-width) * 2) solid var(--vx-color-accent-brass-glyph);
+  background: var(--vx-color-ink-16);
+}
+
+/* ═══════════════════════════════ Dialog (3.12) · veil ═══════════════════════════════ */
+
+/* The veil must not imply verdict meaning (Constitution 3.12); treatment interim-read from the
+   registered ink strengths pending IR-008 — the dimming stratum renders at ink.32. */
+.vx-veil {
+  position: fixed;
+  inset: 0;
+  background: var(--vx-color-ink-32);
+  z-index: var(--vx-elevation-veil-3);
+}
+
+.vx-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--vx-color-ground);
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-32);
+  border-radius: var(--vx-shape-radius-8);
+  padding: var(--vx-space-8);
+  color: var(--vx-color-ink-100);
+  z-index: var(--vx-elevation-ceremony-5);
+  min-width: min(90vw, 40ch);
+}
+
+.vx-dialog-consequence {
+  padding: var(--vx-space-4) 0;
+  border-top: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+}
+
+.vx-dialog-actions {
+  display: flex;
+  gap: var(--vx-space-4);
+  padding-top: var(--vx-space-5);
+}
+
+/* ═══════════════════════════════ Return (3.13) — the notification instrument ═══════════════════════════════ */
+
+.vx-return-host {
+  position: fixed;
+  left: var(--vx-space-5);
+  bottom: var(--vx-space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--vx-space-3);
+  z-index: var(--vx-elevation-floating-4);
+}
+
+.vx-return {
+  display: flex;
+  align-items: center;
+  gap: var(--vx-space-3);
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-32);
+  border-radius: var(--vx-shape-radius-4);
+  background: var(--vx-color-ground);
+  padding: var(--vx-space-3) var(--vx-space-4);
+  color: var(--vx-color-ink-100);
+}
+
+/* ═══════════════════════════════ Gauge (3.14) — truthful progress ═══════════════════════════════ */
+
+/* Never a spinner; renders only after the 300 ms threshold (VS §5 Gauge; Constitution 3.14). */
+.vx-gauge {
+  width: 100%;
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  border-radius: var(--vx-shape-radius-2);
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+}
+
+.vx-gauge-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  background: var(--vx-color-ink-32);
+}
+
+/* Indeterminate: a traveling segment — the registered meter, never a spinner (3.14). */
+.vx-gauge-indeterminate .vx-gauge-fill {
+  width: 25%;
+  animation: vx-gauge-travel var(--vx-motion-bound-max) linear infinite;
+}
+@keyframes vx-gauge-travel {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(400%); }
+}
+
+/* ═══════════════════════════════ Lens (3.15) — the Proof Lens (Bible Art. XII) ═══════════════════════════════ */
+
+.vx-lens-claim { position: relative; }
+
+/* The illuminated chain renders at lens.6: full ink, full contrast, Chainline illuminated (VS §12). */
+.vx-lens-plane {
+  position: fixed;
+  inset: 0;
+  z-index: var(--vx-elevation-lens-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.vx-lens-content {
+  pointer-events: auto;
+  background: var(--vx-color-ground);
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-100);
+  border-radius: var(--vx-shape-radius-8);
+  padding: var(--vx-space-8);
+  max-width: min(92vw, 72ch);
+  max-height: 82vh;
+  color: var(--vx-color-ink-100);
+}
+
+/* Lens transitions ride the registered curve within the bound; reduced-motion parity is complete (VS §12, §7.3). */
+.vx-lens-veil,
+.vx-lens-plane { transition: opacity var(--vx-motion-bound-max) var(--vx-motion-curve-settle-out); }
+.vx-lens-veil[data-open='false'],
+.vx-lens-plane[data-open='false'] { opacity: 0; }
+.vx-lens-veil[data-open='true'],
+.vx-lens-plane[data-open='true'] { opacity: 1; }
+
+/* ═══════════════════════════════ Criteria Bar (VS §5) — filters are visible logic ═══════════════════════════════ */
+
+.vx-criteria {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--vx-space-2);
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-16);
+  border-radius: var(--vx-shape-radius-2);
+  padding: var(--vx-space-3) var(--vx-space-4);
+  color: var(--vx-color-ink-100);
+}
+
+.vx-criteria-token {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vx-space-2);
+  border: var(--vx-shape-hairline-width) solid var(--vx-color-ink-32);
+  border-radius: var(--vx-shape-radius-2);
+  padding: var(--vx-space-1) var(--vx-space-3);
+  background: transparent;
+  color: var(--vx-color-ink-100);
+  cursor: pointer;
+  min-height: var(--vx-space-touch-minimum);
+}
+.vx-criteria-token:hover { background: var(--vx-color-ink-16); }
+
+.vx-criteria-input {
+  background: transparent;
+  border: none;
+  border-bottom: var(--vx-shape-hairline-width) solid var(--vx-color-ink-32);
+  color: var(--vx-color-ink-100);
+  font: inherit;
+  outline: none;
+}
+
+/* ═══════════════════════════════ reductions and modes (VS §11) ═══════════════════════════════ */
+
+/* Reduced motion: complete informational parity — every motion renders as an
+   instant state change with full explainability (VS §7.3; Constitution 7.9).
+   The pending pulse becomes a static dot with its word (Constitution 7.9). */
+@media (prefers-reduced-motion: reduce) {
+  .vx-seal[data-verdict='pending'] .vx-seal-pulse { animation: none; opacity: 1; transform: none; }
+  .vx-sweep::after { animation: none; content: none; }
+  .vx-gauge-indeterminate .vx-gauge-fill { animation: none; transform: none; }
+  .vx-lens-veil, .vx-lens-plane { transition: none; }
+  * { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+}
+
+/* Forced colors: hairlines resolve to full ink, washes are dropped, seals gain
+   outlines, focus remains visible — structural survival, not patching (7.8). */
+@media (forced-colors: active) {
+  .vx-panel, .vx-receipt, .vx-return, .vx-dialog, .vx-criteria { border-color: CanvasText; }
+  .vx-seal[data-verdict='verified'] .vx-seal-disc { outline: var(--vx-shape-hairline-width) solid CanvasText; }
+  .vx-seal[data-verdict='pending'] .vx-seal-pulse { outline: var(--vx-shape-hairline-width) solid CanvasText; }
+  .vx-restricted { background-image: none; border: var(--vx-shape-hairline-width) dashed CanvasText; }
+}
+
+/* Print: grayscale-first; seals render shape-true; DEMO stamps persist;
+   truncation of verdict information is prohibited (Constitution 7.6). */
+@media print {
+  .vx-veil, .vx-lens-veil { display: none; }
+  .vx-spine { display: none; }
+  .vx-panel, .vx-receipt { border-color: var(--vx-color-ink-100); }
+}

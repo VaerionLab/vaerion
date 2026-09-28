@@ -1,0 +1,488 @@
+{
+  "publication": "vaerion-trace-index",
+  "source": "constitution/trace-index/trace-index.md",
+  "citations": "Implementation Constitution P-4; constitution/docs/GOVERNANCE.md §5",
+  "entryCount": 80,
+  "entries": [
+    {
+      "id": "T-001",
+      "citation": "Implementation Constitution P-1 (precedence)",
+      "governed": "`src/vaerion/foundation/authority.ts` — `resolvePrecedence`, `governingDocument`; `constitution/INDEX.md` §1",
+      "kind": "code + governance"
+    },
+    {
+      "id": "T-002",
+      "citation": "Implementation Constitution P-4 + Bible Art. XI (traceability)",
+      "governed": "`src/vaerion/foundation/citations.ts` (citation model); `foundation/authority.ts` — `assertTraceable`",
+      "kind": "code"
+    },
+    {
+      "id": "T-003",
+      "citation": "Implementation Constitution P-5 (silence rule)",
+      "governed": "`constitution/interpretations/LEDGER.md` protocol",
+      "kind": "governance"
+    },
+    {
+      "id": "T-004",
+      "citation": "Implementation Constitution P-6 (fidelity standard)",
+      "governed": "`tools/vaerion-pipeline/README.md` §3 (Snapshot Authority contract, Stage 8)",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-005",
+      "citation": "Volume IV directive \"BUILD ORDER\"",
+      "governed": "`src/vaerion/foundation/stages.ts` — `STAGES`, `assertStageMayBegin`",
+      "kind": "code"
+    },
+    {
+      "id": "T-006",
+      "citation": "Implementation Constitution Part II (token pipeline)",
+      "governed": "`src/vaerion/registry/README.md` (Stage 2 contract); `tools/vaerion-pipeline/README.md` §2 stages [1]–[2]",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-007",
+      "citation": "Implementation Constitution 2.7 (generated bindings — implementation necessity)",
+      "governed": "`src/vaerion/registry/README.md` §5",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-008",
+      "citation": "Implementation Constitution Part IX (gates)",
+      "governed": "`tools/vaerion-pipeline/README.md` §2 stage [4], §4; Stage 8 scope",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-009",
+      "citation": "Implementation Constitution Part X (release)",
+      "governed": "`tools/vaerion-pipeline/README.md` §2 stage [5], §5; Stage 9 scope",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-010",
+      "citation": "Implementation Constitution Part XI (governance)",
+      "governed": "`constitution/amendments/LEDGER.md`, `constitution/interpretations/LEDGER.md` protocols",
+      "kind": "governance"
+    },
+    {
+      "id": "T-011",
+      "citation": "Implementation Constitution 11.4 (historical truth preserved)",
+      "governed": "`constitution/INDEX.md` §4; IR-003 proposed ruling",
+      "kind": "governance"
+    },
+    {
+      "id": "T-012",
+      "citation": "Visual System §0 (seven registries, dual naming)",
+      "governed": "`src/vaerion/registry/README.md` §1–2; `src/vaerion/docs/README.md` §5",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-013",
+      "citation": "Visual System §4.7 (reference color values)",
+      "governed": "Stage 2 token values source — text now transcribed and digest-pinned (DP-2, F-001)",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-014",
+      "citation": "Bible Art. III (a verdict names its verifier)",
+      "governed": "release receipt contract — `tools/vaerion-pipeline/README.md` §5",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-015",
+      "citation": "Implementation Constitution 9.12 + Bible §16 (parity)",
+      "governed": "Parity Harness contract — `tools/vaerion-pipeline/README.md` §4",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-016",
+      "citation": "Volume IV directive Stage 1 (foundation scope)",
+      "governed": "repository architecture, governance folders, pipeline/docs/registry architecture contracts",
+      "kind": "governance"
+    },
+    {
+      "id": "T-017",
+      "citation": "Constitution P-4 / Stage 10",
+      "governed": "documentation pipeline contract — `src/vaerion/docs/README.md`",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-018",
+      "citation": "Constitution 10.1 (no waivers)",
+      "governed": "`tools/vaerion-pipeline/README.md` §1–2 failure semantics",
+      "kind": "architecture"
+    },
+    {
+      "id": "T-019",
+      "citation": "Foundation Amendment F-001 + P-6",
+      "governed": "canonical transcriptions `constitution/bible/`, `constitution/visual-system/`; digest pins `constitution/snapshot-authority/manifests/canonical-documents.json`; `tools/vaerion-pipeline/verify-constitution.ts`",
+      "kind": "governance + code"
+    },
+    {
+      "id": "T-020",
+      "citation": "Foundation Amendment F-002 + P-6, 9.3",
+      "governed": "Snapshot Authority — `constitution/snapshot-authority/README.md`, snapshots/, manifests/",
+      "kind": "governance"
+    },
+    {
+      "id": "T-021",
+      "citation": "Foundation Amendment F-003 + 6.11",
+      "governed": "Announcement & Copy Registry authority — `constitution/announcement-registry/README.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-022",
+      "citation": "Foundation Amendment F-004 + Part II",
+      "governed": "Registry authority separation — `constitution/registry/README.md` (law) ↔ `src/vaerion/registry/README.md` (execution)",
+      "kind": "governance + architecture"
+    },
+    {
+      "id": "T-023",
+      "citation": "Foundation Amendment F-005 + 2.7",
+      "governed": "generated artifact root — `generated/README.md`, `generated/bindings/`, `generated/tokens/`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-024",
+      "citation": "Foundation Amendment F-006 + 10.3, 10.4",
+      "governed": "release record authority — `constitution/releases/README.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-025",
+      "citation": "Foundation Amendment F-007 + BUILD ORDER",
+      "governed": "dependency graph — `foundation/stages.ts` (declarations), `foundation/prerequisites.ts` (registry), `foundation/gate.ts` (engine), `foundation/verification.ts` (proofs), `tools/vaerion-pipeline/stages.ts`, `src/vaerion/docs/DEPENDENCY_GRAPH.md`",
+      "kind": "code + architecture"
+    },
+    {
+      "id": "T-026",
+      "citation": "IR-004 (Gauge Ladder index record)",
+      "governed": "`constitution/interpretations/LEDGER.md` — recorded transcription ambiguity, unresolved by design",
+      "kind": "governance"
+    },
+    {
+      "id": "T-027",
+      "citation": "Constitution 2.1–2.9 + VS §0, §1.2–§1.3, §2.1, §3.2–§3.5, §4.1–§4.7, §5.2, §7.1–§7.2, §8, §9, §10, §13.2",
+      "governed": "Stage 2 Registry System — `constitution/registry/{token-schema,lifecycle,registries}.json` (law data), `src/vaerion/registry/` (token model, scales, seven registries, validation, compiler), `generated/{css,typescript,tokens}` (bindings), `tools/vaerion-pipeline/compile-registry.ts` (gates)",
+      "kind": "governance + code"
+    },
+    {
+      "id": "T-028",
+      "citation": "IR-004 (Gauge Ladder index record)",
+      "governed": "`src/vaerion/registry/scales.ts` (INDEXED_SPACE_RANGE), `src/vaerion/registry/registries/space.ts` (PENDING_INDEX_RAMP_VALUES) — compiles only the agreed range",
+      "kind": "code"
+    },
+    {
+      "id": "T-029",
+      "citation": "Constitution 3.0–3.15 + VS §5",
+      "governed": "Stage 3 Primitive System — `src/vaerion/primitives/` (20 primitives, manifest, stylesheet), `tools/vaerion-pipeline/verify-primitives.ts` (conformance checks)",
+      "kind": "code"
+    },
+    {
+      "id": "T-030",
+      "citation": "Constitution Part IV + VS §1.4, §9, §11",
+      "governed": "Stage 4 Composition — `src/vaerion/rendering/` (three skeletons, shell, rendering stylesheet), `src/vaerion/surfaces/` (ten surfaces, host, registry, copy, fixtures)",
+      "kind": "code"
+    },
+    {
+      "id": "T-031",
+      "citation": "IR-005…IR-010",
+      "governed": "`constitution/interpretations/LEDGER.md` — Stage 2–4 ambiguity filings (type scale, ink formula, motion pins, layer treatments, Stage 4 strings, structural pins)",
+      "kind": "governance"
+    },
+    {
+      "id": "T-032",
+      "citation": "Constitution 4.7, 6.11 + F-003",
+      "governed": "proposed string set — `constitution/announcement-registry/stage4-proposed-strings.json`, consumed by identifier in `src/vaerion/surfaces/copy.ts`",
+      "kind": "governance + code"
+    },
+    {
+      "id": "T-033",
+      "citation": "IR-001 (host-route transition), IR-003 (pre-ratification artifacts preserved)",
+      "governed": "`src/app/page.tsx` now mounts `SurfaceHost`; legacy site preserved untouched at `src/components/site/`",
+      "kind": "governance + code"
+    },
+    {
+      "id": "T-034",
+      "citation": "Constitution Part V (State Architecture) + 1.6, Art. VIII, Art. III",
+      "governed": "Stage 5 State Architecture — `src/vaerion/state/` (matrix, ownership, transitions, machine, honesty, quarantine, context provider, gates), `tools/vaerion-pipeline/verify-state.ts` (12 gates), `src/vaerion/docs/reports/STAGE-5-STATE-ARCHITECTURE-CONFORMANCE.md`",
+      "kind": "code"
+    },
+    {
+      "id": "T-035",
+      "citation": "Constitution 5.7 (the lawful transition set)",
+      "governed": "`src/vaerion/state/transitions.ts` — 13 rows transcribed row for row; every unlisted transition rejected with ConstitutionalViolationError",
+      "kind": "code"
+    },
+    {
+      "id": "T-036",
+      "citation": "Constitution 5.4 + 8.0 (ownership; the seven named authorities)",
+      "governed": "`src/vaerion/state/ownership.ts`, `src/vaerion/state/matrix.ts` (owner per state; authority identities)",
+      "kind": "code"
+    },
+    {
+      "id": "T-037",
+      "citation": "Constitution Part VI (Interaction Architecture) + 6.11, F-003",
+      "governed": "Stage 6 Interaction Architecture — `src/vaerion/interaction/` (commands, keys, pointer, focus, confirm, hold, undo, receipts, latency, announce, lens, dispatcher, copy, gates), `tools/vaerion-pipeline/verify-interaction.ts` (15 gates), `src/vaerion/docs/reports/STAGE-6-INTERACTION-ARCHITECTURE-CONFORMANCE.md`",
+      "kind": "code"
+    },
+    {
+      "id": "T-038",
+      "citation": "IR-011 (streaming budget pin), IR-012 (Stage 6 strings)",
+      "governed": "`constitution/interpretations/LEDGER.md`; `constitution/announcement-registry/stage6-proposed-strings.json` consumed by identifier in `src/vaerion/interaction/copy.ts`",
+      "kind": "governance + code"
+    },
+    {
+      "id": "T-039",
+      "citation": "Directive series Stage 5/6 (manifest re-sequencing; Rendering preserved at 7)",
+      "governed": "`src/vaerion/foundation/stages.ts` (11 stages), `src/vaerion/docs/DEPENDENCY_GRAPH.md` (re-synced), `constitution/amendments/LEDGER.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-040",
+      "citation": "Constitution Part VII (Rendering Architecture) + VS §3.4, §9, §11",
+      "governed": "Stage 7 Rendering Engine — `src/vaerion/rendering/` (layers, strata, visibility, measurement, responsive, modes, pipeline, target, manifest, gates), `rendering.css` mode bindings (print / grayscale / forced-colors / export), `tools/vaerion-pipeline/verify-rendering.ts` (14 gates), `src/vaerion/docs/reports/STAGE-7-RENDERING-ARCHITECTURE-CONFORMANCE.md`",
+      "kind": "code"
+    },
+    {
+      "id": "T-041",
+      "citation": "Constitution 7.2 + VS §3.4 (the ordinal layer system)",
+      "governed": "`src/vaerion/rendering/layers.ts` consumes `LAYER_SYSTEM` (registry/scales — sole source); stacking binding ordinal × 10 cross-checked against generated/css/vaerion-tokens.css by the pipeline verifier",
+      "kind": "code"
+    },
+    {
+      "id": "T-042",
+      "citation": "Constitution 7.3 + Part V (visibility keyed to the canonical states)",
+      "governed": "`src/vaerion/rendering/visibility.ts` — twelve visibility obligations resolved from the State Matrix; skeleton structure-only, demo stamped, restricted hatched, empty teaching",
+      "kind": "code"
+    },
+    {
+      "id": "T-043",
+      "citation": "Constitution Part VIII (Data Architecture) + 8.0–8.9",
+      "governed": "Stage 8 Data Authorities — `src/vaerion/authorities/` (hash, contracts, chain, evidence, verification, ledger, rule, identity, investigation, manifest, export, composition, gates), `tools/vaerion-pipeline/verify-authorities.ts` (16 gates), `src/vaerion/docs/reports/STAGE-8-DATA-AUTHORITIES-CONFORMANCE.md`",
+      "kind": "code"
+    },
+    {
+      "id": "T-044",
+      "citation": "IR-013 (investigation record ownership)",
+      "governed": "`constitution/interpretations/LEDGER.md`; `src/vaerion/authorities/investigation.ts` implements the 8.6 lifecycle without claiming an authority name (P-5)",
+      "kind": "governance + code"
+    },
+    {
+      "id": "T-045",
+      "citation": "Technology bindings of Stages 7–8 (1.5; 8.0)",
+      "governed": "grayscale suppression mechanism and SHA-256 integrity binding documented in-module (`rendering.css` mode blocks; `src/vaerion/authorities/hash.ts` — FIPS 180-2 vectors; F-002 precedent)",
+      "kind": "code"
+    },
+    {
+      "id": "T-046",
+      "citation": "Founder's Stage 9 execution order + IR-002 ruling",
+      "governed": "Stage 9 Testing Infrastructure executed; IR-002 recorded RATIFIED (gates are conformance tooling); directive note in `constitution/amendments/LEDGER.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-047",
+      "citation": "Constitution 9.3, P-4, P-6, 10.1, 8.1 + F-002 + order Deliverable 1",
+      "governed": "Snapshot Authority Engine — `src/vaerion/testing/snapshot/` (engine: creation, comparison, integrity, drift fail-closed, supersession-only; store: Node-only working captures under `tools/vaerion-pipeline/snapshots/`), `tools/vaerion-pipeline/verify-snapshots.ts`",
+      "kind": "code"
+    },
+    {
+      "id": "T-048",
+      "citation": "Constitution 9.12, 9.8, 7.1, 7.5 + order Deliverable 2",
+      "governed": "Parity Harness — `src/vaerion/testing/parity.ts` (seven targets, six invariants, breakpoint parity), `tools/vaerion-pipeline/verify-parity.ts`",
+      "kind": "code"
+    },
+    {
+      "id": "T-049",
+      "citation": "Constitution 9.2, 9.3, 9.8, 9.10 + order Deliverable 3",
+      "governed": "Visual Regression Engine — `src/vaerion/testing/visual/` (eight ordered areas; meaning-based structure, never pixels; no manual drift approval)",
+      "kind": "code"
+    },
+    {
+      "id": "T-050",
+      "citation": "Constitution 9.4, 9.5, 6.11 + F-003 + order Deliverable 4",
+      "governed": "Accessibility Test Engine — `src/vaerion/testing/accessibility.ts` (keyboard, focus, announcements + registry parity, ARIA, AA/AAA contrast, dichromacy simulations, forced-colors, reduced motion; findings carry surface/primitive/rule/citation), `tools/vaerion-pipeline/verify-accessibility.ts`",
+      "kind": "code"
+    },
+    {
+      "id": "T-051",
+      "citation": "Constitution Part VI, 6.1 + order Deliverable 5",
+      "governed": "Interaction Test Engine — `src/vaerion/testing/interaction.ts` (Stage 6 contracts; registry exclusivity proven by refusal; 15 gates re-proven)",
+      "kind": "code"
+    },
+    {
+      "id": "T-052",
+      "citation": "Constitution Parts V, VIII, 9.11, 9.13, 9.14 + order Deliverable 6",
+      "governed": "State & Authority Test Engine — `src/vaerion/testing/state-authority.ts` (12 state gates, 16 authority gates, illegal-transition/quarantine/manifest-tamper refusal proofs)",
+      "kind": "code"
+    },
+    {
+      "id": "T-053",
+      "citation": "Constitution 9.9, 6.12, P-5, Art. XI + IR-011, IR-014 + order Deliverable 7",
+      "governed": "Performance Gates — `src/vaerion/testing/performance.ts` (six measured quantities; only ratified bounds enforced: 100 ms / 300 ms / 6 s / 400 ms; unratified budgets reported with pin requested), `tools/vaerion-pipeline/verify-performance.ts`",
+      "kind": "code"
+    },
+    {
+      "id": "T-054",
+      "citation": "Constitution 1.6, Part VIII, 9.3 + F-002 + order Deliverable 8",
+      "governed": "Security & Honesty Tests — `src/vaerion/testing/security.ts` (eight refusal proofs, each terminating in ConstitutionalViolationError), `tools/vaerion-pipeline/verify-security.ts`",
+      "kind": "code"
+    },
+    {
+      "id": "T-055",
+      "citation": "Constitution Part IX, 9.1, 10.1 + order Deliverable 9",
+      "governed": "Complete Test Pipeline — `tools/vaerion-pipeline/verify-all.ts` + evidence records (`record.ts`, artifacts under `tools/vaerion-pipeline/artifacts/` with PASS/FAIL, evidence, citations, artifact location, timestamp, integrity hash); `bun run vaerion:test-all`",
+      "kind": "code"
+    },
+    {
+      "id": "T-056",
+      "citation": "IR-014, IR-015, IR-016",
+      "governed": "`constitution/interpretations/LEDGER.md` — Stage 9 ambiguity filings (performance budget pins; fidelity-canon ratification; dichromacy simulation reading)",
+      "kind": "governance"
+    },
+    {
+      "id": "T-057",
+      "citation": "Founder's Stage 10 execution order",
+      "governed": "Stage 10 Release Engine executed — \"Nothing is believed. Everything is verified.\"; directive note in `constitution/amendments/LEDGER.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-058",
+      "citation": "Constitution Part X, 10.1–10.4 + 10.3 + F-006 + order Deliverables 1–2",
+      "governed": "Release Authority & Ceremony — `src/vaerion/release/` (identity.ts, receipt.ts, authority.ts, ledger.ts, store.ts), first Release Receipt issued into `constitution/releases/` (rel_769da4b7bf84ad3b, 1.0.10.r1), `tools/vaerion-pipeline/release.ts` (`vaerion:release`)",
+      "kind": "code"
+    },
+    {
+      "id": "T-059",
+      "citation": "order Deliverable 3 + 10.1 + 2.7 + P-6",
+      "governed": "Constitutional Build Engine — `src/vaerion/release/build.ts` (deterministic double-build proof, drift fails), `tools/vaerion-pipeline/verify-build.ts` (`vaerion:verify-build`)",
+      "kind": "code"
+    },
+    {
+      "id": "T-060",
+      "citation": "order Deliverable 4 + 2.8 + Art. II",
+      "governed": "Artifact Intelligence — `src/vaerion/release/artifacts.ts` (nothing anonymous), `tools/vaerion-pipeline/verify-artifacts.ts` (`vaerion:verify-artifacts`)",
+      "kind": "code"
+    },
+    {
+      "id": "T-061",
+      "citation": "order Deliverable 5 + 10.1–10.2",
+      "governed": "Autonomous Release Verification + Article Gate — `src/vaerion/release/verification.ts` (composes the real Stage 2–9 engines; fourteen Articles demonstrated), `tools/vaerion-pipeline/verify-release.ts` + `full-graph.ts` (`vaerion:verify-release`)",
+      "kind": "code"
+    },
+    {
+      "id": "T-062",
+      "citation": "order Deliverable 6 + 10.4 + 11.4",
+      "governed": "Rollback Engine — `src/vaerion/release/rollback.ts` (superseding receipts; superseded release untouched), `tools/vaerion-pipeline/verify-rollback.ts` (`vaerion:verify-rollback`)",
+      "kind": "code"
+    },
+    {
+      "id": "T-063",
+      "citation": "order Deliverable 7 + 8.7–8.8 + 5.10",
+      "governed": "Distribution Engine — `src/vaerion/release/distribution.ts` (eight declared channels; composition with the manifest lifecycle; delivery refused without evidence — Art. VIII), `tools/vaerion-pipeline/verify-distribution.ts` (`vaerion:verify-distribution`)",
+      "kind": "code"
+    },
+    {
+      "id": "T-064",
+      "citation": "order Deliverable 8 + 8.8 + 11.5",
+      "governed": "Trust Engine — `src/vaerion/release/trust.ts` (portable standalone verification of the stored release record), `tools/vaerion-pipeline/verify-trust.ts` (`vaerion:verify-trust`)",
+      "kind": "code"
+    },
+    {
+      "id": "T-065",
+      "citation": "order Deliverable 9 + 10.3 + Art. XI",
+      "governed": "Release Observatory — `src/vaerion/release/observatory.tsx`, `tools/vaerion-pipeline/observatory.ts` (`vaerion:observatory`), served at `/api/release/observatory` (IR-018); renders only real release data",
+      "kind": "code"
+    },
+    {
+      "id": "T-066",
+      "citation": "order Deliverable 10 + 10.1",
+      "governed": "Mechanical Gates — verify-build / verify-signatures / verify-artifacts / verify-distribution / verify-rollback / verify-release / verify-trust / verify-everything, each emitting an evidence record (PASS/FAIL · evidence · citation · artifact · timestamp · SHA-256); `bun run vaerion:verify-everything`",
+      "kind": "code"
+    },
+    {
+      "id": "T-067",
+      "citation": "IR-017, IR-018, IR-019",
+      "governed": "`constitution/interpretations/LEDGER.md` — Stage 10 ambiguity filings (signature algorithm binding; observatory display path; external delivery evidence)",
+      "kind": "governance"
+    },
+    {
+      "id": "T-068",
+      "citation": "Founder's Stage 11 execution order",
+      "governed": "Stage 11 Documentation Architecture executed — \"Documentation is the memory of the system.\"; directive note in `constitution/amendments/LEDGER.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-069",
+      "citation": "order Deliverables 1 + 5 + P-4 + 9.1 + 11.1",
+      "governed": "Knowledge organ + Documentation Governance — `constitution/docs/` (nine knowledge documents + `GOVERNANCE.md`), `src/vaerion/docs/governance.ts` (the DOC-META machine law), `src/vaerion/docs/README.md` (the documentation pipeline contract)",
+      "kind": "governance + code"
+    },
+    {
+      "id": "T-070",
+      "citation": "order Deliverable 2 + P-1",
+      "governed": "The Vaerion Codex — `constitution/docs/VAERION_CODEX_v1.0.md` (twelve chapters; every chapter references real implementation)",
+      "kind": "governance"
+    },
+    {
+      "id": "T-071",
+      "citation": "order Deliverable 3 + 4.6 + 3.11 + IR-020",
+      "governed": "2090 Experience Layer — `src/vaerion/docs/knowledge-interface.tsx` + `knowledge-host-route.tsx` (hash path `#/knowledge`), `src/app/api/knowledge/route.ts`, `src/app/page.tsx` (documented branch)",
+      "kind": "code"
+    },
+    {
+      "id": "T-072",
+      "citation": "order Deliverable 4",
+      "governed": "Developer Pathways — `constitution/docs/pathways/` (First Contact, System Understanding, Architecture Mastery, Constitutional Engineering), `constitution/docs/DEVELOPER_JOURNEY.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-073",
+      "citation": "order Deliverable 6 + Bible Art. VII",
+      "governed": "Search Intelligence — `src/vaerion/docs/search.ts` (hash-first: authority → registry → symbol → documentation), `src/app/api/knowledge/search/route.ts`",
+      "kind": "code"
+    },
+    {
+      "id": "T-074",
+      "citation": "order Deliverable 7 + 9.1 + F-005 + docs contract",
+      "governed": "Final Knowledge Verification — `tools/vaerion-pipeline/docs-shared.ts`, `publish-documentation.ts` (`vaerion:publish-docs`), `verify-documentation.ts` (`vaerion:verify-documentation`), published artifacts under `src/vaerion/docs/generated/` (trace-index publication, registry/stages/API docs, knowledge base)",
+      "kind": "code"
+    },
+    {
+      "id": "T-075",
+      "citation": "order Deliverable 8",
+      "governed": "Final Ascension Report — `src/vaerion/docs/reports/VAERION_COMPLETE_CONFORMANCE_REPORT.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-076",
+      "citation": "IR-020 (Knowledge Interface display path)",
+      "governed": "`constitution/interpretations/LEDGER.md` — Stage 11 ambiguity filing (documentation delivery vs product surface)",
+      "kind": "governance"
+    },
+    {
+      "id": "T-077",
+      "citation": "Founder's Phase 12 execution order",
+      "governed": "Launch Preparation executed — \"Prepare the entire civilization for launch\"; directive note in `constitution/amendments/LEDGER.md`",
+      "kind": "governance"
+    },
+    {
+      "id": "T-078",
+      "citation": "order sections 1–2, 5–6 + ADR-0001",
+      "governed": "Repository & distribution & deployment preparation — version register extended to the editor manifests (`packages/vaerion/tests/integration/version-register.test.ts`), `editors/README.md` written (was empty), `.github/CODEOWNERS`, `.env.example` (names only), `tools/launch/credential-check.ts` (`launch:credential-check`), `docs/operations/LAUNCH-SEQUENCE.md`",
+      "kind": "code"
+    },
+    {
+      "id": "T-079",
+      "citation": "order section 3 + IR-018/IR-020/IR-021",
+      "governed": "Launch website layer — `src/components/launch/` (LaunchShell, LaunchNav, LaunchFooter, BootScreen, Logo, pages Home/Vision/Observatory/DocumentationPortal) composing the preserved site pages + Knowledge Interface + instrument at `src/app/page.tsx`; Release Observatory surfaced at `#/observatory` (artifact served verbatim from `/api/release/observatory`)",
+      "kind": "code"
+    },
+    {
+      "id": "T-080",
+      "citation": "order section 4 + IR-003",
+      "governed": "Official-logo reservation — `brand/OFFICIAL-LOGO-SLOT.md` (integration map + replacement procedure; no logo created, existing assets untouched)",
+      "kind": "governance"
+    }
+  ]
+}
