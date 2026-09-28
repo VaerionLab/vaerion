@@ -1142,16 +1142,19 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
     checks.push({ check: "config", ok: false, code: "E1200", detail: "vaerion.yaml not found", impact: "this directory is ungoverned — runs, receipts, and journals have no verified home until the workspace is initialized", fix: "run `vae init`" });
   }
 
-  // 2. Journal integrity (every run).
+  // 2. Journal integrity + completeness (every run).
   const runs = await listJournals(ws.journalDir);
   for (const run of runs) {
     const report = await verifyJournal(join(ws.journalDir, `${run.run_id}.ndjson`));
+    const completeness = report.complete === null ? "unanchored (run not closed)" : report.complete ? "complete" : "INCOMPLETE";
     checks.push({
       check: `journal:${run.run_id}`,
       ok: report.ok,
       code: report.ok ? undefined : (report.issues[0]?.code ?? "E1001"),
-      detail: report.ok ? `${report.records} records, head ${report.headHash?.slice(0, 12)}…` : (report.issues[0]?.message ?? "verification failed"),
-      fix: report.ok ? undefined : "run `vae journal recover <run_id>` if a torn tail is reported",
+      detail: report.ok
+        ? `${report.records} records, head ${report.headHash?.slice(0, 12)}…, ${completeness}`
+        : (report.issues[0]?.message ?? "verification failed"),
+      fix: report.ok ? undefined : (report.issues[0]?.code === "E1010" ? "compare against the receipt printed at run close or a `vae snapshot` archive; never hand-edit a journal" : "run `vae journal recover <run_id>` if a torn tail is reported"),
     });
   }
 

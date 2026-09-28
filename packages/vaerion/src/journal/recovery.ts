@@ -20,6 +20,7 @@ import { acquireJournalLock, lockOwnerDead, readLockBody } from "./lock.ts";
 import { JournalWriter, ENGINE_VERSION } from "./writer.ts";
 import { SystemClock, type Clock } from "../kernel/clock.ts";
 import { VaerionError } from "../kernel/errors.ts";
+import { buildReceiptFromRecords } from "../receipts/receipt.ts";
 
 export interface RecoveryReport {
   journalPath: string;
@@ -28,6 +29,8 @@ export interface RecoveryReport {
   recordsRecovered: number;
   recoveryRecordIndex: number | null;
   lockCleared: boolean;
+  /** True when a closed run's receipt was lost to the torn tail and recovery re-certified the run. */
+  recertified: boolean;
 }
 
 export async function recoverJournal(journalPath: string, runId: string, configFingerprint: string, clock: Clock = new SystemClock()): Promise<RecoveryReport> {
@@ -38,6 +41,7 @@ export async function recoverJournal(journalPath: string, runId: string, configF
     recordsRecovered: 0,
     recoveryRecordIndex: null,
     lockCleared: false,
+    recertified: false,
   };
 
   // 1. Stale lock handling.
@@ -88,6 +92,23 @@ export async function recoverJournal(journalPath: string, runId: string, configF
       },
     });
     report.recoveryRecordIndex = writer.chainLength;
+
+    // 5. Completeness anchor law: a run is not finished until it has a
+    // receipt. If the torn tail WAS the receipt, the closed run now lacks
+    // its anchor — recovery re-certifies by folding a fresh receipt from
+    // the recovered records and appending it through the normal writer path.
+    const postNote = await readJournal(journalPath);
+    const hasClosed = postNote.records.some((rec) => rec.k === "evt" && rec.env.type === "run.closed");
+    const hasReceipt = postNote.records.some((rec) => rec.k === "receipt");
+    if (hasClosed && !hasReceipt) {
+      const receipt = buildReceiptFromRecords(postNote.records, {
+        closedAt: clock.nowIso(),
+        engineVersion: ENGINE_VERSION,
+        summary: "recovery re-certification — original receipt lost to the torn tail",
+      });
+      await writer.appendReceipt(receipt);
+      report.recertified = true;
+    }
   } finally {
     await writer.close();
   }

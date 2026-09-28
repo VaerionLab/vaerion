@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Canonical of record; site also reachable at https://vaerion.vercel.app until the domain connects.
+Sitemap: https://vaerion.dev/sitemap.xml

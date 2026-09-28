@@ -83,7 +83,8 @@ vae journal verify <RUN_ID>   # ok: true — the blake3 chain holds
 Full walkthrough with expected output:
 [`docs/getting-started/quickstart.md`](docs/getting-started/quickstart.md).
 Prefer a guided tour? `vae tour` walks the engine read-only in nine
-steps. New here? The quickstart above is the onboarding path.
+steps. New here? [`BETA-ONBOARDING.md`](BETA-ONBOARDING.md) is the
+onboarding contract.
 
 ## Why Vaerion exists
 
@@ -126,6 +127,12 @@ Architecture decisions: [`docs/adr/README.md`](docs/adr/README.md).
   `net.connect`. Declaring a tool grants nothing; only reviewed policy
   rules do. Unmatched means denied — and denials land in their own
   hash-chained refusal log.
+- **Journals prove integrity AND completeness.** Every closed run ends
+  with a receipt record that commits to the run's final record count and
+  head hash; `vae journal verify` enforces the commitment (E1010) —
+  editing, re-chaining, or deleting records after close is detectable.
+  Tested against a defined attack suite:
+  [`VAERION_SECURITY_PROOF_v1.0.md`](VAERION_SECURITY_PROOF_v1.0.md).
 - **One sanctioned egress.** All model I/O crosses a single gateway
   gate; nothing else in the engine may open the network (constitutionally
   enforced, mechanically checked).

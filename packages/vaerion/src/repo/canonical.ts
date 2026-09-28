@@ -6,7 +6,7 @@
  * History (the defect class this module kills): the canonical store's
  * protection hook was provisioned by ad-hoc shell at every campaign — the
  * hook bytes existed nowhere in the repository, so every session boundary
- * that lost the canonical store also lost the protection law's
+ * that lost `/home/z/vaerion-canonical.git` also lost the protection law's
  * enforcement until a human re-typed it (it was lost TWICE — measured at the
  * GA campaign and again at this campaign's start). The law now lives in the
  * engine: one string of record, byte-pinned by tests, installed by the ONE
@@ -75,19 +75,8 @@ done
 exit $status
 `;
 
-/** Environment variable that overrides the canonical store location (no absolute machine path is ever encoded in the engine). */
-export const CANONICAL_STORE_ENV = "VAERION_CANONICAL_STORE" as const;
-
-/**
- * The canonical store path of record for this environment (D-S: presence is
- * measured, never assumed): the VAERION_CANONICAL_STORE environment variable
- * when set, otherwise the relative default — every environment provisions
- * its own store.
- */
-export function canonicalStorePath(): string {
-  const fromEnv = process.env[CANONICAL_STORE_ENV]?.trim();
-  return fromEnv && fromEnv.length > 0 ? fromEnv : "vaerion-canonical.git";
-}
+/** The canonical store path of record for this environment (D-S: presence is measured, never assumed). */
+export const CANONICAL_STORE_PATH = "/home/z/vaerion-canonical.git" as const;
 
 export interface ProvisionStep {
   readonly argv: readonly string[];

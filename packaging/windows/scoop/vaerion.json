@@ -1,6 +1,6 @@
 {
   "_comment": "Scoop bucket manifest — the Vaerion CLI (ASCENSION XXV Phase XXXI). VERIFICATION STATUS: authored on Linux; scoop unavailable in this environment (JSON-validated, never executed). Platform marker: UNVERIFIED — SCOOP. The zip is the SAME artifact the winget + chocolatey channels reference (produced by the release train, verified through the signed MANIFEST); the hash is pinned from its SHA256SUMS at the release train — never guessed here. The scoop bucket itself is a Founder publication decision (F-5).",
-  "version": "0.1.13-rc1",
+  "version": "0.1.14-rc1",
   "description": "AI-native development engine — deterministic, auditable, local-first. Evidence, not branding.",
   "homepage": "https://github.com/VaerionLab/vaerion",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
   ],
   "architecture": {
     "64bit": {
-      "url": "https://github.com/VaerionLab/vaerion/releases/download/v0.1.13-rc1/vaerion-0.1.13-rc1-windows-x64.zip",
+      "url": "https://github.com/VaerionLab/vaerion/releases/download/v0.1.14-rc1/vaerion-0.1.14-rc1-windows-x64.zip",
       "hash": "sha256:CHECKSUM_PINNED_AT_RELEASE_TRAIN"
     }
   },

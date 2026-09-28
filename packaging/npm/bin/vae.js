@@ -9,7 +9,7 @@
  */
 
 if (typeof Bun === "undefined") {
-  console.error("E1600 vae requires the Bun runtime (>= 1.3) — node cannot execute the engine.");
+  console.error("E1600 vae requires the Bun runtime (>= 1.2) — node cannot execute the engine.");
   console.error("Fix: install Bun -> curl -fsSL https://bun.sh/install | sh");
   console.error("Docs: docs/INSTALL.md (all installation methods)");
   process.exit(2);

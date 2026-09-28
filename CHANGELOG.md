@@ -1,10 +1,10 @@
 # Changelog
 
 All notable changes to the Vaerion engine. Entries derive from the measured
-records of record — the annotated git tags (`v0.1.7-rc1` … `v0.1.13-rc1`)
-and the verification gates (`.vaerion-verification.json`) — not from
-memory; dates are the measured tag dates. Keep a Changelog format; within
-v0.1 surfaces evolve additively — nothing removed or renamed.
+records of record — the annotated git tags (`v0.1.7-rc1` … `v0.1.13-rc1`), the
+reports in `docs/ga/`, and `worklog.md` — not from memory; dates are the
+measured tag dates. Keep a Changelog format; within v0.1 surfaces evolve
+additively — nothing removed or renamed (`BETA-ONBOARDING.md`).
 
 ## [Unreleased]
 
@@ -39,16 +39,35 @@ v0.1 surfaces evolve additively — nothing removed or renamed.
   (fast-forward `b6c5fac..7a1e44f`, tag pushed once, byte-identical; Actions
   runs SUCCESS incl. signed-release; CI artifacts independently verified).
 
+## [0.1.14-rc1] — 2026-09-28 — the completeness-closure release (the launch train)
+
+- Security: **journal completeness closed by verification (E1010)** — `journal verify`
+  now enforces the terminal-receipt completeness anchor ("a receipt record certifies
+  the prefix immediately before it"). Tail deletion, re-chained deletion, receipt
+  removal, and post-close record substitution are detected with taught errors
+  (E1010/E1005/E1001, exit 5) where integrity-only verification previously passed
+  them. Design of record: `JOURNAL_COMPLETENESS_DESIGN.md` (six options evaluated;
+  the in-journal anchor chosen — zero new files, commands, schema, or dependencies).
+- Added: the permanent attack suite
+  `packages/vaerion/tests/security/journal-completeness.test.ts` (12 scenarios:
+  semantic forgery, hash corruption, tail/middle deletion + re-chain, substitution,
+  receipt-claim edits — plus lawful-flow compatibility: torn-receipt recovery
+  re-certification, in-flight runs, redacted exports).
+- Changed: export re-certifies copied receipts to the export's own chain (the
+  universal invariant, provenance kept in the derivation header); recovery
+  re-certifies when the torn tail was the receipt (`RecoveryReport.recertified`);
+  doctor reports journal completeness with an E1010-specific fix hint;
+  `spec/errors.yaml` registers E1010 `journal_completeness_anchor_invalid`.
+- Documentation: `VAERION_SECURITY_PROOF_v1.0.md` (threat model, tested attack
+  table, verification commands, honest boundaries); THREAT-MODEL P-COMPLETE-RECORD;
+  LIMITATIONS §1.9; README/SECURITY truth-up. Records: `PHASE_51_SECURITY_CLOSURE_REPORT.md`,
+  `PHASE_52_LAUNCH_READINESS_REPORT.md`.
+- Measured: 645/645 package tests including the completeness suite; fresh-install
+  war replay green (all seven attacks blocked); typecheck 0 errors. Version register
+  re-locked at 0.1.14-rc1 (36+ surfaces; goldens re-blessed via `VAE_BLESS=1` — the
+  only sanctioned path; hash movement is the deterministic `engine_version` cascade).
+
 ## [0.1.13-rc1] — 2026-09-03 — the ASCENSION XXV production-trust release (the first release signed by the production key)
-- Security (PHASE 32 key rotation, 2026-09-26): the release trust anchor
-  rotated under Founder authorization (PHASE 32, FINAL RELEASE CLOSURE) — the
-  repository moved to VaerionLab and the ASCENSION XXV private half is
-  unreachable by design (GitHub secrets are write-only; the local copy was
-  destroyed at ceremony close), so a fresh Ed25519 key was generated, provisioned
-  as `RELEASE_SIGNING_KEY`, and the key of record `keys/release-signing.pub`
-  rotated; new fingerprint `sha256(spki-der): df72f45e6c34ba507227843c22128d80`;
-  prior releases keep verifying against their shipped-beside keys
-  (docs/security/SIGNING-CEREMONY.md §7).
 
 - Security: **the production signing key ceremony (F-3/R-2 closed)** — the
   release trust anchor moved from the session-bound bootstrap key to the

@@ -114,8 +114,7 @@ openssl pkeyutl -verify -pubin -inkey release-signing.pub \
 `packaging/install.sh --tarball <file>` turns the tarball into a full
 user-local install; running the CLI from the unpacked tree works directly
 (`bun run packages/vaerion/src/cli/vae.ts --version`). Step-by-step release
-verification: `tools/dist-verify.ts` against the release's signed
-manifest (the trust chain law). The release trust chain
+verification: `docs/ga/RELEASE-VERIFICATION.md`. The release trust chain
 (who signs, rotation, recovery): `docs/security/SIGNING-CEREMONY.md`.
 
 > Registry status (honest labels): **npm is live** — `vaerion@0.1.13-rc1`

@@ -54,12 +54,7 @@ function sh(cmd: string[], opts: { cwd?: string; timeoutMs?: number } = {}): ShR
 }
 
 describe("the cross-version upgrade leg — vN → vN+1 on one host prefix", () => {
-  // Honest precondition (D-S): the leg archives the TAGGED previous train
-  // from local git history — the Founder repository and full-history CI have
-  // it; a clean-root public clone does not. Where the tag is absent the leg
-  // SKIPS with this label — never a silent pass.
-  const HAS_PREV_TAG = sh(["git", "rev-parse", "--verify", PREV_TAG]).status === 0;
-  test.skipIf(!HAS_PREV_TAG)("the tagged previous engine installs, a vN workspace journals, the upgrade to vN+1 preserves and serves it", () => {
+  test("the tagged previous engine installs, a vN workspace journals, the upgrade to vN+1 preserves and serves it", () => {
     // 0. Preconditions: this is a git checkout with full history (CI clones
     //    with fetch-depth: 0 — the repository is the evidence).
     expect(sh(["git", "rev-parse", "--verify", PREV_TAG]).status).toBe(0);

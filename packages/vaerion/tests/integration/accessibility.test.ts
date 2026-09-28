@@ -10,17 +10,11 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { A11Y_REPORT_SCHEMA, analyzeSources, gateEntry, siteSurfaceAbsent, type A11ySource } from "../../../../tools/a11y-check.ts";
+import { A11Y_REPORT_SCHEMA, analyzeSources, type A11ySource } from "../../../../tools/a11y-check.ts";
 
 const REPO_ROOT = join(import.meta.dir, "..", "..", "..", "..");
-
-/** The site console (src/**) is a Founder-side surface (excluded from the
- * public Community Edition tree). The REAL-face tests exercise it wherever
- * it exists; where it does not, they SKIP with this label — never a silent
- * pass (D-S). The a11y-structural gate applies the same law. */
-const WEB_FACE_PRESENT = existsSync(join(REPO_ROOT, "src", "app", "layout.tsx"));
 
 function src(path: string, content: string): A11ySource {
   return { path, content };
@@ -105,7 +99,7 @@ describe("the accessibility invariants — every rule fails closed", () => {
 });
 
 describe("the report contract", () => {
-  test.skipIf(!WEB_FACE_PRESENT)("schema, determinism, and rich-plain-JSON round-trip", () => {
+  test("schema, determinism, and rich-plain-JSON round-trip", () => {
     const sources = [
       src("src/app/layout.tsx", readFileSync(join(REPO_ROOT, "src", "app", "layout.tsx"), "utf8")),
       src("src/app/page.tsx", readFileSync(join(REPO_ROOT, "src", "app", "page.tsx"), "utf8")),
@@ -118,7 +112,7 @@ describe("the report contract", () => {
     expect(JSON.parse(JSON.stringify(a))).toEqual(a); // rich-plain JSON round-trip
   });
 
-  test.skipIf(!WEB_FACE_PRESENT)("THE REAL WEB FACE passes the invariants of record", () => {
+  test("THE REAL WEB FACE passes the invariants of record", () => {
     // The REAL web face is the launch composition (IR-021): the same set the
     // a11y-structural gate scans (L-5 repair, Phase 16).
     const launch = (...p: string[]) => readFileSync(join(REPO_ROOT, "src", "components", "launch", ...p), "utf8");
@@ -135,22 +129,6 @@ describe("the report contract", () => {
       throw new Error(`real web face violated the a11y invariants:\n${bad.join("\n")}`);
     }
     expect(r.passed).toBe(true);
-  });
-});
-
-describe("the site-absent degradation (public Community Edition tree)", () => {
-  test.skipIf(WEB_FACE_PRESENT)("the gate SKIPS with a labeled record when the site console is absent", () => {
-    expect(siteSurfaceAbsent(REPO_ROOT)).toBe(true);
-    const out: string[] = [];
-    const errs: string[] = [];
-    const code = gateEntry(REPO_ROOT, (l) => out.push(l), (l) => errs.push(l));
-    expect(code).toBe(0);
-    expect(out[1]).toContain("a11y-structural: SKIP");
-    expect(errs).toEqual([]);
-    const record = JSON.parse(out[0]!) as { schema: string; passed: boolean; note: string };
-    expect(record.schema).toBe(A11Y_REPORT_SCHEMA);
-    expect(record.passed).toBe(true);
-    expect(record.note).toContain("re-arm when the surface exists");
   });
 });
 

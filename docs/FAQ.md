@@ -71,8 +71,7 @@ ratification is a Founder decision.
 
 ## How do I report a bug?
 
-The severity ladder lives in the issue templates (bug report / feature
-request / config report). Always attach: the
+`BETA-ONBOARDING.md` defines the severity ladder. Always attach: the
 command, the E-code, `vae doctor --json` output, and — for run bugs —
 `vae journal export <RUN_ID>` (redacted, independently verifiable).
 

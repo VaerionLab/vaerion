@@ -42,10 +42,10 @@ modules:
   - name: vaerion
     buildsystem: simple
     build-commands:
-      - install -Dm644 -t /app/lib/vaerion/0.1.13-rc1/ -- source/package.json
-      - cp -R -- source/src /app/lib/vaerion/0.1.13-rc1/src
+      - install -Dm644 -t /app/lib/vaerion/0.1.14-rc1/ -- source/package.json
+      - cp -R -- source/src /app/lib/vaerion/0.1.14-rc1/src
       - |
-        printf '#!/bin/sh\nexec /app/bin/bun run /app/lib/vaerion/0.1.13-rc1/src/cli/vae.ts "$@"\n' > /app/bin/vae
+        printf '#!/bin/sh\nexec /app/bin/bun run /app/lib/vaerion/0.1.14-rc1/src/cli/vae.ts "$@"\n' > /app/bin/vae
         chmod +x /app/bin/vae
       - install -Dm644 source/LICENSE /app/share/licenses/vaerion/LICENSE
       - |
@@ -62,8 +62,8 @@ modules:
         XML
     sources:
       - type: archive
-        path: ../../dist/vaerion-0.1.13-rc1-source.tar.gz
+        path: ../../dist/vaerion-0.1.14-rc1-source.tar.gz
         # For the Flathub submission the archive is fetched from the release
         # URL instead; the local path builds from the release train output.
-        # url: https://github.com/VaerionLab/vaerion/releases/download/v0.1.13-rc1/vaerion-0.1.13-rc1-source.tar.gz
+        # url: https://github.com/VaerionLab/vaerion/releases/download/v0.1.14-rc1/vaerion-0.1.14-rc1-source.tar.gz
         # sha256: CHECKSUM_PINNED_AT_RELEASE_TRAIN

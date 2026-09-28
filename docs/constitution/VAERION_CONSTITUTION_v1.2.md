@@ -271,7 +271,7 @@ taken on the dated audit, honestly labeled.
 
 | Date (UTC) | Remote | Commit of record | Tag of record | Measured evidence |
 |---|---|---|---|---|
-| 2026-09-02 | `canonical` — `<canonical-store>` | `9d3dad8` — local HEAD == remote `main`, divergence 0/0 | `v0.1.8-rc1` — tag object `7d75198` identical on both sides | `git fetch` clean; ahead/behind measured `0 0`; D-Q pre-receive hook present and law-verified (ff-only `main`, no deletion, `v*` immutable); release trust chain re-verified live (`dist-verify` → signature OK Ed25519, ALL CHECKS PASSED, exit 0); git tag is annotated (`Auren <auren@vaerion.dev>`), **not** git-cryptographically signed — the artifact-level Ed25519 manifest signature is the signature of record |
+| 2026-09-02 | `canonical` — `/home/z/vaerion-canonical.git` | `9d3dad8` — local HEAD == remote `main`, divergence 0/0 | `v0.1.8-rc1` — tag object `7d75198` identical on both sides | `git fetch` clean; ahead/behind measured `0 0`; D-Q pre-receive hook present and law-verified (ff-only `main`, no deletion, `v*` immutable); release trust chain re-verified live (`dist-verify` → signature OK Ed25519, ALL CHECKS PASSED, exit 0); git tag is annotated (`Auren <auren@vaerion.dev>`), **not** git-cryptographically signed — the artifact-level Ed25519 manifest signature is the signature of record |
 
 **GitHub status (measured 2026-09-02; D-S labels).** The repository carries no
 GitHub remote (`git remote -v` lists only `canonical`), the `gh` CLI is not

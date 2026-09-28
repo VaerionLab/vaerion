@@ -83,7 +83,7 @@ testable shape. Usage questions belong in
 [Q&A](https://github.com/VaerionLab/vaerion/discussions/categories/q-a);
 release news lands in
 [Announcements](https://github.com/VaerionLab/vaerion/discussions/categories/announcements)
-— the GitHub Release is the announcement of record.
+(`docs/operations/ANNOUNCEMENTS.md` is the flow of record).
 
 ## License
 

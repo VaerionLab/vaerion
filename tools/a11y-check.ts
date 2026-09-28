@@ -26,7 +26,7 @@
  * in docs/ga/ACCESSIBILITY-AUDIT.md.
  */
 
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 
 export const A11Y_REPORT_SCHEMA = "vaerion.a11y.v1" as const;
@@ -47,8 +47,6 @@ export interface A11yReport {
   readonly schema: typeof A11Y_REPORT_SCHEMA;
   readonly passed: boolean;
   readonly rules: readonly A11yRuleResult[];
-  /** Honest-degradation note (e.g. the site-absent SKIP record). */
-  readonly note?: string;
 }
 
 export interface A11ySource {
@@ -238,35 +236,9 @@ export function analyzeSources(sources: readonly A11ySource[]): A11yReport {
 
 /* ────────────────────────────  the gate entry  ──────────────────────────── */
 
-/** The site console is a Founder-side surface: the public Community Edition
- * tree carries no src/app. When it is absent the gate degrades honestly. */
-export const SITE_ABSENT_NOTE =
-  "site surfaces absent from this tree — the invariants re-arm when the surface exists" as const;
-
-/** The site-absent degradation record (D-S): a labeled SKIP, never a silent pass. */
-export function siteAbsentReport(): A11yReport {
-  return { schema: A11Y_REPORT_SCHEMA, passed: true, rules: [], note: SITE_ABSENT_NOTE };
-}
-
-/** The site console's presence is measured, never assumed (D-S). */
-export function siteSurfaceAbsent(root: string): boolean {
-  return !existsSync(join(root, "src", "app"));
-}
-
-/**
- * The gate entry (a verify.ts STEP — D-R): run the invariants of record over
- * the launch composition, or SKIP with a labeled record when the site
- * surface is absent from this tree. One emitted line per call; returns the
- * process exit code.
- */
-export function gateEntry(root: string, emit: (line: string) => void, err: (line: string) => void): 0 | 1 {
-  if (siteSurfaceAbsent(root)) {
-    emit(JSON.stringify(siteAbsentReport(), null, 2));
-    emit(`a11y-structural: SKIP — ${SITE_ABSENT_NOTE}`);
-    return 0;
-  }
-  const launchDir = join(root, "src", "components", "launch");
-  const appDir = join(root, "src", "app");
+function main(): void {
+  const appDir = join(import.meta.dir, "..", "src", "app");
+  const launchDir = join(import.meta.dir, "..", "src", "components", "launch");
   // The scan scope of record (L-5 repair, Phase 16): the REAL page surface is
   // the launch composition (IR-021) — layout + shell/nav/footer + the home
   // face + the stylesheet — analyzed together as the one rendered page.
@@ -287,20 +259,16 @@ export function gateEntry(root: string, emit: (line: string) => void, err: (line
     }
   }
   const report = analyzeSources(sources);
-  emit(JSON.stringify(report, null, 2));
+  console.log(JSON.stringify(report, null, 2));
   if (!report.passed) {
-    err("a11y-structural: FAILED — accessibility invariants violated");
+    console.error("a11y-structural: FAILED — accessibility invariants violated");
     for (const r of report.rules) {
-      for (const f of r.findings) err(`  - [${f.rule}] ${f.file}: ${f.detail}`);
+      for (const f of r.findings) console.error(`  - [${f.rule}] ${f.file}: ${f.detail}`);
     }
-    return 1;
+    process.exit(1);
   }
-  emit("a11y-structural: OK — the human surface honors the accessibility invariants");
-  return 0;
-}
-
-function main(): void {
-  process.exit(gateEntry(join(import.meta.dir, ".."), (l) => console.log(l), (l) => console.error(l)));
+  console.log("a11y-structural: OK — the human surface honors the accessibility invariants");
+  process.exit(0);
 }
 
 // CLI entry (the verify.ts gate step); the pure runner above is imported by tests.

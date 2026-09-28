@@ -38,7 +38,7 @@ verification legs (sha256 → engine verifier → openssl cross-check).
 
 | Surface | Status |
 |---|---|
-| Engine | `0.1.13-rc1` — release candidate (prerelease) |
+| Engine | `0.1.14-rc1` — release candidate (prerelease) |
 | Verification | 9/9 gates green · 545 tests / 0 failed · 3,932 expectations |
 | GitHub Releases | Live — signed artifacts: https://github.com/VaerionLab/vaerion/releases |
 | npm / PyPI | Not published — Founder-gated on the release train |

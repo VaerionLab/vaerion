@@ -55,6 +55,10 @@ errors:
     name: journal_export_derivation_invalid
     summary: "Redacted export derivation metadata does not match its records."
     fix: "Re-export from the source journal; never mutate exported files."
+  E1010:
+    name: journal_completeness_anchor_invalid
+    summary: "Journal completeness anchor invalid — the terminal receipt is missing or does not certify the records it precedes."
+    fix: "Compare against the receipt printed at run close or a `vae snapshot` archive; restore the run's evidence; never hand-edit a journal."
   E1100:
     name: envelope_invalid
     summary: "Event envelope failed validation."

@@ -22,7 +22,8 @@ the release train).
   (TypeScript declarations in `lib/*.d.ts`); media in `media/`.
 - Status: authored and reviewed; execution requires a VS Code host.
   Marketplace publish is **Founder-gated** (`vsce publish` with
-  `VSCE_PAT`; prepared, not run — the F-5 publication step).
+  `VSCE_PAT`; prepared, not run — see `docs/operations/ENVIRONMENTS.md`
+  F-5).
 
 ## Neovim — `editors/nvim/`
 
@@ -52,6 +53,6 @@ the release train).
 2. One version law: every editor manifest carries the engine version of
    record, pinned in the version register.
 3. One publish law: no marketplace upload happens outside the Founder's
-   release-train authorization.
-4. One honesty law: unexecuted states are labeled as such — here and in
-   each integration's README.
+   release-train authorization (`docs/operations/LAUNCH-SEQUENCE.md`).
+4. One honesty law: unexecuted states are labeled as such — here, in each
+   integration's README, and in `VAERION_LAUNCH_READINESS_REPORT.md`.

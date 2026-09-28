@@ -14,7 +14,7 @@ hands argv over unchanged.
 | `python/` | PyPI (`vae` console script) | Python is the delivery channel, not the substrate; exec's Bun with the packaged engine |
 | `homebrew/vaerion.rb` | Homebrew formula | url/sha256 filled from SHA256SUMS at release time |
 | `windows/` | winget manifests + `install.ps1` | portable layout, user-scope PATH, clean uninstall |
-| `windows/chocolatey/` | Chocolatey nuspec + install/uninstall scripts | installs the same release zip as winget; version maps to the choco revision form (0.1.13-rc1 → 0.1.13.1) |
+| `windows/chocolatey/` | Chocolatey nuspec + install/uninstall scripts | installs the same release zip as winget; version maps to the choco revision form (0.1.14-rc1 → 0.1.14.1) |
 | `windows/scoop/` | Scoop bucket manifest (JSON) | same release zip; `checkver`/`autoupdate` read the GitHub Releases API |
 | `macos/` | `.dmg` + `.pkg` recipes, `SIGNING-PREP.md` | Developer ID / notarization runbook gated on the key ceremony |
 | `linux/` | `make-deb.sh`, `vaerion.spec`, `make-appimage.sh` | deb verified via `dpkg-deb`; rpm/AppImage need their host tools |
@@ -25,7 +25,7 @@ hands argv over unchanged.
 
 | Target | Verified evidence |
 |---|---|
-| npm package | tarball built; `npm install -g --prefix <tmp>`; `vae version` → 0.1.13-rc1; `dev --json` pure; E1600 → exit 2; 95 engine files in package |
+| npm package | tarball built; `npm install -g --prefix <tmp>`; `vae version` → 0.1.14-rc1; `dev --json` pure; E1600 → exit 2; 95 engine files in package |
 | PyPI wheel | wheel built (95 engine files + entry_points); venv install; `vae version` OK; missing-Bun → E1600 exit 2 |
 | Universal installer | source-method install from the signed release tarball; `vae version`; exit-code contract; `current` symlink; clean uninstall (nothing left behind) |
 | deb | built via `dpkg-deb`; metadata + extraction checks pass (vae executable, engine present) |

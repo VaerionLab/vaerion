@@ -13,9 +13,8 @@ measured, never assumed.
 - `docs/TROUBLESHOOTING.md` — the E-code diagnostics catalog: what each error
   means and its fix.
 - `docs/FAQ.md` — frequent questions.
-- `CONTRIBUTING.md` — how to contribute, and the community surfaces
-  (Discussions, Discord, issue templates) that go live with the release
-  train.
+- `BETA-ONBOARDING.md` — the beta program contract: the four-stage path and the
+  feedback severity ladder.
 
 ## Self-diagnostics on the CLI
 
@@ -56,8 +55,7 @@ same repository (enablement measured during the ASCENSION XXV campaign):
 | [Announcements](https://github.com/VaerionLab/vaerion/discussions/categories/announcements) | release notes and campaign closures from the maintainer |
 | [Show and tell](https://github.com/VaerionLab/vaerion/discussions/categories/show-and-tell) | what you built with Vaerion |
 
-Announcements are posted by the maintainer; the GitHub Release is the
-announcement of record.
+The announcement flow itself is `docs/operations/ANNOUNCEMENTS.md`.
 
 Security findings are the exception: report them privately — see `SECURITY.md`.
 Never open a public issue for a security finding.
@@ -65,9 +63,11 @@ Never open a public issue for a security finding.
 ## Scope honesty
 
 - This is a beta: performance is unoptimized and some platform hardening is
-  tracked openly (`docs/security/RISK-LEDGER.md`).
-- Cross-version upgrade is UNVERIFIED as of the Empty Machine Test of
-  record; same-version upgrade and clean removal are measured.
+  tracked openly (`docs/security/RISK-LEDGER.md`; the audit records in
+  `docs/ga/`).
+- Cross-version upgrade is UNVERIFIED as of the Empty Machine Test of record
+  (`docs/ga/ASCENSION-XX-EMPTY-MACHINE-TEST.md`); same-version upgrade and
+  clean removal are measured.
 - No hosted support channel (chat, forum, hosted email desk) is provided by
   this repository today. GitHub Discussions Q&A is the community help
   surface; a hosted desk remains unprovisioned and will be listed here if

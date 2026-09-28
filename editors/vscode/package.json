@@ -2,7 +2,7 @@
   "name": "vaerion-vscode",
   "displayName": "Vaerion",
   "description": "The Vaerion Developer Workspace Experience — this editor understands Vaerion because Vaerion understands itself. Status, one-click doctor, run history, journal viewer, snapshots, and the AI layer, all through the vae CLI (the CLI owns all business logic).",
-  "version": "0.1.13-rc1",
+  "version": "0.1.14-rc1",
   "publisher": "vaerion",
   "license": "SEE LICENSE IN ../../LICENSE",
   "engines": {
