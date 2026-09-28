@@ -1,0 +1,612 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Keyboard focus is always visible (Phase 8 — the accessibility law):
+     a base focus-visible ring for every interactive element that does not
+     ship its own focus-visible styling (components extend, never remove). */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring/70;
+  }
+}
+
+/* ═══════════ Vaerion control-surface face (console system v5 — PHASE 17) ═══════════
+ * Tokens are mirrored from the frozen brand truth (the official palette of
+ * record — brand/official/MANIFEST.md; the pre-ratification tokens.json was
+ * relocated to docs/history/ by the PHASE 16.3 Founder brand purge) into
+ * CSS variables and mapped into Tailwind theme colors. The console is
+ * dark-only: a governance runtime has one operating canvas.
+ *
+ * Canvas law (v5 — OLED): TRUE BLACK #000 is the page. Surfaces are
+ * translucent glass — depth is carried by luminous hairlines, internal
+ * highlights and soft external shadow, never by flat fills. Every
+ * elevation step is announced by a hairline AND a light source.
+ *
+ * Palette law (board of record): gold · ink black · steel gray ·
+ * porcelain white · violet. Nothing else is introduced.
+ *
+ * Gold law: #D4AF37 means VERIFIED EVIDENCE and nothing else. It appears
+ * in verification states, the evidence deposit, and the one primary
+ * action — never as decoration. Violet is the intelligence accent:
+ * atmosphere, glow fields, and live-system signals — never identity.
+ * The official Founder logo (brand/official/MANIFEST.md) is the ONE
+ * identity; these tokens dress the room, they never redraw the mark. */
+:root {
+  --vx-bg: #000000;
+  --vx-surface: rgba(13, 17, 23, 0.55);
+  --vx-surface-2: rgba(22, 27, 36, 0.62);
+  --vx-line: rgba(255, 255, 255, 0.08);
+  --vx-well: rgba(3, 5, 9, 0.72);
+  --vx-text: #f5f4ef;
+  --vx-muted: #8a919c;
+  --vx-gold: #d4af37;
+  --vx-gold-bright: #e8c458;
+  --vx-gold-soft: #f4dc8a;
+  --vx-violet: #8b7cf6;
+  --vx-violet-deep: #5b4bc4;
+  --vx-violet-soft: #b9afff;
+  --vx-trust: #34b27b;
+  --vx-warn: #c98a1f;
+  --vx-error: #c24e4e;
+  --vx-info: #3b82f6;
+}
+
+@theme inline {
+  --color-ink: var(--vx-bg);
+  --color-surface: var(--vx-surface);
+  --color-surface-2: var(--vx-surface-2);
+  --color-well: var(--vx-well);
+  --color-edge: var(--vx-line);
+  --color-body: var(--vx-text);
+  --color-mutedfg: var(--vx-muted);
+  --color-gold: var(--vx-gold);
+  --color-gold-bright: var(--vx-gold-bright);
+  --color-gold-soft: var(--vx-gold-soft);
+  --color-violet: var(--vx-violet);
+  --color-violet-deep: var(--vx-violet-deep);
+  --color-violet-soft: var(--vx-violet-soft);
+  --color-trust: var(--vx-trust);
+  --color-warnx: var(--vx-warn);
+  --color-failx: var(--vx-error);
+  --color-signal: var(--vx-info);
+}
+
+/* OLED body law: the console is one black canvas — overscroll flashes
+ * black, never white. */
+html,
+body {
+  background: #000;
+}
+
+.vx-root ::selection {
+  background: color-mix(in srgb, var(--vx-gold) 30%, transparent);
+}
+
+/* ── quiet motion ────────────────────────────────────────────────────────
+ * Luxury through precision, not effects. Two movements exist:
+ *   1. .vx-page-in — a page settles in when the hash route changes.
+ *   2. .vx-reveal — hero elements arrive once, staggered, on first paint.
+ * Everything is small (≤ 8 px travel), fast (≤ 500 ms), and fully disabled
+ * under prefers-reduced-motion. Nothing loops, nothing bounces.          */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  .vx-page-in {
+    animation: vx-page-in 0.32s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .vx-reveal {
+    animation: vx-reveal 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+  .vx-reveal-1 { animation-delay: 0.07s; }
+  .vx-reveal-2 { animation-delay: 0.14s; }
+  .vx-reveal-3 { animation-delay: 0.21s; }
+  .vx-reveal-4 { animation-delay: 0.28s; }
+}
+@keyframes vx-page-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes vx-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+/* ── proof loops (hero + signature visuals only) ────────────────────────
+ * Two slow, precise loops exist and nothing else loops:
+ *   .vx-breathe — the pulse that marks the stage under evaluation.
+ *   .vx-dash    — the segment travelling along the action stroke.
+ * Both are disabled under prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .vx-breathe {
+    animation: vx-breathe 2.4s ease-in-out infinite;
+  }
+  .vx-dash {
+    animation: vx-dash 3.6s linear infinite;
+  }
+}
+@keyframes vx-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes vx-dash {
+  from { stroke-dashoffset: 160; }
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vx-page-in,
+  .vx-reveal,
+  .vx-breathe,
+  .vx-dash {
+    animation: none;
+  }
+}
+.vx-root code,
+.vx-root pre,
+.vx-root kbd {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+/* calm scrollbars inside doc panels */
+.vx-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vx-line) transparent;
+}
+.vx-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.vx-scroll::-webkit-scrollbar-thumb {
+  background: var(--vx-line);
+  border-radius: 8px;
+}
+.vx-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+ * PHASE 17 — EXPERIENCE AWAKENING · the glass language
+ * ─────────────────────────────────────────────────────────────────────
+ * A complete glass design language layered on the console law:
+ *
+ *   .glass          frosted panel — blur, luminous hairline, internal
+ *                   top highlight, deep external shadow
+ *   .glass-raised   higher elevation (modals, floating docks)
+ *   .glass-dock     the floating navigation dock
+ *   .edge-light     the thin luminous border that separates glass from
+ *                   the void (top edge carries the light source)
+ *   .vx-aurora-*    the cinematic atmosphere (fixed, GPU-composited,
+ *                   transform-only drift)
+ *   .vx-sheen       one light sweep across an official surface
+ *
+ * Performance law: every animation here moves transform or opacity only.
+ * Loops are slow and few. Everything honors prefers-reduced-motion.
+ * ═══════════════════════════════════════════════════════════════════════ */
+
+.glass {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012) 38%, rgba(255, 255, 255, 0) 100%),
+    var(--vx-surface);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid var(--vx-line);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.02),
+    0 24px 70px -36px rgba(0, 0, 0, 0.9);
+}
+
+.glass-raised {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015) 42%, rgba(255, 255, 255, 0) 100%),
+    var(--vx-surface-2);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.09),
+    0 32px 90px -40px rgba(0, 0, 0, 0.95);
+}
+
+.glass-dock {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.014) 45%, rgba(255, 255, 255, 0) 100%),
+    rgba(6, 8, 12, 0.66);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 18px 50px -24px rgba(0, 0, 0, 0.9);
+}
+
+/* The luminous top edge — a light source, not a border. Sits on any
+ * glass surface via a pseudo element; parent needs position:relative. */
+.edge-light {
+  position: relative;
+}
+.edge-light::before {
+  content: "";
+  position: absolute;
+  inset: 0 12% auto 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), rgba(139, 124, 246, 0.28), transparent);
+  pointer-events: none;
+}
+
+/* ── the aurora: deep-space atmosphere ─────────────────────────────────── */
+.vx-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+  background: #000;
+}
+.vx-aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  will-change: transform;
+}
+.vx-aurora-violet {
+  top: -22%;
+  left: -12%;
+  width: 62vw;
+  height: 62vw;
+  min-width: 520px;
+  min-height: 520px;
+  background: radial-gradient(circle at center, rgba(91, 75, 196, 0.34), rgba(91, 75, 196, 0.1) 45%, transparent 70%);
+}
+.vx-aurora-gold {
+  bottom: -28%;
+  right: -14%;
+  width: 56vw;
+  height: 56vw;
+  min-width: 480px;
+  min-height: 480px;
+  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.13), rgba(212, 175, 55, 0.05) 45%, transparent 70%);
+}
+.vx-aurora-steel {
+  top: 34%;
+  left: 44%;
+  width: 40vw;
+  height: 40vw;
+  min-width: 380px;
+  min-height: 380px;
+  background: radial-gradient(circle at center, rgba(138, 145, 156, 0.07), transparent 65%);
+}
+.vx-aurora-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 62% at 50% 0%, black 30%, transparent 78%);
+  mask-image: radial-gradient(ellipse 90% 62% at 50% 0%, black 30%, transparent 78%);
+}
+.vx-aurora-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 120% 90% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+}
+
+/* ── sheen: one light sweep across official presentation frames ───────── */
+.vx-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.vx-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -60% auto;
+  left: -80%;
+  width: 55%;
+  height: 220%;
+  background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.09) 45%, rgba(244, 220, 138, 0.14) 50%, rgba(255, 255, 255, 0.09) 55%, transparent);
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+
+/* ── status beacon: the live-system dot ───────────────────────────────── */
+.vx-beacon {
+  position: relative;
+}
+.vx-beacon::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  border: 1px solid currentColor;
+  opacity: 0.5;
+}
+
+/* ── movement (PHASE 17) — transform/opacity only, guarded ────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .vx-float {
+    animation: vx-float 7s ease-in-out infinite;
+  }
+  .vx-float-slow {
+    animation: vx-float 11s ease-in-out infinite;
+  }
+  .vx-glow-pulse {
+    animation: vx-glow-pulse 4.5s ease-in-out infinite;
+  }
+  .vx-aurora-drift-a {
+    animation: vx-aurora-a 46s ease-in-out infinite alternate;
+  }
+  .vx-aurora-drift-b {
+    animation: vx-aurora-b 58s ease-in-out infinite alternate;
+  }
+  .vx-aurora-drift-c {
+    animation: vx-aurora-c 64s ease-in-out infinite alternate;
+  }
+  .vx-sheen::after {
+    animation: vx-sheen 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+  .vx-dash-flow {
+    animation: vx-dash-flow 3.2s linear infinite;
+  }
+  .vx-flow-line {
+    stroke-dasharray: 6 10;
+  }
+  .vx-scan {
+    animation: vx-scan 6s ease-in-out infinite;
+  }
+  .vx-blink {
+    animation: vx-blink 1.6s steps(2, start) infinite;
+  }
+}
+@keyframes vx-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+@keyframes vx-glow-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.045); }
+}
+@keyframes vx-aurora-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(9vw, 7vh, 0) scale(1.18); }
+}
+@keyframes vx-aurora-b {
+  from { transform: translate3d(0, 0, 0) scale(1.05); }
+  to { transform: translate3d(-8vw, -6vh, 0) scale(1); }
+}
+@keyframes vx-aurora-c {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-6vw, 8vh, 0) scale(1.14); }
+}
+@keyframes vx-sheen {
+  0% { left: -80%; }
+  55%, 100% { left: 130%; }
+}
+@keyframes vx-dash-flow {
+  from { stroke-dashoffset: 64; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes vx-scan {
+  0% { transform: translateY(-100%); opacity: 0; }
+  12% { opacity: 1; }
+  50% { transform: translateY(1200%); opacity: 0; }
+  100% { transform: translateY(1200%); opacity: 0; }
+}
+@keyframes vx-blink {
+  50% { opacity: 0.25; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vx-float,
+  .vx-float-slow,
+  .vx-glow-pulse,
+  .vx-aurora-drift-a,
+  .vx-aurora-drift-b,
+  .vx-aurora-drift-c,
+  .vx-scan,
+  .vx-blink {
+    animation: none;
+  }
+  .vx-sheen::after {
+    animation: none;
+    display: none;
+  }
+  .vx-aurora-blob {
+    transform: none;
+  }
+}
+
+/* ── OLED scrollbars (whole console) ──────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  border: 2px solid #000;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.35);
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ── glass skeleton (loading states) ──────────────────────────────────── */
+.vx-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.045);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .vx-skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.07), transparent);
+    animation: vx-skeleton 1.8s ease-in-out infinite;
+  }
+}
+@keyframes vx-skeleton {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
+/* ── sheet close on OLED — the near-white secondary token would glow ──── */
+[data-slot="sheet-close"][data-state="open"] {
+  background: transparent;
+  color: var(--vx-muted);
+}
+[data-slot="sheet-close"][data-state="open"]:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--vx-text);
+  opacity: 1;
+}
+
+/* ── Mobile tap-target discipline (P46 launch polish) ───────────────────
+ * P45 audit measured 26/36 mobile interactive targets under 44px.
+ * Inline/compact controls expand their HIT AREA through a transparent
+ * ::after overlay — zero layout shift, zero visual change, so the
+ * verified design and captured launch assets stay byte-valid.
+ * Desktop (sm+, 640px+) is untouched. Stacked lists (footer) use real
+ * padding in page.tsx instead, because expanded hit areas would overlap. */
+@media (max-width: 639px) {
+  .tap-expand,
+  .tap-expand-sm {
+    position: relative;
+  }
+  .tap-expand::after,
+  .tap-expand-sm::after {
+    content: "";
+    position: absolute;
+  }
+  /* inline text links: ≥43px tall hit area, no layout impact */
+  .tap-expand::after {
+    inset: -15px -10px;
+  }
+  /* compact buttons/icons: +12px each dimension, stays clear of
+     adjacent controls separated by the 8–12px gaps used site-wide */
+  .tap-expand-sm::after {
+    inset: -6px;
+  }
+}

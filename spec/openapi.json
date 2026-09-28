@@ -985,7 +985,7 @@
   },
   "x-vaerion-contracts": {
     "eventTypes": 42,
-    "errorCodes": 81,
+    "errorCodes": 82,
     "envelopeVersion": 1,
     "engineVersion": "0.1.14-rc1"
   }

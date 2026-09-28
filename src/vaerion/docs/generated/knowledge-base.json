@@ -1,0 +1,699 @@
+{
+  "publication": "vaerion-knowledge-base",
+  "citations": [
+    "Stage 11 execution order Deliverables 1-7",
+    "constitution/docs/GOVERNANCE.md"
+  ],
+  "organRoot": "constitution/docs",
+  "pageCount": 15,
+  "counts": {
+    "tokens": 64,
+    "registries": 7,
+    "primitives": 20,
+    "surfaces": 10,
+    "states": 12,
+    "transitions": 13,
+    "commands": 13,
+    "authorities": 7,
+    "stagesTotal": 11,
+    "stagesConformant": 11,
+    "traceEntries": 80,
+    "interpretationIds": [
+      "IR-001",
+      "IR-002",
+      "IR-003",
+      "IR-004",
+      "IR-005",
+      "IR-006",
+      "IR-007",
+      "IR-008",
+      "IR-009",
+      "IR-010",
+      "IR-011",
+      "IR-012",
+      "IR-013",
+      "IR-014",
+      "IR-015",
+      "IR-016",
+      "IR-017",
+      "IR-018",
+      "IR-019",
+      "IR-020",
+      "IR-021"
+    ],
+    "releaseId": "rel_769da4b7bf84ad3b",
+    "releaseVersion": "1.0.10.r1",
+    "receiptCount": 7,
+    "artifactCount": 4,
+    "channelCount": 8
+  },
+  "pages": [
+    {
+      "path": "constitution/docs/SYSTEM_PHILOSOPHY.md",
+      "meta": {
+        "id": "DOCS-PHILOSOPHY",
+        "title": "System Philosophy",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "VAERION_DESIGN_BIBLE_v1.0 Part One",
+          "VAERION_DESIGN_BIBLE_v1.0 Part Two",
+          "VAERION_DESIGN_BIBLE_v1.0 Part Six",
+          "Bible Art. II",
+          "Bible Art. III",
+          "Bible Art. VIII",
+          "Bible Art. XI",
+          "Implementation Constitution P-3",
+          "Implementation Constitution P-6",
+          "Implementation Constitution 1.1",
+          "Implementation Constitution 1.2",
+          "Visual System §0",
+          "Visual System §2.1"
+        ],
+        "relatedArtifacts": [
+          "constitution/bible/VAERION_DESIGN_BIBLE_v1.0.md",
+          "constitution/implementation-constitution/VAERION_IMPLEMENTATION_CONSTITUTION_v1.0.md",
+          "constitution/visual-system/VAERION_VISUAL_SYSTEM_v1.0.1.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. The Emotional Core — Certainty Without Drama",
+        "2. The Metaphor — A Metrology Laboratory for Machine Claims",
+        "3. The Brand Memory",
+        "4. The Four Verdicts — The Closed Alphabet",
+        "5. The Engineering Philosophy — Conformance, Not Interpretation",
+        "6. The Two Voices",
+        "7. Honesty Over Comfort",
+        "8. Nothing Unmeasured Ships"
+      ],
+      "sha256": "d4ee783277f2b3da44b8741f8e9bcc95f8563ba513f1fd8a890f69ba904fa4a0"
+    },
+    {
+      "path": "constitution/docs/ARCHITECTURE_MAP.md",
+      "meta": {
+        "id": "DOCS-ARCH-MAP",
+        "title": "The Architecture Map",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution P-4",
+          "Implementation Constitution P-1",
+          "Implementation Constitution 2.1",
+          "Implementation Constitution 2.7",
+          "Implementation Constitution 8.0",
+          "Bible Art. XI",
+          "Foundation Amendment F-002",
+          "Foundation Amendment F-004",
+          "Foundation Amendment F-005",
+          "Foundation Amendment F-006",
+          "Visual System §0",
+          "Visual System §1.4"
+        ],
+        "relatedArtifacts": [
+          "constitution/INDEX.md",
+          "src/vaerion/",
+          "src/vaerion/foundation/paths.ts",
+          "src/vaerion/foundation/stages.ts",
+          "generated/",
+          "tools/vaerion-pipeline/",
+          "constitution/trace-index/trace-index.md",
+          "src/vaerion/docs/DEPENDENCY_GRAPH.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. The Five Realms",
+        "2. The Constitutional Authority Tree",
+        "3. The Implementation Tree — Stage by Stage",
+        "4. The Data Flow — How a Value Reaches the Screen",
+        "5. The Verification Topology",
+        "6. What Lives Where — Forbidden Dependencies"
+      ],
+      "sha256": "61bdeb7d601ce2ab756dcc2183cce90df83b716b4f68b76e362f6bd6391dbdc5"
+    },
+    {
+      "path": "constitution/docs/SECURITY_MODEL.md",
+      "meta": {
+        "id": "DOCS-SECURITY",
+        "title": "Security Model",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution Part VIII",
+          "Implementation Constitution 8.1",
+          "Implementation Constitution 8.2",
+          "Implementation Constitution 8.5",
+          "Implementation Constitution 8.8",
+          "Implementation Constitution 8.9",
+          "Implementation Constitution 8.7",
+          "Implementation Constitution 9.14",
+          "Implementation Constitution 10.3",
+          "Implementation Constitution 1.6",
+          "Bible Art. II",
+          "Bible Art. III",
+          "Bible Art. VIII",
+          "Bible Art. XII",
+          "Stage 9 execution order Deliverable 8",
+          "Stage 10 execution order (Trust Engine, IR-017, IR-019)"
+        ],
+        "relatedArtifacts": [
+          "src/vaerion/authorities/hash.ts",
+          "src/vaerion/authorities/chain.ts",
+          "src/vaerion/authorities/manifest.ts",
+          "src/vaerion/authorities/identity.ts",
+          "src/vaerion/authorities/export.ts",
+          "src/vaerion/testing/security.ts",
+          "src/vaerion/release/trust.ts",
+          "keys/release-signing.pub",
+          "docs/security/THREAT-MODEL.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. The Integrity Substrate — SHA-256 Everywhere",
+        "2. The Append-Only Discipline (8.1; 8.5)",
+        "3. Restriction Travel and the Honest Hatch (8.2; Art. XII)",
+        "4. The Demo Quarantine (5.10)",
+        "5. Manifests and Third-Party Verification (8.8)",
+        "6. Identity — Reveal-Once Credentials (8.9)",
+        "7. The Release Signature — Honest Placeholder (IR-017)",
+        "8. Delivery Is Never Fabricated (IR-019; Art. VIII)",
+        "9. The Refusal Proofs (Stage 9, Deliverable 8)",
+        "10. The Product Threat Model"
+      ],
+      "sha256": "1887aa783483e13136d359746ce7a3277dc3799d9346f61d108de77d88357948"
+    },
+    {
+      "path": "constitution/docs/VAERION_CODEX_v1.0.md",
+      "meta": {
+        "id": "DOCS-CODEX",
+        "title": "The Vaerion Codex",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "VAERION_DESIGN_BIBLE_v1.0",
+          "VAERION_VISUAL_SYSTEM_v1.0.1",
+          "VAERION_IMPLEMENTATION_CONSTITUTION_v1.0",
+          "Implementation Constitution P-1",
+          "Implementation Constitution P-4",
+          "Implementation Constitution P-5",
+          "Implementation Constitution Part XI",
+          "Foundation Amendments F-001-F-007",
+          "Visual System §0",
+          "Stage 11 execution order Deliverable 2"
+        ],
+        "relatedArtifacts": [
+          "constitution/",
+          "src/vaerion/",
+          "tools/vaerion-pipeline/",
+          "constitution/trace-index/trace-index.md",
+          "constitution/docs/GOVERNANCE.md",
+          "constitution/docs/DEVELOPER_JOURNEY.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "CONTENTS",
+        "COLOPHON"
+      ],
+      "sha256": "8073e414a65bcc4ddfef3b87e3059e40c05e282fa73432969d0bc99f24a025cb"
+    },
+    {
+      "path": "constitution/docs/GOVERNANCE_EXPLANATION.md",
+      "meta": {
+        "id": "DOCS-GOVERNANCE-EXPL",
+        "title": "Governance Explanation",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution Part XI",
+          "Implementation Constitution 11.1",
+          "Implementation Constitution 11.2",
+          "Implementation Constitution 11.3",
+          "Implementation Constitution 11.4",
+          "Implementation Constitution 11.6",
+          "Implementation Constitution P-5",
+          "Implementation Constitution P-1",
+          "constitution/INDEX.md",
+          "constitution/amendments/LEDGER.md",
+          "constitution/interpretations/LEDGER.md",
+          "constitution/trace-index/trace-index.md"
+        ],
+        "relatedArtifacts": [
+          "constitution/INDEX.md",
+          "constitution/amendments/LEDGER.md",
+          "constitution/interpretations/LEDGER.md",
+          "constitution/trace-index/trace-index.md",
+          "constitution/CHANGELOG.md",
+          "src/vaerion/foundation/stages.ts",
+          "src/vaerion/foundation/gate.ts",
+          "src/vaerion/foundation/prerequisites.ts"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. The Order of Precedence (P-1)",
+        "2. The Authority Organs (Constitution 11.1; INDEX.md §2a)",
+        "3. The Two Instruments of Evolution (11.2)",
+        "4. What Ratification Updates (11.3)",
+        "5. Deprecation, Removal, and Historical Truth (11.4)",
+        "6. Violation Detection (11.6)",
+        "7. The Stage Gate (F-007)",
+        "8. The Standing Test (11.7)"
+      ],
+      "sha256": "1017d60e2f7df2bd8a3d59a5f37c897a59285670c294ed97de85c409698ddfa0"
+    },
+    {
+      "path": "constitution/docs/TESTING_MODEL.md",
+      "meta": {
+        "id": "DOCS-TESTING",
+        "title": "Testing Model",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution Part IX",
+          "Implementation Constitution 9.1",
+          "Implementation Constitution 9.2",
+          "Implementation Constitution 9.3",
+          "Implementation Constitution 9.4",
+          "Implementation Constitution 9.9",
+          "Implementation Constitution 9.12",
+          "Implementation Constitution 10.1",
+          "Implementation Constitution P-6",
+          "IR-002 (RATIFIED)",
+          "IR-014",
+          "IR-015",
+          "IR-016",
+          "Stage 9 execution order Deliverables 1-10"
+        ],
+        "relatedArtifacts": [
+          "src/vaerion/testing/",
+          "tools/vaerion-pipeline/verify-all.ts",
+          "tools/vaerion-pipeline/record.ts",
+          "tools/vaerion-pipeline/snapshots/",
+          "tools/vaerion-pipeline/artifacts/",
+          "src/vaerion/docs/reports/STAGE-9-TESTING-INFRASTRUCTURE-CONFORMANCE.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. What the Gates Are (IR-002, RATIFIED)",
+        "2. The Law of the Gates (9.1)",
+        "3. The Eight Engines (Stage 9, Deliverables 1–8)",
+        "4. The Aggregate",
+        "5. The Fidelity Canon (IR-015)",
+        "6. Honest Limitations (from the Stage 9 report)",
+        "7. Measured Results of Record"
+      ],
+      "sha256": "52bd7a2271a510b72e105e1f4fae5c104e6741c9d55887e3f2fb8c7603e648af"
+    },
+    {
+      "path": "constitution/docs/DEVELOPER_JOURNEY.md",
+      "meta": {
+        "id": "DOCS-JOURNEY",
+        "title": "Developer Journey",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Stage 11 execution order Deliverable 4",
+          "Implementation Constitution P-4",
+          "Implementation Constitution 1.1",
+          "Implementation Constitution 9.1",
+          "Implementation Constitution 11.2",
+          "Visual System §0",
+          "Bible Art. XIII",
+          "Bible Art. XIV",
+          "constitution/docs/GOVERNANCE.md"
+        ],
+        "relatedArtifacts": [
+          "constitution/docs/pathways/",
+          "constitution/docs/VAERION_CODEX_v1.0.md",
+          "constitution/docs/ARCHITECTURE_MAP.md",
+          "src/vaerion/docs/DEPENDENCY_GRAPH.md",
+          "tools/vaerion-pipeline/README.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "How to Read Vaerion",
+        "The Codex",
+        "The One-Sentence Doctrine"
+      ],
+      "sha256": "58c874c741d6d481c4b4814d6cf4050e1c807156a20e8bd95df10eb3b230a5ff"
+    },
+    {
+      "path": "constitution/docs/GOVERNANCE.md",
+      "meta": {
+        "id": "DOCS-GOV",
+        "title": "Documentation Governance — The Law of the Knowledge Organ",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution P-4",
+          "Implementation Constitution P-5",
+          "Implementation Constitution 1.2",
+          "Implementation Constitution 9.1",
+          "Implementation Constitution 11.1",
+          "Implementation Constitution 11.6",
+          "Visual System §0",
+          "Visual System §2.1",
+          "Bible Art. II",
+          "Bible Art. VII",
+          "Bible Art. XI",
+          "Stage 11 execution order Deliverable 5",
+          "src/vaerion/docs/README.md (the documentation pipeline contract)"
+        ],
+        "relatedArtifacts": [
+          "src/vaerion/docs/governance.ts",
+          "tools/vaerion-pipeline/verify-documentation.ts",
+          "constitution/docs/",
+          "constitution/trace-index/trace-index.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. The Prime Law — Documentation Is the Memory of the System",
+        "2. The Page Metadata Law (Deliverable 5)",
+        "3. The Confidence States",
+        "4. The Search Law (Deliverable 6)",
+        "5. The Verification Pipeline (Deliverable 7)",
+        "6. The Knowledge Interface (Deliverable 3)",
+        "7. Ownership"
+      ],
+      "sha256": "1425c3e70977c04fd6247cabc580ad49db970c71d49f823669fcfe5a45a9514a"
+    },
+    {
+      "path": "constitution/docs/EXTENSION_MODEL.md",
+      "meta": {
+        "id": "DOCS-EXTENSION",
+        "title": "Extension Model",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution 1.2",
+          "Implementation Constitution 1.3",
+          "Implementation Constitution 1.4",
+          "Implementation Constitution 2.5",
+          "Implementation Constitution 2.9",
+          "Implementation Constitution 3.0",
+          "Implementation Constitution 5.7",
+          "Implementation Constitution 6.1",
+          "Implementation Constitution 8.0",
+          "Implementation Constitution 11.2",
+          "Implementation Constitution 11.5",
+          "Implementation Constitution P-5",
+          "Visual System §0",
+          "Visual System §5",
+          "Visual System §14",
+          "Bible Art. XI",
+          "Bible Art. XIV"
+        ],
+        "relatedArtifacts": [
+          "constitution/registry/lifecycle.json",
+          "constitution/registry/token-schema.json",
+          "src/vaerion/primitives/contract.ts",
+          "src/vaerion/primitives/manifest.ts",
+          "packages/vaerion/src/extensions/",
+          "spec/wit/vaerion-extension@0.1.0.wit",
+          "docs/adr/0009-wasi-p2-components-capability-broker.md",
+          "docs/book/guides/extension-kit.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. Register a Token (values)",
+        "2. Manifest a Primitive (components)",
+        "3. Amend the Law (rules)",
+        "4. Extend the Product Engine (the pre-existing runtime)",
+        "5. What Cannot Be Extended",
+        "6. The Compatibility Law (11.5)"
+      ],
+      "sha256": "31aeaf708579cdb844f15684d4fe90dbbbd12cb5d5c611523b0ab3b3c25f24e2"
+    },
+    {
+      "path": "constitution/docs/RELEASE_MODEL.md",
+      "meta": {
+        "id": "DOCS-RELEASE",
+        "title": "Release Model",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution Part X",
+          "Implementation Constitution 10.1",
+          "Implementation Constitution 10.2",
+          "Implementation Constitution 10.3",
+          "Implementation Constitution 10.4",
+          "Implementation Constitution 2.7",
+          "Implementation Constitution P-6",
+          "Bible Art. III",
+          "Bible Art. XI",
+          "Foundation Amendment F-006",
+          "Foundation Amendment F-007",
+          "Stage 10 execution order Deliverables 1-10"
+        ],
+        "relatedArtifacts": [
+          "src/vaerion/release/",
+          "constitution/releases/index.json",
+          "constitution/releases/receipts/rel_769da4b7bf84ad3b.receipts.json",
+          "tools/vaerion-pipeline/release.ts",
+          "tools/vaerion-pipeline/verify-everything.ts",
+          "tools/vaerion-pipeline/full-graph.ts",
+          "src/vaerion/release/verification.ts",
+          "src/vaerion/docs/reports/STAGE-10-RELEASE-ENGINE-CONFORMANCE.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. The Gate Is the Ceremony",
+        "2. The Seven-Receipt Ceremony (10.3)",
+        "3. The Constitutional Version Engine",
+        "4. Deterministic Builds (Deliverable 3; P-6)",
+        "5. Artifact Intelligence (Deliverable 4)",
+        "6. Rollback Is Constitutional History (10.4)",
+        "7. The Eight Channels (Deliverable 7)",
+        "8. The First Release (F-006 record)",
+        "9. The Mechanical Release Gates (Deliverable 10)",
+        "10. The Release Observatory (Deliverable 9; IR-018)"
+      ],
+      "sha256": "29bfccb4c8f698ba2924dd0e381562a8088896cd0805538aa86fd09ed975273a"
+    },
+    {
+      "path": "constitution/docs/RUNTIME.md",
+      "meta": {
+        "id": "DOCS-RUNTIME",
+        "title": "Runtime Explanation",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution Part IV",
+          "Implementation Constitution Part V",
+          "Implementation Constitution Part VI",
+          "Implementation Constitution Part VII",
+          "Implementation Constitution 5.3",
+          "Implementation Constitution 5.4",
+          "Implementation Constitution 5.7",
+          "Implementation Constitution 6.5",
+          "Implementation Constitution 6.12",
+          "Bible Art. XII",
+          "Bible Art. VIII",
+          "Visual System §4.1",
+          "Visual System §10",
+          "Visual System §12",
+          "Visual System §13"
+        ],
+        "relatedArtifacts": [
+          "src/app/page.tsx",
+          "src/vaerion/surfaces/host.tsx",
+          "src/vaerion/surfaces/registry.ts",
+          "src/vaerion/state/machine.ts",
+          "src/vaerion/state/transitions.ts",
+          "src/vaerion/state/context.tsx",
+          "src/vaerion/interaction/dispatcher.ts",
+          "src/vaerion/interaction/commands.ts",
+          "src/vaerion/rendering/pipeline.ts",
+          "src/vaerion/rendering/skeletons.tsx"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "1. The Host Route",
+        "2. The Host and the Chrome",
+        "3. The Ten Registered Surfaces",
+        "4. The State Engine",
+        "5. The Interaction Engine",
+        "6. The Rendering Engine",
+        "7. The Release/Trust Loop at Runtime"
+      ],
+      "sha256": "2e32fb48f3dbdff82f23defd4f3ce3c91b678d029efefa68001652a8b7392eac"
+    },
+    {
+      "path": "constitution/docs/pathways/FIRST_CONTACT.md",
+      "meta": {
+        "id": "DOCS-PATH-FIRST",
+        "title": "Developer Pathway — First Contact",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Bible Part Three",
+          "Bible Art. VI",
+          "Bible Art. XIII",
+          "Implementation Constitution P-1",
+          "Implementation Constitution 1.3",
+          "Visual System §0",
+          "Visual System §2.1",
+          "Stage 11 execution order Deliverable 4"
+        ],
+        "relatedArtifacts": [
+          "constitution/bible/VAERION_DESIGN_BIBLE_v1.0.md",
+          "src/vaerion/primitives/seal.tsx",
+          "src/vaerion/primitives/receipt.tsx",
+          "src/app/page.tsx",
+          "constitution/docs/DEVELOPER_JOURNEY.md",
+          "constitution/docs/SYSTEM_PHILOSOPHY.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "What to Learn (the first hour)",
+        "What to Inspect",
+        "What Laws Apply",
+        "What Commands Prove Correctness",
+        "The One Thing to Remember"
+      ],
+      "sha256": "2b1a7913f49eaa90afb2b3507698fe68ced907f4bca8f264d825f6e8fa75ae2b"
+    },
+    {
+      "path": "constitution/docs/pathways/ARCHITECTURE_MASTERY.md",
+      "meta": {
+        "id": "DOCS-PATH-MASTERY",
+        "title": "Developer Pathway — Architecture Mastery",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution Part VII",
+          "Implementation Constitution Part VIII",
+          "Implementation Constitution Part X",
+          "Implementation Constitution 7.2",
+          "Implementation Constitution 8.0",
+          "Implementation Constitution 8.8",
+          "Implementation Constitution 10.1",
+          "Implementation Constitution P-6",
+          "Bible Art. XII",
+          "Stage 11 execution order Deliverable 4"
+        ],
+        "relatedArtifacts": [
+          "src/vaerion/rendering/",
+          "src/vaerion/authorities/",
+          "src/vaerion/release/",
+          "src/vaerion/testing/",
+          "constitution/docs/RELEASE_MODEL.md",
+          "constitution/docs/SECURITY_MODEL.md",
+          "constitution/docs/TESTING_MODEL.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "What to Learn",
+        "What to Inspect",
+        "What Laws Apply",
+        "What Commands Prove Correctness",
+        "The One Thing to Master"
+      ],
+      "sha256": "290701e0183b8b942fb8a45e292cbcb78aa58affae109d567cd5ff849b2aa2d8"
+    },
+    {
+      "path": "constitution/docs/pathways/CONSTITUTIONAL_ENGINEERING.md",
+      "meta": {
+        "id": "DOCS-PATH-CONSTITUTIONAL",
+        "title": "Developer Pathway — Constitutional Engineering",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution P-4",
+          "Implementation Constitution P-5",
+          "Implementation Constitution Part XI",
+          "Implementation Constitution 11.2",
+          "Implementation Constitution 11.3",
+          "Implementation Constitution 11.6",
+          "constitution/INDEX.md",
+          "Stage 11 execution order Deliverable 4",
+          "constitution/docs/GOVERNANCE.md"
+        ],
+        "relatedArtifacts": [
+          "constitution/INDEX.md",
+          "constitution/amendments/LEDGER.md",
+          "constitution/interpretations/LEDGER.md",
+          "constitution/trace-index/trace-index.md",
+          "constitution/CHANGELOG.md",
+          "src/vaerion/foundation/gate.ts",
+          "src/vaerion/foundation/prerequisites.ts",
+          "constitution/snapshot-authority/manifests/canonical-documents.json"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "What to Learn",
+        "What to Inspect",
+        "What Laws Apply",
+        "What Commands Prove Correctness",
+        "The One Obligation"
+      ],
+      "sha256": "27b259e7162e8cca0c96a60327b425e643e799926af4289a9144ea3bc4291a3d"
+    },
+    {
+      "path": "constitution/docs/pathways/SYSTEM_UNDERSTANDING.md",
+      "meta": {
+        "id": "DOCS-PATH-SYSTEM",
+        "title": "Developer Pathway — System Understanding",
+        "owningSystem": "Stage 11 — Documentation Architecture (src/vaerion/docs)",
+        "authorityCitations": [
+          "Implementation Constitution Part II",
+          "Implementation Constitution Part V",
+          "Implementation Constitution Part VI",
+          "Implementation Constitution 2.2",
+          "Implementation Constitution 2.7",
+          "Implementation Constitution 5.7",
+          "Implementation Constitution 6.5",
+          "Visual System §0",
+          "Visual System §10",
+          "Stage 11 execution order Deliverable 4"
+        ],
+        "relatedArtifacts": [
+          "src/vaerion/registry/index.ts",
+          "generated/css/vaerion-tokens.css",
+          "src/vaerion/state/",
+          "src/vaerion/interaction/",
+          "constitution/docs/ARCHITECTURE_MAP.md",
+          "constitution/docs/RUNTIME.md",
+          "src/vaerion/docs/DEPENDENCY_GRAPH.md"
+        ],
+        "confidence": "verified",
+        "lastVerified": "2026-09-22",
+        "verificationCommand": "bun run vaerion:verify-documentation"
+      },
+      "sections": [
+        "What to Learn",
+        "What to Inspect",
+        "What Laws Apply",
+        "What Commands Prove Correctness",
+        "The One Thing to Understand"
+      ],
+      "sha256": "70e2f58e730dabc7d0e7bf7062737da5943653b5ed609ee2f94667ec679be7fe"
+    }
+  ]
+}

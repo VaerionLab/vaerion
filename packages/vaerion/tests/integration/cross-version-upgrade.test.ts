@@ -27,11 +27,11 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const ROOT = join(import.meta.dir, "..", "..", "..", "..");
-const PREV_TAG = "v0.1.12-rc1";
-const PREV_VERSION = "0.1.12-rc1";
+const PREV_TAG = "v0.1.13-rc1"; // the adjacent previous train of record — bump alongside the version register (the upgrade leg tests the REAL adjacent upgrade)
+const PREV_VERSION = "0.1.13-rc1";
 /** The engine version of record at THIS tree (kept literal: the test fails
  *  loudly if the register and the engine ever disagree about it). */
-const CUR_VERSION = "0.1.13-rc1";
+const CUR_VERSION = "0.1.14-rc1";
 
 let home: string | null = null;
 afterAll(() => {
