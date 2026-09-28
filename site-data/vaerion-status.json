@@ -1,45 +1,45 @@
 {
-  "generatedAt": "2026-09-25T22:59:30.419Z",
-  "engineVersion": "0.1.13-rc1",
+  "generatedAt": "2026-09-28T23:12:51.336Z",
+  "engineVersion": "0.1.14-rc1",
   "substrate": "TypeScript on Bun (ADR-0018 — provisional with recorded migration path; Founder ratification pending)",
   "verification": {
-    "generatedAt": "2026-09-25T22:59:30.337Z",
+    "generatedAt": "2026-09-24T21:00:01.198Z",
     "ok": true,
     "gates": [
       {
         "gate": "typecheck-engine",
         "ok": true,
-        "durationMs": 4590
+        "durationMs": 4498
       },
       {
         "gate": "typecheck-sdk",
         "ok": true,
-        "durationMs": 3345
+        "durationMs": 3455
       },
       {
         "gate": "tests",
         "ok": true,
-        "durationMs": 8397
+        "durationMs": 11160
       },
       {
         "gate": "coverage-ratchet",
         "ok": true,
-        "durationMs": 2
+        "durationMs": 1
       },
       {
         "gate": "layerlint",
         "ok": true,
-        "durationMs": 30
+        "durationMs": 31
       },
       {
         "gate": "constitutional-check",
         "ok": true,
-        "durationMs": 158
+        "durationMs": 352
       },
       {
         "gate": "perf-budget",
         "ok": true,
-        "durationMs": 317
+        "durationMs": 265
       },
       {
         "gate": "a11y-structural",
@@ -49,13 +49,13 @@
       {
         "gate": "repo-lint",
         "ok": true,
-        "durationMs": 4946
+        "durationMs": 21195
       }
     ],
     "measured": {
-      "testsPassed": 632,
+      "testsPassed": 633,
       "testsFailed": 0,
-      "expectations": 4712,
+      "expectations": 4718,
       "testFiles": 53
     }
   },
@@ -65,8 +65,8 @@
   },
   "tests": {
     "suites": 53,
-    "assertedExpectations": 4712,
-    "totalTests": 632,
+    "assertedExpectations": 4718,
+    "totalTests": 633,
     "testsFailed": 0,
     "coverage": {
       "lines": 86.52,
@@ -78,11 +78,11 @@
   "code": {
     "engine": {
       "files": 115,
-      "lines": 24342
+      "lines": 24424
     },
     "engineTests": {
-      "files": 53,
-      "lines": 14217
+      "files": 54,
+      "lines": 14402
     },
     "sdk": {
       "files": 3,
@@ -90,49 +90,49 @@
     },
     "tools": {
       "files": 46,
-      "lines": 7284
+      "lines": 7209
     }
   },
   "contracts": {
     "specFiles": [
+      "spec/schemas/capability-declaration.schema.json",
       "spec/schemas/broker-decision.schema.json",
-      "spec/schemas/receipt.schema.json",
-      "spec/schemas/vaerion-yaml.schema.json",
-      "spec/schemas/evidence-record.schema.json",
       "spec/schemas/envelope.schema.json",
       "spec/schemas/gate.schema.json",
       "spec/schemas/journal-record.schema.json",
-      "spec/schemas/capability-declaration.schema.json",
-      "spec/events/registry.json",
-      "spec/errors.yaml",
+      "spec/schemas/receipt.schema.json",
+      "spec/schemas/evidence-record.schema.json",
+      "spec/schemas/vaerion-yaml.schema.json",
       "spec/openapi.json",
       "spec/CHANGELOG-SPEC.md",
-      "spec/README.md",
-      "spec/wit/vaerion-extension@0.1.0.wit"
+      "spec/errors.yaml",
+      "spec/wit/vaerion-extension@0.1.0.wit",
+      "spec/events/registry.json",
+      "spec/README.md"
     ],
     "adrCount": 21,
     "adrFiles": [
-      "docs/adr/0008-sqlite-wal-fts5-vec-local-store.md",
-      "docs/adr/0005-tiered-intelligence-progressive-enhancement.md",
-      "docs/adr/0002-versioned-event-spine-envelope.md",
-      "docs/adr/0020-daemon-http-stack-ts-substrate.md",
-      "docs/adr/0018-engine-substrate-typescript-bun.md",
       "docs/adr/0012-cassette-mockbrain-hermetic-evals.md",
-      "docs/adr/0015-per-platform-exec-sandbox-matrix.md",
-      "docs/adr/0014-stable-diagnostics-catalog-ecodes.md",
-      "docs/adr/0011-tokio-axum-tower-stack.md",
-      "docs/adr/README.md",
-      "docs/adr/0001-monorepo-single-version-policy.md",
-      "docs/adr/0004-centralized-permission-broker.md",
-      "docs/adr/0007-strict-subset-yaml-vaeryaml-manifests.md",
       "docs/adr/0010-loopback-daemon-pairing-token.md",
-      "docs/adr/0006-event-sourced-run-journals-checkpoint-chaining.md",
-      "docs/adr/0009-wasi-p2-components-capability-broker.md",
-      "docs/adr/0013-os-keychain-first-secrets-env-fallback.md",
       "docs/adr/0003-contract-first-specs-drive-sdk-generation.md",
+      "docs/adr/0011-tokio-axum-tower-stack.md",
+      "docs/adr/0018-engine-substrate-typescript-bun.md",
+      "docs/adr/0006-event-sourced-run-journals-checkpoint-chaining.md",
+      "docs/adr/0005-tiered-intelligence-progressive-enhancement.md",
+      "docs/adr/0020-daemon-http-stack-ts-substrate.md",
+      "docs/adr/0001-monorepo-single-version-policy.md",
+      "docs/adr/0002-versioned-event-spine-envelope.md",
+      "docs/adr/0008-sqlite-wal-fts5-vec-local-store.md",
+      "docs/adr/0013-os-keychain-first-secrets-env-fallback.md",
+      "docs/adr/0007-strict-subset-yaml-vaeryaml-manifests.md",
+      "docs/adr/0015-per-platform-exec-sandbox-matrix.md",
+      "docs/adr/0004-centralized-permission-broker.md",
       "docs/adr/0019-single-sanctioned-gateway-egress.md",
       "docs/adr/0017-reserved-cloud-seams.md",
-      "docs/adr/0016-reproducible-vxn-bundles.md"
+      "docs/adr/0014-stable-diagnostics-catalog-ecodes.md",
+      "docs/adr/README.md",
+      "docs/adr/0016-reproducible-vxn-bundles.md",
+      "docs/adr/0009-wasi-p2-components-capability-broker.md"
     ]
   },
   "milestones": [
@@ -333,7 +333,7 @@
       "phase": "17",
       "era": "MASTER DIRECTIVE",
       "status": "✅ complete",
-      "evidence": "the provisioning law: the D-Q pre-receive hook VERSIONED as engine law text (src/repo/canonical.ts — byte-stable, pin-tested) + the ONE sanctioned provisioner/prover (tools/canonical-provision.ts); probe-laws found and fixed at root BEFORE the real run (forced probes prove the HOOK, never the client; empty/hookless/depth-1 stores refuse to be probed — an unprobeable store is an error, never a mutated one); +6 contract tests (hook bytes, idempotent provisioning with refs untouched, four real refusals + the positive control + state unchanged, fail-closed preconditions); EXECUTED FOR REAL: the canonical store re-provisioned at `<canonical-store>`, synchronized (main + six tags as NEW refs, divergence 0/0), adversarially probed — non-ff REFUSED, main deletion REFUSED, tag overwrite REFUSED, tag deletion REFUSED, post-probe state UNCHANGED (PROTECTION LAW VERIFIED, exit 0); the session-boundary loss class D1 closed at root; EIGHT gates green (486/0/2942/38); worklog `ASC-MD-PHASE-17`"
+      "evidence": "the provisioning law: the D-Q pre-receive hook VERSIONED as engine law text (src/repo/canonical.ts — byte-stable, pin-tested) + the ONE sanctioned provisioner/prover (tools/canonical-provision.ts); probe-laws found and fixed at root BEFORE the real run (forced probes prove the HOOK, never the client; empty/hookless/depth-1 stores refuse to be probed — an unprobeable store is an error, never a mutated one); +6 contract tests (hook bytes, idempotent provisioning with refs untouched, four real refusals + the positive control + state unchanged, fail-closed preconditions); EXECUTED FOR REAL: the canonical store re-provisioned at `/home/z/vaerion-canonical.git`, synchronized (main + six tags as NEW refs, divergence 0/0), adversarially probed — non-ff REFUSED, main deletion REFUSED, tag overwrite REFUSED, tag deletion REFUSED, post-probe state UNCHANGED (PROTECTION LAW VERIFIED, exit 0); the session-boundary loss class D1 closed at root; EIGHT gates green (486/0/2942/38); worklog `ASC-MD-PHASE-17`"
     },
     {
       "id": "dt-20",
@@ -400,13 +400,20 @@
     }
   ],
   "release": {
-    "measured": false,
-    "blockers": [],
-    "note": "not inside a git repository (.): fatal: not a git repository (or any of the parent directories): .git"
+    "measured": true,
+    "ready": false,
+    "verdict": "BLOCKED",
+    "passed": 8,
+    "total": 12,
+    "blockers": [
+      "git-tree-clean: working tree dirty: 0 staged, 44 unstaged, 1 untracked",
+      "release-tag-binding: HEAD is not exactly at a v* release tag",
+      "release-artifacts: artifact set incomplete: dist/MANIFEST.json, dist/MANIFEST.json.sig, dist/SHA256SUMS, dist/VERIFY.md missing"
+    ]
   },
   "commandCenter": {
     "workspace": {
-      "root": "examples/vaerion-demo",
+      "root": "/home/z/my-project/examples/vaerion-demo",
       "runs": 0
     },
     "span": {
@@ -446,8 +453,25 @@
       }
     },
     "release": {
-      "measured": false,
-      "note": "E2300: not inside a git repository (.): fatal: not a git repository (or any of the parent directories): .git"
+      "measured": true,
+      "ready": false,
+      "verdict": "BLOCKED",
+      "passed": 8,
+      "total": 12,
+      "blockers": [
+        {
+          "check": "git-tree-clean",
+          "detail": "working tree dirty: 0 staged, 44 unstaged, 1 untracked"
+        },
+        {
+          "check": "release-tag-binding",
+          "detail": "HEAD is not exactly at a v* release tag"
+        },
+        {
+          "check": "release-artifacts",
+          "detail": "artifact set incomplete: dist/MANIFEST.json, dist/MANIFEST.json.sig, dist/SHA256SUMS, dist/VERIFY.md missing"
+        }
+      ]
     },
     "read_only": "every value was measured from this workspace's artifacts — nothing was created, modified, or executed"
   },

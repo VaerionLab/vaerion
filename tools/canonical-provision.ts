@@ -13,11 +13,8 @@
  * recorded with D-S honesty labels."
  *
  * Faces:
- *   bun tools/canonical-provision.ts [<store-path>]             provision (+ probe when main exists)
- *   bun tools/canonical-provision.ts [<store-path>] --probe-only probe an existing store
- *
- * <store-path> defaults to $VAERION_CANONICAL_STORE when set — no absolute
- * machine path is encoded in this tool.
+ *   bun tools/canonical-provision.ts <store-path>              provision (+ probe when main exists)
+ *   bun tools/canonical-provision.ts <store-path> --probe-only probe an existing store
  *
  * Token/secret discipline: local git only — no network, no credentials, no
  * environment secrets (C1/C7-clean by construction).
@@ -26,7 +23,7 @@
 
 import { existsSync, mkdirSync, writeFileSync, chmodSync } from "node:fs";
 import { join } from "node:path";
-import { CANONICAL_STORE_ENV, PRE_RECEIVE_HOOK, provisionPlan, type ProvisionStep } from "../packages/vaerion/src/repo/canonical.ts";
+import { PRE_RECEIVE_HOOK, provisionPlan, type ProvisionStep } from "../packages/vaerion/src/repo/canonical.ts";
 
 export interface ProbeResult {
   readonly probe: string;
@@ -183,46 +180,17 @@ export function renderProbeReport(r: ProbeReport): string {
   return lines.join("\n");
 }
 
-export interface ProvisionCliPlan {
-  readonly storePath: string;
-  readonly probeOnly: boolean;
-  /** true when the store came from $VAERION_CANONICAL_STORE rather than argv */
-  readonly fromEnv: boolean;
-}
-
-/**
- * The deterministic CLI plan (pure, testable): resolve the store path from
- * argv first, then $VAERION_CANONICAL_STORE; refuse when neither is present
- * (fail-closed usage — never a silent relative provisioning).
- */
-export function planProvisionRun(
-  argv: readonly string[],
-  env: Record<string, string | undefined> = process.env,
-): ProvisionCliPlan | { readonly error: string } {
-  const args = argv.filter((a) => a !== "");
-  const probeOnly = args.includes("--probe-only");
-  const positional = args.filter((a) => !a.startsWith("--"))[0];
-  const fromEnv = env[CANONICAL_STORE_ENV]?.trim();
-  if (!positional && !fromEnv) {
-    return {
-      error: `usage: bun tools/canonical-provision.ts <store-path> [--probe-only]\nstore-path defaults to $${CANONICAL_STORE_ENV} when it is set`,
-    };
-  }
-  return { storePath: positional ?? fromEnv!, probeOnly, fromEnv: !positional };
-}
-
 // ── the direct-run face ──
 
 async function main(): Promise<number> {
-  const plan = planProvisionRun(process.argv.slice(2));
-  if ("error" in plan) {
-    console.error(plan.error);
+  const argv = process.argv.slice(2).filter((a) => a !== "");
+  const probeOnly = argv.includes("--probe-only");
+  const positional = argv.filter((a) => !a.startsWith("--"))[0];
+  if (!positional) {
+    console.error("usage: bun tools/canonical-provision.ts <store-path> [--probe-only]");
     return 2;
   }
-  const { storePath, probeOnly } = plan;
-  if (plan.fromEnv) {
-    console.log(`store: ${storePath} (from $${CANONICAL_STORE_ENV}; pass <store-path> to override)`);
-  }
+  const storePath = positional;
   if (!probeOnly) {
     const { hookPath, preExisting } = provisionStore(storePath);
     console.log(`provisioned: ${storePath}${preExisting ? " (pre-existing store — refs untouched, law re-asserted)" : " (new store)"}`);

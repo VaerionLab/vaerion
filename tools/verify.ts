@@ -119,20 +119,15 @@ console.log(`\nvaerion verify: ${allOk ? "ALL GATES GREEN" : "GATE FAILURES PRES
 
 // The measured test counts, parsed from the tests gate's FULL output — the ONE
 // measured source for every downstream surface (v1.6 A6: no hand-copied
-// counters). Absent honestly when the summary cannot be parsed. The bun
-// summary grammar: "N pass" first, then any sequence of honest count-lines
-// (skip / fail / error / todo — order and presence vary), then the
-// expectations line and the Ran footer; fail is captured from the middle
-// block so a green run, a skipped run, and a red run all parse.
+// counters). Absent honestly when the summary cannot be parsed.
 const testsOutput = gates.find((g) => g.gate === "tests")?.full ?? "";
-const summary = testsOutput.match(/(\d+) pass\s*\n((?:\s*\d+ [a-z() ]+\s*\n\s*)*?)(\d+) expect\(\) calls\s*\nRan (\d+) tests across (\d+) files/);
-const failLine = summary?.[2]?.match(/(\d+) fail\b/);
-const measured = summary
+const m = testsOutput.match(/(\d+) pass\s*\n\s*(\d+) fail\s*\n\s*(\d+) expect\(\) calls\s*\nRan (\d+) tests across (\d+) files/);
+const measured = m
   ? {
-      testsPassed: Number(summary[1]),
-      testsFailed: failLine ? Number(failLine[1]) : 0,
-      expectations: Number(summary[3]),
-      testFiles: Number(summary[5]),
+      testsPassed: Number(m[1]),
+      testsFailed: Number(m[2]),
+      expectations: Number(m[3]),
+      testFiles: Number(m[5]),
     }
   : undefined;
 

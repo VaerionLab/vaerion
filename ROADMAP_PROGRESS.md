@@ -5,10 +5,10 @@
 > v1.6 A6 Phase 11: the roadmap report of record comes from the ONE measured status source).
 > Regenerate with `bun tools/status.ts`; hand edits are defects.
 
-- Engine version of record: `0.1.13-rc1`
+- Engine version of record: `0.1.14-rc1`
 - Constitution of record: `v1.7` (Amendment Log §11)
 - Verification record: GREEN — 9/9 gates ok (`.vaerion-verification.json`)
-- Measured tests: 632 pass · 0 fail · 4712 expectations · 53 files
+- Measured tests: 633 pass · 0 fail · 4718 expectations · 53 files
 - Coverage floors: bunfig.toml coverageThreshold (OBJ-Q6, ratcheted at MS-6 bundle close: 0.86/0.74/0.86/0.90; held at every ASCENSION phase close)
 
 ## Milestone board (§7)

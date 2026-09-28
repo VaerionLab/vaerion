@@ -12,7 +12,7 @@
 #     egress site, ADR-0019).
 name: vaerion
 base: core24
-version: "0.1.13-rc1"
+version: "0.1.14-rc1"
 summary: AI-native development engine — deterministic, auditable, local-first
 description: |
   Vaerion runs AI-assisted development work the way a database engine runs
@@ -46,11 +46,11 @@ parts:
     override-pull: |
       craftctl default
       # Stage the engine tree exactly as every other channel does.
-      mkdir -p "$CRAFT_PART_INSTALL/lib/vaerion/0.1.13-rc1"
-      cp -R packages/vaerion/src "$CRAFT_PART_INSTALL/lib/vaerion/0.1.13-rc1/src"
-      cp packages/vaerion/package.json "$CRAFT_PART_INSTALL/lib/vaerion/0.1.13-rc1/package.json"
+      mkdir -p "$CRAFT_PART_INSTALL/lib/vaerion/0.1.14-rc1"
+      cp -R packages/vaerion/src "$CRAFT_PART_INSTALL/lib/vaerion/0.1.14-rc1/src"
+      cp packages/vaerion/package.json "$CRAFT_PART_INSTALL/lib/vaerion/0.1.14-rc1/package.json"
     override-build: |
       BIN="$CRAFT_PART_INSTALL/bin"
       mkdir -p "$BIN"
-      printf '#!/bin/sh\nexec "$SNAP/bin/bun" run "$SNAP/lib/vaerion/0.1.13-rc1/src/cli/vae.ts" "$@"\n' > "$BIN/vae"
+      printf '#!/bin/sh\nexec "$SNAP/bin/bun" run "$SNAP/lib/vaerion/0.1.14-rc1/src/cli/vae.ts" "$@"\n' > "$BIN/vae"
       chmod +x "$BIN/vae"

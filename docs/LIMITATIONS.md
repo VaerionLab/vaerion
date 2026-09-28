@@ -42,7 +42,16 @@ measured status of record; item numbering below matches that list):
    (`packages/vaerion/coverage-baseline.json`, blessed deliberately). A
    module more than 1pp below its floor fails the gate BY NAME — coverage
    can never decrease silently.
-9. **MS-6 leftovers** (`ROADMAP_PROGRESS.md` — "Recommended next work"):
+9. **Journal completeness is client-side tamper-evidence, not
+   tamper-impossibility.** Closed journals carry an in-chain receipt that
+   commits to the final record count and head hash; the verifier enforces
+   it (E1010) and a permanent attack suite exercises it
+   (`packages/vaerion/tests/security/journal-completeness.test.ts`;
+   `VAERION_SECURITY_PROOF_v1.0.md`). The honest boundary: an adversary who
+   rewrites a journal AND re-folds its receipt in concert produces a
+   self-consistent file — adversarial custody requires external anchoring
+   (`vae snapshot`, `vae provenance`, or a published receipt).
+10. **MS-6 leftovers** (`ROADMAP_PROGRESS.md` — "Recommended next work"):
    native single-binary installers (host-gated; see §2) are not done. The
    daemon packages route group (pack/verify/import) **is done** — ASCENSION
    XXVI+ closed it with wire-parity tests and `spec/openapi.json`
@@ -56,8 +65,8 @@ verification matrix of record is `packaging/README.md` (measured
 
 - **Homebrew / winget / .dmg / .pkg / rpm / AppImage channels: authored +
   reviewed only — UNVERIFIED** until their host tooling executes them
-  (`packaging/README.md`; D-W carry-forwards recorded in the
-  Founder-side GA dossier).
+  (`packaging/README.md`; carried in
+  `docs/ga/ASCENSION-XX-REALITY-RECOVERY.md` §6 D-W carry-forwards).
   Windows (`packaging/windows/`) and macOS (`packaging/macos/`,
   incl. `SIGNING-PREP.md`) are authored; Developer ID signing and
   notarization are additionally gated on the key ceremony (F-3).
@@ -73,7 +82,7 @@ verification matrix of record is `packaging/README.md` (measured
   ASCENSION XXV Task 4.
 - **twine check: UNVERIFIED** — the host lacks twine; the Python wheel
   itself was built and its install verified offline
-  (recorded in the Founder-side GA dossier, §6).
+  (`docs/ga/ASCENSION-XX-REALITY-RECOVERY.md` §6).
 - **Container and multi-CI templates (Dockerfile, .gitlab-ci.yml,
   Jenkinsfile, .devcontainer): authored against the verified gate
   contract — UNVERIFIED until a container host / GitLab / Jenkins agent
@@ -81,14 +90,14 @@ verification matrix of record is `packaging/README.md` (measured
   contract are verified against the tree; execution is not (honest
   markers inside `Dockerfile`).
 - **GitHub branch protection: BLOCKED by plan** — API 403 "Upgrade to
-  GitHub Pro or make this repository public" (measured). A Founder
-  decision (public repo or Pro plan) is required;
+  GitHub Pro or make this repository public" (measured; worklog.md Task 3
+  entry). A Founder decision (public repo or Pro plan) is required;
   nothing the engine can do.
 
 ## 3. Founder-gated items (P4 — no automation may close these)
 
-From the GA GO/NO-GO dossier of record §2 and the final verified-reality
-report §4 (Founder-side; with severity and exit criteria):
+From `docs/ga/GO-NO-GO.md` §2 and `docs/ga/FINAL-VERIFIED-REALITY-REPORT.md`
+§4 (with severity and exit criteria):
 
 - **F-2 — Full legal name.** Packaging authorship carries the consistent
   `Auren` identity; the legal-name insertion is a one-line Founder
@@ -98,43 +107,43 @@ report §4 (Founder-side; with severity and exit criteria):
   asked to trust it (`docs/security/RISK-LEDGER.md` R-2). Until F-3, CI
   release artifacts honestly disclose the bootstrap key generation (the
   CI pack report says "bootstrap key GENERATED this run — session-bound,
-  disclosed"; measured).
+  disclosed"; measured, worklog.md Task 3 entry).
 - **F-4 — Substrate ratification.** ADR-0018 (TypeScript-on-Bun) remains
   PROVISIONAL pending the Founder decision; migration path recorded.
 - **F-5 — Publication.** npm/PyPI/homebrew-core/winget submissions,
   installer URL, announce, and beta recruitment are release-train steps
-  the Founder executes (the publication-gap audit lists registry
-  publication and hosted deploy as BLOCKED in-sandbox).
+  the Founder executes (`docs/ga/PHASE-XXIII-PUBLICATION-GAP-AUDIT.md`
+  lists registry publication and hosted deploy as BLOCKED in-sandbox).
 - **F-6 — Real-provider cassettes.** One sanctioned recording session per
   adapter with provider credentials (`docs/security/RISK-LEDGER.md` R-4)
   — required for end-to-end golden coverage of the ModelPlanner success
   path (`ROADMAP_PROGRESS.md` risk 6).
 
 GA remains rehearsed and PENDING FOUNDER GO (P4)
-(the GA dossier of record, §3 decision block;
+(`docs/ga/GO-NO-GO.md` §3 decision block;
 `ROADMAP_PROGRESS.md` milestone board: GA 95%, pending).
 
 ## 4. Environment limitations (this workspace, not the product)
 
 - **No provider network.** This environment has no access to model
   providers; hermetic coverage uses MockBrain/cassettes, and real-provider
-  recording (F-6) cannot happen here (`ROADMAP_PROGRESS.md` risk 6; the
-  Empty Machine Test of record).
+  recording (F-6) cannot happen here (`ROADMAP_PROGRESS.md` risk 6;
+  `docs/ga/ASCENSION-XX-EMPTY-MACHINE-TEST.md`).
 - **Ephemeral host session boundaries.** The host's home directory is
-  wiped outside the checkout: the canonical bare store and env-only
-  credentials do not survive boundaries. Both losses are handled by law,
-  not luck — the canonical store restores deterministically (provision →
-  synchronize → adversarial probe, measured three times) and GitHub state
-  is recorded UNVERIFIED when `VAE_GITHUB_TOKEN` is absent, never dressed
-  (recorded in the Founder-side GA dossier).
+  wiped outside the checkout: the canonical bare store and env-only credentials do not
+  survive boundaries. Both losses are handled by law, not luck — the
+  canonical store restores deterministically (provision → synchronize →
+  adversarial probe, measured three times) and GitHub state is recorded
+  UNVERIFIED when `VAE_GITHUB_TOKEN` is absent, never dressed
+  (`docs/ga/ASCENSION-XX-REALITY-RECOVERY.md` §2.1, §3 XX-D1/XX-D2, §6).
 - **Recorded blemish, retained by law.** History is immutable under the
   protected-main law: commit `03996c6` carries a UUID for a message
   (session artifact from between phases), recorded rather than rewritten
-  (recorded in the Founder-side GA dossier, Ω.5).
+  (`docs/ga/FINAL-VERIFIED-REALITY-REPORT.md` Ω.5).
 
 ---
 
 *If a limitation above has been closed by later work, the closing record
-lives in the phase ledgers and the verification record
-(`.vaerion-verification.json`) — this file defers to the records, and any
-stale line here is a defect to be fixed, not a claim to be defended.*
+lives in `worklog.md` and the phase ledgers — this file defers to the
+records, and any stale line here is a defect to be fixed, not a claim to
+be defended.*

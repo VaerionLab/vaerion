@@ -74,3 +74,12 @@ owners live in `RISK-LEDGER.md`.
 - **P-REPRODUCIBLE**: identical inputs produce byte-identical bundles
   (blake3 identity, pinned compression), so any tampering with release
   artifacts is detectable by rebuild-and-compare.
+- **P-COMPLETE-RECORD**: every closed run's journal ends with a receipt
+  record that commits to its final record count and head hash; the
+  verifier enforces the commitment (E1010) — tail deletion, re-chained
+  deletion, and receipt removal after close are detectable. Boundary:
+  client-side anchoring is tamper-*evident*, not tamper-*impossible* — a
+  hostile host that rewrites journal and receipt in concert requires
+  external anchoring (`vae snapshot` / published receipts). Tested
+  against a defined attack suite:
+  [`../../VAERION_SECURITY_PROOF_v1.0.md`](../../VAERION_SECURITY_PROOF_v1.0.md).

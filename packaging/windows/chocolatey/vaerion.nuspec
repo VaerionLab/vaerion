@@ -8,7 +8,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <id>vaerion</id>
-    <version>0.1.13.1</version>
+    <version>0.1.14.1</version>
     <title>Vaerion (CLI)</title>
     <authors>Auren</authors>
     <owners>Auren</owners>
@@ -17,7 +17,7 @@
     <bugTrackerUrl>https://github.com/VaerionLab/vaerion/issues</bugTrackerUrl>
     <iconUrl>https://raw.githubusercontent.com/VaerionLab/vaerion/main/public/icon-192.png</iconUrl>
     <licenseUrl>https://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
-    <releaseNotes>https://github.com/VaerionLab/vaerion/blob/main/docs/RELEASE-NOTES-v0.1.13-rc1.md</releaseNotes>
+    <releaseNotes>https://github.com/VaerionLab/vaerion/blob/main/docs/RELEASE-NOTES-v0.1.14-rc1.md</releaseNotes>
     <packageSourceUrl>https://github.com/VaerionLab/vaerion/tree/main/packaging/windows/chocolatey</packageSourceUrl>
     <docsUrl>https://github.com/VaerionLab/vaerion#readme</docsUrl>
     <mailingListUrl>https://github.com/VaerionLab/vaerion/discussions</mailingListUrl>

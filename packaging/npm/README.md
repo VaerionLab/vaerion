@@ -2,7 +2,7 @@
 
 `npm install -g vaerion` installs the `vae` CLI and the full engine source.
 The engine executes on the Bun runtime (ADR-0018); the package declares
-`engines: bun >= 1.3` and the launcher refuses the wrong runtime with an
+`engines: bun >= 1.2` and the launcher refuses the wrong runtime with an
 educated error (exit 2), never a cryptic one.
 
 ```sh

@@ -17,7 +17,7 @@
 ## 1. Server identity
 
 - **Name:** `Vaerion`
-- **Icon:** the Ledger V seal, gold edition (`brand/official/official-app-icon-gold.png` — the official set of record)
+- **Icon:** the Ledger V seal, gold edition (`brand/logo/vaerion-icon.svg`)
 - **Description:** "Local-first trust infrastructure for AI agents.
   Community space. Repo of record: github.com/VaerionLab/vaerion"
 - **Verification level:** Medium (requires a verified email on the
@@ -32,7 +32,7 @@
 | Channel | Type | Purpose |
 |---|---|---|
 | `#welcome` | Text, read-only | Onboarding embed: what Vaerion is, the repo link, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `SECURITY.md`, `SUPPORT.md`. One pinned message states the honesty rule: state what you measured; label what you did not. |
-| `#announcements` | Text, read-only for members | Release notes, launch materials, campaign closures. The GitHub Release is the announcement of record; this channel links it. |
+| `#announcements` | Text, read-only for members | Release notes, launch materials, campaign closures. Posts mirror `docs/operations/ANNOUNCEMENTS.md` — the GitHub Release is the announcement of record; this channel links it. |
 
 ### Category — COMMUNITY
 
@@ -96,7 +96,8 @@ Governed by `CODE_OF_CONDUCT.md` without amendment:
 ## 6. Launch checklist (executed at the release train)
 
 1. [ ] Founder approval recorded (this document, plus the server's
-       existence as a Founder-gated surface).
+       existence as a Founder-gated surface —
+       `docs/founder/FOUNDER-PACKETS.md` pattern).
 2. [ ] Server created; icon, description, verification level set per §1.
 3. [ ] Categories and channels created per §2; `#welcome` and
        `#announcements` read-only for members.

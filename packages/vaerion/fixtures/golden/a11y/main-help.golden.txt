@@ -1,4 +1,4 @@
-vae — Vaerion engine command line (v0.1.13-rc1)
+vae — Vaerion engine command line (v0.1.14-rc1)
 
 Usage: vae [global flags] <command> [args] [flags]
 (Bare `vae` opens the welcome front door: it measures this directory and

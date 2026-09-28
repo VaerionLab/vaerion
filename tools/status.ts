@@ -180,21 +180,7 @@ const status = {
 
 const OUT = join(ROOT, "site-data");
 mkdirSync(OUT, { recursive: true });
-
-// Sandbox-path hygiene (PHASE 22 hardening): the status JSON is a PUBLIC
-// surface — absolute workspace roots are normalized to repo-relative paths
-// before the record is written. The engine's honesty notes are preserved
-// verbatim otherwise.
-function toRepoRelative(value: unknown): unknown {
-  if (typeof value === "string") return value.split(`${ROOT}/`).join("").split(ROOT).join(".");
-  if (Array.isArray(value)) return value.map(toRepoRelative);
-  if (value && typeof value === "object") {
-    return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, toRepoRelative(v)]));
-  }
-  return value;
-}
-
-writeFileSync(join(OUT, "vaerion-status.json"), JSON.stringify(toRepoRelative(status), null, 2) + "\n");
+writeFileSync(join(OUT, "vaerion-status.json"), JSON.stringify(status, null, 2) + "\n");
 
 /**
  * The roadmap report of record — GENERATED from this measured status object

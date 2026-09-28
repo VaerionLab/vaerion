@@ -13,7 +13,8 @@ documents of record — it does not replace them.
 | `0.1.13-rc1` (current release line) | Supported — fixes land fix-forward on the main line |
 | Earlier rc tags (`v0.1.7-rc1` … `v0.1.11-rc1`) | Not patched — released tags are immutable (never overwritten; see `docs/security/REMOTE-PROTECTION.md`); fixes ship in the next release candidate |
 
-Within v0.1, surfaces evolve additively: nothing is removed or renamed.
+Within v0.1, surfaces evolve additively: nothing is removed or renamed
+(`BETA-ONBOARDING.md`).
 
 ## Reporting a vulnerability
 
@@ -62,6 +63,12 @@ Stated only where the documents above support them:
   every state-changing route requires the pairing token (E2000).
 - Extensions are sha256-digest-pinned before execution (E2100) and run under
   explicit grants; the permission broker fail-closes ungranted calls.
+- Journals are verified for integrity AND completeness: every closed run ends
+  with a receipt record committing to its final record count and head hash
+  (E1010 — tail deletion, re-chained deletion, and receipt removal are
+  detectable). The measured record, including the stated boundary
+  (tamper-evident, not tamper-impossible):
+  [`VAERION_SECURITY_PROOF_v1.0.md`](VAERION_SECURITY_PROOF_v1.0.md).
 
 ## Release artifact trust chain (and its honest limit)
 

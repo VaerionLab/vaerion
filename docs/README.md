@@ -48,4 +48,6 @@ security, GA packets) keep their historical authority.
 ## Project law and process
 
 [constitution/](constitution/) — the ratified engineering constitution ·
+[ga/](ga/) — release verification and audit packets ·
+[operations/](operations/) — operations and launch-sequence records ·
 [../CHANGELOG.md](../CHANGELOG.md) — version history of record.

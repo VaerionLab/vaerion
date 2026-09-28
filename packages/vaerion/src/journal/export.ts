@@ -93,6 +93,15 @@ export async function exportRedacted(opts: ExportOptions): Promise<ExportReport>
   const lines: string[] = [];
   for (let idx = 0; idx < redactedBodies.length; idx++) {
     const body = redactedBodies[idx] as typeof redactedBodies[number];
+    // Completeness anchor law: a receipt record certifies the prefix
+    // immediately before it. The export re-chains, so a copied receipt
+    // re-certifies the export's own prefix (count unchanged, head = the
+    // just-sealed predecessor). The derivation header keeps the source chain
+    // provenance (source_head / source_records).
+    if (body.k === "receipt") {
+      const rb = body as unknown as { receipt: { journal: { records: number; head_hash: string } } };
+      rb.receipt.journal.head_hash = prev;
+    }
     const unsealed = { ...body, i: idx + 1, prev } as unknown as UnsealedRecord;
     const sealed = await sealRecord(unsealed);
     lines.push(JSON.stringify(sealed) + "\n");

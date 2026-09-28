@@ -3,7 +3,7 @@
 | | |
 |---|---|
 | **Status** | DRAFT — four categories are enabled and measured (recorded in `SUPPORT.md`); the plan below formalizes them, adds one, and defines templates and routing. Founder approval required before structural changes. |
-| **Flow of record** | GitHub Releases (announcements), `CONTRIBUTING.md` (where proposals and questions start) |
+| **Flow of record** | `docs/operations/ANNOUNCEMENTS.md` (announcements), `CONTRIBUTING.md` (where proposals and questions start) |
 | **Security exception** | Security findings never enter Discussions. Private, per `SECURITY.md`. |
 
 ---

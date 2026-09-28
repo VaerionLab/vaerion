@@ -21,8 +21,8 @@ import { describe, expect, test } from "bun:test";
 import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { CANONICAL_STORE_ENV, PRE_RECEIVE_HOOK, canonicalStorePath, provisionPlan } from "../../../../packages/vaerion/src/repo/canonical.ts";
-import { planProvisionRun, probeStore, provisionStore, renderProbeReport } from "../../../../tools/canonical-provision.ts";
+import { CANONICAL_STORE_PATH, PRE_RECEIVE_HOOK, provisionPlan } from "../../../../packages/vaerion/src/repo/canonical.ts";
+import { probeStore, provisionStore, renderProbeReport } from "../../../../tools/canonical-provision.ts";
 
 function sh(cwd: string, argv: string[]): { ok: boolean; stdout: string; stderr: string } {
   const p = Bun.spawnSync(argv, {
@@ -132,38 +132,9 @@ describe("the adversarial probes are real executions (D-Q: probed after every pr
   });
 });
 
-describe("the provisioner CLI plan (P-R4: env-driven, no machine paths)", () => {
-  test("argv wins, env fills the gap, neither fails closed", () => {
-    const positional = planProvisionRun(["/tmp/storeA.git"]);
-    expect("error" in positional).toBe(false);
-    if (!("error" in positional)) {
-      expect(positional.storePath).toBe("/tmp/storeA.git");
-      expect(positional.fromEnv).toBe(false);
-      expect(positional.probeOnly).toBe(false);
-    }
-    const fromEnv = planProvisionRun(["--probe-only"], { [CANONICAL_STORE_ENV]: "/tmp/storeB.git" });
-    expect("error" in fromEnv).toBe(false);
-    if (!("error" in fromEnv)) {
-      expect(fromEnv.storePath).toBe("/tmp/storeB.git");
-      expect(fromEnv.fromEnv).toBe(true);
-      expect(fromEnv.probeOnly).toBe(true);
-    }
-    const refused = planProvisionRun([], {});
-    expect("error" in refused).toBe(true);
-  });
-});
-
 test("the canonical store path of record is the environment's law (D-S: presence measured at runtime)", () => {
-  delete process.env[CANONICAL_STORE_ENV];
-  expect(canonicalStorePath()).toBe("vaerion-canonical.git");
-  const plan = provisionPlan(canonicalStorePath());
-  expect(plan.hookPath).toBe("vaerion-canonical.git/hooks/pre-receive");
+  expect(CANONICAL_STORE_PATH).toBe("/home/z/vaerion-canonical.git");
+  const plan = provisionPlan(CANONICAL_STORE_PATH);
+  expect(plan.hookPath).toBe("/home/z/vaerion-canonical.git/hooks/pre-receive");
   expect(plan.steps.length).toBe(3);
-  process.env[CANONICAL_STORE_ENV] = "/tmp/vaerion-env-store.git";
-  try {
-    expect(canonicalStorePath()).toBe("/tmp/vaerion-env-store.git");
-    expect(provisionPlan(canonicalStorePath()).hookPath).toBe("/tmp/vaerion-env-store.git/hooks/pre-receive");
-  } finally {
-    delete process.env[CANONICAL_STORE_ENV];
-  }
 });
