@@ -1,7 +1,8 @@
 # Vaerion CLI Manual — `vae`
 
 > **Provenance and honesty note.** This manual was generated for engine
-> `0.1.13-rc1` from the CLI's single source of truth — the `COMMAND_HELP`
+> `0.1.13-rc1`, verified current against `0.1.14-rc1` (footer note), from
+> the CLI's single source of truth — the `COMMAND_HELP`
 > registry in `packages/vaerion/src/cli/vae.ts` — and cross-checked against
 > `packages/vaerion/src/cli/commands.ts`, `src/cli/io.ts` (exit codes), and
 > `src/cli/ui.ts` (rendering profiles). Every command topic listed here was
@@ -478,5 +479,8 @@ See `docs/TROUBLESHOOTING.md` for the diagnostic walk-through and
 *This manual documents the registry of record at engine `0.1.12-rc1`
 (release commit `485016f`); the registry is unchanged through `0.1.13-rc1`
 (a content-additive release — no command, flag, exit code, or E-code changed,
-per `docs/RELEASE-NOTES-v0.1.13-rc1.md`). The registry is the one authority:
+per `docs/RELEASE-NOTES-v0.1.13-rc1.md`). In `0.1.14-rc1` the command surface
+is unchanged; `vae journal verify` additionally enforces the completeness
+anchor, and `E1010` joins the taught error catalog (per
+`docs/RELEASE-NOTES-v0.1.14-rc1.md`). The registry is the one authority:
 if code and this file ever disagree, the code wins and this file is a defect.*

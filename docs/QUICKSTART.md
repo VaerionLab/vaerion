@@ -6,7 +6,7 @@
 > This document is the extended journey (daemon, SDK, CI, release
 > readiness).
 
-Vaerion is a local-first, AI-native development engine: one versioned event
+Vaerion is the local-first verification layer for AI agents: one versioned event
 spine, append-only blake3-chained journals, a fail-closed permission
 broker, deterministic replay, receipts folded from journals, and
 reproducible `.vxn` bundles. Zero telemetry — nothing leaves your machine

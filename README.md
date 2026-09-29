@@ -7,10 +7,12 @@ runtime for deterministic, verifiable AI agents — local-first, zero
 telemetry, auditable by construction.
 
 [![verify](https://github.com/VaerionLab/vaerion/actions/workflows/verify.yml/badge.svg)](https://github.com/VaerionLab/vaerion/actions/workflows/verify.yml)
-![release](https://img.shields.io/badge/release-v0.1.13--rc1-D4AF37)
-![npm](https://img.shields.io/badge/npm-vaerion%400.1.13--rc1-D4AF37)
+![release](https://img.shields.io/badge/release-v0.1.14--rc1-D4AF37)
+![npm](https://img.shields.io/badge/npm-vaerion%400.1.14--rc1-D4AF37)
 ![license](https://img.shields.io/badge/license-Apache--2.0-9C9CA6)
 ![telemetry](https://img.shields.io/badge/telemetry-zero_by_construction-9C9CA6)
+
+[Website](https://vaerion.vercel.app) · [Support & community](SUPPORT.md) · [Security proof](VAERION_SECURITY_PROOF_v1.0.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
 
 Vaerion runs AI-assisted work the way a database engine runs
 transactions: every step lands on one versioned event spine, journals
@@ -60,7 +62,7 @@ cryptic one).
 ```sh
 curl -fsSL https://bun.sh/install | bash    # if Bun is not installed yet
 npm install -g vaerion@rc                    # live on the npm registry
-vae --version                                # → vae 0.1.13-rc1
+vae --version                                # → vae 0.1.14-rc1
 ```
 
 Other channels (signed release tarball with three-leg offline
@@ -179,7 +181,7 @@ the engine's own test suite — examples cannot drift from reality.
 
 ## Roadmap
 
-`v0.1.13-rc1` is a **release candidate**: 9/9 verification gates green,
+`v0.1.14-rc1` is a **release candidate**: 9/9 verification gates green,
 signed release artifacts, npm distribution live and consumer-verified.
 What ships next and what is explicitly *not* done yet:
 [`ROADMAP_PROGRESS.md`](ROADMAP_PROGRESS.md),

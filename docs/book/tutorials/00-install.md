@@ -40,7 +40,7 @@ vae --help                              # the installed shim
 ## Prove the install (do not skip)
 
 ```bash
-vae version          # → vae 0.1.13-rc1  (one line, zero ANSI)
+vae version          # → vae 0.1.14-rc1  (one line, zero ANSI)
 vae --help           # the Daily Seven + serve + package, with examples
 ```
 

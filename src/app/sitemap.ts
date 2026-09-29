@@ -3,15 +3,14 @@ import type { MetadataRoute } from "next";
 /**
  * Sitemap of record for the Vaerion launch site.
  *
- * URLs use the domain of record (vaerion.dev — consistent with the
- * layout metadataBase and OG declarations). Until the domain is
- * connected, the site remains fully reachable and indexable at the
- * documented fallback: https://vaerion.vercel.app.
+ * URLs use the canonical of record (https://vaerion.vercel.app —
+ * consistent with layout metadataBase and OG declarations). When the
+ * vaerion.dev domain connects, this URL and metadataBase flip together.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: "https://vaerion.dev",
+      url: "https://vaerion.vercel.app",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,

@@ -12,11 +12,11 @@ that names the exact fix.
 ```sh
 curl -fsSL https://bun.sh/install | bash    # only if Bun is missing
 npm install -g vaerion@rc
-vae --version                               # → vae 0.1.13-rc1
+vae --version                               # → vae 0.1.14-rc1
 ```
 
 - `@rc` is the release-candidate channel of record
-  (`v0.1.13-rc1`). Plain `npm install -g vaerion` resolves to the same
+  (`v0.1.14-rc1`). Plain `npm install -g vaerion` resolves to the same
   version today.
 - No account, no telemetry, no network use at runtime unless you
   explicitly invoke a model provider through the gateway.
@@ -60,7 +60,7 @@ alias vae="bun run packages/vaerion/src/cli/vae.ts"
 
 | Channel | Status |
 |---|---|
-| npm (`npm install -g vaerion@rc`) | **LIVE** — `0.1.13-rc1` on registry.npmjs.org, consumer-verified |
+| npm (`npm install -g vaerion@rc`) | **LIVE** — `0.1.14-rc1` on registry.npmjs.org, consumer-verified |
 | GitHub Releases (signed tarball) | **LIVE** — three-leg anonymous verification documented |
 | From source | **LIVE** — how the repository verifies itself |
 | PyPI (`pip install vaerion`) | authored + venv-verified; publication pending |

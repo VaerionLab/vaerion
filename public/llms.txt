@@ -1,6 +1,6 @@
 # Vaerion
 
-The AI-native development engine that is local-first, deterministic, and provable:
+The verification layer for AI agents — local-first, deterministic, and provable:
 a permission broker that fails closed, hash-chained journals that replay byte-identically,
 a model gateway with honest micro-USD metering, and reproducible packaging.
 This corpus is generated from the repository book; the book is the source.
