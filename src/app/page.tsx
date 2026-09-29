@@ -431,6 +431,8 @@ function Demo() {
               )}
             >
               {"cp -r examples/vaerion/demo-workspace refused-action && cd refused-action"}
+              <br />
+              {"vae run agent --goal \"Ship the pricing change to production\" --planner inline --plan-json '[{\"kind\":\"tool\",\"tool\":\"deploy\",\"args\":{\"env\":\"production\"}}]'"}
             </code>
             <a
               href={`${GITHUB_REPO}/blob/main/examples/refused-action/README.md`}
