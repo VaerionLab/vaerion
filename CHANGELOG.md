@@ -1,10 +1,25 @@
 # Changelog
 
 All notable changes to the Vaerion engine. Entries derive from the measured
-records of record — the annotated git tags (`v0.1.7-rc1` … `v0.1.13-rc1`), the
+records of record — the annotated git tags (`v0.1.7-rc1` … `v0.1.14-rc1`), the
 reports in `docs/ga/`, and `worklog.md` — not from memory; dates are the
 measured tag dates. Keep a Changelog format; within v0.1 surfaces evolve
 additively — nothing removed or renamed (`BETA-ONBOARDING.md`).
+
+## [v0.1.14-rc1] - 2026-09-28
+
+The completeness-closure release, tagged `v0.1.14-rc1` and published to npm.
+
+- **E1010 — journal completeness anchor:** the close-time receipt's commitment
+  (final record count + head hash) is now enforced by `vae journal verify`;
+  truncation — even clean tail deletion — fails with a taught error.
+- **Layered detection:** semantic forgery → `E1001`; middle-record deletion
+  re-chained → `E1005`; post-close substitution → `E1010`.
+- **Verifiable exports:** copied receipts re-certify to the export's own chain;
+  export of an attacked (truncated) journal is refused at the source.
+- **Attack suite ships as tests:** 12 permanent scenarios in
+  `packages/vaerion/tests/security/journal-completeness.test.ts`.
+- Package gate: **645/645 pass**, typecheck clean.
 
 ## [Unreleased]
 

@@ -1,7 +1,7 @@
 # Vaerion Documentation
 
 Organized around journeys, not internals. Everything is measured against
-the engine of record (`v0.1.13-rc1`); the deep engineering records (ADRs,
+the engine of record (`v0.1.14-rc1`); the deep engineering records (ADRs,
 security, GA packets) keep their historical authority.
 
 ## I just want to try it
@@ -48,6 +48,4 @@ security, GA packets) keep their historical authority.
 ## Project law and process
 
 [constitution/](constitution/) — the ratified engineering constitution ·
-[ga/](ga/) — release verification and audit packets ·
-[operations/](operations/) — operations and launch-sequence records ·
 [../CHANGELOG.md](../CHANGELOG.md) — version history of record.

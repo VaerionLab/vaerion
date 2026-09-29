@@ -1,6 +1,6 @@
 # Vaerion TypeScript SDK — `@vaerion/sdk`
 
-> **Provenance note.** Written for `@vaerion/sdk` `0.1.13-rc1` from the
+> **Provenance note.** Written for `@vaerion/sdk` `0.1.14-rc1` from the
 > actual source of record: `sdks/typescript/src/index.ts`,
 > `src/daemon.ts`, `src/daemon-transport.ts`, and
 > `sdks/typescript/package.json`. Only exports and methods that exist are

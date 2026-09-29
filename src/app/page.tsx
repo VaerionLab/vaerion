@@ -135,11 +135,7 @@ function Hero() {
             id="hero-heading"
             className="mt-4 text-4xl font-bold leading-[1.06] tracking-tight text-zinc-50 sm:text-5xl lg:text-[3.4rem]"
           >
-            The{" "}
-            <span className="bg-gradient-to-r from-[#5B8CFF] to-[#A78BFA] bg-clip-text text-transparent">
-              verification layer
-            </span>{" "}
-            for AI agents.
+            The <span className="bg-gradient-to-r from-[#5B8CFF] to-[#A78BFA] bg-clip-text text-transparent">verification layer</span> for AI agents.
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
             {
@@ -435,6 +431,8 @@ function Demo() {
               )}
             >
               {"cp -r examples/vaerion/demo-workspace refused-action && cd refused-action"}
+              <br />
+              {"vae run agent --goal \"Ship the pricing change to production\" --planner inline --plan-json '[{\"kind\":\"tool\",\"tool\":\"deploy\",\"args\":{\"env\":\"production\"}}]'"}
             </code>
             <a
               href={`${GITHUB_REPO}/blob/main/examples/refused-action/README.md`}
@@ -586,7 +584,7 @@ const TRUST_ITEMS = [
     icon: FlaskConical,
     title: "Deterministic verification",
     body: "Nine verification gates, all green on the release of record.",
-    href: `${GITHUB_REPO}/blob/main/docs/launch/README.md`,
+    href: `${GITHUB_REPO}/blob/main/docs/verification/README.md`,
   },
   {
     icon: Code2,

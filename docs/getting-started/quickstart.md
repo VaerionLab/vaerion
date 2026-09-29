@@ -33,7 +33,7 @@ vae --version
 Measured:
 
 ```text
-vae 0.1.13-rc1
+vae 0.1.14-rc1
 ```
 
 No account, no telemetry, no network calls — the install drops the
@@ -77,7 +77,7 @@ Measured (trimmed):
 receipt:
   run_id: crn_run_01M3F2460N5TEREDSJX9HJRE49
   trace_id: t_x41hvnb5p9
-  engine_version: 0.1.13-rc1
+  engine_version: 0.1.14-rc1
   counts:
     records: 13
     events: 10

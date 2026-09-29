@@ -22,8 +22,8 @@ floats free of it.
 ## How you verify one
 
 See [verification](../verification/README.md) for the commands, and
-[`docs/launch/receipt-verification.md`](../launch/receipt-verification.md) for the
-measured, screenshot-backed walkthrough of a real verification.
+[`docs/book/tutorials/01-init.md`](../book/tutorials/01-init.md) for the
+measured walkthrough of a real run closing with a verified receipt.
 
 ## Why hash-chained
 

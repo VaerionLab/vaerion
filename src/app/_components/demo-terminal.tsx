@@ -32,7 +32,7 @@ const SCRIPT: Step[] = [
       <span className="block">
         <span className={DIM}>{"$ "}</span>
         <span className="text-zinc-200">
-          {'vae run agent --goal "Ship the pricing change to production"'}
+          {'vae run agent --goal "Ship the pricing change to production" --planner inline --plan-json \'[{"kind":"tool","tool":"deploy","args":{"env":"production"}}]\''}
         </span>
       </span>
     ),

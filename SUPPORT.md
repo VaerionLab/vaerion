@@ -1,7 +1,7 @@
 # Support
 
-Vaerion is a local-first, AI-native development engine, currently a public beta
-(engine `0.1.13-rc1`). Support is grounded in the repository's own surfaces —
+Vaerion is the local-first verification layer for AI agents, currently a public beta
+(engine `0.1.14-rc1`). Support is grounded in the repository's own surfaces —
 measured, never assumed.
 
 ## Start here (documentation)
