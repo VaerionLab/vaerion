@@ -198,10 +198,10 @@ vae resume <RUN_ID>            # if a durable human gate is pending`}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <CodeBlock
             title="speak to the daemon (docs/QUICKSTART.md §6)"
-            code={`import { createClient } from "@vaerion/sdk";
+            code={`import { VaeDaemonClient } from "@vaerion/sdk";
 
-const vae = createClient({
-  baseUrl: "http://127.0.0.1:<port>",
+const vae = new VaeDaemonClient({
+  base: "http://127.0.0.1:<port>",
   token: "<pairing-token>",
 });
 console.log(await vae.version());`}

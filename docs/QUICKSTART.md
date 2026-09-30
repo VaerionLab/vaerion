@@ -108,8 +108,8 @@ In a second shell, the TypeScript SDK speaks the exact same contracts
 (machine parity):
 
 ```ts
-import { createClient } from "@vaerion/sdk";
-const vae = createClient({ baseUrl: "http://127.0.0.1:<port>", token: "<pairing-token>" });
+import { VaeDaemonClient } from "@vaerion/sdk";
+const vae = new VaeDaemonClient({ base: "http://127.0.0.1:<port>", token: "<pairing-token>" });
 console.log(await vae.version());
 ```
 

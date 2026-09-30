@@ -14,9 +14,9 @@ The TypeScript SDK lives at [`sdks/typescript/`](../../sdks/typescript/) as
 ## Minimal shape
 
 ```ts
-import { createClient } from "@vaerion/sdk";
+import { VaeDaemonClient } from "@vaerion/sdk";
 
-const vaerion = createClient(); // daemon transport, local-first
+const vaerion = new VaeDaemonClient({ base: "http://127.0.0.1:7897", token: "<pairing-token>" }); // daemon transport, loopback-only
 // runs, journals, and receipts through the same contracts the CLI uses
 ```
 
