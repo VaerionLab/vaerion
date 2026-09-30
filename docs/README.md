@@ -44,6 +44,7 @@ security, GA packets) keep their historical authority.
 | [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | recovery paths for every failure family |
 | [LIMITATIONS.md](LIMITATIONS.md) | what is measured — and what is honestly not done |
 | [security/](security/) | threat model, mitigations, remaining-risk ledger, signing ceremony |
+| [reference/engine-api.md](reference/engine-api.md) | the in-process engine surface: RunHarness, journals, receipts, policy rules |
 
 ## Project law and process
 
