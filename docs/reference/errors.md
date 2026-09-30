@@ -4,7 +4,7 @@ Vaerion errors teach. Every refusal carries a stable code, a human
 summary, and a Fix line. Full recovery paths:
 [`../TROUBLESHOOTING.md`](../TROUBLESHOOTING.md) · the authoritative
 catalog of record: [`../../spec/errors.yaml`](../../spec/errors.yaml)
-(81 codes).
+(82 codes).
 
 ## Exit codes (the contract)
 
