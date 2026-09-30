@@ -35,10 +35,10 @@ the run from its journal alone.
 ## The contracts of record
 
 [`spec/`](../../spec/) is the single source of truth for machine
-behavior: 10 JSON Schemas (`envelope`, `journal-record`, `receipt`,
+behavior: 8 JSON Schemas (`envelope`, `journal-record`, `receipt`,
 `broker-decision`, `gate`, `evidence-record`, `capability-declaration`,
 `vaerion-yaml`, …), the event registry (`spec/events/registry.json`),
-the E-diagnostics catalog (`spec/errors.yaml` — 81 stable codes, each
+the E-diagnostics catalog (`spec/errors.yaml` — 82 stable codes, each
 with a Fix), the OpenAPI document served by `vae serve`, and the
 extension WIT world. The TypeScript SDK
 ([`../SDK.md`](../SDK.md)) is wire-parity-tested against the CLI over

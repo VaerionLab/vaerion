@@ -444,7 +444,7 @@ and exits 5; `vae doctor` on a healthy workspace exits 0.
 ## Error codes (E-codes)
 
 Stable diagnostics live in `spec/errors.yaml` — the single source of truth
-(81 codes at this writing; additive-only within v1: never reused, never
+(82 codes at this writing; additive-only within v1: never reused, never
 remapped). The runtime module `packages/vaerion/src/kernel/errors.ts` is
 the L0 mirror of that catalog, and verification asserts both stay in sync.
 Every entry carries a stable `name`, a `summary`, and a `fix` hint; the

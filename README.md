@@ -116,9 +116,9 @@ on every build — lower layers never import higher):
 | L2 | `runtime`, `research`, `agents`, `workflow`, `package`, `evals`, `extensions`, `repo`, `identity`, `center` | deterministic runs (research / agent loop / DAG workflows), reproducible packaging, repository intelligence, local identity |
 | L4 | `cli`, `api` | the `vae` command surface and the loopback-only HTTP/SSE daemon over the same contracts |
 
-Contracts of record live in [`spec/`](spec/): 10 JSON Schemas
+Contracts of record live in [`spec/`](spec/): 8 JSON Schemas
 (`envelope`, `journal-record`, `receipt`, `broker-decision`, `gate`,
-`vaerion-yaml`, …), the event registry, the 81-code E-diagnostics
+`vaerion-yaml`, …), the event registry, the 82-code E-diagnostics
 catalog (`spec/errors.yaml`), OpenAPI, and the extension WIT world.
 Architecture decisions: [`docs/adr/README.md`](docs/adr/README.md).
 
