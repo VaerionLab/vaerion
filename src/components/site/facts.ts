@@ -106,7 +106,7 @@ export const FACTS = {
     name: "@vaerion/sdk",
     client: "VaeClient",
     daemonClient: "VaeDaemonClient",
-    entry: "createClient()",
+    entry: "new VaeDaemonClient({ base, token })",
     parity: "SDK ⇄ CLI machine parity is tested (same run ids, journal verification, receipts, redacted exports)",
   },
 

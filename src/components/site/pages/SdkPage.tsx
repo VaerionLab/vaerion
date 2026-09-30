@@ -60,7 +60,7 @@ export default function SdkPage() {
         <CodeBlock title="install (repository supply-chain law)" code={`bun install --frozen-lockfile`} />
       </Section>
 
-      <Section tight label="Entry point" title="createClient — speak to the local daemon.">
+      <Section tight label="Entry point" title="VaeDaemonClient — speak to the local daemon.">
         <p className="-mt-4 max-w-3xl text-sm leading-relaxed text-mutedfg">
           Start the daemon and pair once — the token is printed exactly once at start; the daemon refuses any non-loopback bind.
         </p>
@@ -70,9 +70,9 @@ export default function SdkPage() {
 vae serve            # loopback HTTP/SSE; pairing token printed once
 
 # shell 2
-import { createClient } from "@vaerion/sdk";
+import { VaeDaemonClient } from "@vaerion/sdk";
 
-const vae = createClient({ baseUrl: "http://127.0.0.1:<port>", token: "<pairing-token>" });
+const vae = new VaeDaemonClient({ base: "http://127.0.0.1:<port>", token: "<pairing-token>" });
 console.log(await vae.version());`}
         />
       </Section>
