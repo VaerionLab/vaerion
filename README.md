@@ -7,8 +7,8 @@ runtime for deterministic, verifiable AI agents — local-first, zero
 telemetry, auditable by construction.
 
 [![verify](https://github.com/VaerionLab/vaerion/actions/workflows/verify.yml/badge.svg)](https://github.com/VaerionLab/vaerion/actions/workflows/verify.yml)
-![release](https://img.shields.io/badge/release-v0.1.14--rc1-D4AF37)
-![npm](https://img.shields.io/badge/npm-vaerion%400.1.14--rc1-D4AF37)
+[![release](https://badgen.net/github/tag/VaerionLab/vaerion?label=release&color=D4AF37)](https://github.com/VaerionLab/vaerion/releases)
+[![npm](https://img.shields.io/npm/v/vaerion?label=npm&color=D4AF37)](https://www.npmjs.com/package/vaerion)
 ![license](https://img.shields.io/badge/license-Apache--2.0-9C9CA6)
 ![telemetry](https://img.shields.io/badge/telemetry-zero_by_construction-9C9CA6)
 
