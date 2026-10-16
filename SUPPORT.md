@@ -4,6 +4,15 @@ Vaerion is the local-first verification layer for AI agents, currently a public 
 (engine `0.1.14-rc1`). Support is grounded in the repository's own surfaces —
 measured, never assumed.
 
+## Community
+
+Questions, positions, and discussion live in
+[GitHub Discussions](https://github.com/VaerionLab/vaerion/discussions) —
+start with the
+[Welcome post](https://github.com/VaerionLab/vaerion/discussions/9), then
+open questions in **General**. Security findings never go in public
+threads — see [`SECURITY.md`](SECURITY.md).
+
 ## Start here (documentation)
 
 - `docs/QUICKSTART.md` — the guided first journey (15 minutes, teaches the

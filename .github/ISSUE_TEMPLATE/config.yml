@@ -1,1 +1,9 @@
 blank_issues_enabled: false
+
+contact_links:
+  - name: Questions and community (Discussions)
+    url: https://github.com/VaerionLab/vaerion/discussions/categories/general
+    about: Usage questions, positions, and community discussion — start with the Welcome post.
+  - name: Security vulnerabilities
+    url: https://github.com/VaerionLab/vaerion/security/policy
+    about: Never in public issues or discussions — private disclosure per SECURITY.md.

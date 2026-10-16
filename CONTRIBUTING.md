@@ -27,20 +27,23 @@ bun run tools/verify.ts   # the full verification suite — must be green
 
 ## The verification law
 
-Every change must leave all six verification gates green **before** it is
-committed. The single entrypoint is `tools/verify.ts`, which writes its
-measured result to `.vaerion-verification.json`:
+Every change must leave all nine verification gates green **before** it
+is committed. The single entrypoint is `tools/verify.ts`, which writes
+its measured result to `.vaerion-verification.json`:
 
 1. **typecheck-engine** — strict TypeScript over the engine.
 2. **typecheck-sdk** — strict TypeScript over the SDK.
-3. **tests** — the full suite with enforced coverage floors (floors only
-   ratchet up; a breach fails the run).
-4. **layerlint** — architecture boundaries (L0 kernel → L1 primitives →
+3. **tests** — the full test suite.
+4. **coverage-ratchet** — coverage floors only ratchet up; a breach
+   fails the run, and floors move by explicit change only.
+5. **layerlint** — architecture boundaries (L0 kernel → L1 primitives →
    L2 services → L4 CLI/API; the daemon never imports the CLI).
-5. **constitutional-check** — the project invariants: zero telemetry,
+6. **constitutional-check** — the project invariants: zero telemetry,
    determinism, no placeholder debt, contract sync, no secret material,
    config guards, egress confinement.
-6. **repo-lint** — ESLint over the application and tooling.
+7. **perf-budget** — performance budgets enforced on the measured paths.
+8. **a11y-structural** — structural accessibility checks over the site.
+9. **repo-lint** — ESLint over the application and tooling.
 
 If a gate fails, fix the root cause. Do not weaken a check to make a run
 pass; coverage floors and constitutional checks are ratcheted or amended
