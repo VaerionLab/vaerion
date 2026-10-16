@@ -12,7 +12,7 @@ telemetry, auditable by construction.
 ![license](https://img.shields.io/badge/license-Apache--2.0-9C9CA6)
 ![telemetry](https://img.shields.io/badge/telemetry-zero_by_construction-9C9CA6)
 
-[Website](https://vaerion.vercel.app) · [Support & community](SUPPORT.md) · [Security proof](VAERION_SECURITY_PROOF_v1.0.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
+[Website](https://vaerion.vercel.app) · [Docs](docs/README.md) · [Discussions](https://github.com/VaerionLab/vaerion/discussions) · [Support](SUPPORT.md) · [Security proof](VAERION_SECURITY_PROOF_v1.0.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
 
 Vaerion runs AI-assisted work the way a database engine runs
 transactions: every step lands on one versioned event spine, journals
@@ -183,10 +183,28 @@ the engine's own test suite — examples cannot drift from reality.
 
 `v0.1.14-rc1` is a **release candidate**: 9/9 verification gates green,
 signed release artifacts, npm distribution live and consumer-verified.
+In preparation: the `0.1.15-rc1` train brings the engine and all five
+SDKs to a single version.
 What ships next and what is explicitly *not* done yet:
 [`ROADMAP_PROGRESS.md`](ROADMAP_PROGRESS.md),
 [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md), and
 [`docs/security/RISK-LEDGER.md`](docs/security/RISK-LEDGER.md).
+
+## Community
+
+[GitHub Discussions](https://github.com/VaerionLab/vaerion/discussions) is
+the community surface. Start with
+[**Welcome to Vaerion**](https://github.com/VaerionLab/vaerion/discussions/9),
+then bring your positions and questions:
+
+| Discussion | The conversation |
+|---|---|
+| [Why AI Agents Need Verification](https://github.com/VaerionLab/vaerion/discussions/15) | what your stack does for evidence today — and where trust models fall short without receipts |
+| [Building with Receipts, Policies, and Proof](https://github.com/VaerionLab/vaerion/discussions/16) | the three proof shapes measured in the engine, and which one your regime accepts |
+| [Security Research Discussion](https://github.com/VaerionLab/vaerion/discussions/17) | threat models and the fail-closed posture — models, not live findings |
+| [Future Integrations Discussion](https://github.com/VaerionLab/vaerion/discussions/18) | MCP, agent frameworks, CI gates, receipt export — name your runtime |
+
+Security findings never go in public threads — see [`SECURITY.md`](SECURITY.md).
 
 ## Contributing
 

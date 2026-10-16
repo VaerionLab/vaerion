@@ -19,7 +19,7 @@ body:
     attributes:
       label: Engine version
       description: Output of `vae version` (or the tarball/commit you installed).
-      placeholder: 0.1.7
+      placeholder: 0.1.14-rc1
     validations:
       required: true
   - type: dropdown
