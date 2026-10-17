@@ -38,10 +38,11 @@ verification legs (sha256 → engine verifier → openssl cross-check).
 
 | Surface | Status |
 |---|---|
-| Engine | `0.1.14-rc1` — release candidate (prerelease) |
-| Verification | 9/9 gates green · 545 tests / 0 failed · 3,932 expectations |
+| Engine | `0.1.15-rc1` — release candidate (prerelease) |
+| Verification | 9/9 gates green · 719 tests / 0 failed · 5,246 expectations |
 | GitHub Releases | Live — signed artifacts: https://github.com/VaerionLab/vaerion/releases |
-| npm / PyPI | Not published — Founder-gated on the release train |
+| npm | Live on the `rc`/`latest` channels at `0.1.14-rc1`; the Founder-gated `0.1.15-rc1` publish is on the release train |
+| PyPI | Not published — Founder-gated on the release train |
 | vaerion.dev installer | Not live — goes live with the release train |
 | Community | GitHub Discussions (announcements, Q&A, ideas, show and tell); Discord planned at the release train |
 

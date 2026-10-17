@@ -1,5 +1,21 @@
 # Remaining-Risk Ledger — v0.1.7-rc2
 
+> **Currency note (honest):** baseline `v0.1.7-rc2`; re-affirmed for the
+> `v0.1.15-rc1` epoch in the Phase 61.2 final security audit (2026-10-04).
+> The residual exposures below were re-measured where this epoch touched
+> them: daemon auth/loopback/token lifecycle (live: 401/200/401, per-boot
+> rotation), journal integrity (E1001 + E1010 live-refused on source and
+> installed artifact), deterministic builds (byte-identical rebuilds —
+> 61.1 record `d9d8f1a7…`; the 61.2 correction build `bd2e5d56…`
+> reproduced identically twice; see `reports/phase-61.2/06-artifact-proof.md`),
+> dependency audit (0 vulnerabilities across the declared
+> ranges). No new residual exposure was introduced by the 0.1.15-rc1
+> corrections. Known open DX exposure (no-Bun first-touch: the engine
+> genuinely requires Bun; the npm launcher now teaches E1600 exit 2 under
+> node instead of the raw OS 127, but `vae` cannot run until Bun exists)
+> is DX friction, not a trust boundary, and stays ledgered in the phase
+> reports.
+
 The honest ledger of security exposures that remain after the mitigations
 in `MITIGATIONS.md`. Severity: **critical** (ships nothing) / **high** /
 **medium** / **low**. Owner is the accountable party: **Founder** (decision

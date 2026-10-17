@@ -3,13 +3,13 @@
 # VERIFICATION STATUS: authored on Linux; no rpmbuild in this environment,
 # so the spec is syntax-reviewed only. Platform marker: UNVERIFIED — RPM.
 # Build (on any RPM host):
-#   rpmbuild -bb packaging/linux/vaerion.spec --define "version 0.1.14.rc1"
-# (RPM versions cannot contain '-'; the dot form 0.1.14.rc1 is the
+#   rpmbuild -bb packaging/linux/vaerion.spec --define "version 0.1.15.rc1"
+# (RPM versions cannot contain '-'; the dot form 0.1.15.rc1 is the
 #  convention of record here — derived from version_string by replacing
 #  the pre-release hyphen with a dot; the register test pins the derivation.)
 
-%global version_string 0.1.14-rc1
-%global rpm_version    0.1.14.rc1
+%global version_string 0.1.15-rc1
+%global rpm_version    0.1.15.rc1
 
 Name:           vaerion
 Version:        %{rpm_version}
@@ -48,11 +48,21 @@ chmod +x %{buildroot}/usr/bin/vae
 %license LICENSE
 
 %changelog
-* Thu Sep 03 2026 Auren <auren@vaerion.dev> - 0.1.14.rc1-1
+* Sat Oct 03 2026 Auren <auren@vaerion.dev> - 0.1.15.rc1-1
+- The one-true-artifact epoch: E1010 journal-completeness anchor ported into
+  the canonical lineage (catalog + verify logic + 12-test attack suite);
+  artifact parity system added; register bumped so the tree of record and the
+  artifact of record can never share a version while differing.
+
+* Sat Oct 03 2026 Auren <auren@vaerion.dev> - 0.1.14.rc1-1
+- Version-register alignment with the published npm line (vaerion@0.1.14-rc1,
+  dist-tag rc). No behavioral change in this private-lineage alignment.
+
+* Thu Sep 03 2026 Auren <auren@vaerion.dev> - 0.1.13.rc1-1
 - Production signing key ceremony (ASCENSION XXV Phase XXVII): release trust
   moves from the session-bound bootstrap key to the provisioned production key
   (RELEASE_SIGNING_KEY); key of record rotated; SIGNING-CEREMONY.md recorded.
-- The register bump to 0.1.14-rc1 (this entry's epoch) is the first
+- The register bump to 0.1.13-rc1 (this entry's epoch) is the first
   post-ceremony release train.
 
 * Thu Sep 03 2026 Auren <auren@vaerion.dev> - 0.1.12.rc1-1

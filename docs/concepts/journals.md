@@ -28,7 +28,8 @@ ledger and refusal log.
 A receipt (`receipts/receipt.ts`) is folded **from** the journal:
 counts of records/events/allow/deny/prompt decisions, gates, snapshots,
 recovery notes, blob references, and the journal head hash. It is
-shape-guarded (E1003), stored in `.vaerion/receipts/`, and verifies
+shape-guarded (E1003), committed as the journal's terminal `receipt`
+record (`.vaerion/journal/<run_id>.ndjson`), and verifies
 independently of the process that produced it. The run command prints
 it on close — `journal_verified: true` is the engine re-checking its
 own chain before declaring the run closed.

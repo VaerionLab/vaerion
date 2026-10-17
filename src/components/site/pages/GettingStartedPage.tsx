@@ -20,7 +20,7 @@ vae --version`,
   {
     n: "1",
     title: "Look around, then create a workspace — 2 minutes",
-    text: "The welcome and the tour are read-only: nothing is created, modified, or executed. The tour teaches by pointing at real commands — vae dev, vae journal ls, vae doctor, vae repo — never by running them. init scaffolds vaerion.yaml plus .vaerion/ (minimal is the default template; demo and agent exist too).",
+    text: "The welcome and the tour are read-only: nothing is created, modified, or executed. The tour teaches by pointing at real commands — vae dev, vae journal ls, vae doctor, vae repo — never by running them. init scaffolds vaerion.yaml plus .vaerion/ from the deterministic template registry (minimal is the default; demo, agent, tool, automation, multi-agent, and enterprise exist too).",
     code: `vae                # welcome front door: measures this directory,
                    # points at the next step (exit 0)
 vae tour           # a guided, read-only walk of the engine —
@@ -62,14 +62,18 @@ vae package verify .vaerion/package/vaerion-demo.vxn`,
   },
   {
     n: "6",
-    title: "Optional: the daemon and the SDK — 2 minutes",
-    text: "vae serve starts the loopback HTTP/SSE daemon and prints a pairing token exactly once. The TypeScript SDK speaks the same contracts over that loopback — machine parity, tested in the repository.",
+    title: "Optional: the daemon and the SDKs — 2 minutes",
+    text: "vae serve starts the loopback HTTP/SSE daemon and prints a pairing token exactly once. SDKs in five languages speak the same contracts over that loopback — TypeScript binds the engine in-process; Python, Go, Rust, and Java bind over the daemon wire and verify through the CLI of record. Machine parity is tested in the repository, not asserted.",
     code: `vae serve            # loopback HTTP/SSE; pairing token printed once
 
-# second shell — same engine contracts from TypeScript:
+# second shell — the same engine contracts from TypeScript:
 #   import { VaeDaemonClient } from "@vaerion/sdk";
-#   const vae = new VaeDaemonClient({ base: "http://127.0.0.1:<port>", token: "<pairing-token>" });
-#   console.log(await vae.version());`,
+#   const daemon = new VaeDaemonClient({ base: "http://127.0.0.1:<port>", token: "<pairing-token>" });
+#   console.log(await daemon.version());
+#
+# or from Python / Go / Rust / Java over the same wire:
+#   from vaerion import Agent            # sdks/python
+#   with Agent() as agent: print(agent.run("summarize this workspace")["run_id"])`,
   },
   {
     n: "7",
@@ -137,6 +141,8 @@ export default function GettingStartedPage() {
         <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
           <ArrowLink href="#/docs/installation">Installation guide</ArrowLink>
           <ArrowLink href="#/docs/cli">CLI reference</ArrowLink>
+          <ArrowLink href="#/docs/sdk">The five SDKs</ArrowLink>
+          <ArrowLink href="#/integrations">Framework integrations</ArrowLink>
           <ArrowLink href="#/docs/troubleshooting">Troubleshooting</ArrowLink>
         </div>
       </Section>

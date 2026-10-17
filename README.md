@@ -61,17 +61,23 @@ cryptic one).
 
 ```sh
 curl -fsSL https://bun.sh/install | bash    # if Bun is not installed yet
-npm install -g vaerion@rc                    # live on the npm registry
-vae --version                                # → vae 0.1.14-rc1
+npm install -g vaerion@rc                    # npm channel — see the version note below
+vae --version                                # → vae 0.1.15-rc1 (tree of record)
 ```
+
+> **Version note (honest):** the npm registry still delivers `0.1.14-rc1` —
+> an older engine missing `vae verify` / `create` / `start` / `mcp` — until
+> the Founder-gated `0.1.15-rc1` publish. For the true engine today, install
+> from source (`bun install` in a clone, then
+> `bun run packages/vaerion/src/cli/vae.ts`) or the signed release set.
 
 Other channels (signed release tarball with three-leg offline
 verification, PyPI wheel, Debian, Homebrew, Windows — each labeled with
 its measured status): [`docs/INSTALL.md`](docs/INSTALL.md). The signed
 artifact set lives on
 [GitHub Releases](https://github.com/VaerionLab/vaerion/releases);
-[`VERIFY.md`](https://github.com/VaerionLab/vaerion/releases) in each
-release teaches the anonymous verification.
+[`VERIFY.md` shipped with each GitHub release](https://github.com/VaerionLab/vaerion/releases)
+teaches the anonymous verification.
 
 ## Quick Start — first proof in under 10 minutes
 
@@ -177,34 +183,20 @@ the engine's own test suite — examples cannot drift from reality.
 | [`docs/TROUBLESHOOTING.md`](docs/TROUBLESHOOTING.md) | exit codes 0–5, every E-code with a Fix |
 | [`docs/FAQ.md`](docs/FAQ.md) · [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md) | questions, and what is honestly not done yet |
 | [`docs/book/`](docs/book/) | tutorials → concepts → operator guides |
-| [`docs/SDK.md`](docs/SDK.md) | the TypeScript SDK (`@vaerion/sdk`), wire-parity with the CLI |
+| [`docs/SDK.md`](docs/SDK.md) | the five SDKs — TypeScript (`@vaerion/sdk`), Python, Go, Rust, Java — wire-parity with the CLI |
+| [`integrations/`](integrations/) | the framework alliance: the in-engine `vae mcp` server + OpenAI Agents, LangGraph, CrewAI, and AutoGen adapters |
 
 ## Roadmap
 
-`v0.1.14-rc1` is a **release candidate**: 9/9 verification gates green,
-signed release artifacts, npm distribution live and consumer-verified.
-In preparation: the `0.1.15-rc1` train brings the engine and all five
-SDKs to a single version.
+`v0.1.15-rc1` is a **release candidate**: 9/9 verification gates green,
+signed release artifacts, the E1010 journal-completeness anchor now
+canonical, and a mechanical artifact-parity system (source = build =
+package = docs). npm distribution is live but lags the tree (`0.1.14-rc1`)
+until the Founder-gated publish.
 What ships next and what is explicitly *not* done yet:
 [`ROADMAP_PROGRESS.md`](ROADMAP_PROGRESS.md),
 [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md), and
 [`docs/security/RISK-LEDGER.md`](docs/security/RISK-LEDGER.md).
-
-## Community
-
-[GitHub Discussions](https://github.com/VaerionLab/vaerion/discussions) is
-the community surface. Start with
-[**Welcome to Vaerion**](https://github.com/VaerionLab/vaerion/discussions/9),
-then bring your positions and questions:
-
-| Discussion | The conversation |
-|---|---|
-| [Why AI Agents Need Verification](https://github.com/VaerionLab/vaerion/discussions/15) | what your stack does for evidence today — and where trust models fall short without receipts |
-| [Building with Receipts, Policies, and Proof](https://github.com/VaerionLab/vaerion/discussions/16) | the three proof shapes measured in the engine, and which one your regime accepts |
-| [Security Research Discussion](https://github.com/VaerionLab/vaerion/discussions/17) | threat models and the fail-closed posture — models, not live findings |
-| [Future Integrations Discussion](https://github.com/VaerionLab/vaerion/discussions/18) | MCP, agent frameworks, CI gates, receipt export — name your runtime |
-
-Security findings never go in public threads — see [`SECURITY.md`](SECURITY.md).
 
 ## Contributing
 

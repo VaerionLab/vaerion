@@ -1,5 +1,22 @@
 # vaerion — PyPI distribution
 
+
+## PyPI naming strategy (decision of record, 2026-10-03)
+
+Two Python distributions exist in this repository and they must not
+collide on PyPI:
+
+| Distribution | PyPI name | Provides | Source |
+|---|---|---|---|
+| CLI launcher wheel | `vaerion` | the `vae` console command | `packaging/python/` |
+| SDK | `vaerion-sdk` | the `vaerion` import (Agent / VaeDaemonClient) | `sdks/python/` |
+
+This mirrors the npm/JVM rows of record: npm `vaerion` (CLI) vs
+`@vaerion/sdk`; Maven `dev.vaerion:vaerion-sdk`. The SDK import name
+remains `vaerion` in both layouts. Registry publication of both
+distributions remains Founder-gated; PyPI `vaerion` measured 404
+(unclaimed) on 2026-10-03.
+
 `pip install vaerion` installs the `vae` console launcher plus the packaged
 engine source. Python is the delivery channel, not the substrate: the
 launcher resolves the Bun runtime (ADR-0018) and `exec`s the engine's own

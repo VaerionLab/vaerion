@@ -286,11 +286,12 @@ describe("catalog law — two representations of one command surface, bound by t
     // completions are real dispatcher cases with real implementations; the
     // catalog of record now carries all 25 and this pin tracks it exactly.
     expect(COMMAND_CATALOG.map((c) => `${c.family}/${c.command}`)).toEqual([
-      "WORKSPACE/init", "WORKSPACE/status", "RUNS/run", "RUNS/resume", "RUNS/explain",
-      "RUNS/journal", "HEALTH/doctor", "HEALTH/dev", "INSIGHT/report", "RECOVERY/snapshot",
+      "WORKSPACE/init", "WORKSPACE/create", "WORKSPACE/status", "RUNS/run", "RUNS/resume", "RUNS/explain",
+      "RUNS/verify", "RUNS/journal", "HEALTH/doctor", "HEALTH/dev", "INSIGHT/report", "RECOVERY/snapshot",
       "RECOVERY/restore", "MAINTENANCE/clean", "IDENTITY & AI/account", "IDENTITY & AI/ai",
-      "DISTRIBUTE/serve", "DISTRIBUTE/package", "DISTRIBUTE/provenance", "LEARN/tour", "LEARN/version",
-      "HEALTH/repo", "HEALTH/ci", "DISTRIBUTE/release", "INSIGHT/center", "LEARN/help", "LEARN/completions",
+      "DISTRIBUTE/serve", "DISTRIBUTE/mcp", "DISTRIBUTE/package", "DISTRIBUTE/provenance", "LEARN/tour",
+      "LEARN/start", "LEARN/version", "HEALTH/repo", "HEALTH/ci", "DISTRIBUTE/release", "INSIGHT/center",
+      "LEARN/help", "LEARN/completions",
     ]);
   });
 });

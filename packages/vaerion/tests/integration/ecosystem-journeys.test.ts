@@ -103,11 +103,18 @@ describe("ASCENSION XX — ecosystem defect closures pinned", () => {
   test("D-B: a template's scaffold files and its declared capabilities can never disagree", () => {
     for (const name of initTemplateNamesCoherent()) {
       const scaffold = TEMPLATE_SCAFFOLD_FILES[name] ?? {};
-      const declaredPaths = declaredLocalPaths(INIT_TEMPLATES[name]!.body);
+      const body = INIT_TEMPLATES[name]!.body;
+      const declaredPaths = declaredLocalPaths(body);
       for (const path of Object.keys(scaffold)) {
-        // every scaffolded file lives under SOME declared capability path
+        // every scaffolded file lives under SOME declared capability path,
+        // OR is declared in the template body itself (Phase 59.1: the
+        // workflow DAG is config-adjacent declared intent, like
+        // vaerion.yaml — not source content; the templates that scaffold
+        // workflow.json teach `vae run workflow --dag workflow.json`, so
+        // the file and its use are declared together).
         const under = declaredPaths.some((base) => path === base.slice(2) || path.startsWith(base.slice(2) + "/"));
-        expect(under).toBe(true);
+        const declaredInBody = body.includes(path);
+        expect(under || declaredInBody).toBe(true);
       }
     }
   });

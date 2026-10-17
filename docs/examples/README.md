@@ -1,7 +1,11 @@
 # Examples — real, executed, test-backed
 
-Every example in this repository is **executed by the test suite**. Nothing here is
-decorative; if an example stops working, the battery goes red.
+The suite-executed examples are `examples/vaerion` (the init → run demo →
+verify journey) and the refused-action / replay-machine flows
+(`tests/integration/ecosystem-journeys.test.ts` runs them against the real
+engine). The remaining entries are self-describing walkthroughs whose
+downstream behavior the suite exercises. Nothing here is decorative; if an
+executed example stops working, the battery goes red.
 
 ## `examples/vaerion-demo`
 

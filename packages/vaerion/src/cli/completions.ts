@@ -27,9 +27,9 @@ export const COMPLETION_MODEL: {
   flags: string[];
 } = {
   commands: [
-    "init", "run", "resume", "explain", "journal", "doctor", "dev", "serve",
-    "package", "provenance", "repo", "ci", "release", "tour", "account", "ai",
-    "center", "version", "help", "completions",
+    "init", "create", "run", "resume", "explain", "verify", "journal", "doctor",
+    "dev", "serve", "mcp", "package", "provenance", "repo", "ci", "release",
+    "tour", "start", "account", "ai", "center", "version", "help", "completions",
   ],
   subcommands: {
     run: ["research", "demo", "model", "agent", "workflow"],

@@ -12,12 +12,18 @@ that names the exact fix.
 ```sh
 curl -fsSL https://bun.sh/install | bash    # only if Bun is missing
 npm install -g vaerion@rc
-vae --version                               # → vae 0.1.14-rc1
+vae --version                               # → vae 0.1.14-rc1 (see the note below)
 ```
 
-- `@rc` is the release-candidate channel of record
-  (`v0.1.14-rc1`). Plain `npm install -g vaerion` resolves to the same
-  version today.
+- **Version note (honest):** the registry's `@rc` channel currently delivers
+  **`0.1.14-rc1`** — an older engine missing `vae verify` / `create` /
+  `start` / `mcp` — until the Founder-gated **`0.1.15-rc1`** publish (the
+  version of record in the source tree). For the true engine today, install
+  from source (`bun install` in a clone, then
+  `bun run packages/vaerion/src/cli/vae.ts`) or use the signed release set.
+  After the publish, the same command yields `vae 0.1.15-rc1`.
+- `@rc` is the release-candidate channel. Plain `npm install -g vaerion`
+  resolves to the same version today.
 - No account, no telemetry, no network use at runtime unless you
   explicitly invoke a model provider through the gateway.
 - No sudo? npm prefix fallback:

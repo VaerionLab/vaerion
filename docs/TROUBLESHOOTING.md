@@ -42,6 +42,11 @@ guide maps the common ones.
   blake3 chain is broken or the tail is torn (crash mid-write). Fix:
   `vae journal recover <run>` (truncates the torn tail, re-seals the
   chain). Never hand-edit records.
+- **E1010 `journal_completeness_anchor_invalid`** — the run closed but its
+  terminal receipt is missing or no longer certifies the records before it:
+  records were removed or altered after close. Compare against the receipt
+  printed at run close or a `vae snapshot` archive and restore the
+  evidence. Never hand-edit records.
 - **E1302 `gate_pending`** — a durable human gate is waiting for you:
   `vae resume <run> --answer '{...}'`.
 - **E1502 `run_not_found`** — list runs with `vae journal ls`.

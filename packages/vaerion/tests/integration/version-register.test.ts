@@ -80,6 +80,12 @@ const REGISTER: Array<[string, string[]]> = [
   ["packaging/homebrew/vaerion.rb", [`vaerion-${VERSION}-source.tar.gz`]],
   ["spec/openapi.json", [`"version": "${VERSION}"`]],
   ["packaging/README.md", [VERSION]],
+  // Phase 61.2 (D5): the cross-version upgrade leg keeps a literal
+  // CUR_VERSION tripwire (it must fail loudly when register and engine
+  // disagree) — but the 0.1.14→0.1.15 register bump missed bumping that
+  // literal, and the suite went red at 61.1 HEAD (717/1). The register now
+  // OWNS the pin: a future bump fails here until the tripwire moves too.
+  ["packages/vaerion/tests/integration/cross-version-upgrade.test.ts", [`const CUR_VERSION = "${VERSION}"`]],
   // ASCENSION XXV Phase XXXI channels — the four authored-manifest gaps closed
   ["packaging/linux/flatpak/dev.vaerion.Vaerion.yml", [`lib/vaerion/${VERSION}/`, `vaerion-${VERSION}-source.tar.gz`]],
   ["packaging/linux/snap/snapcraft.yaml", [`version: "${VERSION}"`, `lib/vaerion/${VERSION}/`]],
@@ -120,10 +126,21 @@ describe("version register — engine-version lockstep is complete and closed", 
     }
   });
 
-  test("no stale engine-version literal hides in packaging/ or sdks/ (negative sweep)", async () => {
-    const files = [...(await walk("packaging")), ...(await walk("sdks"))];
-    const rcLiteral = /0\.\d+\.\d+-rc\d+/g;
-    const derivedForms = new Set([VERSION, RPM_VERSION, DEB_VERSION]);
+  test("no stale engine-version literal hides in packaging/, sdks/, or integrations/ living files (negative sweep)", async () => {
+    // Phase 61.1 (D1): integrations/ joined the sweep — three adapter
+    // manifests sat at 0.1.13rc1 through two register bumps because the
+    // sweep did not walk this directory, and the PEP-440 form (0.1.14rc1)
+    // escaped the hyphen-only literal match. The sweep is now closed over
+    // every living, version-bearing file in the non-engine package families.
+    // Dated evidence (README provenance headers, captured_output.txt
+    // transcripts) is EXCLUDED by the GAP-MATRIX scope law: history is never
+    // rewritten, so it can never be stale.
+    const DATED_EVIDENCE = new Set(["captured_output.txt", "README.md"]);
+    const files = [...(await walk("packaging")), ...(await walk("sdks")), ...(await walk("integrations"))].filter(
+      (rel) => !DATED_EVIDENCE.has(rel.split("/").pop() ?? ""),
+    );
+    const rcLiteral = /0\.\d+\.\d+(-rc\d+|rc\d+)/g;
+    const derivedForms = new Set([VERSION, RPM_VERSION, DEB_VERSION, VERSION.replace("-", "")]);
     const violations: string[] = [];
     for (const rel of files) {
       const content = await readRepo(rel);

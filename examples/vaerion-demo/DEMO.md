@@ -9,7 +9,9 @@ tarball.
 ## What you will do
 
 1. Build the engine (`bun install` + gates) or unpack a release.
-2. `vae init` in a copy of this directory (or use it in place).
+2. Use this directory in place, or copy it somewhere scratch. (Do not run
+   `vae init` here: the `vaerion.yaml` is committed, and `vae init`
+   refuses to overwrite one — by law.)
 3. `vae run demo` — index the local sources, journal everything, close
    with a receipt.
 4. Inspect and verify the journal; read the receipt.
@@ -60,7 +62,7 @@ blake3 digests match; `verify` recomputes everything and executes nothing.
 |---|---|
 | `.vaerion/journal/*.ndjson` | append-only event journals (blake3-chained) |
 | `.vaerion/blobs/` | content-addressed store |
-| `.vaerion/receipts/` | receipts folded from the journals |
+| `.vaerion/journal/<run_id>.ndjson` (terminal `receipt` record) | the receipt each run closed with — folded from its journal, not a separate file tree |
 | `.vaerion/package/*.vxn` | reproducible bundles |
 | `vaerion.lock` | the generated seal over config + pins + bundle digest |
 

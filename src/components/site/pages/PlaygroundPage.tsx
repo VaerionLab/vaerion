@@ -40,7 +40,7 @@ type Capability = (typeof CAPABILITIES)[number]["id"];
 
 const ACTIONS = [
   { id: "read-report", label: "Read the Q4 report", cap: "fs.read" as Capability, target: "READ ./reports/q4-summary.pdf", risk: "low" },
-  { id: "draft-notes", label: "Draft release notes", cap: "fs.write" as Capability, target: "WRITE ./releases/notes-0.1.13.md", risk: "low" },
+  { id: "draft-notes", label: "Draft release notes", cap: "fs.write" as Capability, target: "WRITE ./releases/notes-0.1.14.md", risk: "low" },
   { id: "fetch-feed", label: "Fetch external status feed", cap: "net.request" as Capability, target: "GET status.example/feed", risk: "medium" },
   { id: "promote-build", label: "Promote build to production", cap: "deploy.promote" as Capability, target: "DEPLOY vaerion-demo.vxn → prod", risk: "high" },
   { id: "email-clients", label: "Email the client list", cap: "email.send" as Capability, target: "SEND 214 recipients · announcement", risk: "high" },

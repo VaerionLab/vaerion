@@ -1,20 +1,24 @@
 # Vaerion CLI Manual — `vae`
 
 > **Provenance and honesty note.** This manual was generated for engine
-> `0.1.13-rc1`, verified current against `0.1.14-rc1` (footer note), from
-> the CLI's single source of truth — the `COMMAND_HELP`
+> `0.1.14-rc1` from the CLI's single source of truth — the `COMMAND_HELP`
 > registry in `packages/vaerion/src/cli/vae.ts` — and cross-checked against
 > `packages/vaerion/src/cli/commands.ts`, `src/cli/io.ts` (exit codes), and
 > `src/cli/ui.ts` (rendering profiles). Every command topic listed here was
 > verified by executing `vae <command> --help` on this tree before this file
-> was written. Flags not present in the registry are not documented.
+> was written, and re-verified against engine `0.1.13-rc1` @ `7e6b751`
+> (2026-10-01) and against engine `0.1.14-rc1` (version-register alignment,
+> 2026-10-03) after the Phase 59.1/59.2 surface growth (`create`, `verify`,
+> `start`, `mcp`, interactive prompts, the 7-template registry). Flags not
+> present in the registry are not documented.
 >
 > Shell completions are a registry command (`vae completions
 > <bash|zsh|fish|powershell|nushell|xonsh>` — generated from the ONE
 > completion model pinned against the registry; bash is `bash -n`-measured
 > on the generating host, the other five carry honest UNVERIFIED markers
-> until their hosts run them). There is no `--version` global flag; the
-> version is printed by the welcome banner and `vae dev`.
+> until their hosts run them). The engine version is printed by `vae
+> version`, the `--version` global flag (`-V`), the welcome banner, and
+> `vae dev`.
 
 ---
 
@@ -82,6 +86,19 @@ Piped output is byte-free of ANSI by construction; this is pinned by tests
 | `--dry-run` | Zero side effects — plan only, nothing written |
 | `--cwd DIR` | Operate on DIR as the workspace (default: `.`) |
 | `--help`, `-h` | Show help for the topic and exit 0 (never executes) |
+| `--version`, `-V` | Print the engine version and exit |
+| `--quiet` | Suppress decorative framing (banner/footer); data and errors are NEVER suppressed |
+
+**Interactive prompts (`--interactive` / `-i` / `--no-interactive`).**
+These are NOT global flags: they are command flags of `vae create` and
+`vae start` (see those topics). The engage law, measured in source
+(`src/cli/interactive.ts`): prompts engage only for a real terminal that
+can read answers; `--interactive`/`-i` force the prompts even when the
+flags are present (your flag values become the highlighted defaults);
+`--no-interactive` never prompts and wins over `-i`; `--json` never
+prompts — a missing required argument stays the honest `E1600` usage
+error instead of a silent guess. Piped/scripted runs are byte-identical
+to the pre-interactive surface.
 
 ### Workspaces
 
@@ -111,22 +128,83 @@ below mirrors its real `--help` text; only flags that exist are listed.
 ### `vae init`
 
 ```
-vae init [--template minimal|demo|agent] [--name NAME] [--dry-run]
+vae init [--template minimal|demo|agent|tool|automation|multi-agent|enterprise]
+         [--name NAME] [--dry-run]
 ```
 
 Scaffolds `vaerion.yaml` (strict schema 0.1) and the `.vaerion/` workspace
-from the deterministic template registry. Templates:
+from the deterministic template registry — seven templates (verified
+against the CLI help and `src/config/templates.ts`, 2026-10-01):
 
-- `minimal` — the default; bare `vae init` is exactly this template.
-- `demo` — a demo workspace (`./docs` + `./sources` capabilities), ready
+- `minimal` — the default; bare `vae init` is exactly this template:
+  declared project docs, policy examples in comments.
+- `demo` — a demo workspace: a scaffolded `./sources` capability, ready
   for `vae run demo`.
 - `agent` — an agent workspace: mockbrain planner, declared tools, and an
   explicit policy rule for the agent's model.invoke grant.
+- `tool` — an agent workspace with a real tool belt (`echo` +
+  `clock.read`), every call broker-checked and journaled.
+- `automation` — deterministic tool DAGs, zero model calls; ships a
+  declared `workflow.json` ready for `vae run workflow --dag workflow.json`.
+- `multi-agent` — a researcher→analyst→auditor crew as one journaled DAG.
+- `enterprise` — governance first: deny-by-default `policy.rules` with
+  explicit rationale-backed grants, budgeted model ceilings, a governance
+  DAG, and a README teaching policy → run → verify → receipt.
 
 Every template is byte-stable (the only parameter is `--name`) and
 validates against the strict config law; telemetry is structurally false.
 Refuses to overwrite an existing `vaerion.yaml`. Unknown templates are a
 usage error (`E1203`). `--dry-run` prints the plan and writes nothing.
+
+### `vae create`
+
+```
+vae create NAME [--template T] [--interactive] [--no-interactive] [--dry-run]
+```
+
+Scaffolds a NEW project directory and teaches the next commands. The
+directory must not exist (create refuses to touch existing directories,
+`E1600`). The template comes from the SAME deterministic registry as
+`init`; the default is `demo` — the fastest verified journey.
+
+Interactive prompts: on a terminal, a missing NAME and a missing
+`--template` are asked with numbered prompts (Enter accepts the default;
+invalid answers re-prompt). `--interactive`/`-i` forces the prompts even
+when the flags are present (your flag values become the defaults);
+`--no-interactive` never prompts; `--json` never prompts — a missing NAME
+stays the standing `E1600` usage error.
+
+    vae create my-first-agent              # vaerion.yaml + sources/demo.md + README
+    cd my-first-agent && vae run demo      # first brokered, journaled run
+    vae verify                             # prove the journal holds
+
+`--dry-run` prints the plan (every file, byte counts, next commands)
+without writing anything. `--json` emits one stable NDJSON line per result.
+
+### `vae start`
+
+```
+vae start [--template T] [--name NAME] [--interactive] [--no-interactive] [--dry-run]
+```
+
+The five-minute first agent — ONE guided command:
+
+1. workspace — `vae init --template demo` (skipped if one exists;
+   existing workspaces are continued, never overwritten)
+2. first run — `vae run demo` (broker decisions → research pipeline →
+   receipt folded from the journal)
+3. verify — `vae verify` (full chain recomputation)
+4. summary — `run_id`, `head_hash`, `journal_verified`, next steps
+
+Interactive prompts: on a terminal, a missing `--template` opens the
+numbered registry picker and a missing `--name` is confirmed with a
+suggested default (invalid names re-prompt under the create name law).
+`--interactive`/`-i` forces the prompts even when the flags are present;
+`--no-interactive` never prompts; `--json` never prompts. An existing
+workspace is continued as-is — there is nothing to ask.
+
+Every stage renders its own result; in `--json` mode every stage is one
+NDJSON line. `--dry-run` prints the plan without touching the filesystem.
 
 ### `vae run`
 
@@ -215,6 +293,25 @@ tail and re-seals the chain with an auditable note. `export` produces a
 redacted, independently verifiable derivation (default output:
 `.vaerion/exports/<run>.redacted.ndjson`).
 
+### `vae verify`
+
+```
+vae verify [RUN_ID]
+```
+
+One-command verification. Without `RUN_ID` the latest journal in the
+workspace is verified (ULIDs sort monotonically — newest wins). With
+`RUN_ID` the exact run is verified. The FULL blake3 chain is recomputed
+from the bytes on disk: shape, index continuity, hash linkage, gapless
+sequences.
+
+    vae verify                             # latest run
+    vae verify crn_run_01JAN4Y8Q2M6T9WZ3KPD5RVH7X
+    vae verify --json                      # one stable NDJSON line
+
+Exit 0 when the chain holds (VERIFIED), 5 when it does not (FAILED, with
+the issue list and the recover command as next steps).
+
 ### `vae doctor`
 
 ```
@@ -227,6 +324,16 @@ continuity, the Refusal Log chain, and the gateway picture (provider
 capability matrix, declared providers/secret NAMES/budgets). Performs no
 network access and resolves no secret values — zero telemetry is
 constitutional. Exit 5 with `Fix:` hints on failures.
+
+**The next-step law (Phase 59.2).** When the audit finds a problem,
+`doctor` names the EXACT recovery command for the worst finding (first
+failure in check order: config → journals → blobs → evidence → chains →
+lock) as a top-level `next_step` — never a placeholder. Measured shapes:
+a missing config yields `"next_step": "vae init"`; a torn tail yields
+`vae journal recover <the-real-run-id>`; non-torn corruption yields
+`vae journal verify <run_id>`; lock drift yields `vae package build`. A
+fully green audit carries NO `next_step` — the green surface stays
+byte-stable.
 
 ### `vae dev`
 
@@ -257,6 +364,30 @@ Authentication is a pairing token generated at start and printed **once**
 refused (`E2001`); remote exposure requires a ratified transport-security
 ADR, never a flag. Default listener: `127.0.0.1:7897` (port 0 asks the OS
 for an ephemeral port).
+
+### `vae mcp`
+
+```
+vae mcp
+```
+
+The Model Context Protocol stdio server: newline-delimited JSON-RPC 2.0
+(protocol 2024-11-05) on stdin/stdout. Six tools:
+
+| Tool | Effect |
+|---|---|
+| `vaerion_doctor` | Audit the workspace (no network) |
+| `vaerion_status` | The project dashboard |
+| `vaerion_journal_ls` | Every run: run_id, records, head_hash |
+| `vaerion_verify_journal` | Chain verification (latest or by run_id) |
+| `vaerion_run_demo` | The brokered demo research pipeline |
+| `vaerion_run_agent` | The supervised agent loop on a goal |
+
+Every tool call executes the REAL CLI contract with `--json` in-process —
+same broker, same journal, same receipts, same exit codes. stdout carries
+protocol messages only; diagnostics go to stderr. EOF exits 0. This is
+the sanctioned attachment point for MCP hosts (Claude Desktop, editors,
+agents); the `integrations/` packages build on it.
 
 ### `vae package`
 
@@ -470,17 +601,38 @@ See `docs/TROUBLESHOOTING.md` for the diagnostic walk-through and
 |---|---|
 | `VAE_UI` | Force the render profile: `rich` or `plain` (overrides TTY detection) |
 | `VAE_TRUST` | Pre-provision the daemon pairing token for headless `vae serve` starts (the token is then never printed) |
+| `VAE_DEBUG` | When `1`, print the underlying stack for engine errors (a diagnostics aid — never a data path) |
 | `NO_COLOR` | Disable color (rich profile suppressed) |
 | `TERM=dumb` | Degrade to plain text |
 | `CI` | Degrade to plain text (non-interactive contract) |
 
 ---
 
-*This manual documents the registry of record at engine `0.1.12-rc1`
-(release commit `485016f`); the registry is unchanged through `0.1.13-rc1`
-(a content-additive release — no command, flag, exit code, or E-code changed,
-per `docs/RELEASE-NOTES-v0.1.13-rc1.md`). In `0.1.14-rc1` the command surface
-is unchanged; `vae journal verify` additionally enforces the completeness
-anchor, and `E1010` joins the taught error catalog (per
-`docs/RELEASE-NOTES-v0.1.14-rc1.md`). The registry is the one authority:
-if code and this file ever disagree, the code wins and this file is a defect.*
+## Remaining additive commands
+
+The command surface is larger than the deep-dive topics above; these
+registry commands (all present in `vae --help`) round it out:
+
+| Command | Effect |
+|---|---|
+| `vae status` | The project dashboard: workspace, identity, AI, runs, next steps (read-only) |
+| `vae report` | A pure fold over every journal — runs, decisions, metering, evidence (read-only) |
+| `vae clean [--yes] [--dry-run]` | Reclaim orphaned blobs — plan-only by default; evidence-linked blobs never |
+| `vae snapshot [--out FILE] [--dry-run]` | Deterministic archive of the evidence state pinned by its blake3 digest |
+| `vae restore FILE [--force] [--dry-run]` | Verify-then-restore an archive; conflicts refuse with the list until `--force` |
+| `vae account create --name NAME [--email E]` | Local-first identity (with `account status/login/logout/export` — optional by law) |
+| `vae ai setup --provider P --model M [--set-default] [--dry-run]` | Declare a provider ceiling in `vaerion.yaml` |
+| `vae ai status` | Providers, credential PRESENCE (never values), defaults |
+| `vae version` | Print the engine version and exit |
+| `vae help [COMMAND]` | The help frames for COMMAND (unknown topics fall back to this help) |
+| `vae completions <shell>` | Shell completions for `bash|zsh|fish|powershell|nushell|xonsh` |
+
+---
+
+*This manual documents the registry of record at engine `0.1.14-rc1`:
+the registry grew content-additively during Phases 59.1/59.2 — the new
+commands `create`, `verify`, `start`, and `mcp`, the interactive prompt
+layer on `create`/`start`, and the 7-template registry (`enterprise`
+added) — all documented above and re-verified against source @ `7e6b751`
+(2026-10-01). The registry is the one authority: if code and this file
+ever disagree, the code wins and this file is a defect.*

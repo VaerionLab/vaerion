@@ -1,6 +1,6 @@
 # Vaerion TypeScript SDK — `@vaerion/sdk`
 
-> **Provenance note.** Written for `@vaerion/sdk` `0.1.14-rc1` from the
+> **Provenance note.** Written for `@vaerion/sdk` `0.1.13-rc1` (re-verified on `0.1.14-rc1`, version-register alignment 2026-10-03) from the
 > actual source of record: `sdks/typescript/src/index.ts`,
 > `src/daemon.ts`, `src/daemon-transport.ts`, and
 > `sdks/typescript/package.json`. Only exports and methods that exist are
@@ -23,6 +23,30 @@ the law:
 > Machine parity test (Sacred Invariant #7): SDK ⇄ CLI over the same
 > engine. Both surfaces must agree on run ids, journal verification,
 > receipts, and redacted exports — parity is tested, not assumed.
+
+## The SDK universe — five languages
+
+`@vaerion/sdk` is the TypeScript SDK and the only **in-process** binding
+(it calls the engine library directly). The other four SDKs bind via the
+loopback daemon (`vae serve`) and verify through the CLI of record — every
+one is named honestly in `VAERION_SDK_STANDARD.md` §1c (re-verified
+2026-10-01 @ `7e6b751`):
+
+| SDK | Path | Facade | Wire client | Conformance (measured 2026-10-01) |
+|---|---|---|---|---|
+| TypeScript | `sdks/typescript/` | `VaeClient` (in-process) | `VaeDaemonClient` | parity-tested in the engine suite |
+| Python | `sdks/python/` | `vaerion.Agent` | `vaerion.VaeDaemonClient` | 12/12 (real daemon included) |
+| Go | `sdks/go/` | `vae.Client` | `vae.DaemonClient` | 43/43 (real daemon included) |
+| Rust | `sdks/rust/` | `vaerion::Agent` | `vaerion::DaemonClient` | 27/27 (real daemon included) |
+| Java | `sdks/java/` | `dev.vaerion.sdk.VaeClient` | `dev.vaerion.sdk.VaeDaemonClient` | 40/40 (real daemon included) |
+
+The language-neutral contract every SDK satisfies — wire mapping, error
+fidelity, loopback law, conformance battery, documentation rules — is
+[`VAERION_SDK_STANDARD.md`](../VAERION_SDK_STANDARD.md) (v0.1; Founder
+ratification pending). Each SDK directory carries its own README with a
+provenance header and real captured output. Registry publication
+(npm/PyPI/crates.io/Maven Central) remains Founder-gated; consumption
+today is from this repository, like the TypeScript SDK below.
 
 ## Installation and consumption
 
@@ -102,12 +126,12 @@ surfaces (`transport?: GatewayTransport`, `secrets?: SecretPort`); tests
 stay hermetic via cassettes/MockBrain, and production defaults to the
 sanctioned fetch site and keychain-first resolution (ADR-0019, ADR-0013).
 
-The SDK also re-exports the engine primitives it composes — `RunHarness`,
-`BlobStore`, `GatewayService`, `AgentRuntime`, `InlinePlanner`,
-`ToolRegistry`, `WorkflowEngine`, `loadConfig`, `graphFromConfig`,
-`policyFromConfig`, clock/rng/idgen, and the record/report types — so
-consumers can type everything without reaching into the engine barrel.
-The full list is the export block of `src/index.ts`.
+The SDK also re-exports `RunHarness` — the engine's run harness — for
+advanced in-process composition; that is the deliberate extension surface.
+Everything else the engine composes (blob store, gateway service, agent
+runtime, planner, tool registry, workflow engine, config loaders) is
+reachable through the client methods above and the typed input/result types
+exported here; the full export block is `src/index.ts`.
 
 ## The daemon client — `VaeDaemonClient` (MS-5)
 

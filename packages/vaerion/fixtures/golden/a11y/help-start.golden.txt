@@ -1,0 +1,20 @@
+vae start [--template T] [--name NAME] [--interactive] [--no-interactive] [--dry-run]
+
+The five-minute first agent — ONE guided command:
+
+  [1] workspace    vae init --template demo (skipped if one exists —
+                   existing workspaces are continued, never overwritten)
+  [2] first run    vae run demo (broker decisions → research pipeline →
+                   receipt folded from the journal)
+  [3] verify       vae verify (full chain recomputation)
+  [4] summary      run_id, head_hash, journal_verified, next steps
+
+Interactive (Phase 59.2): on a terminal, a missing --template opens the
+numbered registry picker and a missing --name is confirmed with a suggested
+default (invalid names re-prompt under the create name law). --interactive
+/ -i forces the prompts even when the flags are present (your flag values
+become the defaults); --no-interactive never prompts; --json never prompts.
+An existing workspace is continued as-is — there is nothing to ask.
+
+Every stage renders its own result; in --json mode every stage is one
+NDJSON line. --dry-run prints the plan without touching the filesystem.

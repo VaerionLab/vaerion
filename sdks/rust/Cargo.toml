@@ -1,0 +1,15 @@
+[package]
+name = "vaerion"
+version = "0.1.15-rc1"
+edition = "2021"
+description = "Vaerion Rust SDK — loopback daemon client + Agent facade over the verified journal engine"
+license = "Apache-2.0"
+
+[lib]
+name = "vaerion"
+path = "src/lib.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+ureq = { version = "2", features = ["json"] }

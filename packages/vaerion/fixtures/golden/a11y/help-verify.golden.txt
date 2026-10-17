@@ -1,0 +1,13 @@
+vae verify [RUN_ID]
+
+One-command verification. Without RUN_ID the latest journal in the
+workspace is verified (ULIDs sort monotonically — newest wins). With RUN_ID
+the exact run is verified. The FULL blake3 chain is recomputed from the
+bytes on disk: shape, index continuity, hash linkage, gapless sequences.
+
+  vae verify                             # latest run
+  vae verify crn_run_01JAN4Y8Q2M6T9WZ3KPD5RVH7X
+  vae verify --json                      # one stable NDJSON line
+
+Exit 0 when the chain holds (VERIFIED), 5 when it does not (FAILED, with
+the issue list and the recover command as next steps).

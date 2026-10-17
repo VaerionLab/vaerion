@@ -19,7 +19,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'The v* tag of record to publish (e.g. v0.1.14-rc1)'
+        description: 'The v* tag of record to publish (e.g. v0.1.13-rc1)'
         required: true
         type: string
 
@@ -94,6 +94,14 @@ jobs:
             exit 2
           fi
           echo "production key confirmed (no bootstrap disclosure in dist-report.json; signed public key matches the key of record)"
+
+      - name: Artifact parity gate (SOURCE = PACKAGE — the Phase 61.1 one-true-artifact law)
+        # Phase 61.0 root cause: a published artifact differed from the tree
+        # wearing the same version (13 divergent engine paths). This gate
+        # re-builds the npm tarball from the checked-out tag and refuses to
+        # publish unless the packed engine's surface, version, completeness
+        # anchor, and payload are byte-identical to the tree of record.
+        run: bun run tools/verify-artifact-parity.ts
 
       - name: Publish the GitHub Release (idempotent per tag)
         env:

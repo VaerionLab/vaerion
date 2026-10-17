@@ -28,9 +28,9 @@ export interface RecoveryReport {
   bytesRemoved: number;
   recordsRecovered: number;
   recoveryRecordIndex: number | null;
-  lockCleared: boolean;
   /** True when a closed run's receipt was lost to the torn tail and recovery re-certified the run. */
   recertified: boolean;
+  lockCleared: boolean;
 }
 
 export async function recoverJournal(journalPath: string, runId: string, configFingerprint: string, clock: Clock = new SystemClock()): Promise<RecoveryReport> {
@@ -40,8 +40,8 @@ export async function recoverJournal(journalPath: string, runId: string, configF
     bytesRemoved: 0,
     recordsRecovered: 0,
     recoveryRecordIndex: null,
-    lockCleared: false,
     recertified: false,
+    lockCleared: false,
   };
 
   // 1. Stale lock handling.

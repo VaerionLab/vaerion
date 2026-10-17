@@ -63,7 +63,8 @@ config_fingerprint: ef2bade87823…
 You now have: `vaerion.yaml` (the schema-validated project manifest —
 unknown keys are rejected by law), `.vaerion/` (the local evidence
 store), and `sources/demo.md` (a local document to index). Templates:
-`minimal` (default) · `demo` · `agent`.
+`minimal` (default) · `demo` · `agent` · `tool` · `automation` ·
+`multi-agent` · `enterprise` — seven in the registry of record.
 
 ## 3. First verified run (2 minutes)
 
@@ -153,7 +154,7 @@ Measured: **both digests identical** (`0b615da9f0dc342b…`,
 law, in your hands. Now let the engine judge it:
 
 ```sh
-vae package verify .vaerion/package/hello-vaerion.vxn
+vae package verify .vaerion/package/my-project.vxn
 # → VERIFIED (0 finding(s), 2/2 entries) — a pure check: digests are
 #   recomputed, pins compared, content NEVER executed.
 ```

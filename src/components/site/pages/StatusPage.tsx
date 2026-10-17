@@ -291,7 +291,7 @@ export default function StatusPage({ status }: { status: Status | null }) {
         <div className="flex items-start gap-3">
           <BookOpen className="mt-1 h-4 w-4 shrink-0 text-mutedfg" aria-hidden />
           <div className="flex flex-wrap gap-2">
-            {["BUILD_REPORT.md", "VERIFICATION_REPORT.md", "ARCHITECTURE_REPORT.md", "ROADMAP_PROGRESS.md", "CHANGELOG.md", "SECURITY.md", "LEGAL.md", "docs/CLI.md", "docs/SDK.md", "docs/LIMITATIONS.md", "docs/RELEASE-NOTES-v0.1.14-rc1.md", "docs/ga/GO-NO-GO.md", "docs/ga/ASCENSION-XXVI-COMPLETION-REPORT.md", "docs/ga/REMAINING-REALITY-REPORT.md", "docs/founder/FOUNDER-PACKETS.md"].map((f) => (
+            {["BUILD_REPORT.md", "VERIFICATION_REPORT.md", "ARCHITECTURE_REPORT.md", "ROADMAP_PROGRESS.md", "CHANGELOG.md", "SECURITY.md", "LEGAL.md", "docs/CLI.md", "docs/SDK.md", "docs/LIMITATIONS.md", "docs/RELEASE-NOTES-v0.1.13-rc1.md", "docs/ga/GO-NO-GO.md", "docs/ga/ASCENSION-XXVI-COMPLETION-REPORT.md", "docs/ga/REMAINING-REALITY-REPORT.md", "docs/founder/FOUNDER-PACKETS.md"].map((f) => (
               <Pill key={f}>{f}</Pill>
             ))}
           </div>

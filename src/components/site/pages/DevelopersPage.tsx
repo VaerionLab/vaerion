@@ -40,7 +40,7 @@ export default function DevelopersPage() {
       <PageHero
         eyebrow="Developers"
         title="Install it. Run it. Verify it. Everything else is optional."
-        lead="One CLI, one SDK, one local daemon — all projections of the same engine contracts. This page is the honest entry point: what is verified, what is gated, and the fastest path to your first verified run."
+        lead="One CLI, five SDKs, one local daemon — all projections of the same engine contracts. This page is the honest entry point: what is verified, what is gated, and the fastest path to your first verified run."
       >
         <CTARow
           primary={
@@ -117,7 +117,8 @@ bun install
 bun run tools/verify.ts        # all gates must be green
 alias vae="bun run packages/vaerion/src/cli/vae.ts"
 
-# 2 — create a workspace (templates: minimal | demo | agent)
+# 2 — create a workspace (templates: minimal | demo | agent | tool |
+#     automation | multi-agent | enterprise)
 vae init --template demo
 
 # 3 — run the demo pipeline
@@ -189,15 +190,15 @@ vae resume <RUN_ID>            # if a durable human gate is pending`}
         </div>
       </Section>
 
-      {/* ───────────────────  sdk  ─────────────────── */}
+      {/* ───────────────────  sdks  ─────────────────── */}
       <Section
-        label="TypeScript SDK"
-        title="One engine, two clients, tested parity."
-        lead="@vaerion/sdk is a projection of the engine, never a second implementation. The CLI ⇄ SDK parity guarantee is enforced by an integration test, not asserted in a README."
+        label="SDKs"
+        title="Five languages, one engine, tested parity."
+        lead="Every SDK is a projection of the engine, never a second implementation. The TypeScript SDK links the engine in-process; Python, Go, Rust, and Java bind over the loopback daemon and verify through the CLI of record. Parity is enforced by integration tests, not asserted in a README."
       >
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <CodeBlock
-            title="speak to the daemon (docs/QUICKSTART.md §6)"
+            title="speak to the daemon (the loopback wire)"
             code={`import { VaeDaemonClient } from "@vaerion/sdk";
 
 const vae = new VaeDaemonClient({
@@ -209,9 +210,11 @@ console.log(await vae.version());`}
           <div className="flex flex-col justify-center gap-5">
             <Bullets
               items={[
-                "VaeClient — in-process: binds directly to the engine over one workspace (runResearch, journalVerify, resume, refusals…).",
-                "VaeDaemonClient — wire client for vae serve: startAgentRun, streamRunEvents (SSE with journal cursor replay), answerGate.",
-                "Loopback and pairing token are enforced in code: the wire client refuses non-loopback bases before a single byte is sent (E2006).",
+                "TypeScript — in-process: VaeClient binds directly to the engine over one workspace (runResearch, journalVerify, resume, refusals…); VaeDaemonClient is the wire client for vae serve.",
+                "Python — vaerion: Agent spawns (or attaches to) the daemon; agent.verify() recomputes the chain via the CLI of record. 16/16 tests.",
+                "Go — github.com/VaerionLab/vaerion-go (package vae): vae.NewClient spawns its own daemon; 43/43 tests, standard library only.",
+                "Rust — crate vaerion: Agent::spawn/attach + DaemonClient; 27/27 tests. Java — dev.vaerion:vaerion-sdk: VaeClient/VaeDaemonClient; 40/40 tests.",
+                "Loopback and pairing token are enforced in code everywhere: the wire clients refuse non-loopback bases before a single byte is sent (E2006).",
                 `${FACTS.sdk.parity}.`,
               ]}
             />
@@ -221,10 +224,13 @@ console.log(await vae.version());`}
               ))}
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <Honesty>ships from source — registry publication Founder-gated</Honesty>
+              <Honesty>SDKs ship from source — registry publication Founder-gated</Honesty>
               <ArrowLink href="#/docs/sdk">SDK reference</ArrowLink>
             </div>
           </div>
+        </div>
+        <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+          <ArrowLink href="#/integrations">Framework integrations — the alliance</ArrowLink>
         </div>
       </Section>
 
@@ -276,7 +282,7 @@ console.log(await vae.version());`}
           <Stat value={`${FACTS.contracts.apiPaths}`} label="API paths" sub="loopback HTTP/SSE, pairing-token authn" />
           <Stat value={`${FACTS.cli.commands.length}`} label="CLI commands" sub={`the ${FACTS.cli.bin} surface`} />
           <Stat value={`${FACTS.contracts.ecodes}`} label="Stable E-codes" sub="additive-only, never remapped" />
-          <Stat value={`${FACTS.code.sdkLines}`} label="Lines of SDK" sub="a projection, not a re-implementation" />
+          <Stat value="5" label="SDK languages" sub="TypeScript · Python · Go · Rust · Java" />
         </div>
         <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
           <Panel className="p-6">

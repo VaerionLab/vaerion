@@ -9,14 +9,16 @@
  */
 
 import { ExitCode, type CliIo } from "./io.ts";
-import { buildWelcomePayload, cmdAccount, cmdAi, cmdCenter, cmdClean, cmdDev, cmdExplain, cmdInit, cmdJournal, cmdDoctor, cmdPackage, cmdProvenance, cmdRepo, cmdRelease, cmdRestore, cmdResume, cmdRun, cmdServe, cmdCi, cmdSnapshot, cmdStatus, cmdReport, cmdTour, type CommandContext } from "./commands.ts";
+import { buildWelcomePayload, cmdAccount, cmdAi, cmdCenter, cmdClean, cmdCreate, cmdDev, cmdExplain, cmdInit, cmdJournal, cmdDoctor, cmdPackage, cmdProvenance, cmdRepo, cmdRelease, cmdRestore, cmdResume, cmdRun, cmdServe, cmdCi, cmdSnapshot, cmdStart, cmdStatus, cmdReport, cmdTour, cmdVerify, type CommandContext } from "./commands.ts";
+import { COMMAND_CATALOG } from "./catalog.ts";
+import { suggestCommand } from "./suggest.ts";
 import { VaerionError } from "../kernel/errors.ts";
 import { isVaerionError } from "./workspace.ts";
 import { Renderer, setBannerVersion } from "./render.ts";
 import { Ansi, banner, footer, type RenderEnv } from "./ui.ts";
 import { completionScript } from "./completions.ts";
 
-export const VERSION = "0.1.14-rc1";
+export const VERSION = "0.1.15-rc1";
 setBannerVersion(VERSION);
 
 const MAIN_HELP = `vae — Vaerion engine command line (v${VERSION})
@@ -29,8 +31,16 @@ Command surface (the Daily Seven + additive commands):
   init [--template T] [--name NAME] [--dry-run]
                              scaffold vaerion.yaml + .vaerion/ from the
                              deterministic template registry (templates:
-                             minimal|demo|agent; bare init is exactly
-                             --template minimal)
+                             minimal|demo|agent|tool|automation|multi-agent|
+                             enterprise; bare init is exactly --template
+                             minimal)
+  create NAME [--template T] [--dry-run]
+                             scaffold a NEW project directory (config +
+                             template sources + README.md) and print the
+                             exact next commands — default template: demo,
+                             the fastest verified journey; on a terminal a
+                             missing NAME/--template is asked interactively
+                             (--interactive forces the prompts)
   status                      the project dashboard: workspace, identity,
                              AI, runs, next steps (read-only)
   report                      a pure fold over every journal — runs,
@@ -62,6 +72,9 @@ Command surface (the Daily Seven + additive commands):
   resume RUN_ID [--answer JSON]
                              restore a run; resolve a pending human gate
   explain RUN_ID             reconstruct the run's narrative from its journal
+  verify [RUN_ID]            verify the latest run's journal (or RUN_ID):
+                             full chain recomputation, torn-tail detection,
+                             issues — exit 0 verified / 5 failed
   journal ls | show RUN | verify RUN | recover RUN | export RUN [--out P]
                              append-only journal operations
   doctor                     verify config, journals, blobs, audit chain, gateway
@@ -73,6 +86,10 @@ Command surface (the Daily Seven + additive commands):
                              over the same contracts this CLI exercises;
                              first-run pairing token printed once (or
                              pre-provision headlessly via VAE_TRUST)
+  mcp                        the MCP stdio server: newline-delimited JSON-RPC
+                             2.0 (protocol 2024-11-05) — tools for runs,
+                             journal verification and receipts, backed by the
+                             same CLI contracts
   package build [--out PATH] [--dry-run]
                              build a reproducible .vxn bundle (MS-6,
                              ADR-0016): a deterministic fold over the
@@ -125,6 +142,15 @@ Command surface (the Daily Seven + additive commands):
                              nine steps measured against this machine and
                              this directory; it teaches by pointing at real
                              commands, never by executing them
+  start [--template T] [--name NAME] [--dry-run]
+                             the five-minute first agent: init → run →
+                             verify → receipt in ONE guided command —
+                             existing workspaces are continued, never
+                             overwritten. On a terminal a missing
+                             --template opens the registry picker and a
+                             missing --name is confirmed (--interactive
+                             forces the prompts; --no-interactive and
+                             --json never prompt)
   account create --name NAME [--email E]
                              local-first identity: create, status, login,
                              logout, export (optional by law). Read-only
@@ -176,16 +202,24 @@ Learn more: docs/constitution/ — the ratified law of record · spec/ (contract
 `;
 
 const COMMAND_HELP: Record<string, string> = {
-  init: `vae init [--template minimal|demo|agent] [--name NAME] [--dry-run]
+  init: `vae init [--template minimal|demo|agent|tool|automation|multi-agent|enterprise] [--name NAME] [--dry-run]
   Scaffold vaerion.yaml (strict schema 0.1) and the .vaerion/ workspace from
   the deterministic template registry (constitution v1.6 A3, Phase 5):
 
-    minimal   the default scaffold: declared project docs, policy examples
-              in comments — bare 'vae init' is exactly this template
-    demo      a demo workspace: ./docs + ./sources capabilities, ready for
-              'vae run demo --sources ./sources --query "..."'
-    agent     an agent workspace: mockbrain planner, declared tools, and an
-              explicit policy rule for the agent's model.invoke grant
+    minimal     the default scaffold: declared project docs, policy examples
+                in comments — bare 'vae init' is exactly this template
+    demo        a demo workspace: a scaffolded ./sources capability, ready
+                for 'vae run demo'
+    agent       an agent workspace: mockbrain planner, declared tools, and
+                an explicit policy rule for the agent's model.invoke grant
+    tool        an agent workspace with a real tool belt (echo + clock.read),
+                every call broker-checked and journaled
+    automation  deterministic tool DAGs, zero model calls — ships a declared
+                workflow.json ready for 'vae run workflow --dag workflow.json'
+    multi-agent a researcher→analyst→auditor crew as one journaled DAG
+    enterprise  governance first: deny-by-default policy.rules with explicit
+                rationale-backed grants, budgeted model ceilings, a governance
+                DAG, and a README teaching policy → run → verify → receipt
 
   Every template is byte-stable (the only parameter is --name) and validates
   against the strict config law; telemetry is structurally false. Refuses to
@@ -474,6 +508,79 @@ vae ai models
 
   Every script except bash carries the honest platform marker: no host for
   it exists in the generating environment.`,
+
+  create: `vae create NAME [--template T] [--interactive] [--no-interactive] [--dry-run]
+
+Scaffold a NEW project directory and teach the next commands. The directory
+must not exist (create refuses to touch existing directories, E1600). The
+template comes from the SAME deterministic registry as init — one source of
+scaffold intent; the default is demo (the fastest verified journey).
+
+Interactive (Phase 59.2): on a terminal, a missing NAME and a missing
+--template are asked with numbered prompts (Enter accepts the default;
+invalid answers re-prompt). --interactive / -i forces the prompts even when
+the flags are present (your flag values become the defaults);
+--no-interactive never prompts; --json never prompts — a missing NAME stays
+the standing E1600 usage error.
+
+  vae create my-first-agent              # vaerion.yaml + sources/demo.md + README
+  cd my-first-agent && vae run demo      # first brokered, journaled run
+  vae verify                             # prove the journal holds
+
+--dry-run prints the plan (every file, byte counts, next commands) without
+writing anything. --json emits one stable NDJSON line per result.`,
+
+  verify: `vae verify [RUN_ID]
+
+One-command verification. Without RUN_ID the latest journal in the
+workspace is verified (ULIDs sort monotonically — newest wins). With RUN_ID
+the exact run is verified. The FULL blake3 chain is recomputed from the
+bytes on disk: shape, index continuity, hash linkage, gapless sequences.
+
+  vae verify                             # latest run
+  vae verify crn_run_01JAN4Y8Q2M6T9WZ3KPD5RVH7X
+  vae verify --json                      # one stable NDJSON line
+
+Exit 0 when the chain holds (VERIFIED), 5 when it does not (FAILED, with
+the issue list and the recover command as next steps).` ,
+
+  start: `vae start [--template T] [--name NAME] [--interactive] [--no-interactive] [--dry-run]
+
+The five-minute first agent — ONE guided command:
+
+  [1] workspace    vae init --template demo (skipped if one exists —
+                   existing workspaces are continued, never overwritten)
+  [2] first run    vae run demo (broker decisions → research pipeline →
+                   receipt folded from the journal)
+  [3] verify       vae verify (full chain recomputation)
+  [4] summary      run_id, head_hash, journal_verified, next steps
+
+Interactive (Phase 59.2): on a terminal, a missing --template opens the
+numbered registry picker and a missing --name is confirmed with a suggested
+default (invalid names re-prompt under the create name law). --interactive
+/ -i forces the prompts even when the flags are present (your flag values
+become the defaults); --no-interactive never prompts; --json never prompts.
+An existing workspace is continued as-is — there is nothing to ask.
+
+Every stage renders its own result; in --json mode every stage is one
+NDJSON line. --dry-run prints the plan without touching the filesystem.`,
+
+  mcp: `vae mcp
+
+The Model Context Protocol stdio server: newline-delimited JSON-RPC 2.0
+(protocol 2024-11-05) on stdin/stdout. Tools:
+
+  vaerion_doctor            audit the workspace (no network)
+  vaerion_status            the project dashboard
+  vaerion_journal_ls        every run: run_id, records, head_hash
+  vaerion_verify_journal   chain verification (latest or by run_id)
+  vaerion_run_demo          the brokered demo research pipeline
+  vaerion_run_agent         the supervised agent loop on a goal
+
+Every tool call executes the REAL CLI contract with --json in-process —
+same broker, same journal, same receipts, same exit codes. stdout carries
+protocol messages only; diagnostics go to stderr. EOF exits 0. Point any
+MCP client at: vae mcp` ,
 };
 
 interface ParsedArgs {
@@ -496,6 +603,14 @@ export function parseArgs(argv: string[]): ParsedArgs {
     }
     if (a === "-V") {
       parsed.flags.version = true;
+      i++;
+      continue;
+    }
+    if (a === "-i") {
+      // Phase 59.2 DX: -i is the short form of --interactive (the forced
+      // prompt layer). Parsed with the other single-dash flags so it can
+      // never be mistaken for the command token.
+      parsed.flags.interactive = true;
       i++;
       continue;
     }
@@ -593,22 +708,59 @@ export async function runCli(argv: string[], io: CliIo, cwd: string): Promise<Cl
     let code: number;
     switch (parsed.command) {
       case "init": code = await cmdInit(ctx); break;
+      case "create": code = await cmdCreate(ctx); break;
       case "status": code = await cmdStatus(ctx); break;
       case "report": code = await cmdReport(ctx); break;
       case "clean": code = await cmdClean(ctx); break;
       case "run": code = await cmdRun(ctx); break;
       case "resume": code = await cmdResume(ctx); break;
       case "explain": code = await cmdExplain(ctx); break;
+      case "verify": code = await cmdVerify(ctx); break;
       case "journal": code = await cmdJournal(ctx); break;
       case "doctor": code = await cmdDoctor(ctx); break;
       case "dev": code = await cmdDev(ctx); break;
       case "serve": code = await cmdServe(ctx); break;
+      case "mcp": {
+        // Phase 59.1 W6 — the MCP stdio server. Implemented HERE (not in
+        // commands.ts) because the tool executor IS runCli of this very
+        // module: a dynamic self-import during main() would deadlock module
+        // evaluation (the entry runs main() before its own import settles).
+        if (parsed.positional.length > 0) {
+          renderer.error(new VaerionError("E1600", "usage: `vae mcp` takes no arguments — it serves MCP over stdio"));
+          code = ExitCode.usage;
+          break;
+        }
+        if (dryRun) {
+          renderer.result({
+            command: "mcp",
+            dry_run: true,
+            side_effects: 0,
+            plan: [
+              "serve MCP JSON-RPC 2.0 on stdio (protocol 2024-11-05)",
+              "tools: vaerion_doctor, vaerion_status, vaerion_journal_ls, vaerion_verify_journal, vaerion_run_demo, vaerion_run_agent",
+              "every tool call executes the real CLI contract with --json (same broker, journal, receipts)",
+            ],
+          });
+          code = ExitCode.ok;
+          break;
+        }
+        const { serveMcpStdin, MCP_PROTOCOL_VERSION } = await import("../mcp/server.ts");
+        io.err(`vaerion MCP server: stdio JSON-RPC 2.0 (protocol ${MCP_PROTOCOL_VERSION}) — workspace ${cwdFlag}; diagnostics on stderr only`);
+        await serveMcpStdin({
+          cwd: cwdFlag,
+          exec: (mcpArgs, mcpIo, mcpCwd) => runCli(mcpArgs, mcpIo, mcpCwd).then((res) => res.code),
+          serverInfo: { name: "vaerion", version: VERSION },
+        });
+        code = ExitCode.ok;
+        break;
+      }
       case "package": code = await cmdPackage(ctx); break;
       case "provenance": code = await cmdProvenance(ctx); break;
       case "repo": code = await cmdRepo(ctx); break;
       case "ci": code = await cmdCi(ctx); break;
       case "release": code = await cmdRelease(ctx); break;
       case "tour": code = await cmdTour(ctx); break;
+      case "start": code = await cmdStart(ctx); break;
       case "account": code = await cmdAccount(ctx); break;
       case "ai": code = await cmdAi(ctx); break;
       case "center": code = await cmdCenter(ctx); break;
@@ -650,7 +802,10 @@ export async function runCli(argv: string[], io: CliIo, cwd: string): Promise<Cl
         // Phase XXII DX: the unknown-command error goes through the ONE
         // renderer, restoring the --json NDJSON guarantee (it used to emit
         // plain text in json mode — the renderer owns every mode now).
-        const unknown = new VaerionError("E1600", `unknown command: ${parsed.command}`);
+        // Phase 59.1 DX: did-you-mean — the nearest ratified command by
+        // edit distance, deterministic (first-lowest wins in catalog order).
+        const suggestion = suggestCommand(String(parsed.command), COMMAND_CATALOG.map((c) => c.command));
+        const unknown = new VaerionError("E1600", `unknown command: ${parsed.command}${suggestion ? ` — did you mean \`${suggestion}\`?` : ""} (run \`vae --help\` for the command surface of record)`);
         renderer.error(unknown);
         if (process.env.VAE_DEBUG === "1" && unknown.stack) io.err(unknown.stack);
         return { code: ExitCode.usage };
@@ -685,6 +840,26 @@ export async function runCli(argv: string[], io: CliIo, cwd: string): Promise<Cl
 /* Distribution entrypoint — shared by the import.meta.main shim (repo) and
  * the packaging launchers (npm bin/vae.js, PyPI console script, deb/brew
  * shims). One io construction, one exit-code contract, every path. */
+
+/**
+ * The real terminal's answer to the CliIo `input` port (Phase 59.2): one
+ * line per call, null at EOF. Built ONLY when stdin is a TTY, and the
+ * readline machinery imports lazily on the first actual prompt — the
+ * non-interactive hot path never pays for it.
+ */
+function stdinLineReader(): () => Promise<string | null> {
+  let iter: AsyncIterator<string> | null = null;
+  return async () => {
+    if (iter === null) {
+      const readline = await import("node:readline/promises");
+      const rl = readline.createInterface({ input: process.stdin, terminal: false });
+      iter = rl[Symbol.asyncIterator]() as AsyncIterator<string>;
+    }
+    const next = await iter.next();
+    return next.done ? null : (next.value as string);
+  };
+}
+
 export async function main(argv: string[]): Promise<number> {
   const io: CliIo = {
     out: (line) => console.log(line),
@@ -692,6 +867,9 @@ export async function main(argv: string[]): Promise<number> {
     raw: (s) => process.stdout.write(s),
     tty: process.stdout.isTTY === true,
     columns: process.stdout.columns,
+    // Phase 59.2: the interactive prompt port exists only for real terminals
+    // (scripted tests construct their own CliIo with a fake `input`).
+    input: process.stdin.isTTY === true ? stdinLineReader() : undefined,
   };
   const result = await runCli(argv, io, process.cwd());
   return result.code;

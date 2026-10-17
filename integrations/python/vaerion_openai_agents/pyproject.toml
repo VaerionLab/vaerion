@@ -1,0 +1,38 @@
+[project]
+name = "vaerion-openai-agents"
+version = "0.1.15rc1"
+description = "Official Vaerion integration for the OpenAI Agents SDK — attach the in-engine `vae mcp` verification layer"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Auren", email = "auren@vaerion.dev" }]
+keywords = ["vaerion", "verification", "agents", "mcp", "openai"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Agents",
+]
+dependencies = [
+  # PyPI name of the OpenAI Agents SDK is `openai-agents` (import name: `agents`).
+  # The bare `agents` name on PyPI is an UNRELATED Google reinforcement-learning
+  # package that shadows the SDK's import namespace — measured the hard way.
+  "openai-agents>=0.20",
+  # PIN (measured 2026-10-03): mcp 2.x removes mcp.shared.context.RequestContext,
+  # which MCPServerStdio (and langchain-mcp-adapters / autogen-ext) import.
+  # Cap below 2 until the upstream adapters ratify the 2.x surface.
+  "mcp>=1,<2",
+]
+
+[project.urls]
+Repository = "https://github.com/VaerionLab/vaerion"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

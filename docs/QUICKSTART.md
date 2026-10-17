@@ -1,146 +1,303 @@
-# Vaerion Quickstart — 15 minutes to a verified run
+# Vaerion Quickstart — zero to a verified run
 
-> **Fast path:** just want the proof? The 10-minute quickstart —
-> npm install → first verified run → byte-identical bundle — lives at
-> **[`getting-started/quickstart.md`](getting-started/quickstart.md)**.
-> This document is the extended journey (daemon, SDK, CI, release
-> readiness).
+> **Provenance.** Every command below exists in the `vae` CLI of record
+> (measured on `0.1.13-rc1`; re-verified on `0.1.14-rc1`, 2026-10-03) and was checked against the CLI source and help text before
+> being documented — and the core path of this guide (init → run demo →
+> verify → doctor) was re-executed end-to-end in a clean temp workspace on
+> 2026-10-01 @ `7e6b751`. Output shapes shown are the real renderer shapes;
+> your ids and hashes will differ, the shapes will not. Nothing here
+> requires an account, a network call, or an API key — the default provider
+> is local.
 
-Vaerion is the local-first verification layer for AI agents: one versioned event
-spine, append-only blake3-chained journals, a fail-closed permission
-broker, deterministic replay, receipts folded from journals, and
-reproducible `.vxn` bundles. Zero telemetry — nothing leaves your machine
-unless you explicitly invoke a model provider through the gateway.
+Vaerion is a local-first verification layer for AI-driven work: one event
+spine, append-only blake3-chained journals, a fail-closed permission broker,
+and a **receipt folded from the journal** at the end of every run. The whole
+point is that you can *verify* what happened instead of trusting it.
 
-This guide takes a new developer from zero to a verified run and a
-byte-identical bundle pair in about 15 minutes. The companion workspace is
-`examples/vaerion-demo/`.
+This guide is the pure CLI journey. Budget: ~10 minutes.
 
 ## 0. Install (2 minutes)
 
-Requires [Bun](https://bun.sh) 1.3+.
+Vaerion executes on the [Bun](https://bun.sh) runtime (1.3+):
 
 ```sh
-git clone <repository-url> vaerion && cd vaerion
-bun install
-bun run tools/verify.ts        # all gates must be green
-alias vae="bun run packages/vaerion/src/cli/vae.ts"
+curl -fsSL https://bun.sh/install | bash   # if you do not have Bun yet
+npm install -g vaerion@rc                  # the published CLI package
 vae --version
 ```
 
-Full details (including release-tarball installation and signature
-verification): `docs/INSTALL.md`.
+```text
+vae 0.1.14-rc1
+```
 
-## 1. Look around, then create a workspace (2 minutes)
+> **Version note (honest):** the npm registry still delivers `0.1.14-rc1` —
+> an older engine missing `verify` / `create` / `start` / `mcp` — until the
+> Founder-gated `0.1.15-rc1` publish. Every command below exists in the
+> `0.1.15-rc1` engine of record; until that publish lands on the registry,
+> run the guide against a source checkout
+> (`bun install && bun run packages/vaerion/src/cli/vae.ts --help`) or the
+> signed release set — or do the install anyway and treat this as the
+> tour of the engine you are about to get.
+
+Alternatives (release tarballs, from-source) and signature verification are
+in [`INSTALL.md`](INSTALL.md). If `vae` is not found after install, check
+your npm global `bin` directory is on `PATH`.
+
+## 1. Say hello — the welcome front door (1 minute)
+
+In any directory:
 
 ```sh
-vae                            # the welcome front door: measures this
-                               # directory, points at the next step (exit 0)
-vae tour                       # a guided, read-only walk of the engine —
-                               # nine steps measured against your machine
-vae init                       # scaffolds vaerion.yaml + .vaerion/
-                               # (--template minimal is the default; try
-                               # --template demo or --template agent)
+vae
 ```
 
-The welcome and the tour are read-only: nothing is created, modified, or
-executed. The tour teaches by pointing at real commands — `vae dev`,
-`vae journal ls`, `vae doctor`, `vae repo` — never by running them.
+Bare `vae` is the welcome front door: it **measures this directory
+read-only** and points at the next step (exit 0, nothing created). In an
+empty directory its `next:` list leads with `vae start` (the whole
+first-agent journey in one command), then `vae init`, `vae tour`, and
+`vae --help`.
 
-Or use the demo workspace directly:
+Then take the guided walk:
 
 ```sh
-cd examples/vaerion-demo
+vae tour
 ```
 
-## 2. Run the demo pipeline (3 minutes)
+`vae tour` is a nine-step, read-only tour of the engine — what Vaerion is,
+this directory, the config law, the journal, the gateway, your first run —
+each step measured against *your* machine. It teaches by pointing at real
+commands; it never executes them.
+
+## 2. Create a workspace (1 minute)
 
 ```sh
-vae run demo --sources ./sources --query "determinism"
-# (or bare — `vae run demo --query "determinism"` — the default derives from
-#  the declared capabilities in vaerion.yaml)
+mkdir vaerion-first-run && cd vaerion-first-run
+vae init --template demo
 ```
 
-What happened: local sources were indexed, the query executed through the
-broker-gated tool pipeline, every step landed on the journal, and the run
-closed with a **receipt** folded from that journal. The command prints the
-run id; note it down.
+```text
+command: init
+template: demo
+dry_run: false
+created:
+  0: vaerion.yaml
+  1: .vaerion/journal
+  2: .vaerion/blobs
+  3: sources/demo.md
+config_fingerprint: 41c3410b862ac152f5d6176a5888686f9d649ab65ca0d55a7fcccdaa69d25ffc
+engine_version: 0.1.14-rc1
+```
 
-## 3. Inspect, verify, explain (3 minutes)
+(The shapes in this guide are the `--plain` profile — byte-stable, the
+pipe/CI contract. In a real terminal the `rich` profile renders the same
+data as panels instead.)
+
+What you got:
+
+- `vaerion.yaml` — the strict project config (schema `0.1`; unknown keys are
+  rejected). The `demo` template declares a local source capability at
+  `./sources` and scaffolds `sources/demo.md` so the first run has something
+  to index.
+- `.vaerion/` — the workspace stores: `journal/` (append-only run journals)
+  and `blobs/` (content-addressed store).
+
+Templates are `minimal` (the default — bare `vae init` is exactly
+`--template minimal`), `demo`, `agent`, `tool`, `automation`,
+`multi-agent`, and `enterprise` — seven in the registry of record.
+`vae init` refuses to overwrite an existing `vaerion.yaml`, and
+`--dry-run` prints the plan without writing.
+
+Fast paths, if you want them: `vae create NAME` scaffolds a NEW project
+directory (default template `demo`) and prints the exact next commands;
+`vae start` runs the whole first-agent journey — init → run → verify →
+summary — as ONE guided command in the current directory. On a real
+terminal both prompt for missing choices (`--no-interactive` or `--json`
+keeps them silent); this guide keeps every step explicit instead.
+
+## 3. First run (2 minutes)
 
 ```sh
-vae journal ls                       # your run is here
-vae journal show <RUN_ID>            # the full event narrative
-vae journal verify <RUN_ID>          # the blake3 chain holds — measured, now
-vae explain <RUN_ID>                 # the same run, as a human story
+vae run demo
 ```
 
-The receipt on disk (`.vaerion/receipts/`) verifies independently of the
-process that produced it.
+```text
+command: run
+kind: demo
+run_id: crn_run_01M3V25W1B8W9PK17WAG0E4725
+trace_id: t_7wag0e4726
+documents: 1
+query: event spine journal deterministic
+hits: 1
+hits_detail:
+  0:
+    doc_id: doc_1
+    score: 0.5753641449035617
+context:
+  blocks: 2
+  dropped: 0
+  tokens_estimated: 152
+  pack_fingerprint: 5af7ee52b803d29f8b1f3f961761a774aefcfe40fca343550ba18efb2ad0cc7d
+receipt:
+  run_id: crn_run_01M41NDCSBVBGZRN94SZ1SXY7S
+  trace_id: t_94sz1sxy7t
+  engine_version: 0.1.14-rc1
+  config_fingerprint: 41c3410b862a…
+  opened_at: 2026-10-03T19:56:16.046Z
+  closed_at: 2026-10-03T19:56:16.061Z
+  counts:
+    records: 13
+    events: 10
+    decisions_allow: 1
+    decisions_deny: 0
+    decisions_prompt: 0
+    gates_opened: 0
+    gates_resolved: 0
+    snapshots: 1
+    recovery_notes: 0
+  blob_refs:
+    0:
+      alg: blake3
+      hash: a1ca3c65d06d…
+      size: 291
+  journal:
+    records: 13
+    head_hash: 8e0a856355a1004a48cf4260f4fc579f8392246f643924981660e9699c39f122
+  summary: indexed 1 documents; 1 hits for "event spine journal deterministic"
+journal_verified: true
+```
 
-## 4. Prove reproducibility yourself (3 minutes)
+What happened: the declared local sources were broker-decisioned (one
+decision per source, journaled), fingerprinted, fenced, stored in the blob
+CAS, indexed, and queried — every step journaled on the blake3 chain — and
+the run closed with a **receipt folded from the journal**.
+
+**Where the RUN_ID comes from:** the `run_id:` line in the run output above
+(`crn_run_…`). Copy it — the journal commands take it as their argument. If
+you lost it, `vae journal ls` lists every run in the workspace with its
+`run_id`, record counts, and head hash.
+
+> `vae run demo` needs no flags: with no `--sources` it derives paths from
+> the declared capabilities in `vaerion.yaml`, and with no `--query` it uses
+> a fixed default query. `--query "your words"` works too. Other run kinds:
+> `research`, `model`, `agent`, `workflow` — see `vae help run`.
+
+## 4. Verify the journal (2 minutes)
 
 ```sh
-vae package build                          # → .vaerion/package/vaerion-demo.vxn + vaerion.lock
-vae provenance .vaerion/package/vaerion-demo.vxn   # the evidence, recomputed from the bytes
-vae package build --out second.vxn    # build it again
-vae package verify .vaerion/package/vaerion-demo.vxn
+vae journal verify crn_run_01M3V25W1B8W9PK17WAG0E4725
 ```
 
-The two bundles are **byte-identical** — same inputs, same bytes. Compare
-the blake3 digests printed by `verify` if you don't take our word for it.
-`verify` is a pure check: digests recomputed, pins compared, content never
-executed.
+```text
+command: journal
+sub: verify
+run_id: crn_run_01M3V25W1B8W9PK17WAG0E4725
+report:
+  ok: true
+  path: /tmp/vaerion-quickstart-592f/vaerion-first-run/.vaerion/journal/crn_run_01M3V25W1B8W9PK17WAG0E4725.ndjson
+  records: 14
+  events: 10
+  maxSeq: 10
+  headHash: ab1593aa3d8e24175e7e5f6f1e17fad14298269d6fcb8db5113ee2de7dcde0ef
+  torn: false
+  issues:
+    []
+```
 
-## 5. Health check (1 minute)
+(`path` is the absolute journal path — it resolves from YOUR workspace
+directory; this capture ran in a temp workspace.)
+
+`verify` recomputes the entire blake3 hash chain — shape, 1-based index
+continuity, hash linkage, gapless per-run sequence numbers — and reports
+honestly: `ok` (no issues), `torn` (a crash-torn tail was detected), and
+`issues` (stable E-codes like `E1001` chain-broken, `E1002` torn tail,
+`E1005` seq gap). Exit code is `0` when the chain holds, `5` when it does
+not. The verdict depends only on the bytes on disk — it does not trust the
+process that produced them.
+
+Companions:
 
 ```sh
-vae doctor    # config, journals, blobs, audit chain, gateway matrix — no phone-home
+vae verify                      # the one-command shorthand — latest run
+vae journal ls                  # every run: run_id, records, events, head_hash
+vae journal show <RUN_ID>       # the raw hash-chained records, one per line
+vae explain <RUN_ID>            # the run as a human narrative + metering
 ```
 
-## 6. Optional: the daemon and the SDK (2 minutes)
+`vae verify` (no RUN_ID) verifies the latest journal; `vae verify <RUN_ID>`
+verifies the exact run — the same full chain recomputation as
+`vae journal verify`.
+
+## 5. Read the receipt (2 minutes)
+
+A run is not finished until it has a receipt. The receipt is **computed from
+the journal** (a fold, not an assertion), so it can never disagree with it,
+and it is stored as the **terminal `receipt` record of the journal** — the
+last line of `vae journal show <RUN_ID>`, the `receipt:` key of the run
+output, and part of `vae explain`.
+
+| Field | Meaning |
+|---|---|
+| `run_id` / `trace_id` | the run's two stable coordinates |
+| `engine_version` / `config_fingerprint` | which engine, against which config bytes |
+| `opened_at` / `closed_at` | run wall-clock window (RFC3339) |
+| `counts.records` / `counts.events` | journal size (all kinds / spine events) |
+| `counts.decisions_allow/deny/prompt` | broker verdicts, including refusals |
+| `counts.gates_opened` / `gates_resolved` | durable human gates (a `prompt` decision pauses the run until `vae resume`) |
+| `blob_refs` | every blob the run content-addressed (`{alg, hash, size}`) |
+| `journal.records` / `journal.head_hash` | **the integrity commitment**: the chained head the receipt certifies |
+| `summary` | one human line about what the run did |
+
+To re-prove the commitment right now, re-run
+`vae journal verify <RUN_ID>`. One measured detail: the verify report will
+show **one more record** than the receipt's `journal.records` (13 → 14 in
+this guide) and a `headHash` **one link beyond** the receipt's
+`journal.head_hash` — the receipt itself is appended to the journal as the
+terminal record AFTER the fold, so the chain the verifier recomputes
+includes it. `ok: true` means every link, including that terminal receipt
+record, was recomputed from the bytes on disk.
+
+## 6. Health check (1 minute)
 
 ```sh
-vae serve            # loopback HTTP/SSE; pairing token printed once
+vae doctor
 ```
 
-In a second shell, the TypeScript SDK speaks the exact same contracts
-(machine parity):
+`doctor` audits the whole workspace with **zero network access** and no
+secret values: config validity, every journal's hash chain, every referenced
+blob in the CAS, evidence↔blob↔fingerprint triangulation, the audit-ledger
+chain, the refusal-log chain, and the gateway capability matrix (secret
+*NAMES* only). Failures exit `5` with a `Fix:` hint per finding — and a
+top-level `next_step` naming the EXACT recovery command (a missing config
+yields `vae init`; a torn tail yields `vae journal recover <run_id>`). A
+fully green audit carries no `next_step`.
 
-```ts
-import { VaeDaemonClient } from "@vaerion/sdk";
-const vae = new VaeDaemonClient({ base: "http://127.0.0.1:<port>", token: "<pairing-token>" });
-console.log(await vae.version());
-```
+## 7. When something refuses
 
-The daemon is loopback-only (it refuses any non-loopback bind), and every
-state-changing call requires the pairing token.
-
-## 7. Know your repository (2 minutes)
-
-Vaerion treats Git, CI, and release evidence as part of its constitutional
-runtime — measured, never assumed (Constitution v1.1, D-P through D-T):
+Vaerion is fail-closed by design. Unknown commands and bad flags exit `2`
+with the usage; a broker denial exits `3`; a failed final verification exits
+`5`. Every engine error prints a stable code, a message, and a `Fix:` line,
+in plain text and in `--json` NDJSON alike:
 
 ```sh
-vae repo                        # branch, tree state, conflicts, identity audit,
-                                # tags, worktrees, canonical sync — read-only
-vae ci validate                 # workflows must re-run tools/verify.ts (D-R),
-                                # never re-implement the gates
-vae ci simulate --event tag --ref v1.0.0   # which jobs WOULD run, and why
-vae release readiness           # can this ship? gates, git trust, CI validity,
-                                # version lockstep, tag binding, artifacts
+vae frobnicate          # unknown command → E1600, exit 2
+vae doctor --json       # the same data, one JSON object per line
 ```
 
-Every check carries an honesty label — `VERIFIED` (measured here),
-`UNVERIFIED` (not measurable in this environment), `NEVER EXECUTED` — and
-readiness is fail-closed: unmeasurable ⇒ blocked. Exit 0 means READY;
-exit 5 prints the blocker list with a Fix for each.
+Denials are evidence too: they are journaled in the run *and* appended to the
+workspace's hash-chained refusal log (`.vaerion/refusals.log`). The
+[`refused-action` example](../examples/refused-action/) shows it happening.
 
-## Where to go next
+## Where next
 
-- `docs/INSTALL.md` — installation and verification of release artifacts
-- `examples/vaerion-demo/DEMO.md` — the annotated walkthrough
-- `docs/TROUBLESHOOTING.md` — exit codes and E-codes
-- `docs/security/THREAT-MODEL.md` — what the engine guarantees, and how
-- `docs/adr/README.md` — every architectural decision and its status
-- `CONTRIBUTING.md` — the verification law for changes
+- [`SDK.md`](SDK.md) — the programmatic surface (`VaeClient` /
+  `VaeDaemonClient` in TypeScript), the same contracts the CLI uses
+- [`reference/engine-api.md`](reference/engine-api.md) — the engine API
+  reference (kernel, spine, journal, broker, gateway, runtime)
+- [`../examples/README.md`](../examples/README.md) — the indexed examples
+  library: a verifiable agent, a refused action, the replay machine
+- [`book/`](book/) — the Vaerion book: tutorials (install → first agent →
+  workflow), guides, and concept chapters
+- [`reference/cli.md`](reference/cli.md) — the full command surface
+- [`TROUBLESHOOTING.md`](TROUBLESHOOTING.md) — exit codes and E-codes
+- [`getting-started/quickstart.md`](getting-started/quickstart.md) — the
+  10-minute condensed version of this journey

@@ -5,23 +5,53 @@ import { FACTS } from "../facts";
 import { PageHero, Section, Panel, Callout, CodeBlock, Honesty, Pill, Bullets } from "../primitives";
 import DocsNav from "../DocsNav";
 
-/* Command reference — distilled from docs/CLI.md, which was generated from
-   the COMMAND_HELP registry in packages/vaerion/src/cli/vae.ts. Only flags
-   that exist in the registry are listed. */
+/* Command reference — distilled from the COMMAND_HELP registry in
+   packages/vaerion/src/cli/vae.ts (docs/CLI.md is generated from it). Only
+   flags that exist in the registry are listed. Re-measured 2026-10-01
+   against engine 0.1.14-rc1 (Phase 59.2: interactive first-run layer,
+   7-template registry, doctor next_step law). */
 
 const COMMANDS: { name: string; purpose: string; synopsis: string; flags: string[]; note?: string }[] = [
   {
     name: "vae init",
     purpose: "Scaffold a workspace: vaerion.yaml (strict schema 0.1) + .vaerion/ from a deterministic template.",
-    synopsis: "vae init [--template minimal|demo|agent] [--name NAME] [--dry-run]",
+    synopsis:
+      "vae init [--template minimal|demo|agent|tool|automation|multi-agent|enterprise] [--name NAME] [--dry-run]",
     flags: [
       "--template minimal — the default; bare vae init is exactly this template",
       "--template demo — a demo workspace (./docs + ./sources capabilities), ready for vae run demo",
       "--template agent — mockbrain planner, declared tools, an explicit policy rule for model.invoke",
+      "--template tool — a tool-agent workspace: mockbrain planner + the echo/clock.read tool belt, explicit grants",
+      "--template automation — deterministic tool DAGs (no model calls), ready for vae run workflow --dag workflow.json",
+      "--template multi-agent — a researcher→analyst→auditor crew as one journaled DAG",
+      "--template enterprise — deny-by-default policy with explicit grants, budgeted model ceilings, a governance DAG",
       "--name NAME — the only parameter; every template is byte-stable",
       "--dry-run — print the plan, write nothing",
     ],
     note: "Refuses to overwrite an existing vaerion.yaml. Unknown templates are a usage error (E1203). Telemetry is structurally false in every template.",
+  },
+  {
+    name: "vae create",
+    purpose: "Scaffold a NEW project directory — config, template sources, README.md — and print the exact next commands.",
+    synopsis: "vae create NAME [--template T] [--interactive] [--no-interactive] [--dry-run]",
+    flags: [
+      "Default template: demo — the fastest verified journey",
+      "On a terminal, a missing NAME/--template is asked interactively (--interactive / -i forces the prompts)",
+      "--no-interactive never prompts; --json never prompts — a missing NAME stays an honest E1600, never a hang",
+      "Selection is line-oriented: number or exact template name, Enter takes the default, invalid picks re-prompt",
+    ],
+    note: "Prompts reuse the one project-name law (^[a-z][a-z0-9-]{1,62}$). The template registry is the only authority — create defers to a template-declared README.md.",
+  },
+  {
+    name: "vae start",
+    purpose: "The five-minute first agent: init → run → verify → receipt in ONE guided command.",
+    synopsis: "vae start [--template T] [--name NAME] [--interactive] [--no-interactive] [--dry-run]",
+    flags: [
+      "On a terminal, a missing --template opens the registry picker; a missing --name is confirmed (default: first-agent)",
+      "--interactive / -i forces the prompts; --no-interactive and --json never prompt",
+      "--dry-run plans the whole journey and writes nothing",
+    ],
+    note: "Existing workspaces are continued, never overwritten — there is nothing to ask there, so the interactive layer is inert by design.",
   },
   {
     name: "vae run",
@@ -54,6 +84,16 @@ const COMMANDS: { name: string; purpose: string; synopsis: string; flags: string
     note: "Exit 5 if the journal fails verification.",
   },
   {
+    name: "vae verify",
+    purpose: "Verify the latest run's journal (or RUN_ID): full blake3 chain recomputation, torn-tail detection, issues.",
+    synopsis: "vae verify [RUN_ID]",
+    flags: [
+      "Exit 0 verified / exit 5 failed; the --json report is flat: {command, run_id, verdict, ok, records, events, head_hash, torn, issues, next}",
+      "The CLI of record — every SDK and framework integration executes THIS to verify: verification trusts bytes on disk, not processes",
+    ],
+    note: "The report's head_hash is the hash of the terminal receipt record — one link beyond receipt.journal.head_hash, which certifies the chain up to its fold.",
+  },
+  {
     name: "vae journal",
     purpose: "Append-only journal operations over the blake3-chained run records.",
     synopsis:
@@ -70,8 +110,9 @@ const COMMANDS: { name: string; purpose: string; synopsis: string; flags: string
     flags: [
       "Verifies every journal's hash chain and every referenced blob in the CAS",
       "Reports the gateway picture: provider capability matrix, declared providers/secret NAMES/budgets",
+      "On a failed audit, --json carries a top-level next_step naming the EXACT recovery command: missing config → vae init; torn tail → vae journal recover <run_id>; non-torn corruption → vae journal verify <RUN_ID>; lock drift → vae package build",
     ],
-    note: "Performs no network access and resolves no secret values — zero telemetry is constitutional. Exit 5 with Fix: hints on failures.",
+    note: "Performs no network access and resolves no secret values — zero telemetry is constitutional. Exit 5 with Fix: hints on failures; green audits carry no next_step.",
   },
   {
     name: "vae dev",
@@ -90,6 +131,19 @@ const COMMANDS: { name: string; purpose: string; synopsis: string; flags: string
       "Default listener 127.0.0.1:7897; port 0 asks the OS for an ephemeral port",
     ],
     note: "Non-loopback binds are refused (E2001); remote exposure requires a ratified transport-security ADR, never a flag. Generated OpenAPI at /openapi.json.",
+  },
+  {
+    name: "vae mcp",
+    purpose: "The MCP stdio server — newline-delimited JSON-RPC 2.0, backed by the same CLI contracts.",
+    synopsis: "vae mcp",
+    flags: [
+      "Protocol 2024-11-05; serverInfo {name: \"vaerion\", version: 0.1.15-rc1}",
+      "Six ratified tools: vaerion_doctor, vaerion_status, vaerion_journal_ls, vaerion_verify_journal, vaerion_run_demo, vaerion_run_agent",
+      "Every tool call executes the real CLI contract in-process — same broker, same journal, same receipts, same exit codes; nothing bypasses the constitutional path",
+      "stdout carries protocol messages and nothing else (diagnostics → stderr); stdin EOF ends the server with exit 0",
+      "Bad JSON → -32700; unknown method → -32601; unknown tool / bad params → -32602; tool execution failures are isError results, never protocol errors",
+    ],
+    note: "One process serves ONE workspace (the cwd of the spawned process). Host configs for Claude Desktop, Cursor, and Cline ship in integrations/mcp/ — see the Integrations page on this site.",
   },
   {
     name: "vae package",
@@ -233,8 +287,9 @@ export default function CliPage() {
               <Bullets
                 items={[
                   "--help (or -h) is parsed before any side effect — before config, workspace, or filesystem access. Help always teaches, never executes.",
-                  "--json switches every command to stable NDJSON — the byte-stable machine mode the SDK and tests consume.",
+                  "--json switches every command to stable NDJSON — the byte-stable machine mode the SDKs and tests consume.",
                   "--dry-run is threaded into every mutating command: it prints the plan and writes nothing.",
+                  "create and start carry the interactive first-run layer: on a TTY a missing template/name is asked (line-oriented picker); --interactive / -i forces the prompts, --no-interactive and --json never prompt.",
                   "Exit codes are honest (0–5).",
                 ]}
               />
@@ -250,11 +305,15 @@ export default function CliPage() {
                   "--dry-run — zero side effects: plan only, nothing written",
                   "--cwd DIR — operate on DIR as the workspace (default: .)",
                   "--help, -h — help for the topic, exit 0, never executes",
+                  "--version, -V — print the engine version and exit",
+                  "--quiet — suppress decorative framing (banner/footer); data and errors are NEVER suppressed",
                 ]}
               />
             </div>
             <p className="mt-4 text-xs leading-relaxed text-mutedfg">
-              There is no --version global flag; the version is printed by the welcome banner and <code className="font-mono">vae dev</code>.
+              The welcome banner and <code className="font-mono">vae dev</code> also report the version; <code className="font-mono">vae version</code>{" "}
+              is the dedicated command. The interactive prompt layer engages only on a real TTY and only when required input is missing — scripted
+              and piped runs keep their byte-identical behavior.
             </p>
           </Panel>
         </div>
@@ -315,6 +374,14 @@ export default function CliPage() {
             </AccordionItem>
           ))}
         </Accordion>
+        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-mutedfg">
+          Also measured on the {FACTS.cli.commands.length}-command surface, beyond the entries above: <code className="font-mono">vae status</code>{" "}
+          (the project dashboard, read-only), <code className="font-mono">vae report</code> (a pure fold over every journal),{" "}
+          <code className="font-mono">vae clean</code> (orphaned-blob reclaim — plan-only by default, evidence-linked blobs never),{" "}
+          <code className="font-mono">vae snapshot</code> / <code className="font-mono">vae restore</code> (a deterministic evidence archive pinned
+          by its blake3 digest, and verify-then-restore), plus <code className="font-mono">vae completions</code>,{" "}
+          <code className="font-mono">vae help [COMMAND]</code>, and <code className="font-mono">vae version</code>.
+        </p>
       </Section>
 
       {/* ─────────── exit codes ─────────── */}
