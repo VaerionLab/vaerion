@@ -16,10 +16,11 @@ measured status of record; item numbering below matches that list):
 1. **Substrate is provisional.** The TypeScript-on-Bun reference
    implementation is explicitly PROVISIONAL (ADR-0018) with a recorded
    migration path; Founder ratification is pending (see §3, F-4).
-2. **Release signing uses the bootstrap Ed25519 key.** Rotation to a
-   held-offline key is Founder-gated (`docs/security/RISK-LEDGER.md` R-2;
-   see §3, F-3). Until then the bootstrap key is session-bound and
-   disclosed wherever it is used.
+2. **Release signing uses the production Ed25519 key of record.** The
+   offline key ceremony (F-3) closed at ASCENSION XXV — the production key
+   signs from CI (`docs/security/SIGNING-CEREMONY.md`; CHANGELOG `v1.7`
+   amendment log). The earlier bootstrap-key disclosure era is historical
+   record.
 3. **Exec-sandbox hardening is open.** The full per-platform sandbox
    profile matrix (ADR-0015) and per-run token scoping remain open
    engineering items (`docs/security/RISK-LEDGER.md` R-1/R-5).
@@ -80,10 +81,11 @@ verification matrix of record is `packaging/README.md` (measured
   builds and runs them.** The entrypoint path and the frozen-lockfile
   contract are verified against the tree; execution is not (honest
   markers inside `Dockerfile`).
-- **GitHub branch protection: BLOCKED by plan** — API 403 "Upgrade to
-  GitHub Pro or make this repository public" (measured; worklog.md Task 3
-  entry). A Founder decision (public repo or Pro plan) is required;
-  nothing the engine can do.
+- **GitHub branch protection: UNVERIFIED TODAY.** The 2026-09 blocker (API
+  403 "Upgrade to GitHub Pro or make this repository public"; worklog.md
+  Task 3 entry) is void now that the repository is public. `.github/ORG-PROFILE.md`
+  records protection as enforced; re-verify with an admin token at the next
+  Founder session. Nothing the engine can do.
 
 ## 3. Founder-gated items (P4 — no automation may close these)
 
@@ -93,21 +95,23 @@ From `docs/ga/GO-NO-GO.md` §2 and `docs/ga/FINAL-VERIFIED-REALITY-REPORT.md`
 - **F-2 — Full legal name.** Packaging authorship carries the consistent
   `Auren` identity; the legal-name insertion is a one-line Founder
   follow-up.
-- **F-3 — The offline key ceremony.** Release signing must rotate from
-  the bootstrap Ed25519 key to a held-offline key before strangers are
-  asked to trust it (`docs/security/RISK-LEDGER.md` R-2). Until F-3, CI
-  release artifacts honestly disclose the bootstrap key generation (the
-  CI pack report says "bootstrap key GENERATED this run — session-bound,
-  disclosed"; measured, worklog.md Task 3 entry).
+- **F-3 — The offline key ceremony.** ✅ **CLOSED at ASCENSION XXV** — the
+  production Ed25519 key signs from CI
+  (`docs/security/SIGNING-CEREMONY.md`; the GitHub Actions secret
+  `RELEASE_SIGNING_KEY` provisioned 2026-09-26; the `v0.1.15-rc1` release
+  signature verifies against the tracked key of record). Historical: the
+  bootstrap-key disclosure era is recorded in the phase reports.
 - **F-4 — Substrate ratification.** ADR-0018 (TypeScript-on-Bun) remains
   PROVISIONAL pending the Founder decision; migration path recorded.
-- **F-5 — Publication.** npm IS live — `vaerion@0.1.14-rc1` published
-  (dist-tags `rc` + `latest`, measured on registry.npmjs.org 2026-10-03;
-  stranger-tested end-to-end). PyPI / homebrew-core / winget submissions,
-  the `vaerion.dev` installer URL, announce, and beta recruitment remain
-  release-train steps the Founder executes
-  (`docs/ga/PHASE-XXIII-PUBLICATION-GAP-AUDIT.md` history; PyPI registry
-  measured 404 on 2026-10-03).
+- **F-5 — Publication.** ✅ **PARTIALLY EXECUTED (measured 2026-10-17):**
+  GitHub Release `v0.1.15-rc1` is LIVE (8 signed assets — signature and
+  every digest verified); PyPI is LIVE (`vaerion 0.1.15rc1`, sdist +
+  wheel); the hosted site is LIVE (`https://vaerion.vercel.app`). Still
+  Founder-gated: the npm publish of `0.1.15-rc1` (the registry delivers
+  `0.1.14-rc1`; a publish-capable token is required — the prior token was
+  invalid, E401), the `vaerion.dev` domain (measured unreachable),
+  homebrew-core / winget submissions, announce, and beta recruitment
+  (`docs/ga/PHASE-XXIII-PUBLICATION-GAP-AUDIT.md` history).
 - **F-6 — Real-provider cassettes.** One sanctioned recording session per
   adapter with provider credentials (`docs/security/RISK-LEDGER.md` R-4)
   — required for end-to-end golden coverage of the ModelPlanner success

@@ -2,7 +2,8 @@
 
 Every entry below is a real directory in this repository, and every
 command quoted here or in the linked READMEs exists in the `vae` CLI of
-record (`0.1.14-rc1` — verified against the CLI source before being
+record (census verified at `0.1.14-rc1`; surface unchanged through
+`0.1.15-rc1` — verified against the CLI source before being
 documented). Run ids and hashes will differ on your machine; the shapes
 and the `ok: true` will not.
 
@@ -14,7 +15,7 @@ and the `ok: true` will not.
 | [`refused-action/`](refused-action/) | unauthorized actions are stopped and recorded | scratch dir → `vae init --template agent` → flip one policy word → `vae run agent …` → `vae journal verify RUN` | fail-closed broker (`E1300`/`E1301`), a hash-chained refusal log, and a **failed run that still verifies** |
 | [`replay-machine/`](replay-machine/) | determinism you can hold | scratch dir → `vae init` + a `package:` block → `vae package build` twice → `sha256sum` → flip one byte → `vae package verify` | identical inputs → byte-identical `.vxn` bundles; the pure check refuses tampering with exit 5 |
 | [`vaerion-demo/`](vaerion-demo/) | the 15-minute demo workspace (the canonical external-tester workspace; pairs with [`docs/QUICKSTART.md`](../docs/QUICKSTART.md)) | `vae run demo --query "determinism"` → `vae journal verify RUN` → `vae package build` + `vae package verify .vaerion/package/vaerion-demo.vxn` | the research pipeline end-to-end: declared sources, fenced evidence, receipt, reproducible bundle |
-| [`vaerion/demo-workspace/`](vaerion/demo-workspace/) | committed DAG + agent-plan assets | copy the dir → `vae run workflow --dag workflow.json` and `vae run agent --planner inline --plan-json "$(cat plans/echo-plan.json)"` | deterministic topological workflow execution and an inline-planned agent run, both journaled and receipted |
+| [`vaerion/demo-workspace/`](vaerion/demo-workspace/) | committed DAG + agent-plan assets | copy the dir → `vae run workflow --dag workflow.json` and `vae run agent --planner inline --goal "run the echo plan" --plan-json "$(cat plans/echo-plan.json)"` | deterministic topological workflow execution and an inline-planned agent run, both journaled and receipted |
 | [`websocket/`](websocket/) | standalone WebSocket sample (site stack) | see its sources (`server.ts`, `frontend.tsx`) | nothing about the engine — an independent transport demo that does **not** exercise `packages/vaerion/` |
 
 The first five are walkthroughs: their READMEs teach with real CLI

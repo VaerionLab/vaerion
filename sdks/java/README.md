@@ -1,5 +1,8 @@
 # Vaerion Java SDK (`dev.vaerion:vaerion-sdk`)
 
+> **Published artifacts: none.** Maven Central remains Founder-gated; build
+> from source today (`mvn package` → `target/vaerion-sdk-0.1.15-rc1.jar`).
+>
 > **Generated against engine `0.1.15-rc1` (version-register alignment,
 > 2026-10-03; signatures verified at `815e929`); every signature verified
 > against source** (`packages/vaerion/src/api/routes.ts`, the CLI `--json`
@@ -58,7 +61,8 @@ try (VaeClient vae = VaeClient.attach("http://127.0.0.1:7897", "<pairing-token>"
 
 Executed against a scratch workspace with this SDK (`java -cp
 target/classes:<deps> dev.vaerion.sdk.examples.Basic /tmp/vaerion-java-demo`,
-2026-10-01); ids and hashes differ per run — shapes are real:
+representative capture at the `0.1.15-rc1` line of record); ids and hashes
+differ per run — shapes are real:
 
 ```text
 vaerion java sdk — basic example

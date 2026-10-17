@@ -1,7 +1,7 @@
 # Installing Vaerion
 
 The fastest measured path; every alternative with its honest status
-lives in [`../INSTALL.md`](../INSTALL.md) (the full channel map).
+lives in [`INSTALL.md`](INSTALL.md) (the full channel map).
 
 ## Recommended — npm (measured, live)
 
@@ -38,7 +38,8 @@ Verify the install: `vae --help` (the whole surface, always current) ·
 Every release ships a full signed artifact set:
 [github.com/VaerionLab/vaerion/releases](https://github.com/VaerionLab/vaerion/releases)
 — source tarball, `vaerion-demo.vxn`, `SHA256SUMS`,
-`MANIFEST.json` + `MANIFEST.json.sig`, `release-signing.pub`, and
+`MANIFEST.json` + `MANIFEST.json.sig`, `release-signing.pub`,
+`dist-report.json` (the packer's own gate record), and
 `VERIFY.md` (the consumer instructions).
 
 The anonymous three-leg verification, exactly as a fresh consumer runs
@@ -82,5 +83,5 @@ alias vae="bun run packages/vaerion/src/cli/vae.ts"
 - No writes outside your workspace (`.vaerion/`, `vaerion.lock`) and
   the install prefix you chose.
 
-Next: [`quickstart.md`](quickstart.md) — first verified run in under
+Next: [`docs/getting-started/quickstart.md`](docs/getting-started/quickstart.md) — first verified run in under
 10 minutes.

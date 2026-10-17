@@ -7,11 +7,14 @@
   of failing cryptically.
 - Linux, macOS, or Windows (WSL2). No account, no network key, no telemetry.
 
-## Path 1 — npm (recommended once the registry release train opens)
+## Path 1 — npm (live — lags the tree) or PyPI (live)
 
 ```sh
-npm install -g vaerion
-vae --version
+pip install vaerion        # PyPI — live: vaerion 0.1.15rc1 (sdist + wheel)
+# or
+npm install -g vaerion@rc  # npm — live but LAGS THE TREE: the registry still
+vae --version              #   delivers 0.1.14-rc1 (an older engine) until the
+                           #   Founder-gated 0.1.15-rc1 publish
 ```
 
 ## Path 2 — from source (works today)
@@ -28,7 +31,7 @@ bun run packages/vaerion/src/cli/vae.ts --version
 A `Dockerfile` rides in the repository root; a dev container lives in
 `.devcontainer/`. Platform packages (Homebrew, winget, chocolatey, scoop, snap,
 flatpak, deb, rpm, dmg, pkg) are rehearsed under [`packaging/`](../../packaging/README.md)
-and open one channel at a time after the npm release train.
+and open one channel at a time (Founder-gated; npm is live but lags the tree).
 
 ## Verify the install
 

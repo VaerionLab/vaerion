@@ -27,8 +27,10 @@ runs.
 The release artifact is produced by the reproducible installer pipeline
 (`packages/vaerion/scripts/dist-pack.ts`): pack → file-inventory law →
 secret scan of every packed byte → a real offline install → a smoke of the
-installed shim. Until the GitHub Release channel is live, produce it
-locally:
+installed shim. The signed set of record is published on GitHub Releases
+(v0.1.15-rc1: `vaerion-0.1.15-rc1-source.tar.gz` + `SHA256SUMS` +
+`MANIFEST.json.sig` — verify with `tools/dist-verify.ts`); produce the
+equivalent locally when you need to prove reproducibility:
 
 ```bash
 cd packages/vaerion
@@ -40,7 +42,8 @@ vae --help                              # the installed shim
 ## Prove the install (do not skip)
 
 ```bash
-vae version          # → vae 0.1.14-rc1  (one line, zero ANSI)
+vae version          # → vae 0.1.15-rc1  (one line, zero ANSI) — 0.1.14-rc1
+                     #   is what npm serves until the gated publish
 vae --help           # the Daily Seven + serve + package, with examples
 ```
 
@@ -48,9 +51,11 @@ Then scaffold a workspace and run the local demo — no provider keys needed,
 the seeded MockBrain provider (ADR-0012) is the hermetic demo path:
 
 ```bash
-vae init myproject && cd myproject   # vaerion.yaml + .vaerion/journal + .vaerion/blobs
+vae create myproject && cd myproject  # vaerion.yaml + .vaerion/journal +
+                                      #   .vaerion/blobs (a new dir — `init`
+                                      #   scaffolds the CURRENT dir instead)
 vae run demo                          # a research run through the full pipeline
-vae journal verify                    # the blake3 hash chain holds
+vae verify                            # the blake3 hash chain holds
 ```
 
 `vae doctor` gives the full picture (config, journals, blobs, audit,

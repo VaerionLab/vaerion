@@ -11,7 +11,7 @@ exit-code contract. The engine executes on the [Bun](https://bun.sh) runtime
 |---|---|---|
 | npm | `npm install -g vaerion@rc` | **LIVE — LAGS THE TREE**: the registry delivers `0.1.14-rc1` (an older engine without `verify`/`create`/`start`/`mcp`) until the Founder-gated `0.1.15-rc1` publish; the tree of record and the signed release set carry the true engine |
 | PyPI | `pip install vaerion` | **published** — `vaerion 0.1.15rc1` (sdist + wheel), venv install verified |
-| Universal installer | `curl -fsSL https://vaerion.dev/install \| sh` | install/update/uninstall **verified** end-to-end; the `vaerion.dev` URL goes live with the release train |
+| Universal installer | `curl -fsSL https://vaerion.dev/install \| sh` | install/update/uninstall **verified** end-to-end; the `vaerion.dev` domain is pending provisioning (Founder-gated) — measured unreachable 2026-10-17; `https://vaerion.vercel.app` is the live canonical of record |
 | Debian | `packaging/linux/make-deb.sh` → `.deb` | build + extraction **verified** (`dpkg-deb`) |
 | Homebrew | `packaging/homebrew/vaerion.rb` | authored; **UNVERIFIED — BREW** (no brew here) |
 | RPM | `packaging/linux/vaerion.spec` | authored; **UNVERIFIED — RPM** (no rpmbuild here) |
@@ -135,7 +135,8 @@ verification: `docs/ga/RELEASE-VERIFICATION.md`. The release trust chain
 > source paths remain the signed-download surface. PyPI is **LIVE**
 > (`vaerion 0.1.15rc1`, sdist + wheel). The remaining registry
 > channels (Homebrew/winget/Chocolatey/Scoop/APT/RPM) are authored +
-> version-locked; their publication lands with the release train.
+> version-locked; their publication lands with a future release train
+> (Founder-gated).
 
 ## What installation does NOT do
 

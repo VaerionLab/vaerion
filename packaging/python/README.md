@@ -13,9 +13,9 @@ collide on PyPI:
 
 This mirrors the npm/JVM rows of record: npm `vaerion` (CLI) vs
 `@vaerion/sdk`; Maven `dev.vaerion:vaerion-sdk`. The SDK import name
-remains `vaerion` in both layouts. Registry publication of both
-distributions remains Founder-gated; PyPI `vaerion` measured 404
-(unclaimed) on 2026-10-03.
+remains `vaerion` in both layouts. PyPI `vaerion` is **published** —
+`0.1.15rc1` (sdist + wheel), measured live on pypi.org 2026-10-17; the
+`vaerion-sdk` distribution remains Founder-gated.
 
 `pip install vaerion` installs the `vae` console launcher plus the packaged
 engine source. Python is the delivery channel, not the substrate: the
@@ -36,7 +36,9 @@ sh packaging/python/make-package.sh
 # -> dist/python/vaerion-<version>-py3-none-any.whl (+ sdist)
 ```
 
-The wheel is an INPUT to publication (Founder-gated, risk-ledger F-5).
+The wheel build is the input to the publication flow. PyPI `vaerion` is
+**published** (0.1.15rc1, live); rebuilding locally reproduces the same
+package for offline verification.
 Offline verification without any registry:
 
 ```sh

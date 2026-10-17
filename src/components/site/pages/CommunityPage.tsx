@@ -72,7 +72,7 @@ export default function CommunityPage() {
               Ideas for proposals before they take issue shape, Announcements for release news, and Show and tell for what you built.
             </p>
             <div className="mt-4">
-              <Honesty tone="info">being set up — link goes live with the launch</Honesty>
+              <Honesty tone="info">LIVE — 16 topics across 5 categories (measured 2026-10-17)</Honesty>
             </div>
             <div className="mt-5">
               <ArrowLink href={FACTS.discussionsUrl} external>Discussions</ArrowLink>
@@ -88,7 +88,7 @@ export default function CommunityPage() {
           the repository — nowhere else.
         </Callout>
         <div className="mt-5 flex flex-wrap items-center gap-3">
-          <Honesty>launching with the release train</Honesty>
+          <Honesty>planned — pending Founder provisioning</Honesty>
         </div>
         <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {DISCORD_CHANNELS.map(([channel, purpose]) => (

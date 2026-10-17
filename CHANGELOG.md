@@ -35,10 +35,17 @@ disagree under one version string.
   clean, RPM changelog appended, `bun.lock` workspace entries synced).
 - npm-channel honesty: the registry of record still delivers `0.1.14-rc1` (an
   older engine) until the Founder-gated `0.1.15-rc1` publish; living docs and
-  site facts say so. Site facts re-synced to the measured epoch: 710 tests /
-  61 files / 5,197 expectations, 82 E-codes.
+  site facts say so. Site facts re-synced to the measured epoch (verified
+  against the tag's own generated facts): 719 tests / 62 files /
+  5,246 expectations, 82 E-codes.
 
 ## [Unreleased]
+
+> Scope note (added 2026-10-18, measured against the `v0.1.15-rc1` tag):
+> every item below shipped with `0.1.15-rc1` EXCEPT the operations-runbook
+> documents (`docs/operations/OPERATIONS.md`, `DEPLOYMENT.md`,
+> `ENVIRONMENTS.md`, and `LAUNCH-SEQUENCE.md` as it exists today), which
+> were written after the train and remain unreleased until the next one.
 
 - Launch preparation (Phase 12 — Launch Readiness & Externalization Order):
   version alignment of the surfaces outside the engine register (root

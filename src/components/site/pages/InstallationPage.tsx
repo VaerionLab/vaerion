@@ -68,8 +68,8 @@ export default function InstallationPage() {
         </div>
         <Callout kind="honesty" title="The universal installer URL is not live yet">
           <code className="font-mono">curl -fsSL https://vaerion.dev/install | sh</code> is verified end-to-end (install → update → uninstall,
-          nothing left behind), but the vaerion.dev URL goes live with the release train. Until then, GitHub Releases and the source paths are
-          the real download surface.
+          nothing left behind), but the vaerion.dev domain is pending provisioning (Founder-gated; measured unreachable 2026-10-17). Until
+          then, GitHub Releases, PyPI, and the source paths are the real download surface.
         </Callout>
       </Section>
 

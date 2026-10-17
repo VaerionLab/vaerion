@@ -7,13 +7,13 @@ to the engine version of record by
 `packages/vaerion/tests/integration/version-register.test.ts`.
 
 Status vocabulary is the repository's own: VERIFIED (measured on this tree) /
-authored (reviewed, never executed here) / Founder-gated (publish requires
-the release train).
+authored (reviewed, never executed here) / Founder-gated (publish awaits the
+Founder packet).
 
 ## VS Code — `editors/vscode/`
 
 - Package: `vaerion-vscode` (publisher `vaerion`), version = engine version
-  of record (`0.1.13-rc1`), license = Apache-2.0 by reference.
+  of record (`0.1.15-rc1`), license = Apache-2.0 by reference.
 - Surface: status bar, one-click `vae doctor`, run history, journal viewer,
   snapshots, YAML schema + snippets for `vaerion.yaml`
   (`schemas/vaerion-yaml.schema.json`, kept byte-identical to
@@ -40,7 +40,7 @@ the release train).
   (`build.gradle.kts`, `settings.gradle.kts`,
   `src/main/kotlin/dev/vaerion/editors/jetbrains/VaerionStatusAction.kt`,
   `src/main/resources/META-INF/plugin.xml`), `group dev.vaerion.editors`,
-  version = engine version of record (`0.1.13-rc1`).
+  version = engine version of record (`0.1.15-rc1`).
 - Surface: a status action invoking the `vae` CLI.
 - Status: **skeleton, never compiled or executed** — no Gradle/IntelliJ SDK
   exists in the engineering environment, and this file does not claim

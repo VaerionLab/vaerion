@@ -18,10 +18,10 @@ hands argv over unchanged.
 | `windows/scoop/` | Scoop bucket manifest (JSON) | same release zip; `checkver`/`autoupdate` read the GitHub Releases API |
 | `macos/` | `.dmg` + `.pkg` recipes, `SIGNING-PREP.md` | Developer ID / notarization runbook gated on the key ceremony |
 | `linux/` | `make-deb.sh`, `vaerion.spec`, `make-appimage.sh` | deb verified via `dpkg-deb`; rpm/AppImage need their host tools |
-| `linux/flatpak/` | Flatpak manifest (`dev.vaerion.Vaerion`) | strict-ish finish-args (home + network only); Bun substrate as extra-data, checksum pinned at the release train |
+| `linux/flatpak/` | Flatpak manifest (`dev.vaerion.Vaerion`) | strict-ish finish-args (home + network only); Bun substrate as extra-data, checksum pinned at publish time |
 | `linux/snap/` | snapcraft manifest | core24, strict confinement, home + network plugs; bundled Bun part |
 
-## Verification matrix (measured 2026-08-31, this repository)
+## Verification matrix (measured 2026-08-31; engine-version rows current at the `0.1.15-rc1` train)
 
 | Target | Verified evidence |
 |---|---|
@@ -35,7 +35,7 @@ hands argv over unchanged.
 
 Strings marked `release-time` (formula url/sha256, winget InstallerUrl /
 InstallerSha256, `vaerion.dev` URLs) are filled from the signed artifact
-set when the release train publishes (Founder-gated: F-1 remote, F-5
+set at publish time (Founder-gated: F-1 remote, F-5
 publish). The tarball each script consumes is produced by
 `tools/dist-pack.ts` — fail-closed on the six gates, byte-reproducibility
 proven, Ed25519-signed manifest v2.

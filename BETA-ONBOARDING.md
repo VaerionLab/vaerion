@@ -1,7 +1,7 @@
-# Vaerion Beta Onboarding — v0.1.14-rc1
+# Vaerion Beta Onboarding — v0.1.15-rc1
 
-Welcome. You are evaluating a **public beta** of Vaerion: the local-first
-verification layer for AI agents, built around one versioned event spine,
+Welcome. You are evaluating a **public beta** of Vaerion: a local-first,
+AI-native development engine built around one versioned event spine,
 append-only blake3-chained journals, a fail-closed permission broker,
 deterministic replay, receipts folded from journals, and reproducible
 `.vxn` bundles.
@@ -84,7 +84,8 @@ sharing medium.
 ## Beta exit criteria (what changes after beta)
 
 The beta ends when the open items in `docs/security/RISK-LEDGER.md`
-reach their exit criteria and the release train completes its
-Founder-gated steps to a green GO. Until then: repository wins, evidence
-wins, and your testing is the part of the evidence base we cannot
-generate ourselves.
+reach their exit criteria, the remaining Founder-gated publish steps
+complete (npm `0.1.15-rc1`, marketplaces, domain), and the GA dossier
+(this repository, `docs/ga/`) records a green
+GO. Until then: repository wins, evidence wins, and your testing is the
+part of the evidence base we cannot generate ourselves.
