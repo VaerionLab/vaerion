@@ -137,7 +137,7 @@ const COMMANDS: { name: string; purpose: string; synopsis: string; flags: string
     purpose: "The MCP stdio server — newline-delimited JSON-RPC 2.0, backed by the same CLI contracts.",
     synopsis: "vae mcp",
     flags: [
-      "Protocol 2024-11-05; serverInfo {name: \"vaerion\", version: 0.1.15-rc1}",
+      "Protocol 2024-11-05; serverInfo {name: \"vaerion\", version: 0.1.15}",
       "Six ratified tools: vaerion_doctor, vaerion_status, vaerion_journal_ls, vaerion_verify_journal, vaerion_run_demo, vaerion_run_agent",
       "Every tool call executes the real CLI contract in-process — same broker, same journal, same receipts, same exit codes; nothing bypasses the constitutional path",
       "stdout carries protocol messages and nothing else (diagnostics → stderr); stdin EOF ends the server with exit 0",

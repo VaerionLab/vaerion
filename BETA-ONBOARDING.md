@@ -1,4 +1,4 @@
-# Vaerion Beta Onboarding — v0.1.15-rc1
+# Vaerion Beta Onboarding — v0.1.15
 
 Welcome. You are evaluating a **public beta** of Vaerion: a local-first,
 AI-native development engine built around one versioned event spine,
@@ -85,7 +85,7 @@ sharing medium.
 
 The beta ends when the open items in `docs/security/RISK-LEDGER.md`
 reach their exit criteria, the remaining Founder-gated publish steps
-complete (npm `0.1.15-rc1`, marketplaces, domain), and the GA dossier
+complete (npm `0.1.15` shipped in the GA train; marketplaces and the domain remain), and the GA dossier
 (this repository, `docs/ga/`) records a green
 GO. Until then: repository wins, evidence wins, and your testing is the
 part of the evidence base we cannot generate ourselves.

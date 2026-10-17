@@ -5,10 +5,10 @@
 > v1.6 A6 Phase 11: the roadmap report of record comes from the ONE measured status source).
 > Regenerate with `bun tools/status.ts`; hand edits are defects.
 
-- Engine version of record: `0.1.15-rc1`
+- Engine version of record: `0.1.15`
 - Constitution of record: `v1.7` (Amendment Log §11)
-- Verification record: GREEN — 9/9 gates ok (`.vaerion-verification.json`)
-- Measured tests: 719 pass · 0 fail · 5246 expectations · 62 files
+- Verification record: RED — 8/9 gates ok (`.vaerion-verification.json`)
+- Measured tests: 715 pass · 4 fail · 5225 expectations · 62 files
 - Coverage floors: bunfig.toml coverageThreshold (OBJ-Q6, ratcheted at MS-6 bundle close: 0.86/0.74/0.86/0.90; held at every ASCENSION phase close)
 
 ## Milestone board (§7)
@@ -63,7 +63,7 @@
 1. No campaign is in flight: the D-T ledger records FINAL FOUR PHASES complete through Phase 26 (evidence of record in the constitution's §11 Amendment Log); the next program awaits Founder ratification (P4).
 2. GA remains rehearsed and PENDING FOUNDER GO (P4); the Founder gates (F-2 legal name, F-4 substrate ratification, F-5 publication — GitHub Release + PyPI LIVE, npm publish and the hosted domain pending Founder credentials, F-6 real-provider recordings, R-7 public disclosure channel) are the remaining path to full GA (F-3 closed at ASCENSION XXV — the production key signs from CI).
 3. Host-gated single-binary installers (brew/winget/dmg/rpm authored, awaiting their platforms); the daemon packages route group is DONE (ASCENSION XXVI+ — pack/verify/import over the wire with proven parity).
-4. Remaining publish steps (npm 0.1.15-rc1, announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag.
+4. Remaining publish steps (announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag.
 
 ## Technical risks (top)
 

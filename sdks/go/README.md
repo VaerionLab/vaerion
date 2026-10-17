@@ -1,6 +1,6 @@
 # vaerion-go — the Go SDK for Vaerion
 
-> **Provenance.** Generated against engine `0.1.15-rc1` (version-register
+> **Provenance.** Generated against engine `0.1.15` (version-register
 > alignment 2026-10-03; generation-time provenance `815e929`); every signature and
 > wire shape verified against source: the daemon route table
 > (`packages/vaerion/src/api/routes.ts`), the daemon handlers

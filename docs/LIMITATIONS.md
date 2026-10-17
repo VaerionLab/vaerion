@@ -103,13 +103,12 @@ From `docs/ga/GO-NO-GO.md` §2 and `docs/ga/FINAL-VERIFIED-REALITY-REPORT.md`
   bootstrap-key disclosure era is recorded in the phase reports.
 - **F-4 — Substrate ratification.** ADR-0018 (TypeScript-on-Bun) remains
   PROVISIONAL pending the Founder decision; migration path recorded.
-- **F-5 — Publication.** ✅ **PARTIALLY EXECUTED (measured 2026-10-17):**
-  GitHub Release `v0.1.15-rc1` is LIVE (8 signed assets — signature and
-  every digest verified); PyPI is LIVE (`vaerion 0.1.15rc1`, sdist +
-  wheel); the hosted site is LIVE (`https://vaerion.vercel.app`). Still
-  Founder-gated: the npm publish of `0.1.15-rc1` (the registry delivers
-  `0.1.14-rc1`; a publish-capable token is required — the prior token was
-  invalid, E401), the `vaerion.dev` domain (measured unreachable),
+- **F-5 — Publication.** ✅ **EXECUTED (measured 2026-10-17):**
+  GitHub Release `v0.1.15` is LIVE (8 signed assets — signature and
+  every digest verified); npm is LIVE (`vaerion 0.1.15` under dist-tag
+  `latest`, parity-proven before publish); PyPI is LIVE (`vaerion 0.1.15`,
+  sdist + wheel); the hosted site is LIVE (`https://vaerion.vercel.app`).
+  Still Founder-gated: the `vaerion.dev` domain (measured unreachable),
   homebrew-core / winget submissions, announce, and beta recruitment
   (`docs/ga/PHASE-XXIII-PUBLICATION-GAP-AUDIT.md` history).
 - **F-6 — Real-provider cassettes.** One sanctioned recording session per
@@ -117,7 +116,7 @@ From `docs/ga/GO-NO-GO.md` §2 and `docs/ga/FINAL-VERIFIED-REALITY-REPORT.md`
   — required for end-to-end golden coverage of the ModelPlanner success
   path (`ROADMAP_PROGRESS.md` risk 6).
 
-GA remains rehearsed and PENDING FOUNDER GO (P4)
+GA EXECUTED (2026-10-17) — the train ran under the Founder's written GO
 (`docs/ga/GO-NO-GO.md` §3 decision block;
 `ROADMAP_PROGRESS.md` milestone board: GA 95%, pending).
 

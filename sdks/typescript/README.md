@@ -1,6 +1,6 @@
 # @vaerion/sdk — the TypeScript SDK for Vaerion
 
-> **Provenance.** Generated against engine `0.1.15-rc1` (version-register
+> **Provenance.** Generated against engine `0.1.15` (version-register
 > alignment, 2026-10-03; signatures verified against source at `815e929`).
 > Every method below exists in `src/index.ts` / `src/daemon.ts` — nothing is
 > aspirational. Conforms to [`../../VAERION_SDK_STANDARD.md`](../../VAERION_SDK_STANDARD.md):

@@ -62,14 +62,14 @@ it, `vae` refuses with a taught error, never a cryptic one).
 ```sh
 curl -fsSL https://bun.sh/install | bash    # if Bun is not installed yet
 npm install -g vaerion@rc                    # npm channel — see the version note below
-vae --version                                # → vae 0.1.14-rc1 today — see the note below
+vae --version                                # → vae 0.1.15
 ```
 
-> **Version note (honest):** the npm registry still delivers `0.1.14-rc1` —
-> an older engine missing `vae verify` / `create` / `start` / `mcp` — until
-> the Founder-gated `0.1.15-rc1` publish. For the true engine today, install
-> from source (`bun install` in a clone, then
-> `bun run packages/vaerion/src/cli/vae.ts`) or the signed release set.
+> **Version note (honest):** the npm registry delivers the current engine —
+> `0.1.15` under dist-tag `latest`, with `vae verify` / `create` / `start` /
+> `mcp`, the did-you-mean system, and the 7-template registry. Install from
+> npm (`npm install -g vaerion`), from source (`bun install` in a clone, then
+> `bun run packages/vaerion/src/cli/vae.ts`), or the signed release set.
 
 Other channels (signed release tarball with three-leg offline
 verification, PyPI wheel, Debian, Homebrew, Windows — each labeled with
@@ -189,11 +189,11 @@ the engine's own test suite — examples cannot drift from reality.
 
 ## Roadmap
 
-`v0.1.15-rc1` is a **release candidate**: 9/9 verification gates green,
+`v0.1.15` is **general availability**: 9/9 verification gates green,
 signed release artifacts, the E1010 journal-completeness anchor now
 canonical, and a mechanical artifact-parity system (source = build =
-package = docs). npm distribution is live but lags the tree (`0.1.14-rc1`)
-until the Founder-gated publish.
+package = docs). npm distribution is current (`0.1.15` under dist-tag
+`latest`), parity-proven before publish.
 What ships next and what is explicitly *not* done yet:
 [`ROADMAP_PROGRESS.md`](ROADMAP_PROGRESS.md),
 [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md), and

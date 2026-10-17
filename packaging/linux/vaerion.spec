@@ -8,8 +8,8 @@
 #  convention of record here — derived from version_string by replacing
 #  the pre-release hyphen with a dot; the register test pins the derivation.)
 
-%global version_string 0.1.15-rc1
-%global rpm_version    0.1.15.rc1
+%global version_string 0.1.15
+%global rpm_version    0.1.15
 
 Name:           vaerion
 Version:        %{rpm_version}
@@ -48,6 +48,13 @@ chmod +x %{buildroot}/usr/bin/vae
 %license LICENSE
 
 %changelog
+
+* Sat Oct 17 2026 Auren <auren@vaerion.dev> - 0.1.15-1
+- General Availability: the v0.1.15-rc1 release candidate promotes to stable —
+  the GA engine is the rc engine with exactly one deliberate source change
+  (the version literal) plus the documentation truth sweep. npm publishes
+  0.1.15 under dist-tag latest; PyPI uploads 0.1.15 (sdist + wheel); the
+  signed GitHub Release set (8 assets) publishes at the v0.1.15 tag.
 * Sat Oct 03 2026 Auren <auren@vaerion.dev> - 0.1.15.rc1-1
 - The one-true-artifact epoch: E1010 journal-completeness anchor ported into
   the canonical lineage (catalog + verify logic + 12-test attack suite);

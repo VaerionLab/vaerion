@@ -99,7 +99,7 @@ class VaeDaemonClientTest {
         AtomicReference<String> seenAuth = new AtomicReference<>("unset");
         server.createContext("/health", ex -> {
             seenAuth.set(ex.getRequestHeaders().getFirst("Authorization"));
-            respond(ex, 200, "{\"ok\":true,\"engine_version\":\"0.1.15-rc1\"}");
+            respond(ex, 200, "{\"ok\":true,\"engine_version\":\"0.1.15\"}");
         });
         VaeDaemonClient client = new VaeDaemonClient(base, "secret-token");
         client.health();

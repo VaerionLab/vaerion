@@ -16,4 +16,4 @@ __all__ = [
     "VAERION_TOOL_NAMES",
 ]
 
-__version__ = "0.1.15rc1"
+__version__ = "0.1.15"

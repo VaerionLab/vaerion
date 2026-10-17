@@ -11,7 +11,7 @@
 
 $ErrorActionPreference = "Stop"
 
-$version = "0.1.15-rc1"
+$version = "0.1.15"
 $zipUrl = "https://github.com/VaerionLab/vaerion/releases/download/v$version/vaerion-$version-windows-x64.zip"
 # CHECKSUM_PINNED_AT_RELEASE_TRAIN: replace with the artifact's SHA256 from
 # the signed release manifest before any submission.

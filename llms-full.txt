@@ -759,7 +759,7 @@ The release artifact is produced by the reproducible installer pipeline
 (`packages/vaerion/scripts/dist-pack.ts`): pack → file-inventory law →
 secret scan of every packed byte → a real offline install → a smoke of the
 installed shim. The signed set of record is published on GitHub Releases
-(v0.1.15-rc1: `vaerion-0.1.15-rc1-source.tar.gz` + `SHA256SUMS` +
+(v0.1.15: `vaerion-0.1.15-source.tar.gz` + `SHA256SUMS` +
 `MANIFEST.json.sig` — verify with `tools/dist-verify.ts`); produce the
 equivalent locally when you need to prove reproducibility:
 
@@ -773,8 +773,7 @@ vae --help                              # the installed shim
 ## Prove the install (do not skip)
 
 ```bash
-vae version          # → vae 0.1.15-rc1  (one line, zero ANSI) — 0.1.14-rc1
-                     #   is what npm serves until the gated publish
+vae version          # → vae 0.1.15  (one line, zero ANSI)
 vae --help           # the Daily Seven + serve + package, with examples
 ```
 

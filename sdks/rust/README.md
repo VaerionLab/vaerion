@@ -1,6 +1,6 @@
 # vaerion — the Rust SDK for Vaerion
 
-> Generated against engine `0.1.15-rc1` (version-register alignment, 2026-10-03;
+> Generated against engine `0.1.15` (version-register alignment, 2026-10-03;
 > signatures verified against source at `815e929`). Wire surface: `packages/vaerion/src/api/routes.ts` (the same
 > table that dispatches and generates the daemon's OpenAPI description),
 > auth/shutdown law: `packages/vaerion/src/api/server.ts`, CLI-of-record
@@ -46,7 +46,7 @@ agent.close();                                      // token-echo shutdown + chi
 ```
 
 Real output of `cargo run --example basic` (isolated temp workspace; run
-2026-10-01 on the `0.1.13` line; flow re-verified on `0.1.15-rc1` via the
+2026-10-01 on the `0.1.13` line; flow re-verified on `0.1.15` via the
 engine parity suite):
 
 ```text
@@ -149,7 +149,7 @@ Dependencies are deliberately minimal: `serde` (derive), `serde_json`,
 
 ## Honest gaps
 
-- **No standalone daemon verify route in engine `0.1.15-rc1`** — verification
+- **No standalone daemon verify route in engine `0.1.15`** — verification
   is the CLI of record (`vae verify` / `vae journal verify`), which is what
   this SDK executes. A ratified `/journal/*` route family is the standard's
   first additive candidate (§17); when the engine ships it, this SDK can move

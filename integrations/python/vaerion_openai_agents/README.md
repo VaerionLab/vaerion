@@ -1,7 +1,7 @@
 # vaerion_openai_agents — Vaerion × OpenAI Agents SDK
 
 > **Provenance:** every example in this README was executed on **2026-10-01** against
-> engine **0.1.15-rc1** and **openai-agents 0.20.0** (installed source measured: the
+> engine **0.1.15** and **openai-agents 0.20.0** (installed source measured: the
 > `MCPServerStdio` API below comes from the installed package, not from docs). Captured
 > output lives in [`examples/captured_output.txt`](./examples/captured_output.txt); the
 > test suite spawns the real `vae mcp` server and asserts real on-disk evidence.

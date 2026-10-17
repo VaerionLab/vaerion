@@ -1,7 +1,7 @@
 # vaerion_langgraph — Vaerion × LangGraph
 
 > **Provenance:** every example in this README was executed on **2026-10-01** against
-> engine **0.1.15-rc1** and the installed adapter stack (**langchain-mcp-adapters 0.3.2,
+> engine **0.1.15** and the installed adapter stack (**langchain-mcp-adapters 0.3.2,
 > langgraph 1.2.12, langchain-core 1.6.6** — APIs measured from installed source, not
 > docs). Captured output: [`examples/captured_output.txt`](./examples/captured_output.txt).
 > The test suite spawns the real `vae mcp` server and asserts real on-disk evidence.

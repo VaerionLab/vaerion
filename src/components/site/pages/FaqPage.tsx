@@ -55,11 +55,11 @@ const QA: { q: string; a: React.ReactNode }[] = [
     a: (
       <>
         <p>
-          Honest answer: yes on npm, but it lags. The npm registry delivers
-          0.1.14-rc1 (an older engine without verify/create/start/mcp) until the
-          Founder-gated 0.1.15-rc1 publish. The current engine ships today:
-          PyPI is live (`pip install vaerion` → 0.1.15rc1) and the signed
-          v0.1.15-rc1 set is on GitHub Releases (signature + digests verified).
+          Honest answer: yes. The npm registry delivers the current engine —
+          0.1.15 under dist-tag latest (with verify/create/start/mcp). The
+          current engine ships today: PyPI is live (`pip install vaerion` →
+          0.1.15) and the signed v0.1.15 set is on GitHub Releases (signature +
+          digests verified).
         </p>
         <p className="mt-3">
           See <a href="#/docs/installation" className="text-gold underline-offset-4 hover:underline">Installation</a> for the honest channel

@@ -14,7 +14,7 @@ collide on PyPI:
 This mirrors the npm/JVM rows of record: npm `vaerion` (CLI) vs
 `@vaerion/sdk`; Maven `dev.vaerion:vaerion-sdk`. The SDK import name
 remains `vaerion` in both layouts. PyPI `vaerion` is **published** —
-`0.1.15rc1` (sdist + wheel), measured live on pypi.org 2026-10-17; the
+`0.1.15` (sdist + wheel), measured live on pypi.org 2026-10-17; the
 `vaerion-sdk` distribution remains Founder-gated.
 
 `pip install vaerion` installs the `vae` console launcher plus the packaged
@@ -37,7 +37,7 @@ sh packaging/python/make-package.sh
 ```
 
 The wheel build is the input to the publication flow. PyPI `vaerion` is
-**published** (0.1.15rc1, live); rebuilding locally reproduces the same
+**published** (0.1.15, live); rebuilding locally reproduces the same
 package for offline verification.
 Offline verification without any registry:
 

@@ -62,5 +62,5 @@ CMD ["--help"]
 
 LABEL org.opencontainers.image.title="Vaerion engine" \
       org.opencontainers.image.description="The local, deterministic, auditable substrate where developers, agents, and models do real work on a codebase (vae CLI)." \
-      org.opencontainers.image.version="0.1.15-rc1" \
+      org.opencontainers.image.version="0.1.15" \
       org.opencontainers.image.licenses="Apache-2.0"

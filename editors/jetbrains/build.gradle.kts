@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "dev.vaerion.editors"
-version = "0.1.15-rc1"
+version = "0.1.15"
 
 repositories { mavenCentral() }
 

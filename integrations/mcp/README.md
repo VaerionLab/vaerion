@@ -2,7 +2,7 @@
 
 > **Provenance:** every fact below was measured against the engine in this repository
 > (`packages/vaerion/src/mcp/server.ts`, `packages/vaerion/src/cli/vae.ts`) and against a
-> live spawned server on **2026-10-01**, engine version **0.1.15-rc1**. The demo at the end
+> live spawned server on **2026-10-01**, engine version **0.1.15**. The demo at the end
 > of this file was executed and its output captured byte-for-byte in
 > [`captured_output.txt`](./captured_output.txt). No claims are aspirational.
 
@@ -19,7 +19,7 @@ Measured facts:
 |---|---|
 | Transport | stdio, **newline-delimited JSON-RPC 2.0** (one message per line) |
 | Protocol version | **2024-11-05** (returned by `initialize`) |
-| Server info | `{"name": "vaerion", "version": "0.1.15-rc1"}` |
+| Server info | `{"name": "vaerion", "version": "0.1.15"}` |
 | Tools | **6** (list below) |
 | Executor | every tool call runs the **real CLI contract** in-process (`runCli … --json`) — same broker, same journal, same receipts, same exit codes. Nothing bypasses the constitutional path. |
 | stdout law | stdout carries protocol messages and **nothing else**; diagnostics go to stderr |
@@ -46,7 +46,7 @@ The six ratified tools (verbatim from `tools/list`):
 - **Installed CLI** (`npm install -g vaerion@rc` puts `vae` on PATH): use `vae mcp`.
   **Version note (honest):** the npm registry still delivers `0.1.14-rc1` —
   an older engine with **no `mcp` command** — until the Founder-gated
-  `0.1.15-rc1` publish. Until then, use the repository path below (or the
+  `0.1.15` publish. Until then, use the repository path below (or the
   signed release set).
 - **This repository (dev checkout)**: the engine entry is TypeScript; run it with
   `bun run <path-to-repo>/packages/vaerion/src/cli/vae.ts mcp` (bun ≥ 1.3 is required —
@@ -157,12 +157,12 @@ Captured output of an actual run (full text: [`captured_output.txt`](./captured_
 {
   "protocolVersion": "2024-11-05",
   "capabilities": { "tools": { "listChanged": false } },
-  "serverInfo": { "name": "vaerion", "version": "0.1.15-rc1" },
+  "serverInfo": { "name": "vaerion", "version": "0.1.15" },
   "instructions": "Vaerion — the verification layer for AI agents. Every tool call is broker-decided, journaled and receipted; verify anything with vaerion_verify_journal."
 }
 [5] tools/list -> 6 tools: vaerion_doctor, vaerion_status, vaerion_journal_ls, vaerion_verify_journal, vaerion_run_demo, vaerion_run_agent
 [6] tools/call vaerion_status -> isError: False
-{"command":"status","engine_version":"0.1.15-rc1","workspace":{"state":"workspace","name":"my-project", ... },"runs":{"total":0,"closed":0,"open":0}, ... }
+{"command":"status","engine_version":"0.1.15","workspace":{"state":"workspace","name":"my-project", ... },"runs":{"total":0,"closed":0,"open":0}, ... }
 [7] tools/call vaerion_run_demo -> isError: False
 {
   "command": "run",
@@ -174,7 +174,7 @@ Captured output of an actual run (full text: [`captured_output.txt`](./captured_
   ...
   "receipt": {
     "run_id": "crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ",
-    "engine_version": "0.1.15-rc1",
+    "engine_version": "0.1.15",
     "counts": { "records": 13, "events": 10, "decisions_allow": 1, "decisions_deny": 0, ... },
     "blob_refs": [ { "alg": "blake3", "hash": "a1ca3c65…", "size": 291 } ],
     "journal": { "records": 13, "head_hash": "2aaefae9183d3acdaaa64f112bc445156bfe431ee001d7eb606ceb4c0066d8fc" },

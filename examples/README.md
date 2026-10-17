@@ -3,7 +3,7 @@
 Every entry below is a real directory in this repository, and every
 command quoted here or in the linked READMEs exists in the `vae` CLI of
 record (census verified at `0.1.14-rc1`; surface unchanged through
-`0.1.15-rc1` — verified against the CLI source before being
+`0.1.15` — verified against the CLI source before being
 documented). Run ids and hashes will differ on your machine; the shapes
 and the `ok: true` will not.
 

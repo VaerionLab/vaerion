@@ -1,7 +1,7 @@
 # Vaerion Documentation
 
 Organized around journeys, not internals. Everything is measured against
-the engine of record (`v0.1.15-rc1`); the deep engineering records (ADRs,
+the engine of record (`v0.1.15`); the deep engineering records (ADRs,
 security, GA packets) keep their historical authority.
 
 ## I just want to try it

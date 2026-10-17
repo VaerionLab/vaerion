@@ -1,6 +1,6 @@
 # Engine API Reference — `@vaerion/engine`
 
-> **Honesty header.** Generated against engine `0.1.15-rc1` (version-register alignment 2026-10-03, re-verified 2026-10-18; signatures verified at `f6e328b`);
+> **Honesty header.** Generated against engine `0.1.15` (version-register alignment 2026-10-17, re-verified 2026-10-17; signatures verified at `f6e328b`);
 > every signature verified against source. The public surface of record is
 > the barrel [`packages/vaerion/src/index.ts`](../../packages/vaerion/src/index.ts)
 > — everything exported there is contract; everything not exported is
@@ -182,7 +182,7 @@ const RECORD_KINDS = ["meta", "evt", "decision", "gate", "snapshot", "receipt"] 
 ### Writer
 
 ```ts
-const ENGINE_VERSION = "0.1.15-rc1";
+const ENGINE_VERSION = "0.1.15";
 
 interface OpenJournalOptions {
   journalPath: string; runId: string; configFingerprint: string;
@@ -680,6 +680,6 @@ The JSON Schema of record is
 
 ---
 
-*Generated against engine `0.1.15-rc1` (version-register alignment 2026-10-03, re-verified 2026-10-18; signatures verified at `f6e328b`). Every signature above
+*Generated against engine `0.1.15` (version-register alignment 2026-10-17, re-verified 2026-10-17; signatures verified at `f6e328b`). Every signature above
 was read from the source of record (`packages/vaerion/src/`) before being
 written. Corrections belong next to the code, not after it.*

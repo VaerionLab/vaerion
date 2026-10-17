@@ -9,7 +9,7 @@ build-backend = "setuptools.build_meta"
 # `vaerion` name (see packaging/python/README.md). The IMPORT name remains
 # `vaerion`.
 name = "vaerion-sdk"
-version = "0.1.15rc1"
+version = "0.1.15"
 description = "The verification layer for AI agents — Python SDK over the local Vaerion daemon wire."
 readme = "README.md"
 requires-python = ">=3.9"

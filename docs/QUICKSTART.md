@@ -30,14 +30,13 @@ vae --version
 vae 0.1.14-rc1
 ```
 
-> **Version note (honest):** the npm registry still delivers `0.1.14-rc1` —
-> an older engine missing `verify` / `create` / `start` / `mcp` — until the
-> Founder-gated `0.1.15-rc1` publish. Every command below exists in the
-> `0.1.15-rc1` engine of record; until that publish lands on the registry,
-> run the guide against a source checkout
-> (`bun install && bun run packages/vaerion/src/cli/vae.ts --help`) or the
-> signed release set — or do the install anyway and treat this as the
-> tour of the engine you are about to get.
+> **Version note (honest):** the npm registry delivers the current engine —
+> `0.1.15` under dist-tag `latest`, with `verify` / `create` / `start` / `mcp`,
+> the did-you-mean system, and the 7-template registry. Every command below
+> exists in the `0.1.15` engine of record; install with
+> `npm install -g vaerion`, run the guide against a source checkout
+> (`bun install && bun run packages/vaerion/src/cli/vae.ts --help`), or use
+> the signed release set.
 
 Alternatives (release tarballs, from-source) and signature verification are
 in [`INSTALL.md`](INSTALL.md). If `vae` is not found after install, check

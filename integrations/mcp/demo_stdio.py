@@ -117,7 +117,7 @@ def main() -> int:
     init = client.call("initialize", {
         "protocolVersion": "2024-11-05",
         "capabilities": {},
-        "clientInfo": {"name": "vaerion-demo-stdio", "version": "0.1.15rc1"},
+        "clientInfo": {"name": "vaerion-demo-stdio", "version": "0.1.15"},
     })
     client.notify("notifications/initialized")
     print("[4] initialize ->")

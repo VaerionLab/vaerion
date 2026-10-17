@@ -111,7 +111,7 @@ class TestMcpToolsEndToEnd(unittest.IsolatedAsyncioTestCase):
         content_blocks = json.loads(executed[0].content[0].content)
         payload = json.loads(content_blocks[0]["text"])
         self.assertEqual(payload["command"], "status")
-        self.assertEqual(payload["engine_version"], "0.1.15-rc1")
+        self.assertEqual(payload["engine_version"], "0.1.15")
 
 
 if __name__ == "__main__":

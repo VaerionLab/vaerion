@@ -1,6 +1,6 @@
 # vaerion (Python SDK)
 
-> **Provenance.** Generated against engine `0.1.15-rc1` (version-register
+> **Provenance.** Generated against engine `0.1.15` (version-register
 > alignment, 2026-10-03; signatures verified against source at `815e929`).
 > PyPI distribution name of record: `vaerion-sdk` (import name stays
 > `vaerion`); publication is Founder-gated. Conforms to

@@ -101,7 +101,7 @@ class TestErrorContract(unittest.TestCase):
         self.assertEqual(VaerionError.from_error_payload(None).code, "E1900")
 
     def test_version_constant_is_semver_rc(self) -> None:
-        self.assertEqual(__version__, "0.1.15rc1")
+        self.assertEqual(__version__, "0.1.15")
 
 
 def _vae_available() -> bool:

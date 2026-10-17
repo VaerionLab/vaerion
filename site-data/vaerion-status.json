@@ -1,61 +1,61 @@
 {
-  "generatedAt": "2026-10-17T12:37:19.182Z",
-  "engineVersion": "0.1.15-rc1",
+  "generatedAt": "2026-10-17T23:24:27.363Z",
+  "engineVersion": "0.1.15",
   "substrate": "TypeScript on Bun (ADR-0018 — provisional with recorded migration path; Founder ratification pending)",
   "verification": {
-    "generatedAt": "2026-10-17T12:01:17.562Z",
-    "ok": true,
+    "generatedAt": "2026-10-17T23:22:15.225Z",
+    "ok": false,
     "gates": [
       {
         "gate": "typecheck-engine",
         "ok": true,
-        "durationMs": 4580
+        "durationMs": 5006
       },
       {
         "gate": "typecheck-sdk",
         "ok": true,
-        "durationMs": 3368
+        "durationMs": 3569
       },
       {
         "gate": "tests",
-        "ok": true,
-        "durationMs": 17154
+        "ok": false,
+        "durationMs": 18169
       },
       {
         "gate": "coverage-ratchet",
         "ok": true,
-        "durationMs": 1
+        "durationMs": 2
       },
       {
         "gate": "layerlint",
         "ok": true,
-        "durationMs": 30
+        "durationMs": 33
       },
       {
         "gate": "constitutional-check",
         "ok": true,
-        "durationMs": 602
+        "durationMs": 932
       },
       {
         "gate": "perf-budget",
         "ok": true,
-        "durationMs": 290
+        "durationMs": 261
       },
       {
         "gate": "a11y-structural",
         "ok": true,
-        "durationMs": 23
+        "durationMs": 30
       },
       {
         "gate": "repo-lint",
         "ok": true,
-        "durationMs": 18623
+        "durationMs": 18952
       }
     ],
     "measured": {
-      "testsPassed": 719,
-      "testsFailed": 0,
-      "expectations": 5246,
+      "testsPassed": 715,
+      "testsFailed": 4,
+      "expectations": 5225,
       "testFiles": 62
     }
   },
@@ -65,9 +65,9 @@
   },
   "tests": {
     "suites": 62,
-    "assertedExpectations": 5246,
-    "totalTests": 719,
-    "testsFailed": 0,
+    "assertedExpectations": 5225,
+    "totalTests": 715,
+    "testsFailed": 4,
     "coverage": {
       "lines": 86.52,
       "branches": 90.6,
@@ -403,10 +403,11 @@
     "measured": true,
     "ready": false,
     "verdict": "BLOCKED",
-    "passed": 8,
+    "passed": 7,
     "total": 12,
     "blockers": [
-      "git-tree-clean: working tree dirty: 0 staged, 6 unstaged, 7 untracked",
+      "verification-gates: verification record present (9 gates) — gate evidence absent (fail-closed)",
+      "git-tree-clean: working tree dirty: 0 staged, 121 unstaged, 1 untracked",
       "release-tag-binding: HEAD is not exactly at a v* release tag",
       "release-artifacts: artifact set incomplete: dist/MANIFEST.json, dist/MANIFEST.json.sig, dist/SHA256SUMS, dist/VERIFY.md missing"
     ]
@@ -456,12 +457,16 @@
       "measured": true,
       "ready": false,
       "verdict": "BLOCKED",
-      "passed": 8,
+      "passed": 7,
       "total": 12,
       "blockers": [
         {
+          "check": "verification-gates",
+          "detail": "verification record present (9 gates) — gate evidence absent (fail-closed)"
+        },
+        {
           "check": "git-tree-clean",
-          "detail": "working tree dirty: 0 staged, 6 unstaged, 7 untracked"
+          "detail": "working tree dirty: 0 staged, 121 unstaged, 1 untracked"
         },
         {
           "check": "release-tag-binding",
@@ -490,6 +495,6 @@
     "No campaign is in flight: the D-T ledger records FINAL FOUR PHASES complete through Phase 26 (evidence of record in the constitution's §11 Amendment Log); the next program awaits Founder ratification (P4).",
     "GA remains rehearsed and PENDING FOUNDER GO (P4); the Founder gates (F-2 legal name, F-4 substrate ratification, F-5 publication — GitHub Release + PyPI LIVE, npm publish and the hosted domain pending Founder credentials, F-6 real-provider recordings, R-7 public disclosure channel) are the remaining path to full GA (F-3 closed at ASCENSION XXV — the production key signs from CI).",
     "Host-gated single-binary installers (brew/winget/dmg/rpm authored, awaiting their platforms); the daemon packages route group is DONE (ASCENSION XXVI+ — pack/verify/import over the wire with proven parity).",
-    "Remaining publish steps (npm 0.1.15-rc1, announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag."
+    "Remaining publish steps (announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag."
   ]
 }

@@ -21,7 +21,7 @@
 - **Tamper-evident ≠ tamper-impossible.** A determined operator with filesystem write access can rewrite a journal *and its receipt commitments* only if they also hold the receipt printed at close or a `vae snapshot` archive — E1010's recovery guidance says exactly this. No local-first system can stop the machine's owner from destroying evidence; Vaerion makes *undetected* rewriting require coordinated, multi-artifact forgery.
 - **No transport security yet.** Remote daemon attachment is refused in code (E2006) in **all five SDKs** until a ratified transport-security ADR exists — the docs say so.
 - **No external anchoring / SIEM export / compliance mapping** (EU AI Act, ISO 42001, NIST) — zero content shipped; ledgered in the 61.0 adoption-blocker matrix as P1/P2, still open.
-- **No GA.** 0.1.15-rc1 is a release candidate; the Founder-gated publish has not run (registry still serves 0.1.14-rc1, disclosed everywhere evidence lives).
+- **GA shipped (2026-10-17).** `v0.1.15` is the current stable release: GitHub Release + npm `latest` + PyPI, measured in the release train's evidence of record.
 - **No Windows-native engine** (Bun runtime requirement; launchers now teach the remedy instead of failing raw).
 
 ### Q3. How is evidence generated?
@@ -34,7 +34,7 @@ One event spine → append-only journal (`.vaerion/journal/<run_id>.ndjson`), re
 
 ### Q5. Can evidence be tampered with?
 
-**Silently, no — measured:** payload flip → E1001; tail deletion → E1010; middle deletion + re-chain → E1010 (the receipt's embedded head commitment catches what chain checks cannot); receipt mismatch → E1001/E1010. Noisily, yes (like any file): destruction is always possible; `docs/security/THREAT-MODEL.md` (re-affirmed this phase for 0.1.15-rc1) states the adversary model.
+**Silently, no — measured:** payload flip → E1001; tail deletion → E1010; middle deletion + re-chain → E1010 (the receipt's embedded head commitment catches what chain checks cannot); receipt mismatch → E1001/E1010. Noisily, yes (like any file): destruction is always possible; `docs/security/THREAT-MODEL.md` (re-affirmed this phase for 0.1.15) states the adversary model.
 
 ### Q6. Can an operator fake a successful run?
 
@@ -52,7 +52,7 @@ To fake a *verifiable* successful run, an operator must produce a journal whose 
 
 | Persona | What they check first | Finding (evidence) | Status |
 |---|---|---|---|
-| **Security engineer** | threat model currency, auth, tamper paths | THREAT-MODEL re-affirmed for 0.1.15-rc1 with dated evidence; loopback+token battery re-measured; E1001/E1010 live-refused; 0 dependency vulnerabilities (`npm audit`); network surface = 3 URLs + 1 call site | **satisfied** |
+| **Security engineer** | threat model currency, auth, tamper paths | THREAT-MODEL re-affirmed for 0.1.15 with dated evidence; loopback+token battery re-measured; E1001/E1010 live-refused; 0 dependency vulnerabilities (`npm audit`); network surface = 3 URLs + 1 call site | **satisfied** |
 | **CTO** | what changes for my org, what's the risk | guarantees/non-guarantees are explicit (Q1/Q2); deterministic, local-first, zero telemetry, Apache-2.0; honest open-ledger (RISK-LEDGER with owners) instead of a clean story | **satisfied, with open items visible** |
 | **Developer advocate** | 30-second story, install, first proof | 30-second test PASS (README:5-7); install 0.786 s from candidate tarball; golden path 100% green unassisted; did-you-mean teaching on every wrong command; every install surface carries the registry-lag truth | **satisfied** |
 | **Compliance reviewer** | control mapping, evidence retention, attestation | journals/records are structured and exportable (redacted export tested), but **zero** EU-AI-Act/ISO-42001/NIST mapping, no SIEM export, no external anchoring | **not yet — documented gap, ledgered** |

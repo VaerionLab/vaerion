@@ -1,6 +1,6 @@
 # Reference — the `vae` Command Surface
 
-> **Version of record: `v0.1.15-rc1`** (29 registry commands). The grammar of
+> **Version of record: `v0.1.15`** (29 registry commands). The grammar of
 > record is always `vae --help` (help always teaches, never executes); this
 > page is the compact complete reference — every command, its purpose, a real
 > example, the expected output shape, and its error/exit behavior. The full
@@ -62,7 +62,7 @@ template → `E1203` (exit 2).
 vae init [--template T] [--name NAME] [--dry-run]
 vae init --template demo
 # → created: vaerion.yaml, .vaerion/journal, .vaerion/blobs, sources/demo.md
-#   config_fingerprint: 41c3410b… (measured, stable) · engine_version: 0.1.15-rc1
+#   config_fingerprint: 41c3410b… (measured, stable) · engine_version: 0.1.15
 ```
 
 ### `vae create`
@@ -87,7 +87,7 @@ vae start [--template T] [--name NAME] [--interactive] [--no-interactive] [--dry
 The project dashboard: workspace, identity, AI, runs, next steps (read-only).
 ```
 vae status [--json]
-# → {"command":"status","engine_version":"0.1.15-rc1","workspace":{…},
+# → {"command":"status","engine_version":"0.1.15","workspace":{…},
 #    "runs":{"total":1,"closed":1,"open":0},"hints":[…]}   (measured)
 ```
 
@@ -197,7 +197,7 @@ receipts, exit codes. stdout carries protocol messages only; EOF exits 0.
 ```
 vae mcp
 # (measured initialize) {"protocolVersion":"2024-11-05",
-#   "serverInfo":{"name":"vaerion","version":"0.1.15-rc1"},…}
+#   "serverInfo":{"name":"vaerion","version":"0.1.15"},…}
 ```
 
 ## Packages & recovery
@@ -322,11 +322,11 @@ The help frames for a COMMAND (unknown topics fall back to the main help).
 ### `vae version`
 Print the engine version and exit.
 ```
-vae version      # → vae 0.1.15-rc1   (measured)
+vae version      # → vae 0.1.15   (measured)
 ```
 
 ---
 *Registry of record: `COMMAND_HELP` in `packages/vaerion/src/cli/vae.ts`;
 pinned by `tests/integration/dx-surface.test.ts` and the version-register
 test. Outputs marked "(measured)" were captured on this tree at
-`0.1.15-rc1` (2026-10-18; the 0.1.14-rc1 capture epoch is superseded).*
+`0.1.15` (2026-10-17; the 0.1.14-rc1 capture epoch is superseded).*

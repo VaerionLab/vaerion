@@ -12,7 +12,7 @@
  */
 
 export const FACTS = {
-  version: "0.1.15-rc1",
+  version: "0.1.15",
   repoUrl: "https://github.com/VaerionLab/vaerion",
   releasesUrl: "https://github.com/VaerionLab/vaerion/releases",
   issuesUrl: "https://github.com/VaerionLab/vaerion/issues",
@@ -108,9 +108,9 @@ export const FACTS = {
   providers: ["OpenAI", "Anthropic", "Ollama", "MockBrain (deterministic)"] as const,
 
   release: {
-    tag: "v0.1.15-rc1",
+    tag: "v0.1.15",
     signing: "Ed25519 (sha256 + manifest + independent openssl verification)",
-    status: "prerelease — signed, reproducible; GitHub Release v0.1.15-rc1 LIVE (8 assets, signature + digests verified); npm publish pending the Founder gate (the registry still delivers 0.1.14-rc1)",
+    status: "prerelease — signed, reproducible; GitHub Release v0.1.15 LIVE (8 assets, signature + digests verified); npm publish pending the Founder gate (the registry still delivers 0.1.14-rc1)",
   },
 
   install: {
@@ -118,8 +118,8 @@ export const FACTS = {
     channels: [
       { name: "From source", command: "git clone … && bun install --frozen-lockfile", status: "VERIFIED", available: true },
       { name: "GitHub Releases", command: "signed tarball + install.sh", status: "VERIFIED", available: true },
-      { name: "npm", command: "npm install -g vaerion@rc", status: "LIVE BUT LAGS THE TREE — the registry delivers 0.1.14-rc1 (an older engine without verify/create/start/mcp) until the Founder-gated 0.1.15-rc1 publish; measured on registry.npmjs.org 2026-10-03. The true engine today: source or the signed release set", available: true },
-      { name: "PyPI", command: "pip install vaerion", status: "published — vaerion 0.1.15rc1 (sdist + wheel), measured live on pypi.org 2026-10-17", available: true },
+      { name: "npm", command: "npm install -g vaerion", status: "published — vaerion 0.1.15 under dist-tag latest, measured live on registry.npmjs.org 2026-10-17; parity-proven before publish", available: true },
+      { name: "PyPI", command: "pip install vaerion", status: "published — vaerion 0.1.15 (sdist + wheel), measured live on pypi.org 2026-10-17", available: true },
       { name: "Homebrew / winget / dmg / rpm", command: "authored in packaging/", status: "UNVERIFIED — host-gated", available: false },
     ] as const,
   },
@@ -138,7 +138,7 @@ export const FACTS = {
   // Provenance: every entry transcribed from the provenance headers and API
   // tables of sdks/*/README.md — conformance measured at the 0.1.13/0.1.14-rc1
   // epochs (2026-10-01/03) and carried through the Phase 61.1 one-true-artifact
-  // register alignment to 0.1.15-rc1 (2026-10-03): the loopback wire contract
+  // register alignment to 0.1.15 (2026-10-03): the loopback wire contract
   // is unchanged; the engine of record now additionally enforces the E1010
   // completeness anchor, which the four wire SDKs reach through the CLI of
   // record. Test counts are the measured gate runs recorded
@@ -246,13 +246,13 @@ export const FACTS = {
 
   // `vae mcp` measured facts — integrations/mcp/README.md (measured against a
   // live spawned server, 2026-10-01, engine 0.1.13-rc1; re-verified live on
-  // 0.1.14-rc1 and again on 0.1.15-rc1, 2026-10-03: serverInfo
-  // {"name":"vaerion","version":"0.1.15-rc1"}, protocol 2024-11-05, 6 tools);
+  // 0.1.14-rc1 and again on 0.1.15, 2026-10-03: serverInfo
+  // {"name":"vaerion","version":"0.1.15"}, protocol 2024-11-05, 6 tools);
   // the six tool names are verbatim from tools/list.
   mcp: {
     transport: "stdio, newline-delimited JSON-RPC 2.0",
     protocolVersion: "2024-11-05",
-    serverInfo: '{"name": "vaerion", "version": "0.1.15-rc1"}',
+    serverInfo: '{"name": "vaerion", "version": "0.1.15"}',
     tools: [
       "vaerion_doctor",
       "vaerion_status",
@@ -282,7 +282,7 @@ export const FACTS = {
   notYet: [
     "No cloud service — the engine is local; cloud seams are reserved (ADR-0017), not sold.",
     "No telemetry, no analytics, no undeclared network — enforced mechanically on every build.",
-    "PyPI is LIVE — `pip install vaerion` (0.1.15rc1, sdist + wheel). npm still delivers 0.1.14-rc1 — install with `npm install -g vaerion@rc` for an older engine.",
+    "PyPI is LIVE — `pip install vaerion` (0.1.15, sdist + wheel). npm is current — `npm install -g vaerion` (0.1.15 under dist-tag latest).",
     "vaerion.dev is pending domain provisioning (Founder-gated); install from GitHub Releases or PyPI today.",
     "Single-binary installers (brew/winget/dmg/rpm) are authored but host-gated UNVERIFIED.",
     "SDK packages and integrations ship from this repository — crates.io / Maven Central publication is Founder-gated; PyPI is live.",

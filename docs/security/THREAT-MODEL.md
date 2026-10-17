@@ -1,12 +1,12 @@
 # Vaerion Threat Model — v0.1.7-rc2 (Phase 1)
 
 > **Currency note (honest):** this document's baseline is `v0.1.7-rc2`
-> (Phase 1). It was re-affirmed against the `v0.1.15-rc1` engine of record
+> (Phase 1). It was re-affirmed against the `v0.1.15` engine of record
 > in the Phase 61.2 final security audit (2026-10-04): the loopback-only
 > daemon (ADR-0010), pairing-token lifecycle (printed once, per-boot
 > rotation, 43-char), refusal chains (E1300/E1301/E1302, E2004), journal
 > integrity (E1001, plus the E1010 completeness anchor added in the
-> 0.1.15-rc1 epoch), and the zero-telemetry network posture were all
+> 0.1.15 epoch), and the zero-telemetry network posture were all
 > re-measured live and hold. Surface deltas since the baseline — `verify` /
 > `create` / `start` / `mcp` commands, the SDK daemon clients' in-code
 > loopback enforcement (E2006) — add no new trust boundary: they are

@@ -17,11 +17,11 @@ vae --version                               # → vae 0.1.14-rc1 (see the note b
 
 - **Version note (honest):** the registry's `@rc` channel currently delivers
   **`0.1.14-rc1`** — an older engine missing `vae verify` / `create` /
-  `start` / `mcp` — until the Founder-gated **`0.1.15-rc1`** publish (the
+  `start` / `mcp` — the Founder-gated **`0.1.15`** publish shipped (the
   version of record in the source tree). For the true engine today, install
   from source (`bun install` in a clone, then
   `bun run packages/vaerion/src/cli/vae.ts`) or use the signed release set.
-  After the publish, the same command yields `vae 0.1.15-rc1`.
+  The same command yields `vae 0.1.15`.
 - `@rc` is the release-candidate channel. Plain `npm install -g vaerion`
   resolves to the same version today.
 - No account, no telemetry, no network use at runtime unless you
@@ -70,7 +70,7 @@ alias vae="bun run packages/vaerion/src/cli/vae.ts"
 | npm (`npm install -g vaerion@rc`) | **LIVE** — `0.1.14-rc1` on registry.npmjs.org, consumer-verified |
 | GitHub Releases (signed tarball) | **LIVE** — three-leg anonymous verification documented |
 | From source | **LIVE** — how the repository verifies itself |
-| PyPI (`pip install vaerion`) | **published — `vaerion 0.1.15rc1` live** (sdist + wheel, venv-verified) |
+| PyPI (`pip install vaerion`) | **published — `vaerion 0.1.15` live** (sdist + wheel, venv-verified) |
 | Debian / RPM / AppImage / Homebrew | authored; packaging-host verification pending |
 | Windows (winget / Chocolatey / Scoop) | authored; native-host verification pending |
 | Universal installer (`vaerion.dev/install`) | install/update/uninstall verified end-to-end; the domain is not live yet |

@@ -6,7 +6,7 @@
 
   <groupId>dev.vaerion</groupId>
   <artifactId>vaerion-sdk</artifactId>
-  <version>0.1.15-rc1</version>
+  <version>0.1.15</version>
   <packaging>jar</packaging>
 
   <name>Vaerion Java SDK</name>
@@ -14,7 +14,7 @@
     the local loopback daemon (`vae serve`): brokered agent and workflow runs,
     folded run status with terminal receipts, SSE event streams, and journal
     verification through the CLI of record. Generated against engine
-    0.1.15-rc1 per VAERION_SDK_STANDARD.</description>
+    0.1.15 per VAERION_SDK_STANDARD.</description>
   <url>https://vaerion.vercel.app</url>
 
   <licenses>
