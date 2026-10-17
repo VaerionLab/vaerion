@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# PyPI distribution name (naming strategy of record, 2026-10-03): the SDK
+# publishes as `vaerion-sdk` — mirroring `@vaerion/sdk` and
+# `dev.vaerion:vaerion-sdk` — so the CLI launcher wheel keeps the bare
+# `vaerion` name (see packaging/python/README.md). The IMPORT name remains
+# `vaerion`.
+name = "vaerion-sdk"
+version = "0.1.15rc1"
+description = "The verification layer for AI agents — Python SDK over the local Vaerion daemon wire."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Auren", email = "auren@vaerion.dev" }]
+keywords = ["ai", "agents", "verification", "receipts", "audit", "trust"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: Apache Software License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Libraries",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://vaerion.vercel.app"
+Repository = "https://github.com/VaerionLab/vaerion"
+
+[project.optional-dependencies]
+dev = []
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,16 @@
+vae mcp
+
+The Model Context Protocol stdio server: newline-delimited JSON-RPC 2.0
+(protocol 2024-11-05) on stdin/stdout. Tools:
+
+  vaerion_doctor            audit the workspace (no network)
+  vaerion_status            the project dashboard
+  vaerion_journal_ls        every run: run_id, records, head_hash
+  vaerion_verify_journal   chain verification (latest or by run_id)
+  vaerion_run_demo          the brokered demo research pipeline
+  vaerion_run_agent         the supervised agent loop on a goal
+
+Every tool call executes the REAL CLI contract with --json in-process —
+same broker, same journal, same receipts, same exit codes. stdout carries
+protocol messages only; diagnostics go to stderr. EOF exits 0. Point any
+MCP client at: vae mcp

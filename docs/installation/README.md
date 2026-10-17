@@ -37,8 +37,8 @@ vae --version   # vae 0.1.14-rc1
 vae doctor      # environment checks, exit 0 when healthy
 ```
 
-A measured, step-by-step walkthrough of the whole journey lives in
-[`docs/book/tutorials/00-install.md`](../book/tutorials/00-install.md).
+A measured, screenshot-backed walkthrough of the whole journey lives in
+[`docs/launch/installation-walkthrough.md`](../launch/installation-walkthrough.md).
 The full reference, including update and uninstall, is [`INSTALL`](../INSTALL.md).
 
 ## Trust note

@@ -8,6 +8,7 @@ const ITEMS = [
   { href: "#/docs/installation", label: "Installation" },
   { href: "#/docs/cli", label: "CLI" },
   { href: "#/docs/sdk", label: "SDK" },
+  { href: "#/integrations", label: "Integrations" },
   { href: "#/docs/architecture", label: "Architecture" },
   { href: "#/docs/security", label: "Security" },
   { href: "#/docs/faq", label: "FAQ" },

@@ -1,0 +1,20 @@
+vae create NAME [--template T] [--interactive] [--no-interactive] [--dry-run]
+
+Scaffold a NEW project directory and teach the next commands. The directory
+must not exist (create refuses to touch existing directories, E1600). The
+template comes from the SAME deterministic registry as init — one source of
+scaffold intent; the default is demo (the fastest verified journey).
+
+Interactive (Phase 59.2): on a terminal, a missing NAME and a missing
+--template are asked with numbered prompts (Enter accepts the default;
+invalid answers re-prompt). --interactive / -i forces the prompts even when
+the flags are present (your flag values become the defaults);
+--no-interactive never prompts; --json never prompts — a missing NAME stays
+the standing E1600 usage error.
+
+  vae create my-first-agent              # vaerion.yaml + sources/demo.md + README
+  cd my-first-agent && vae run demo      # first brokered, journaled run
+  vae verify                             # prove the journal holds
+
+--dry-run prints the plan (every file, byte counts, next commands) without
+writing anything. --json emits one stable NDJSON line per result.

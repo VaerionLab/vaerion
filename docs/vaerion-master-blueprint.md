@@ -3,7 +3,8 @@
 | | |
 |---|---|
 | **Document** | Vaerion Master Blueprint (single design + implementation plan) |
-| **Status** | `DRAFT v1.0 — FOR APPROVAL` |
+| **Status** | `DRAFT v1.0 — FOR APPROVAL` | |
+| **Reading note (2026-10-03)** | Quarantined design draft — NOT the docs of record. Some commands here (`vae intel rebuild`, `vae eval`) are unshipped design targets, not registry commands; the shipped surface of record is `vae --help` / `docs/reference/cli.md`. Where this draft contradicts shipped reality, reality wins (e.g. the MCP server has shipped). |
 | **Scope** | Vaerion v0.1 (local-first, self-contained; cloud features explicitly out of scope) |
 | **Applies to** | Native Runtime · CLI · Project Intelligence · AI Runtime · Model Gateway · Python SDK · TypeScript SDK · Extension SDK · Public API · Package Builder · Documentation |
 | **Decision rule** | This document is authoritative until superseded by an ADR recorded in `docs/adr/`. Nothing ships that contradicts it without an ADR. |
@@ -109,8 +110,10 @@ here but implemented nowhere in v0.1.
 - ❌ Not a chat app. Chat is an *input mode* of the agent runtime, not a product center.
 - ❌ Not a model host. Inference stays at providers/local servers; we route, never run.
 - ❌ Not a cloud service. No accounts, no telemetry-by-default, no phone-home.
-- ❌ Not an MCP *server* in v0.1 — the AI Runtime *consumes* MCP servers as tools in v0.1;
-  Vaerion exposing its own tools over MCP is deferred post-GA.
+- ~~❌ Not an MCP *server* in v0.1~~ **SHIPPED since 0.1.13-rc1:** the in-engine `vae mcp`
+  stdio server (protocol 2024-11-05, six tools) is live and the framework alliance
+  builds on it (`integrations/`). (Status correction 2026-10-03 — the bullet above is
+  superseded by shipped reality; see `docs/CLI.md` § mcp.)
 - ❌ Not a build system replacement. `buildTargets` orchestrate *your* existing toolchain.
 - ❌ Not multi-user. One user, one machine; authz = file permissions + broker consent.
 

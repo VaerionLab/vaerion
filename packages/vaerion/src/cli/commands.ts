@@ -42,7 +42,7 @@ import { verifyEvidence, type EvidenceVerificationItem } from "../research/verif
 import { renderUnified, assertReviewDiffShape, type ReviewDiff } from "../broker/contracts/review-diff.ts";
 import { type PolicyContract, type PolicyRule } from "../broker/contracts/decision.ts";
 import { policyFromConfig } from "../config/config.ts";
-import { DEFAULT_INIT_TEMPLATE, renderInitTemplate, TEMPLATE_SCAFFOLD_FILES } from "../config/templates.ts";
+import { DEFAULT_INIT_TEMPLATE, INIT_TEMPLATES, renderInitTemplate, TEMPLATE_SCAFFOLD_FILES } from "../config/templates.ts";
 import { measureCenter } from "../center/center.ts";
 import { researchPrincipal } from "../research/principal.ts";
 import { declareResearchCapability, type ResearchCapabilityDeclaration } from "../research/capability.ts";
@@ -137,6 +137,150 @@ export async function cmdInit(ctx: CommandContext): Promise<number> {
     created: [relative(ctx.cwd, ws.configPath), relative(ctx.cwd, ws.journalDir), relative(ctx.cwd, ws.blobsDir), ...createdExtra],
     config_fingerprint: fingerprint,
     engine_version: ENGINE_VERSION,
+  });
+  return ExitCode.ok;
+}
+
+/* ────────────────────────────────  create  ────────────────────────────── */
+
+/** The per-template "run this first" command — the honest next step.
+ *  Inline planning is DECLARED (a --plan-json is required by law — E1600
+ *  teaches it otherwise); every command below is runnable as printed. */
+function createFirstRunCommand(template: string): string {
+  switch (template) {
+    case "demo": return "vae run demo";
+    case "agent": return 'vae run agent --goal "your goal" --planner inline --plan-json \'[{"kind":"note","text":"do the thing"}]\'';
+    case "tool": return 'vae run agent --goal "your goal" --planner inline --plan-json \'[{"kind":"tool","tool":"echo","args":{"value":"hello from the tool belt"}},{"kind":"tool","tool":"clock.read","args":{}}]\'';
+    case "automation":
+    case "multi-agent":
+    case "enterprise": return "vae run workflow --dag workflow.json";
+    default: return 'vae run research --sources ./docs --query "your words"';
+  }
+}
+
+/** The README every created project gets — real commands only, no marketing. */
+function createReadme(template: string, name: string, description: string): string {
+  const first = createFirstRunCommand(template);
+  return [
+    `# ${name}`,
+    "",
+    description.charAt(0).toUpperCase() + description.slice(1) + ".",
+    "",
+    "## What is here",
+    "",
+    "- `vaerion.yaml` — the declared intent (strict schema 0.1; unknown keys are rejected by law)",
+    "- `.vaerion/journal/` — append-only, blake3-chained run journals (the evidence)",
+    "- `.vaerion/blobs/` — the content-addressed store",
+    ...(template === "demo" ? ["- `sources/demo.md` — the scaffolded local source the demo run indexes"] : []),
+    ...(template === "automation" || template === "multi-agent" ? ["- `workflow.json` — the journaled DAG the workflow run executes"] : []),
+    ...(template === "minimal" || template === "agent" || template === "tool" ? ["- `docs/overview.md` — replace with your project's real overview"] : []),
+    "",
+    "## First run",
+    "",
+    "```sh",
+    first,
+    "```",
+    "",
+    "## Verify everything (the point of Vaerion)",
+    "",
+    "```sh",
+    "vae verify                  # verifies the latest run's journal (full chain recomputation)",
+    "vae journal verify <RUN_ID> # the same, by run id",
+    "```",
+    "",
+    "Every run closes with a **receipt folded from the journal** — counts, blob refs,",
+    "and the `journal.head_hash` integrity commitment. `vae verify` recomputes the",
+    "entire chain and proves the commitment still holds.",
+    "",
+    "## Learn",
+    "",
+    "- `vae tour` — a guided, read-only walk of the engine",
+    "- `vae doctor` — audit this workspace (config, journals, blobs, chains)",
+    "- `vae --help` — the command surface of record",
+    "- Docs: vaerion.vercel.app/#/docs/getting-started",
+    "",
+  ].join("\n");
+}
+
+/**
+ * `vae create NAME` — the zero-to-workspace path (Phase 59.1 W1).
+ * Creates a NEW project directory, scaffolds the chosen template inside it
+ * (the SAME deterministic registry `vae init` uses — one source of scaffold
+ * intent), writes a README teaching the exact next commands, and renders the
+ * journey. Default template: demo (the fastest verified journey — `vae run
+ * demo` works immediately). Refuses to touch an existing directory (E1600).
+ *
+ * Phase 59.2 — interactive prompts: on a TTY (or with --interactive) a
+ * missing --template opens the registry picker and a missing NAME is asked
+ * with the create name law applied in a validation loop. --json never
+ * prompts (missing name stays the standing E1600); non-TTY behavior is
+ * byte-identical to pre-59.2.
+ */
+export async function cmdCreate(ctx: CommandContext): Promise<number> {
+  const flagName = String(ctx.flags._positional1 ?? "");
+  const flagTemplate = typeof ctx.flags.template === "string" && ctx.flags.template.length > 0 ? ctx.flags.template : null;
+  let name = flagName;
+  let templateName = flagTemplate ?? "demo";
+  if (flagName.length === 0 || flagTemplate === null || ctx.flags.interactive === true) {
+    // Cold path guard: the interactive module loads only when a prompt can
+    // possibly engage (performance law — never on the scripted hot path).
+    const { interactivityOf, promptTemplateChoice, promptWorkspaceName } = await import("./interactive.ts");
+    const interactivity = interactivityOf(ctx.io, ctx.mode, ctx.flags);
+    if (interactivity !== "off") {
+      if (flagTemplate === null || interactivity === "forced") {
+        templateName = await promptTemplateChoice(ctx.io, { defaultName: flagTemplate ?? "demo", header: "Choose the project template — the registry of record:" });
+      }
+      if (flagName.length === 0 || interactivity === "forced") {
+        name = await promptWorkspaceName(ctx.io, { defaultName: flagName.length > 0 ? flagName : "my-first-agent" });
+      }
+    } else if (flagName.length === 0) {
+      // Non-interactive (scripted, piped, --json, --no-interactive): the
+      // standing usage error, byte-identical to pre-59.2. Never a prompt.
+      throw new VaerionError("E1600", "missing project name (usage: vae create my-first-agent [--template demo])");
+    }
+  }
+  // Validate name + template BEFORE touching the filesystem (fail fast, E1203/E1600).
+  const yaml = renderInitTemplate(templateName, name);
+  const target = resolve(ctx.cwd, name);
+  const targetExists = await stat(target).then(() => true, () => false);
+  if (targetExists) {
+    throw new VaerionError("E1600", `directory already exists: ${name} (create refuses to touch existing directories)`);
+  }
+  const readme = createReadme(templateName, name, INIT_TEMPLATES[templateName]?.description ?? "A Vaerion workspace.");
+  const readmeFromScaffold = TEMPLATE_SCAFFOLD_FILES[templateName]?.["README.md"] !== undefined;
+  if (ctx.dryRun) {
+    r(ctx).result({
+      command: "create",
+      name,
+      template: templateName,
+      dry_run: true,
+      side_effects: 0,
+      plan: [
+        { mkdir: name },
+        { path: `${name}/vaerion.yaml`, bytes: Buffer.byteLength(yaml) },
+        ...Object.entries(TEMPLATE_SCAFFOLD_FILES[templateName] ?? {}).map(([path, body]) => ({ path: `${name}/${path}`, bytes: Buffer.byteLength(body) })),
+        ...(readmeFromScaffold ? [] : [{ path: `${name}/README.md`, bytes: Buffer.byteLength(readme) }]),
+        { next: [`cd ${name}`, createFirstRunCommand(templateName), "vae verify"] },
+      ],
+    });
+    return ExitCode.ok;
+  }
+  await mkdir(target);
+  const initCode = await cmdInit({ ...ctx, cwd: target, flags: { ...ctx.flags, name, template: templateName } });
+  if (initCode !== ExitCode.ok) return initCode;
+  // The generated README teaches the standard journey — EXCEPT when the
+  // template ships its own declared README.md (e.g. enterprise governance);
+  // the registry of record is the only authority on what a template creates.
+  if (!readmeFromScaffold) {
+    await writeFile(join(target, "README.md"), readme, "utf8");
+  }
+  r(ctx).result({
+    command: "create",
+    name,
+    template: templateName,
+    dir: relative(ctx.cwd, target) || name,
+    readme: true,
+    next: [`cd ${name}`, createFirstRunCommand(templateName), "vae verify — prove the journal holds", "vae tour — the guided, read-only walk"],
   });
   return ExitCode.ok;
 }
@@ -1120,11 +1264,155 @@ function requireRunId(v: string): string {
   return v;
 }
 
+/* ───────────────────────────────  verify  ─────────────────────────────── */
+
+/**
+ * `vae verify [RUN_ID]` — one-command verification (Phase 59.1 W1).
+ * No RUN_ID: the latest journal in the workspace (ULIDs sort monotonically,
+ * so the lexicographically greatest run id is the newest). Full chain
+ * recomputation via the ONE verifyJournal — exit 0 verified, 5 failed.
+ */
+export async function cmdVerify(ctx: CommandContext): Promise<number> {
+  const ws = workspaceAt(ctx.cwd);
+  let runId = String(ctx.flags._positional1 ?? "");
+  if (runId.length > 0) {
+    runId = requireRunId(runId);
+  } else {
+    const runs = await listJournals(ws.journalDir);
+    const latest = runs.length > 0 ? runs[runs.length - 1] ?? null : null;
+    if (latest === null) {
+      throw new VaerionError("E1600", "no runs in this workspace yet — verify needs a journal (Fix: vae init --template demo && vae run demo, then vae verify)");
+    }
+    runId = latest.run_id;
+  }
+  const report = await verifyJournal(RunHarness.journalPathFor(ws.root, runId));
+  r(ctx).result({
+    command: "verify",
+    run_id: runId,
+    verdict: report.ok ? "VERIFIED" : "FAILED",
+    ok: report.ok,
+    records: report.records,
+    events: report.events,
+    head_hash: report.headHash,
+    torn: report.torn,
+    issues: report.issues,
+    next: report.ok
+      ? [`vae explain ${runId}`, "vae status"]
+      : [`vae journal recover ${runId}`, "vae doctor"],
+  });
+  return report.ok ? ExitCode.ok : ExitCode.partial;
+}
+
+/* ────────────────────────────────  start  ─────────────────────────────── */
+
+/**
+ * `vae start` — the five-minute first agent (Phase 59.1 W1).
+ * ONE guided command: init (demo by default) → run → verify → receipt
+ * summary with next steps. Existing workspaces are detected and continued,
+ * never overwritten. Every stage renders its own result; the final summary
+ * carries the verified run's coordinates.
+ *
+ * Phase 59.2 — interactive first-run prompts: on a TTY with a readable
+ * input port, a missing --template opens the registry picker and a missing
+ * --name is confirmed with a suggested default (validated with the create
+ * name law). --interactive forces the prompts (flag values become the
+ * defaults), --no-interactive and every scripted/--json invocation keep the
+ * byte-identical non-interactive path. Prompts engage only when input is
+ * actually missing (or forced) and only on a FRESH directory — an existing
+ * workspace is continued, so there is nothing to ask.
+ */
+export async function cmdStart(ctx: CommandContext): Promise<number> {
+  const ws = workspaceAt(ctx.cwd);
+  const hasConfig = await configExists(ws);
+  const flagTemplate = typeof ctx.flags.template === "string" && ctx.flags.template.length > 0 ? ctx.flags.template : null;
+  const flagName = typeof ctx.flags.name === "string" && ctx.flags.name.length > 0 ? ctx.flags.name : null;
+  let template = flagTemplate ?? "demo";
+  let name = flagName;
+  if (!hasConfig && (flagTemplate === null || flagName === null || ctx.flags.interactive === true)) {
+    // Cold path guard: the interactive module loads only when a prompt can
+    // possibly engage (performance law — never on the scripted hot path).
+    const { interactivityOf, promptTemplateChoice, promptWorkspaceName } = await import("./interactive.ts");
+    const interactivity = interactivityOf(ctx.io, ctx.mode, ctx.flags);
+    if (interactivity !== "off") {
+      if (flagTemplate === null || interactivity === "forced") {
+        template = await promptTemplateChoice(ctx.io, { defaultName: flagTemplate ?? "demo", header: "Choose the template for your first workspace — the registry of record:" });
+      }
+      if (flagName === null || interactivity === "forced") {
+        name = await promptWorkspaceName(ctx.io, { defaultName: flagName ?? "first-agent" });
+      }
+    }
+  }
+  if (ctx.dryRun) {
+    r(ctx).result({
+      command: "start",
+      dry_run: true,
+      side_effects: 0,
+      plan: [
+        hasConfig ? "workspace detected — init skipped (never overwritten)" : `vae init --template ${template}`,
+        template === "demo" ? "vae run demo (broker decisions → research pipeline → receipt)" : `teach the first run for --template ${template}: ${createFirstRunCommand(template)}`,
+        "vae verify — full chain recomputation on the latest journal",
+        "receipt summary + next steps",
+      ],
+    });
+    return ExitCode.ok;
+  }
+
+  // Stage 1 — workspace (existing workspaces are continued, never overwritten).
+  if (!hasConfig) {
+    const initCode = await cmdInit({ ...ctx, flags: { ...ctx.flags, template, name: name ?? "first-agent" } });
+    if (initCode !== ExitCode.ok) return initCode;
+  } else {
+    r(ctx).result({ command: "start", step: 1, label: "workspace", detail: "existing vaerion.yaml detected — continuing with it (init never overwrites)" });
+  }
+
+  // Stage 2 — the first run. Only the demo journey is automatic (it is the
+  // template whose scaffold guarantees a runnable pipeline); every other
+  // template gets its exact first command printed instead of a guess.
+  if (template === "demo") {
+    const runCode = await cmdRun({ ...ctx, flags: { ...ctx.flags, _positional1: "demo" } });
+    if (runCode !== ExitCode.ok) return runCode;
+  } else {
+    r(ctx).result({ command: "start", step: 2, label: "run", detail: `the ${template} template's first run is one command:`, run_command: createFirstRunCommand(template) });
+  }
+
+  // Stage 3 — verify the latest journal (or teach, if nothing ran yet).
+  const runs = await listJournals(ws.journalDir);
+  if (runs.length === 0) {
+    r(ctx).result({ command: "start", step: 3, label: "verify", detail: "no journal yet — verification becomes automatic after the first run", fix: createFirstRunCommand(template) });
+    r(ctx).result({ command: "start", done: false, next: [createFirstRunCommand(template), "vae verify", "vae tour — the guided, read-only walk"] });
+    return ExitCode.ok;
+  }
+  const verifyCode = await cmdVerify(ctx);
+  const latest = runs[runs.length - 1]!;
+  r(ctx).result({
+    command: "start",
+    done: verifyCode === ExitCode.ok,
+    template,
+    run_id: latest.run_id,
+    records: latest.records,
+    head_hash: latest.head_hash,
+    journal_verified: verifyCode === ExitCode.ok,
+    next: [`vae explain ${latest.run_id}`, "vae status", "vae tour — the guided, read-only walk", "docs: vaerion.vercel.app/#/docs/getting-started"],
+  });
+  return verifyCode;
+}
+
 /* ───────────────────────────────  doctor  ────────────────────────────── */
 
 export async function cmdDoctor(ctx: CommandContext): Promise<number> {
   const ws = workspaceAt(ctx.cwd);
   const checks: Array<{ check: string; ok: boolean; code?: string; detail?: string; impact?: string; fix?: string }> = [];
+  // Phase 59.2 — the next-step law: for the WORST finding (first failure in
+  // check order — config gates everything, then journals, blobs, evidence,
+  // chains), doctor names the EXACT recovery command, never a vague stub.
+  // Green audits carry no next_step (the surface stays byte-stable).
+  let nextStep: string | undefined;
+  const failWith = (check: typeof checks[number], exactCommand?: string): void => {
+    checks.push(check);
+    if (!check.ok && nextStep === undefined) {
+      nextStep = exactCommand ?? check.fix;
+    }
+  };
   const spin = r(ctx).spinner();
   spin.start("auditing workspace");
 
@@ -1136,10 +1424,10 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
       checks.push({ check: "config", ok: true, detail: `valid (fingerprint ${fingerprint.slice(0, 12)}…, telemetry.enabled=${String(config.telemetry.enabled)})` });
     } catch (err) {
       const e = err as VaerionError;
-      checks.push({ check: "config", ok: false, code: e.code, detail: e.message, impact: "an unreadable config blocks every governed surface — the engine refuses to guess", fix: e.fix });
+      failWith({ check: "config", ok: false, code: e.code, detail: e.message, impact: "an unreadable config blocks every governed surface — the engine refuses to guess", fix: e.fix });
     }
   } else {
-    checks.push({ check: "config", ok: false, code: "E1200", detail: "vaerion.yaml not found", impact: "this directory is ungoverned — runs, receipts, and journals have no verified home until the workspace is initialized", fix: "run `vae init`" });
+    failWith({ check: "config", ok: false, code: "E1200", detail: "vaerion.yaml not found", impact: "this directory is ungoverned — runs, receipts, and journals have no verified home until the workspace is initialized", fix: "run `vae init`" }, "vae init");
   }
 
   // 2. Journal integrity + completeness (every run).
@@ -1147,15 +1435,13 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
   for (const run of runs) {
     const report = await verifyJournal(join(ws.journalDir, `${run.run_id}.ndjson`));
     const completeness = report.complete === null ? "unanchored (run not closed)" : report.complete ? "complete" : "INCOMPLETE";
-    checks.push({
+    failWith({
       check: `journal:${run.run_id}`,
       ok: report.ok,
       code: report.ok ? undefined : (report.issues[0]?.code ?? "E1001"),
-      detail: report.ok
-        ? `${report.records} records, head ${report.headHash?.slice(0, 12)}…, ${completeness}`
-        : (report.issues[0]?.message ?? "verification failed"),
+      detail: report.ok ? `${report.records} records, head ${report.headHash?.slice(0, 12)}…, ${completeness}` : (report.issues[0]?.message ?? "verification failed"),
       fix: report.ok ? undefined : (report.issues[0]?.code === "E1010" ? "compare against the receipt printed at run close or a `vae snapshot` archive; never hand-edit a journal" : "run `vae journal recover <run_id>` if a torn tail is reported"),
-    });
+    }, report.ok ? undefined : report.torn ? `vae journal recover ${run.run_id}` : `vae journal verify ${run.run_id}`);
   }
 
   // 3. Blob store: every blob_ref mentioned in any journal must verify.
@@ -1167,13 +1453,13 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
     for (const ref of collectBlobRefs(read.records)) {
       blobRefsChecked++;
       const problem = await blobStore.verify(ref);
-      checks.push({
+      failWith({
         check: `blob:${ref.hash.slice(0, 12)}…`,
         ok: problem === null,
         code: problem?.code,
         detail: problem === null ? `verified (${ref.size} bytes)` : problem.message,
         fix: problem?.fix,
-      });
+      }, problem?.fix);
     }
   }
   if (blobRefsChecked === 0) checks.push({ check: "blob-store", ok: true, detail: "no blob refs referenced yet" });
@@ -1201,7 +1487,7 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
       }
     }
   }
-  checks.push({
+  failWith({
     check: "research-evidence",
     ok: evidenceFailed === 0,
     code: evidenceFailed === 0 ? undefined : "E1008",
@@ -1213,7 +1499,7 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
 
   // 4. Audit ledger chain.
   const audit = await verifyAuditLedger(ws.auditPath);
-  checks.push({
+  failWith({
     check: "audit-ledger",
     ok: audit.ok,
     code: audit.ok ? undefined : "E1001",
@@ -1223,7 +1509,7 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
 
   // 5. Refusal Log chain (MS-2): the broker refuses nothing silently.
   const refusals = await verifyRefusalLog(ws.refusalsPath);
-  checks.push({
+  failWith({
     check: "refusal-log",
     ok: refusals.ok,
     code: refusals.ok ? undefined : "E1001",
@@ -1319,7 +1605,7 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
       // 9. Package lock picture (MS-6, ADR-0016): the generated seal ↔ reality.
       const { fingerprint: lockConfigFingerprint } = await loadOrAdhocConfig(ws);
       const lock = await readLock(ws.root).catch((err: unknown) => {
-        checks.push({ check: "package-lock", ok: false, code: err instanceof VaerionError ? err.code : "E2205", detail: (err as Error).message, fix: "regenerate via `vae package build`; the lock is generated, never hand-edited" });
+        failWith({ check: "package-lock", ok: false, code: err instanceof VaerionError ? err.code : "E2205", detail: (err as Error).message, fix: "regenerate via `vae package build`; the lock is generated, never hand-edited" }, "vae package build");
         return null;
       });
       if (lock) {
@@ -1343,7 +1629,7 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
           checks.push({ check: "package-lock", ok: true, detail: `lock present (${lock.bundle.entries} entries sealed, digest ${lock.bundle.blake3.slice(0, 12)}…) · bundle artifact not on disk at ${lock.bundle.path} (regenerate with \`vae package build\`)` });
         }
         if (lockProblems.length > 0) {
-          checks.push({ check: "package-lock", ok: false, code: "E2205", detail: lockProblems.join("; "), fix: "the lock is generated, never hand-edited — re-run `vae package build`, then review the lock diff before committing" });
+          failWith({ check: "package-lock", ok: false, code: "E2205", detail: lockProblems.join("; "), fix: "the lock is generated, never hand-edited — re-run `vae package build`, then review the lock diff before committing" }, "vae package build");
         } else if (bundleExists) {
           checks.push({ check: "package-lock", ok: true, detail: `lock present and sealed to the on-disk bundle (${lock.bundle.entries} entries, digest ${lock.bundle.blake3.slice(0, 12)}…)` });
         }
@@ -1361,6 +1647,7 @@ export async function cmdDoctor(ctx: CommandContext): Promise<number> {
     command: "doctor",
     engine_version: ENGINE_VERSION,
     checks,
+    ...(nextStep !== undefined ? { next_step: nextStep } : {}),
     summary: failed.length === 0 ? "all checks green" : `${failed.length} check(s) failed`,
   });
   return failed.length === 0 ? ExitCode.ok : ExitCode.partial;
@@ -2607,6 +2894,7 @@ export async function buildWelcomePayload(ctx: CommandContext): Promise<Record<s
   const runs = hasWorkspace ? await listJournals(ws.journalDir) : [];
   const nextSuggestions = kind === "fresh"
     ? [
+        "vae start — init → run → verify → receipt: the five-minute first agent in ONE guided command",
         "vae init — scaffold vaerion.yaml + .vaerion/ in this directory — nothing exists yet",
         "vae tour — a guided, read-only walk of the engine, measured against this machine",
         "vae --help — the command surface of record (help always teaches)",

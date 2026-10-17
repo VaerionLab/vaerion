@@ -6,20 +6,37 @@ reports in `docs/ga/`, and `worklog.md` — not from memory; dates are the
 measured tag dates. Keep a Changelog format; within v0.1 surfaces evolve
 additively — nothing removed or renamed (`BETA-ONBOARDING.md`).
 
-## [v0.1.14-rc1] - 2026-09-28
+## [0.1.15-rc1] - 2026-10-03
 
-The completeness-closure release, tagged `v0.1.14-rc1` and published to npm.
+The one-true-artifact release (Phase 61.1). Removes the final P0 blocker the
+Phase 61.0 entry audit proved: source, artifact, and claims can no longer
+disagree under one version string.
 
-- **E1010 — journal completeness anchor:** the close-time receipt's commitment
-  (final record count + head hash) is now enforced by `vae journal verify`;
-  truncation — even clean tail deletion — fails with a taught error.
-- **Layered detection:** semantic forgery → `E1001`; middle-record deletion
-  re-chained → `E1005`; post-close substitution → `E1010`.
-- **Verifiable exports:** copied receipts re-certify to the export's own chain;
-  export of an attacked (truncated) journal is refused at the source.
-- **Attack suite ships as tests:** 12 permanent scenarios in
-  `packages/vaerion/tests/security/journal-completeness.test.ts`.
-- Package gate: **645/645 pass**, typecheck clean.
+### Fixed
+- **E1010 journal-completeness anchor is now canonical.** Ported from the
+  published `0.1.14-rc1` line of record into the tree of record: the catalog
+  entry (81 → 82 codes in `kernel/errors.ts` and `spec/errors.yaml`), the
+  completeness-anchor verification logic (a closed journal whose terminal
+  receipt is missing or does not certify its prefix now fails with `E1010`,
+  exit 5), recovery re-certification (`recertified`), redacted-export
+  re-certification, `vae doctor` completeness reporting, and the 12-test
+  attack suite at `packages/vaerion/tests/security/journal-completeness.test.ts`.
+  The Phase 61.0 truncation attack (delete the terminal receipt → verify
+  `ok: true`) is closed at HEAD.
+- **Artifact parity system.** `tests/integration/artifact-parity.test.ts`
+  pins the 29-command dispatch surface, the 7-template registry, the
+  did-you-mean module, and the absence of dead CLI files; a docs-claim gate
+  proves every command taught by `docs/QUICKSTART.md` exists in the dispatch;
+  `tools/verify-artifact-parity.ts` re-proves parity on a packed tarball
+  before any publish.
+
+### Changed
+- Version register aligned to `0.1.15-rc1` (25 positive pins, negative sweep
+  clean, RPM changelog appended, `bun.lock` workspace entries synced).
+- npm-channel honesty: the registry of record still delivers `0.1.14-rc1` (an
+  older engine) until the Founder-gated `0.1.15-rc1` publish; living docs and
+  site facts say so. Site facts re-synced to the measured epoch: 710 tests /
+  61 files / 5,197 expectations, 82 E-codes.
 
 ## [Unreleased]
 
@@ -54,33 +71,23 @@ The completeness-closure release, tagged `v0.1.14-rc1` and published to npm.
   (fast-forward `b6c5fac..7a1e44f`, tag pushed once, byte-identical; Actions
   runs SUCCESS incl. signed-release; CI artifacts independently verified).
 
-## [0.1.14-rc1] — 2026-09-28 — the completeness-closure release (the launch train)
+## [0.1.14-rc1] — 2026-10-03 — version-register alignment with the published line
 
-- Security: **journal completeness closed by verification (E1010)** — `journal verify`
-  now enforces the terminal-receipt completeness anchor ("a receipt record certifies
-  the prefix immediately before it"). Tail deletion, re-chained deletion, receipt
-  removal, and post-close record substitution are detected with taught errors
-  (E1010/E1005/E1001, exit 5) where integrity-only verification previously passed
-  them. Design of record: `JOURNAL_COMPLETENESS_DESIGN.md` (six options evaluated;
-  the in-journal anchor chosen — zero new files, commands, schema, or dependencies).
-- Added: the permanent attack suite
-  `packages/vaerion/tests/security/journal-completeness.test.ts` (12 scenarios:
-  semantic forgery, hash corruption, tail/middle deletion + re-chain, substitution,
-  receipt-claim edits — plus lawful-flow compatibility: torn-receipt recovery
-  re-certification, in-flight runs, redacted exports).
-- Changed: export re-certifies copied receipts to the export's own chain (the
-  universal invariant, provenance kept in the derivation header); recovery
-  re-certifies when the torn tail was the receipt (`RecoveryReport.recertified`);
-  doctor reports journal completeness with an E1010-specific fix hint;
-  `spec/errors.yaml` registers E1010 `journal_completeness_anchor_invalid`.
-- Documentation: `VAERION_SECURITY_PROOF_v1.0.md` (threat model, tested attack
-  table, verification commands, honest boundaries); THREAT-MODEL P-COMPLETE-RECORD;
-  LIMITATIONS §1.9; README/SECURITY truth-up. Records: `PHASE_51_SECURITY_CLOSURE_REPORT.md`,
-  `PHASE_52_LAUNCH_READINESS_REPORT.md`.
-- Measured: 645/645 package tests including the completeness suite; fresh-install
-  war replay green (all seven attacks blocked); typecheck 0 errors. Version register
-  re-locked at 0.1.14-rc1 (36+ surfaces; goldens re-blessed via `VAE_BLESS=1` — the
-  only sanctioned path; hash movement is the deterministic `engine_version` cascade).
+- The version register (engine constants, every manifest, every packaging
+  channel, the generated OpenAPI document) aligns to `0.1.14-rc1` — the version
+  already published on the npm registry of record (dist-tags `rc` + `latest`,
+  measured 2026-10-03) and carried by the annotated tag `v0.1.14-rc1`.
+  **No behavioral change** is introduced by this alignment. The private
+  lineage's delta versus the public release — the E1010 journal-completeness
+  anchor and its test — remains a documented, Founder-gated port
+  (`reports/phase-60.1-60.3/GAP-MATRIX.md`, G25).
+- The release notes of record (`docs/RELEASE-NOTES-v0.1.14-rc1.md`) are ported
+  from the public release of record; they document the published artifact.
+- Reality alignment (Phase 60.1): measured site facts (698/60/5,146 tests;
+  116 engine files / 24,828 lines; 15,279 test lines; 46 tool files /
+  7,163 lines), documentation version claims synchronized, npm channel
+  marked LIVE (registry-measured), RPM changelog appended (history never
+  rewinds).
 
 ## [0.1.13-rc1] — 2026-09-03 — the ASCENSION XXV production-trust release (the first release signed by the production key)
 

@@ -53,8 +53,8 @@ local-*
 *.log
 dev.log
 dev.out.log
-test
-prompt
+/test/
+/prompt/
 
 server.log
 # Skills directory
@@ -74,3 +74,9 @@ tool-results/
 
 # Gate diagnostics (verify.ts full gate logs — generated, never committed)
 .vaerion-logs/
+
+# python editable-install build artifacts
+*.egg-info/
+
+# Vaerion test/journal residue — evidence artifacts are never tracked
+.vaerion/

@@ -1,0 +1,7 @@
+workspace: /tmp/vaerion-agents-example-rvfhxfi9
+tools: ['vaerion_doctor', 'vaerion_status', 'vaerion_journal_ls', 'vaerion_verify_journal', 'vaerion_run_demo', 'vaerion_run_agent']
+run_id:     crn_run_01M3V09J3REPBXHTJY2JC9WC17
+head_hash:  ba64f9d3f3f686266ef9031f4aa6b19c46cc9b3c063136228d4fc3b5bf7915e1
+summary:    indexed 1 documents; 0 hits for "verify me"
+verified:   True
+vae verify: {"command":"verify","run_id":"crn_run_01M3V09J3REPBXHTJY2JC9WC17","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"503ac32c1ef8278722cafaff539c40b11cdf4fee6853ddea71e71cdde2f35674","torn":false,"issues":[],"next":["vae explain crn_run_01M3V09J3REPBXHTJY2JC9WC17","vae status"]}

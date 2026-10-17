@@ -27,11 +27,12 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const ROOT = join(import.meta.dir, "..", "..", "..", "..");
-const PREV_TAG = "v0.1.13-rc1"; // the adjacent previous train of record — bump alongside the version register (the upgrade leg tests the REAL adjacent upgrade)
-const PREV_VERSION = "0.1.13-rc1";
+const PREV_TAG = "v0.1.14-rc1"; // the adjacent previous train of record — bump alongside the version register (the upgrade leg tests the REAL adjacent upgrade: 0.1.14 → 0.1.15, the launch leg)
+const PREV_VERSION = "0.1.14-rc1";
 /** The engine version of record at THIS tree (kept literal: the test fails
- *  loudly if the register and the engine ever disagree about it). */
-const CUR_VERSION = "0.1.14-rc1";
+ *  loudly if the register and the engine ever disagree about it; the
+ *  version-register test owns this pin — Phase 61.2 D5). */
+const CUR_VERSION = "0.1.15-rc1";
 
 let home: string | null = null;
 afterAll(() => {
@@ -54,6 +55,10 @@ function sh(cmd: string[], opts: { cwd?: string; timeoutMs?: number } = {}): ShR
 }
 
 describe("the cross-version upgrade leg — vN → vN+1 on one host prefix", () => {
+  // Budget of record: this leg really installs TWO engines and runs ~10 CLI
+  // invocations through the real installer + shim. The runner default (5s)
+  // assumed the box-of-record's warm caches; measured cold-host runtime is
+  // ~6.5s (Phase 62.3). 30s is the honest budget for a host-execution leg.
   test("the tagged previous engine installs, a vN workspace journals, the upgrade to vN+1 preserves and serves it", () => {
     // 0. Preconditions: this is a git checkout with full history (CI clones
     //    with fetch-depth: 0 — the repository is the evidence).
@@ -114,5 +119,5 @@ describe("the cross-version upgrade leg — vN → vN+1 on one host prefix", () 
     expect(envelope.report.ok).toBe(true);
     expect(envelope.report.torn).toBe(false);
     expect(envelope.report.events).toBeGreaterThan(0);
-  });
+  }, 30_000);
 });

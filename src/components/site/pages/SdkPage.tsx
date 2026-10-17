@@ -40,7 +40,7 @@ export default function SdkPage() {
       <PageHero
         eyebrow="Docs · SDK"
         title="@vaerion/sdk — a projection of the engine, never a second implementation."
-        lead="The programmatic TypeScript surface of the Vaerion engine: the same contracts the CLI exercises — same engine calls, same envelopes, same receipts. The parity guarantee is tested, not assumed."
+        lead="The programmatic TypeScript surface of the Vaerion engine: the same contracts the CLI exercises — same engine calls, same envelopes, same receipts. The parity guarantee is tested, not assumed. TypeScript is one of five SDK languages now — Python, Go, Rust, and Java bind the same engine over the loopback daemon."
       >
         <DocsNav route="/docs/sdk" />
       </PageHero>
@@ -60,6 +60,64 @@ export default function SdkPage() {
         <CodeBlock title="install (repository supply-chain law)" code={`bun install --frozen-lockfile`} />
       </Section>
 
+      {/* ─────────── the five-SDK universe (Phase 59.2) ─────────── */}
+      <Section
+        label="The SDK universe"
+        title="Five languages, one binding law — stated honestly."
+        lead="Only the TypeScript SDK links the engine library in-process (the engine is TypeScript on Bun). Python, Go, Rust, and Java bind over the loopback daemon (vae serve, HTTP/SSE) and verify journals through the CLI of record — this engine version has no standalone daemon verify route, and no SDK pretends otherwise. Every count below is a measured gate run."
+      >
+        <Panel className="overflow-hidden">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[760px] border-collapse text-left text-sm">
+              <caption className="sr-only">The five SDKs and their binding models</caption>
+              <thead>
+                <tr className="bg-surface-2/60">
+                  <th scope="col" className="px-4 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-mutedfg">Language</th>
+                  <th scope="col" className="px-4 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-mutedfg">Package / module</th>
+                  <th scope="col" className="px-4 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-mutedfg">Binding model</th>
+                  <th scope="col" className="px-4 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-mutedfg">Entry points</th>
+                  <th scope="col" className="px-4 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-mutedfg">Verify story</th>
+                  <th scope="col" className="px-4 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.12em] text-mutedfg">Tests</th>
+                </tr>
+              </thead>
+              <tbody>
+                {FACTS.sdks.map((s) => (
+                  <tr key={s.language} className="border-t border-edge bg-surface align-top">
+                    <th scope="row" className="px-4 py-4 text-sm font-semibold text-body">
+                      {s.language}
+                      <p className="mt-1 font-mono text-[10.5px] font-normal leading-relaxed text-mutedfg">{s.where}</p>
+                    </th>
+                    <td className="px-4 py-4 font-mono text-xs text-gold">{s.name}</td>
+                    <td className="px-4 py-4 text-xs leading-relaxed text-mutedfg">{s.binding}</td>
+                    <td className="px-4 py-4 font-mono text-xs leading-relaxed text-mutedfg">{s.entry}</td>
+                    <td className="px-4 py-4 text-xs leading-relaxed text-mutedfg">{s.verify}</td>
+                    <td className="px-4 py-4 font-mono text-[11px] leading-relaxed text-trust">{s.tests}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Panel>
+        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-mutedfg">
+          Shared law across all five: the loopback E2006 refusal happens in code before a single byte is sent; the pairing token never rides
+          the open metadata routes and is never printed; errors are one taxonomy of stable E-codes with their <code className="font-mono">Fix:</code> lines
+          intact; a failed step is evidence — the run still closes with a receipt and the journal still verifies.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-x-8 gap-y-3">
+          {[
+            ["sdks/typescript", "typescript"],
+            ["sdks/python", "python"],
+            ["sdks/go", "go"],
+            ["sdks/rust", "rust"],
+            ["sdks/java", "java"],
+          ].map(([label, slug]) => (
+            <ArrowLink key={slug} href={`${FACTS.repoUrl}/tree/main/sdks/${slug}`} external>
+              {label}
+            </ArrowLink>
+          ))}
+        </div>
+      </Section>
+
       <Section tight label="Entry point" title="VaeDaemonClient — speak to the local daemon.">
         <p className="-mt-4 max-w-3xl text-sm leading-relaxed text-mutedfg">
           Start the daemon and pair once — the token is printed exactly once at start; the daemon refuses any non-loopback bind.
@@ -72,8 +130,8 @@ vae serve            # loopback HTTP/SSE; pairing token printed once
 # shell 2
 import { VaeDaemonClient } from "@vaerion/sdk";
 
-const vae = new VaeDaemonClient({ base: "http://127.0.0.1:<port>", token: "<pairing-token>" });
-console.log(await vae.version());`}
+const daemon = new VaeDaemonClient({ base: "http://127.0.0.1:<port>", token: "<pairing-token>" });
+console.log(await daemon.version());`}
         />
       </Section>
 
@@ -152,6 +210,35 @@ for await (const evt of daemon.streamRunEvents(started.run_id)) {
               ))}
             </tbody>
           </table>
+        </div>
+      </Section>
+
+      {/* ─────────── framework integrations ─────────── */}
+      <Section
+        label="Framework integrations"
+        title="The alliance — one server, many hosts."
+        lead="The official MCP server ships inside the engine (vae mcp); five ratified hosts attach to it, and every tool call takes the same brokered, journaled, receipt-backed path. Each integration ships an executed example and a test suite that spawns the real engine."
+      >
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {FACTS.integrations.map((i) => (
+            <Panel key={i.name} className="flex flex-col p-6">
+              <h3 className="text-sm font-semibold text-body">{i.name}</h3>
+              <p className="mt-1 font-mono text-[11px] text-gold">{i.surface}</p>
+              <p className="mt-1 font-mono text-[10.5px] text-mutedfg">{i.framework}</p>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-mutedfg">{i.value}</p>
+              <div className="mt-4 min-w-0">
+                <ArrowLink href={`${FACTS.repoUrl}/tree/main/${i.path.replace(/\/$/, "")}`} external>
+                  <span className="break-all">{i.path.replace(/^integrations\//, "")}</span>
+                </ArrowLink>
+              </div>
+            </Panel>
+          ))}
+          <Panel className="flex flex-col justify-center p-6">
+            <p className="text-sm font-semibold text-body">The full alliance doctrine, the host table, and the verbatim MCP attach config.</p>
+            <div className="mt-4">
+              <ArrowLink href="#/integrations">Open the integrations page</ArrowLink>
+            </div>
+          </Panel>
         </div>
       </Section>
 

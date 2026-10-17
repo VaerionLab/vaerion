@@ -12,7 +12,7 @@
  */
 
 export const FACTS = {
-  version: "0.1.14-rc1",
+  version: "0.1.15-rc1",
   repoUrl: "https://github.com/VaerionLab/vaerion",
   releasesUrl: "https://github.com/VaerionLab/vaerion/releases",
   issuesUrl: "https://github.com/VaerionLab/vaerion/issues",
@@ -39,38 +39,54 @@ export const FACTS = {
       "a11y-structural",
       "repo-lint",
     ] as const,
-    tests: { total: 545, suites: 43, expectations: 3932, failed: 0 },
-    coverage: { lines: 86.52, branches: 90.6, modulesRatcheted: 116 },
+    tests: { total: 719, suites: 62, expectations: 5246, failed: 0 },
+    coverage: { lines: 86.52, branches: 90.6, modulesRatcheted: 127 },
   },
 
   code: {
-    engineFiles: 107,
-    engineLines: 22018,
-    engineTestLines: 12012,
-    sdkLines: 805,
-    toolLines: 2886,
+    engineFiles: 116,
+    engineLines: 24921,
+    engineTestLines: 15693,
+    // TypeScript SDK source lines (sdks/typescript/src) — the four wire SDKs
+    // add ~6,600 more across Python/Go/Rust/Java (mixed LOC bases).
+    sdkLines: 802,
+    toolLines: 7299,
   },
 
   contracts: {
     apiPaths: 17,
-    ecodes: 81,
+    ecodes: 82,
     adrs: 21,
     specFiles: 14,
-    versionSurfaces: 22,
+    // version-register.test.ts REGISTER — 25 pinned surfaces (measured 2026-10-04)
+    versionSurfaces: 25,
   },
 
   cli: {
     bin: "vae",
+    // The dispatched command surface, measured from the dispatch switch in
+    // packages/vaerion/src/cli/vae.ts (29 cases, incl. help/completions/version)
+    // — re-measured 2026-10-01 after Phase 59.2 added create/start/verify/
+    // mcp/snapshot/restore/status/report/clean to the earlier 17.
     commands: [
       "init",
+      "create",
+      "start",
+      "status",
+      "report",
+      "clean",
       "run",
       "resume",
       "explain",
+      "verify",
       "journal",
       "doctor",
       "dev",
       "serve",
+      "mcp",
       "package",
+      "snapshot",
+      "restore",
       "provenance",
       "repo",
       "ci",
@@ -79,16 +95,22 @@ export const FACTS = {
       "account",
       "ai",
       "center",
+      "completions",
+      "help",
+      "version",
     ] as const,
+    // The deterministic template registry (INIT_TEMPLATES in
+    // packages/vaerion/src/config/templates.ts — 7 entries, measured 2026-10-01).
+    templates: ["minimal", "demo", "agent", "tool", "automation", "multi-agent", "enterprise"] as const,
     shells: ["bash", "zsh", "fish", "powershell", "nushell", "xonsh"] as const,
   },
 
   providers: ["OpenAI", "Anthropic", "Ollama", "MockBrain (deterministic)"] as const,
 
   release: {
-    tag: "v0.1.14-rc1",
+    tag: "v0.1.15-rc1",
     signing: "Ed25519 (sha256 + manifest + independent openssl verification)",
-    status: "prerelease — signed, reproducible, published on GitHub Releases",
+    status: "prerelease — signed, reproducible; GitHub release + npm publish pending the Founder gate (0.1.15-rc1, the one-true-artifact epoch)",
   },
 
   install: {
@@ -96,8 +118,8 @@ export const FACTS = {
     channels: [
       { name: "From source", command: "git clone … && bun install --frozen-lockfile", status: "VERIFIED", available: true },
       { name: "GitHub Releases", command: "signed tarball + install.sh", status: "VERIFIED", available: true },
-      { name: "npm", command: "npm install -g vaerion", status: "build verified — publish is release-train (Founder-gated)", available: false },
-      { name: "PyPI", command: "pip install vaerion", status: "wheel build verified — publish is release-train (Founder-gated)", available: false },
+      { name: "npm", command: "npm install -g vaerion@rc", status: "LIVE BUT LAGS THE TREE — the registry delivers 0.1.14-rc1 (an older engine without verify/create/start/mcp) until the Founder-gated 0.1.15-rc1 publish; measured on registry.npmjs.org 2026-10-03. The true engine today: source or the signed release set", available: true },
+      { name: "PyPI", command: "pip install vaerion", status: "wheel build verified — publish is release-train (Founder-gated); registry measured 404 on 2026-10-03", available: false },
       { name: "Homebrew / winget / dmg / rpm", command: "authored in packaging/", status: "UNVERIFIED — host-gated", available: false },
     ] as const,
   },
@@ -106,8 +128,139 @@ export const FACTS = {
     name: "@vaerion/sdk",
     client: "VaeClient",
     daemonClient: "VaeDaemonClient",
-    entry: "new VaeDaemonClient({ base, token })",
+    // Verified against sdks/typescript/src/index.ts + daemon.ts — there is
+    // no createClient factory; the two constructors ARE the entry points.
+    entry: "new VaeClient({ cwd }) · new VaeDaemonClient({ base, token })",
     parity: "SDK ⇄ CLI machine parity is tested (same run ids, journal verification, receipts, redacted exports)",
+  },
+
+  // ── The Era I SDK universe (Phase 59.2) ─────────────────────────────
+  // Provenance: every entry transcribed from the provenance headers and API
+  // tables of sdks/*/README.md — conformance measured at the 0.1.13/0.1.14-rc1
+  // epochs (2026-10-01/03) and carried through the Phase 61.1 one-true-artifact
+  // register alignment to 0.1.15-rc1 (2026-10-03): the loopback wire contract
+  // is unchanged; the engine of record now additionally enforces the E1010
+  // completeness anchor, which the four wire SDKs reach through the CLI of
+  // record. Test counts are the measured gate runs recorded
+  // per SDK (go test / cargo test / mvn test / python -m unittest). The
+  // binding model is stated honestly: ONLY the TypeScript SDK links the
+  // engine library in-process (the engine is TypeScript on Bun); every other
+  // language binds over the loopback daemon (`vae serve`, HTTP/SSE) and
+  // verifies journals through the CLI of record (`vae verify --json` /
+  // `vae journal verify`) — there is no standalone daemon verify route in
+  // engine 0.1.13-rc1, and none of these READMEs pretend otherwise.
+  sdks: [
+    {
+      language: "TypeScript",
+      name: "@vaerion/sdk",
+      where: "sdks/typescript (workspace package — ships from source; npm is Founder-gated)",
+      binding: "in-process — imports the engine library directly (workspace:*); plus the wire client for vae serve",
+      entry: "new VaeClient({ cwd }) · new VaeDaemonClient({ base, token })",
+      verify: "in-process journalVerify/verifyRunEvidence + the tested SDK ⇄ CLI parity law",
+      tests: "8 parity tests in the engine suite (sdk-parity + daemon-parity) — part of the engine's 719-test gate",
+    },
+    {
+      language: "Python",
+      name: "vaerion-sdk (import vaerion)",
+      where: "sdks/python (pip install ./sdks/python — PyPI is Founder-gated)",
+      binding: "loopback daemon — Agent spawns (or attaches to) vae serve over HTTP/SSE; zero dependencies, Python ≥ 3.9",
+      entry: "Agent() / Agent(base, token) · VaeDaemonClient(base, token)",
+      verify: "agent.verify(run_id) recomputes the blake3 chain via the CLI of record",
+      tests: "16/16 unittest (unit + real-daemon integration; skipped, never faked, without a vae runtime)",
+    },
+    {
+      language: "Go",
+      name: "github.com/VaerionLab/vaerion-go (package vae)",
+      where: "sdks/go — Go 1.23+, standard library only, zero external dependencies",
+      binding: "loopback daemon — vae.NewClient spawns its own vae serve (token via VAE_TRUST, never printed) or attaches",
+      entry: "vae.NewClient(opts…) · vae.NewDaemonClient(base, token)",
+      verify: "Client.Verify normalizes both CLI verify faces into one VerifyReport (CLI of record)",
+      tests: "43/43 go test (httptest unit layer + REAL spawned-daemon integration)",
+    },
+    {
+      language: "Rust",
+      name: "vaerion (crate)",
+      where: "sdks/rust — edition 2021; deps: serde, serde_json, ureq only",
+      binding: "loopback daemon — Agent::spawn(cwd) starts vae serve on a free loopback port; Agent::attach binds to yours",
+      entry: "vaerion::Agent (spawn/attach) · vaerion::DaemonClient",
+      verify: "Agent::verify normalizes flat + report-wrapped CLI output into VerifyReport (CLI of record)",
+      tests: "27/27 cargo test (12 lib + 14 conformance + 1 doctest, zero warnings)",
+    },
+    {
+      language: "Java",
+      name: "dev.vaerion:vaerion-sdk",
+      where: "sdks/java — Java 21 (—release 21); Jackson is the only non-test dependency",
+      binding: "loopback daemon — new VaeClient() spawns vae serve with a SecureRandom VAE_TRUST token; VaeClient.attach binds to yours",
+      entry: "new VaeClient() / VaeClient.attach(base, token) · new VaeDaemonClient(…)",
+      verify: "verify() executes the CLI of record in the workspace and folds both output faces into VerifyReport",
+      tests: "40/40 mvn test (37 unit incl. real loopback HTTP stubs + 3 REAL-daemon integration)",
+    },
+  ] as const,
+
+  // ── The alliance: official framework integrations (Phase 59.2) ──────
+  // Provenance: integrations/README.md (alliance index) and the five package
+  // READMEs beneath it — measured 2026-10-01 against engine 0.1.13-rc1 and
+  // re-verified on 0.1.14-rc1 (2026-10-03), with
+  // the framework versions below taken from the installed stacks. Every
+  // integration ships an executed example with captured output, and every
+  // test suite spawns the REAL engine (no mocks of the engine exist in the
+  // tree). Suite sizes as measured: openai_agents 7, langgraph 8, crewai 8,
+  // autogen 8 (python -m unittest).
+  integrations: [
+    {
+      name: "MCP — any host",
+      surface: "in-engine `vae mcp` + host guide",
+      framework: "protocol 2024-11-05 (Claude Desktop, Cursor, Cline, …)",
+      value: "The official stdio MCP server ships inside the engine — any host attaches once and every tool call takes the brokered, journaled, receipt-backed path a human typing vae uses.",
+      path: "integrations/mcp/",
+    },
+    {
+      name: "OpenAI Agents SDK",
+      surface: "vaerion_openai_agents",
+      framework: "openai-agents 0.20.0",
+      value: "vae_mcp_server() builds the official MCPServerStdio pointed at `vae mcp` — the agent keeps its model and guardrails, Vaerion keeps the receipts.",
+      path: "integrations/python/vaerion_openai_agents/",
+    },
+    {
+      name: "LangGraph",
+      surface: "vaerion_langgraph",
+      framework: "langgraph 1.2.12 · langchain-mcp-adapters 0.3.2",
+      value: "vae_mcp_client() binds `vae mcp` through MultiServerMCPClient — graph nodes and state stay yours, every tool node executes the constitutional path.",
+      path: "integrations/python/vaerion_langgraph/",
+    },
+    {
+      name: "CrewAI",
+      surface: "vaerion_crewai",
+      framework: "crewai 1.15.23 · crewai-tools 1.15.23",
+      value: "vae_mcp_tools() yields the six ratified tools as CrewAI BaseTool objects — crews run unchanged, refusals become journaled evidence.",
+      path: "integrations/python/vaerion_crewai/",
+    },
+    {
+      name: "AutoGen",
+      surface: "vaerion_autogen",
+      framework: "autogen-agentchat / autogen-ext 0.7.5",
+      value: "vae_stdio_params() + vae_mcp_tools() return the six tools as StdioMcpToolAdapter objects — assistant agents inherit fail-closed governance without code changes.",
+      path: "integrations/python/vaerion_autogen/",
+    },
+  ] as const,
+
+  // `vae mcp` measured facts — integrations/mcp/README.md (measured against a
+  // live spawned server, 2026-10-01, engine 0.1.13-rc1; re-verified live on
+  // 0.1.14-rc1 and again on 0.1.15-rc1, 2026-10-03: serverInfo
+  // {"name":"vaerion","version":"0.1.15-rc1"}, protocol 2024-11-05, 6 tools);
+  // the six tool names are verbatim from tools/list.
+  mcp: {
+    transport: "stdio, newline-delimited JSON-RPC 2.0",
+    protocolVersion: "2024-11-05",
+    serverInfo: '{"name": "vaerion", "version": "0.1.15-rc1"}',
+    tools: [
+      "vaerion_doctor",
+      "vaerion_status",
+      "vaerion_journal_ls",
+      "vaerion_verify_journal",
+      "vaerion_run_demo",
+      "vaerion_run_agent",
+    ] as const,
   },
 
   daemon: {
@@ -129,9 +282,10 @@ export const FACTS = {
   notYet: [
     "No cloud service — the engine is local; cloud seams are reserved (ADR-0017), not sold.",
     "No telemetry, no analytics, no undeclared network — enforced mechanically on every build.",
-    "npm / PyPI publish is Founder-gated (release train); until then install from source or signed release tarballs.",
+    "PyPI publish remains Founder-gated (registry measured 404 on 2026-10-03); npm IS live — install with `npm install -g vaerion@rc`.",
     "vaerion.dev installer URL goes live with the release train; install from Releases today.",
     "Single-binary installers (brew/winget/dmg/rpm) are authored but host-gated UNVERIFIED.",
+    "SDK packages and integrations ship from this repository — crates.io / Maven Central / PyPI publication is release-train gated.",
   ] as const,
 
   // The hero terminal — a faithful distillation of docs/QUICKSTART.md §2–4

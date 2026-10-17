@@ -1,0 +1,6 @@
+workspace: /tmp/vaerion-langgraph-example-k9pvs69h
+tools: ['vaerion_doctor', 'vaerion_journal_ls', 'vaerion_run_agent', 'vaerion_run_demo', 'vaerion_status', 'vaerion_verify_journal']
+run_id:    crn_run_01M3V0F86VPN08R6SGXB8K6FPM
+head_hash: 6c83475cc8fed5b3cb1fac4bdb79ae713869a09ee6d66977528248c23f376a06
+summary:   indexed 1 documents; 1 hits for "prove the langgraph path"
+vae verify: {"command":"verify","run_id":"crn_run_01M3V0F86VPN08R6SGXB8K6FPM","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"14346b149a12fb01212a87cc9c7bebb2ba45b4a8291adb758659ee953f2270d7","torn":false,"issues":[],"next":["vae explain crn_run_01M3V0F86VPN08R6SGXB8K6FPM","vae status"]}

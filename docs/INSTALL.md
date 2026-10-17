@@ -9,7 +9,7 @@ exit-code contract. The engine executes on the [Bun](https://bun.sh) runtime
 
 | Channel | Command | Status |
 |---|---|---|
-| npm | `npm install -g vaerion@rc` | **LIVE** — `0.1.14-rc1` published and consumer-verified on registry.npmjs.org |
+| npm | `npm install -g vaerion@rc` | **LIVE — LAGS THE TREE**: the registry delivers `0.1.14-rc1` (an older engine without `verify`/`create`/`start`/`mcp`) until the Founder-gated `0.1.15-rc1` publish; the tree of record and the signed release set carry the true engine |
 | PyPI | `pip install vaerion` | wheel build + venv install **verified**; publish is release-train (Founder-gated) |
 | Universal installer | `curl -fsSL https://vaerion.dev/install \| sh` | install/update/uninstall **verified** end-to-end; the `vaerion.dev` URL goes live with the release train |
 | Debian | `packaging/linux/make-deb.sh` → `.deb` | build + extraction **verified** (`dpkg-deb`) |
@@ -43,10 +43,16 @@ exit-code contract → clean uninstall leaves nothing behind.
 ## Option B — npm
 
 ```sh
-npm install -g vaerion@rc     # requires Bun 1.3+ on PATH (live on the registry)
-vae --version                 # → vae 0.1.14-rc1
+npm install -g vaerion@rc     # requires Bun 1.3+ on PATH (live, but lags — see the note)
+vae --version                 # → vae 0.1.14-rc1 today; 0.1.15-rc1 after the Founder-gated publish
 vae --help
 ```
+
+> **Version note (honest):** the `0.1.15-rc1` tree of record adds `vae verify` /
+> `create` / `start` / `mcp`, the did-you-mean system, and the 7-template
+> registry. The npm registry delivers the older `0.1.14-rc1` engine until the
+> Founder-gated publish; for the true engine today use Option A (source) or the
+> signed release set.
 
 If the system npm prefix is not writable (no sudo), the universal installer
 (`install.sh --method npm`) falls back to a user prefix (`~/.npm-global`)
@@ -111,15 +117,21 @@ openssl pkeyutl -verify -pubin -inkey release-signing.pub \
   -rawin -sigfile sig.raw -in MANIFEST.json
 ```
 
-`packaging/install.sh --tarball <file>` turns the tarball into a full
-user-local install; running the CLI from the unpacked tree works directly
+`packaging/install.sh --method npm --tarball <file>` turns the tarball into a full
+user-local install (`--method npm` is required when the tarball is an npm
+package — the bare `--tarball <file>` form is for the engine tree bundle). Running the CLI from the unpacked tree works directly
 (`bun run packages/vaerion/src/cli/vae.ts --version`). Step-by-step release
 verification: `docs/ga/RELEASE-VERIFICATION.md`. The release trust chain
 (who signs, rotation, recovery): `docs/security/SIGNING-CEREMONY.md`.
 
 > Registry status (honest labels): **npm is live** — `vaerion@0.1.14-rc1`
-> published; fresh-install stranger test verified end-to-end (install → demo
-> run → `journal verify` → ok · anchored · complete). GitHub Releases and the
+> published from the exact sha256-verified artifact of record
+> (`15329bb4…`; registry bytes ≡ release bytes). **That artifact is now
+> superseded** by the `0.1.15-rc1` tree of record (the Phase 61.1
+> one-true-artifact epoch): the registry still delivers `0.1.14-rc1` until
+> the next Founder-gated publish, and from that train onward
+> `tools/verify-artifact-parity.ts` must prove the packed tarball matches the
+> tree before any publish. GitHub Releases and the
 > source paths remain the signed-download surface. The remaining registry
 > channels (PyPI/Homebrew/winget/Chocolatey/Scoop/APT/RPM) are authored +
 > version-locked; their publication lands with the release train.

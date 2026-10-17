@@ -1,0 +1,7 @@
+workspace: /tmp/vaerion-autogen-example-l795wyaz
+tools: ['vaerion_doctor', 'vaerion_journal_ls', 'vaerion_run_agent', 'vaerion_run_demo', 'vaerion_status', 'vaerion_verify_journal']
+status: {"command": "status", "engine_version": "0.1.13-rc1", "workspace": {"state": "workspace", "name": "my-project", "config_fingerprint": "41c3410b862ac152f5d6176a5…
+run_id:    crn_run_01M3V12HJ0GM33NNWV6NGK43BG
+head_hash: 564b1f76a11443e3a9cbbfa2b7d4cb7d0c955ff0cc1f94dc312814f5cffd5692
+summary:   indexed 1 documents; 1 hits for "prove the autogen path"
+vae verify: {"command":"verify","run_id":"crn_run_01M3V12HJ0GM33NNWV6NGK43BG","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"1c9971f1dfbd84eb18493c6dd9d8c09042bccdf1f2296027a3c1bcdf57396e02","torn":false,"issues":[],"next":["vae explain crn_run_01M3V12HJ0GM33NNWV6NGK43BG","vae status"]}

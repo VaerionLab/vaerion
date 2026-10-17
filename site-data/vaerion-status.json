@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-09-28T23:12:51.336Z",
-  "engineVersion": "0.1.14-rc1",
+  "generatedAt": "2026-10-17T00:24:13.941Z",
+  "engineVersion": "0.1.15-rc1",
   "substrate": "TypeScript on Bun (ADR-0018 — provisional with recorded migration path; Founder ratification pending)",
   "verification": {
-    "generatedAt": "2026-09-24T21:00:01.198Z",
-    "ok": true,
+    "generatedAt": "2026-10-17T00:22:51.528Z",
+    "ok": false,
     "gates": [
       {
         "gate": "typecheck-engine",
         "ok": true,
-        "durationMs": 4498
+        "durationMs": 4372
       },
       {
         "gate": "typecheck-sdk",
         "ok": true,
-        "durationMs": 3455
+        "durationMs": 3346
       },
       {
         "gate": "tests",
-        "ok": true,
-        "durationMs": 11160
+        "ok": false,
+        "durationMs": 11263
       },
       {
         "gate": "coverage-ratchet",
@@ -29,17 +29,17 @@
       {
         "gate": "layerlint",
         "ok": true,
-        "durationMs": 31
+        "durationMs": 29
       },
       {
         "gate": "constitutional-check",
         "ok": true,
-        "durationMs": 352
+        "durationMs": 172
       },
       {
         "gate": "perf-budget",
         "ok": true,
-        "durationMs": 265
+        "durationMs": 272
       },
       {
         "gate": "a11y-structural",
@@ -49,14 +49,14 @@
       {
         "gate": "repo-lint",
         "ok": true,
-        "durationMs": 21195
+        "durationMs": 17363
       }
     ],
     "measured": {
-      "testsPassed": 633,
-      "testsFailed": 0,
-      "expectations": 4718,
-      "testFiles": 53
+      "testsPassed": 712,
+      "testsFailed": 7,
+      "expectations": 5237,
+      "testFiles": 62
     }
   },
   "constitution": {
@@ -64,10 +64,10 @@
     "version": "v1.7"
   },
   "tests": {
-    "suites": 53,
-    "assertedExpectations": 4718,
-    "totalTests": 633,
-    "testsFailed": 0,
+    "suites": 62,
+    "assertedExpectations": 5237,
+    "totalTests": 712,
+    "testsFailed": 7,
     "coverage": {
       "lines": 86.52,
       "branches": 90.6,
@@ -77,62 +77,62 @@
   },
   "code": {
     "engine": {
-      "files": 115,
-      "lines": 24424
+      "files": 116,
+      "lines": 25037
     },
     "engineTests": {
-      "files": 54,
-      "lines": 14402
+      "files": 62,
+      "lines": 15759
     },
     "sdk": {
       "files": 3,
       "lines": 805
     },
     "tools": {
-      "files": 46,
-      "lines": 7209
+      "files": 48,
+      "lines": 7851
     }
   },
   "contracts": {
     "specFiles": [
-      "spec/schemas/capability-declaration.schema.json",
-      "spec/schemas/broker-decision.schema.json",
+      "spec/openapi.json",
+      "spec/wit/vaerion-extension@0.1.0.wit",
+      "spec/schemas/evidence-record.schema.json",
       "spec/schemas/envelope.schema.json",
       "spec/schemas/gate.schema.json",
+      "spec/schemas/capability-declaration.schema.json",
+      "spec/schemas/broker-decision.schema.json",
       "spec/schemas/journal-record.schema.json",
-      "spec/schemas/receipt.schema.json",
-      "spec/schemas/evidence-record.schema.json",
       "spec/schemas/vaerion-yaml.schema.json",
-      "spec/openapi.json",
-      "spec/CHANGELOG-SPEC.md",
+      "spec/schemas/receipt.schema.json",
       "spec/errors.yaml",
-      "spec/wit/vaerion-extension@0.1.0.wit",
       "spec/events/registry.json",
+      "spec/CHANGELOG-SPEC.md",
       "spec/README.md"
     ],
     "adrCount": 21,
     "adrFiles": [
-      "docs/adr/0012-cassette-mockbrain-hermetic-evals.md",
-      "docs/adr/0010-loopback-daemon-pairing-token.md",
-      "docs/adr/0003-contract-first-specs-drive-sdk-generation.md",
-      "docs/adr/0011-tokio-axum-tower-stack.md",
-      "docs/adr/0018-engine-substrate-typescript-bun.md",
-      "docs/adr/0006-event-sourced-run-journals-checkpoint-chaining.md",
-      "docs/adr/0005-tiered-intelligence-progressive-enhancement.md",
       "docs/adr/0020-daemon-http-stack-ts-substrate.md",
-      "docs/adr/0001-monorepo-single-version-policy.md",
+      "docs/adr/0005-tiered-intelligence-progressive-enhancement.md",
+      "docs/adr/0011-tokio-axum-tower-stack.md",
+      "docs/adr/0019-single-sanctioned-gateway-egress.md",
       "docs/adr/0002-versioned-event-spine-envelope.md",
       "docs/adr/0008-sqlite-wal-fts5-vec-local-store.md",
-      "docs/adr/0013-os-keychain-first-secrets-env-fallback.md",
-      "docs/adr/0007-strict-subset-yaml-vaeryaml-manifests.md",
-      "docs/adr/0015-per-platform-exec-sandbox-matrix.md",
-      "docs/adr/0004-centralized-permission-broker.md",
-      "docs/adr/0019-single-sanctioned-gateway-egress.md",
       "docs/adr/0017-reserved-cloud-seams.md",
-      "docs/adr/0014-stable-diagnostics-catalog-ecodes.md",
+      "docs/adr/0018-engine-substrate-typescript-bun.md",
+      "docs/adr/0004-centralized-permission-broker.md",
+      "docs/adr/0012-cassette-mockbrain-hermetic-evals.md",
+      "docs/adr/0007-strict-subset-yaml-vaeryaml-manifests.md",
+      "docs/adr/0001-monorepo-single-version-policy.md",
+      "docs/adr/0013-os-keychain-first-secrets-env-fallback.md",
+      "docs/adr/0003-contract-first-specs-drive-sdk-generation.md",
+      "docs/adr/0010-loopback-daemon-pairing-token.md",
+      "docs/adr/0006-event-sourced-run-journals-checkpoint-chaining.md",
+      "docs/adr/0009-wasi-p2-components-capability-broker.md",
       "docs/adr/README.md",
-      "docs/adr/0016-reproducible-vxn-bundles.md",
-      "docs/adr/0009-wasi-p2-components-capability-broker.md"
+      "docs/adr/0014-stable-diagnostics-catalog-ecodes.md",
+      "docs/adr/0015-per-platform-exec-sandbox-matrix.md",
+      "docs/adr/0016-reproducible-vxn-bundles.md"
     ]
   },
   "milestones": [
@@ -403,17 +403,18 @@
     "measured": true,
     "ready": false,
     "verdict": "BLOCKED",
-    "passed": 8,
+    "passed": 4,
     "total": 12,
     "blockers": [
-      "git-tree-clean: working tree dirty: 0 staged, 44 unstaged, 1 untracked",
+      "verification-gates: verification record present (9 gates) — gate evidence absent (fail-closed)",
+      "git-tree-clean: working tree dirty: 283 staged, 0 unstaged, 0 untracked",
       "release-tag-binding: HEAD is not exactly at a v* release tag",
       "release-artifacts: artifact set incomplete: dist/MANIFEST.json, dist/MANIFEST.json.sig, dist/SHA256SUMS, dist/VERIFY.md missing"
     ]
   },
   "commandCenter": {
     "workspace": {
-      "root": "/home/z/my-project/examples/vaerion-demo",
+      "root": "/tmp/p628-sync/examples/vaerion-demo",
       "runs": 0
     },
     "span": {
@@ -456,12 +457,16 @@
       "measured": true,
       "ready": false,
       "verdict": "BLOCKED",
-      "passed": 8,
+      "passed": 4,
       "total": 12,
       "blockers": [
         {
+          "check": "verification-gates",
+          "detail": "verification record present (9 gates) — gate evidence absent (fail-closed)"
+        },
+        {
           "check": "git-tree-clean",
-          "detail": "working tree dirty: 0 staged, 44 unstaged, 1 untracked"
+          "detail": "working tree dirty: 283 staged, 0 unstaged, 0 untracked"
         },
         {
           "check": "release-tag-binding",

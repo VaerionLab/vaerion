@@ -1,50 +1,46 @@
-# Examples
+# Examples — the indexed library
 
-Runnable workspaces for the Vaerion engine (`0.1.13-rc1`). Each example is a
-real directory in this repository — measured, not narrated.
+Every entry below is a real directory in this repository, and every
+command quoted here or in the linked READMEs exists in the `vae` CLI of
+record (`0.1.14-rc1` — verified against the CLI source before being
+documented). Run ids and hashes will differ on your machine; the shapes
+and the `ok: true` will not.
 
-## The three two-minute proofs
+## The index
 
-Each is a short journey with measured expected output, built on the
-canonical demo-workspace assets below:
+| Example | Purpose | Try it | What it proves |
+|---|---|---|---|
+| [`verifiable-agent/`](verifiable-agent/) | an agent action with cryptographic evidence | scratch dir → `vae init --template agent` → `vae run agent --planner inline --plan-json '…'` → `vae journal verify RUN` | execution → journaled broker decisions → receipt → an independently verifiable chain (`ok: true`) |
+| [`refused-action/`](refused-action/) | unauthorized actions are stopped and recorded | scratch dir → `vae init --template agent` → flip one policy word → `vae run agent …` → `vae journal verify RUN` | fail-closed broker (`E1300`/`E1301`), a hash-chained refusal log, and a **failed run that still verifies** |
+| [`replay-machine/`](replay-machine/) | determinism you can hold | scratch dir → `vae init` + a `package:` block → `vae package build` twice → `sha256sum` → flip one byte → `vae package verify` | identical inputs → byte-identical `.vxn` bundles; the pure check refuses tampering with exit 5 |
+| [`vaerion-demo/`](vaerion-demo/) | the 15-minute demo workspace (the canonical external-tester workspace; pairs with [`docs/QUICKSTART.md`](../docs/QUICKSTART.md)) | `vae run demo --query "determinism"` → `vae journal verify RUN` → `vae package build` + `vae package verify .vaerion/package/vaerion-demo.vxn` | the research pipeline end-to-end: declared sources, fenced evidence, receipt, reproducible bundle |
+| [`vaerion/demo-workspace/`](vaerion/demo-workspace/) | committed DAG + agent-plan assets | copy the dir → `vae run workflow --dag workflow.json` and `vae run agent --planner inline --plan-json "$(cat plans/echo-plan.json)"` | deterministic topological workflow execution and an inline-planned agent run, both journaled and receipted |
+| [`websocket/`](websocket/) | standalone WebSocket sample (site stack) | see its sources (`server.ts`, `frontend.tsx`) | nothing about the engine — an independent transport demo that does **not** exercise `packages/vaerion/` |
 
-| Example | Proves |
-|---|---|
-| [`verifiable-agent/`](verifiable-agent/) | an AI agent action with cryptographic proof — execution → receipt → `journal verify` → `ok: true` |
-| [`refused-action/`](refused-action/) | Vaerion stops unauthorized actions — flip one policy word, watch the broker refuse, the refusal log chain, and the failed run still verify |
-| [`replay-machine/`](replay-machine/) | same input creates same verified execution — two builds, byte-identical; one flipped byte, refused with exit 5 |
+The first five are walkthroughs: their READMEs teach with real CLI
+commands against a scratch workspace, never claiming files exist that do
+not. The committed assets live in `vaerion-demo/` and
+`vaerion/demo-workspace/`.
 
-## vaerion-demo/ — the 15-minute demo workspace
+## How to read the walkthroughs
 
-The canonical external-tester workspace referenced by `docs/QUICKSTART.md` and
-exercised by the Empty Machine Test of record
-(`docs/ga/ASCENSION-XX-EMPTY-MACHINE-TEST.md`). It contains a minimal, valid
-`vaerion.yaml`, two local sources (`sources/journal.md`,
-`sources/determinism.md`), and `DEMO.md` — the walkthrough:
-
-1. Build the engine (`bun install` + gates) or unpack a release.
-2. `vae init` in a copy of this directory (or use it in place).
-3. `vae run demo` — index the declared local sources, journal everything, close
-   with a receipt.
-4. Inspect and verify the journal; read the receipt.
-5. `vae doctor` — prove the workspace is healthy.
-6. `vae package build` + `vae package verify` — prove reproducibility with your
-   own hands: build the bundle twice, compare the blake3 digests.
-
-The demo journey also feeds the dashboard's demo-workspace cockpit.
-
-## websocket/ — standalone WebSocket sample
-
-`server.ts` (a socket.io server: users, messages, system events) and
-`frontend.tsx` (a Next.js client using `socket.io-client`). This is an
-independent transport sample in the dashboard's web stack; it does not exercise
-the engine core (`packages/vaerion/`). The engine's own API surface is the
-loopback daemon (`vae serve`) over the contracts in `spec/openapi.json`.
+Each walkthrough README carries the same eight sections —
+**Purpose · Architecture · Code · Verification · Receipts · Expected
+output · Common mistakes · Next steps** — so you can skim the one you
+need. Expected-output blocks show the real renderer shapes (plain mode:
+`key: value`; `--json`: one NDJSON object per line) with your-ids-will-
+differ placeholders.
 
 ## Conventions
 
-- Examples are additive teaching surfaces; the contracts of record live in
-  `spec/`, and the CLI grammar of record is `vae --help` (or
-  `bun run vae --help` inside `packages/vaerion/`).
-- New examples should be minimal, deterministic, and runnable from a fresh
-  clone or a release tarball — the Empty Machine Test standard.
+- **Scratch first.** Walkthroughs run in a throwaway directory
+  (`cd "$(mktemp -d)"`) so nothing in your projects is touched. The
+  committed workspaces are used by copying, never by initializing over
+  (`vae init` refuses to overwrite an existing `vaerion.yaml` — E1600).
+- **The journal is the truth.** Receipts are the terminal `receipt`
+  record of a run's journal — there is no `.vaerion/receipts/` directory.
+- **Contracts of record live in `spec/`**, and the CLI grammar of record
+  is `vae --help` (or `vae help <command>`). New examples should be
+  minimal, deterministic, and runnable from a fresh clone or a release
+  tarball — the Empty Machine Test standard
+  (`docs/ga/ASCENSION-XX-EMPTY-MACHINE-TEST.md`).

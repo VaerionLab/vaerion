@@ -3,9 +3,10 @@ import type { MetadataRoute } from "next";
 /**
  * Sitemap of record for the Vaerion launch site.
  *
- * URLs use the canonical of record (https://vaerion.vercel.app —
- * consistent with layout metadataBase and OG declarations). When the
- * vaerion.dev domain connects, this URL and metadataBase flip together.
+ * URLs use the registered host of record (vaerion.vercel.app — consistent
+ * with the layout metadataBase and OG declarations). vaerion.dev remains
+ * unregistered; the flip-back is documented in the launch-kit domain
+ * decision when that host ever goes live.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

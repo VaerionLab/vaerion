@@ -28,6 +28,7 @@ const SHEET_GROUPS = [
   {
     label: "System",
     links: [
+      { href: "#/console", label: "Console index" },
       { href: "#/playground", label: "Trust playground" },
       { href: "#/laws", label: "Vaerion laws" },
       { href: "#/architecture", label: "Architecture" },
@@ -41,7 +42,8 @@ const SHEET_GROUPS = [
       { href: "#/docs", label: "Documentation" },
       { href: "#/docs/installation", label: "Install" },
       { href: "#/docs/cli", label: "CLI reference" },
-      { href: "#/docs/sdk", label: "TypeScript SDK" },
+      { href: "#/docs/sdk", label: "SDKs" },
+      { href: "#/integrations", label: "Integrations" },
       { href: "#/docs/faq", label: "FAQ" },
       { href: "#/docs/troubleshooting", label: "Troubleshooting" },
     ],
@@ -86,13 +88,13 @@ export default function Nav({ route }: { route: string }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Vaerion on GitHub"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-mutedfg transition-colors hover:text-body focus-visible:outline-2 focus-visible:outline-gold"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-mutedfg transition-colors hover:text-body focus-visible:outline-2 focus-visible:outline-gold"
           >
             <Github className="h-[17px] w-[17px]" aria-hidden />
           </a>
           <a
             href="#/playground"
-            className="ml-1 hidden min-h-[36px] items-center rounded-md bg-[#F5F5F0] px-4 font-mono text-[11.5px] font-semibold uppercase tracking-[0.1em] text-[#0A0E13] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:inline-flex"
+            className="ml-1 hidden min-h-[44px] items-center rounded-md bg-[#F5F5F0] px-4 font-mono text-[11.5px] font-semibold uppercase tracking-[0.1em] text-[#0A0E13] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:inline-flex"
           >
             Run demo
           </a>
@@ -101,7 +103,7 @@ export default function Nav({ route }: { route: string }) {
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
               aria-label="Open index"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-md text-body transition-colors hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-gold lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-md text-body transition-colors hover:bg-surface-2 focus-visible:outline-2 focus-visible:outline-gold lg:hidden"
             >
               <Menu className="h-5 w-5" aria-hidden />
             </SheetTrigger>

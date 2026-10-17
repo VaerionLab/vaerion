@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import { useHashRoute } from "./useHashRoute";
+import LandingPage from "@/app/_components/landing";
 import HomePage from "./pages/HomePage";
 import StatusPage from "./pages/StatusPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
@@ -14,6 +15,7 @@ import SecurityPage from "./pages/SecurityPage";
 import GovernancePage from "./pages/GovernancePage";
 import ReceiptsPage from "./pages/ReceiptsPage";
 import DevelopersPage from "./pages/DevelopersPage";
+import IntegrationsPage from "./pages/IntegrationsPage";
 import DocsHomePage from "./pages/DocsHomePage";
 import GettingStartedPage from "./pages/GettingStartedPage";
 import InstallationPage from "./pages/InstallationPage";
@@ -31,6 +33,13 @@ import type { Status } from "./pages/StatusPage";
  * The site shell — one Next.js route (/), many client pages selected by
  * location.hash. The console is dark-only: one operating canvas, the
  * obsidian field. There is no theme to choose in a runtime.
+ *
+ * Addressing law: only "#/…" addresses are console routes. The landing
+ * face of record (hero · problem · proof · demo · install · trust · docs
+ * · status) lives at "#/"; the console-native index page (five movements,
+ * 00–04) remains reachable at "#/console". Bare section anchors such as
+ * "#install" are not routes — useHashRoute resolves them to the home
+ * route and the browser performs the native scroll.
  */
 
 function Placeholder({ title }: { title: string }) {
@@ -54,6 +63,8 @@ function Placeholder({ title }: { title: string }) {
 export function resolvePage(route: string, status: Status | null): ReactNode {
   switch (route) {
     case "/":
+      return <LandingPage />;
+    case "/console":
       return <HomePage />;
     case "/playground":
       return <PlaygroundPage />;
@@ -73,6 +84,8 @@ export function resolvePage(route: string, status: Status | null): ReactNode {
       return <ReceiptsPage />;
     case "/developers":
       return <DevelopersPage />;
+    case "/integrations":
+      return <IntegrationsPage />;
     case "/docs":
       return <DocsHomePage />;
     case "/docs/getting-started":

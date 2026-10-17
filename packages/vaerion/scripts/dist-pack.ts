@@ -33,7 +33,7 @@ import { join, relative, resolve } from "node:path";
 const SECRET_RE = /\bgh[pousr]_[A-Za-z0-9]{20,}\b|\bAKIA[0-9A-Z]{16}\b|-----BEGIN [A-Z ]*PRIVATE KEY-----|\bxox[bpors]-[A-Za-z0-9-]{10,}\b/;
 
 /** The engine's runtime dependencies (package.json `dependencies`) — asserted present after install. */
-const RUNTIME_DEPS = ["ajv", "hash-wasm", "yaml"] as const;
+const RUNTIME_DEPS = ["hash-wasm", "yaml"] as const; // Phase 59.1: ajv removed — zero imports across the engine (verified by rg), the dead dependency class is closed.
 
 export interface DistReport {
   ok: boolean;

@@ -146,7 +146,7 @@ const LAYERS = [
     id: "L4",
     name: "Surfaces",
     icon: TerminalSquare,
-    modules: ["CLI — vae", "daemon — loopback HTTP/SSE", "TypeScript SDK (@vaerion/sdk)"],
+    modules: ["CLI — vae", "daemon — loopback HTTP/SSE", "SDKs — TypeScript in-process · Python / Go / Rust / Java over the wire"],
     note: "Everything a developer touches; thin over L1–L2.",
   },
   {

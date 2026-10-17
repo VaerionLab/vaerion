@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>dev.vaerion</groupId>
+  <artifactId>vaerion-sdk</artifactId>
+  <version>0.1.15-rc1</version>
+  <packaging>jar</packaging>
+
+  <name>Vaerion Java SDK</name>
+  <description>Java SDK for Vaerion, the verification layer for AI agents. Wire client over
+    the local loopback daemon (`vae serve`): brokered agent and workflow runs,
+    folded run status with terminal receipts, SSE event streams, and journal
+    verification through the CLI of record. Generated against engine
+    0.1.15-rc1 per VAERION_SDK_STANDARD.</description>
+  <url>https://vaerion.vercel.app</url>
+
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.release>21</maven.compiler.release>
+    <jackson.version>2.22.3</jackson.version>
+    <junit.version>5.14.4</junit.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.1</version>
+        <configuration>
+          <release>21</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.5.4</version>
+        <configuration>
+          <redirectTestOutputToFile>false</redirectTestOutputToFile>
+          <useFile>false</useFile>
+          <trimStackTrace>true</trimStackTrace>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.6.2</version>
+        <configuration>
+          <mainClass>dev.vaerion.sdk.examples.Basic</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

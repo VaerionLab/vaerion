@@ -42,16 +42,7 @@ measured status of record; item numbering below matches that list):
    (`packages/vaerion/coverage-baseline.json`, blessed deliberately). A
    module more than 1pp below its floor fails the gate BY NAME — coverage
    can never decrease silently.
-9. **Journal completeness is client-side tamper-evidence, not
-   tamper-impossibility.** Closed journals carry an in-chain receipt that
-   commits to the final record count and head hash; the verifier enforces
-   it (E1010) and a permanent attack suite exercises it
-   (`packages/vaerion/tests/security/journal-completeness.test.ts`;
-   `VAERION_SECURITY_PROOF_v1.0.md`). The honest boundary: an adversary who
-   rewrites a journal AND re-folds its receipt in concert produces a
-   self-consistent file — adversarial custody requires external anchoring
-   (`vae snapshot`, `vae provenance`, or a published receipt).
-10. **MS-6 leftovers** (`ROADMAP_PROGRESS.md` — "Recommended next work"):
+9. **MS-6 leftovers** (`ROADMAP_PROGRESS.md` — "Recommended next work"):
    native single-binary installers (host-gated; see §2) are not done. The
    daemon packages route group (pack/verify/import) **is done** — ASCENSION
    XXVI+ closed it with wire-parity tests and `spec/openapi.json`
@@ -110,10 +101,13 @@ From `docs/ga/GO-NO-GO.md` §2 and `docs/ga/FINAL-VERIFIED-REALITY-REPORT.md`
   disclosed"; measured, worklog.md Task 3 entry).
 - **F-4 — Substrate ratification.** ADR-0018 (TypeScript-on-Bun) remains
   PROVISIONAL pending the Founder decision; migration path recorded.
-- **F-5 — Publication.** npm/PyPI/homebrew-core/winget submissions,
-  installer URL, announce, and beta recruitment are release-train steps
-  the Founder executes (`docs/ga/PHASE-XXIII-PUBLICATION-GAP-AUDIT.md`
-  lists registry publication and hosted deploy as BLOCKED in-sandbox).
+- **F-5 — Publication.** npm IS live — `vaerion@0.1.14-rc1` published
+  (dist-tags `rc` + `latest`, measured on registry.npmjs.org 2026-10-03;
+  stranger-tested end-to-end). PyPI / homebrew-core / winget submissions,
+  the `vaerion.dev` installer URL, announce, and beta recruitment remain
+  release-train steps the Founder executes
+  (`docs/ga/PHASE-XXIII-PUBLICATION-GAP-AUDIT.md` history; PyPI registry
+  measured 404 on 2026-10-03).
 - **F-6 — Real-provider cassettes.** One sanctioned recording session per
   adapter with provider credentials (`docs/security/RISK-LEDGER.md` R-4)
   — required for end-to-end golden coverage of the ModelPlanner success

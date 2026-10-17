@@ -1,0 +1,39 @@
+[project]
+name = "vaerion-autogen"
+version = "0.1.15rc1"
+description = "Official Vaerion integration for AutoGen — autogen_ext MCP tool adapters bound to the in-engine `vae mcp` verification layer"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Auren", email = "auren@vaerion.dev" }]
+keywords = ["vaerion", "verification", "autogen", "mcp", "agents"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Agents",
+]
+dependencies = [
+  "autogen-ext[mcp]>=0.7",
+  "autogen-core>=0.7",
+  # Declared (measured 2026-10-03): tests/test_mcp_e2e.py imports
+  # autogen_agentchat directly; it was previously undeclared (real gap,
+  # measured via ModuleNotFoundError on a clean install).
+  "autogen-agentchat>=0.7",
+  # PIN (measured 2026-10-03): mcp 2.x removes mcp.shared.context.RequestContext,
+  # which autogen-ext imports. Cap below 2 until upstream ratifies the 2.x surface.
+  "mcp>=1,<2",
+]
+
+[project.urls]
+Repository = "https://github.com/VaerionLab/vaerion"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

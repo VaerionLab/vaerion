@@ -1,59 +1,101 @@
-# Demo 2 — The Refused Action
+# Example — The Refused Action
 
-**Proves**: Vaerion stops unauthorized actions — permission request,
-broker refusal, refusal log.
+> A walkthrough, not a fixture: every command below is a real `vae`
+> command (`0.1.13-rc1`) run in a scratch workspace. Run ids and hashes
+> will differ; the shape of the refusal will not.
 
-Every command below was executed end-to-end against the published
-`vaerion@0.1.13-rc1` package. Your run ids and hashes will differ; the
-shape of the refusal will not.
+## Purpose
 
-## The idea
+Prove that Vaerion stops unauthorized actions — and that a refusal is
+evidence, not an error to hide. One flipped policy word turns the
+Verifiable Agent's allowed step into a broker refusal: the action is
+denied, the denial is journaled twice (in the run **and** in the
+workspace's hash-chained refusal log), and the failed run **still
+verifies**.
 
-Declaring a tool in `vaerion.yaml` grants **nothing**. Only policy
-rules grant. The broker is fail-closed: unmatched means denied — and
-every denial is recorded twice: as a journaled broker decision inside
-the run, and as an entry in the workspace's **hash-chained refusal log**
-(`.vaerion/refusals.log`).
+## Architecture
 
-This demo refuses an action by changing exactly **one word** of policy.
+| Piece | Role |
+|---|---|
+| Broker layers (`broker/engine.ts`) | shape → permission-graph ceiling → policy. Fail-closed at every layer |
+| `PolicyRule.effect` | `allow` / `deny` / `prompt`; first match wins; **no match ⇒ deny `E1301`** |
+| Refusal log (`broker/refusal-log.ts`) | every deny appended to `.vaerion/refusals.log` — a blake3 chain of its own, genesis `prev` = 64 zeros |
+| `agentGrants` (`agents/grants.ts`) | the agent's ceiling grants are *derived* from admitted policy rules — a deny rule removes the grant too |
+| `vae center` | folds runs, metering, and **both chains' integrity** into one read-only report |
 
-## Run it
+## Code
 
 ```sh
-# 1. provision (same workspace as the Verifiable Agent demo)
-cp -r examples/vaerion/demo-workspace refused-action && cd refused-action
-mkdir -p .vaerion/journal .vaerion/blobs
-
-# 2. flip one word: allow -> deny, on the echo-tool rule in vaerion.yaml
-#    (any editor — or:)
-sed -i 's/effect: allow/effect: deny/' vaerion.yaml
-
-# 3. run the SAME agent plan as Demo 1 — the tool step now crosses a deny rule
-vae run agent --goal "Try the echo tool without a grant" \
-  --planner inline \
-  --plan-json '[
-    { "kind": "note", "text": "the demo agent starts with a note step" },
-    { "kind": "tool", "tool": "echo", "args": { "value": "hello from the committed example" } }
-  ]'
-
-# 4. the refusal record
-tail -1 .vaerion/refusals.log | cut -c1-200
-vae center | grep -A3 refusal_log
-vae journal ls                 # note the FAILED run's id
-vae journal verify <RUN_ID>    # the failed run's journal STILL verifies
+cd "$(mktemp -d)"
+vae init --template agent            # one policy rule: allow model.invoke mockbrain/mock-1
 ```
 
-## Expected output (measured, trimmed)
+Flip exactly one word of that rule — `allow` → `deny` (any editor; on
+GNU sed):
+
+```sh
+sed -i 's/effect: allow/effect: deny/' vaerion.yaml
+```
+
+Run the same kind of plan the Verifiable Agent ran — the model step now
+crosses a deny rule:
+
+```sh
+vae run agent --goal "Try to invoke the planner model without a grant" \
+  --planner inline \
+  --plan-json '[
+    { "kind": "note", "text": "this step is not allowed anymore" },
+    { "kind": "model", "model": "mockbrain/mock-1",
+      "messages": [ { "role": "user", "content": "hello" } ] }
+  ]'
+```
+
+Then look at the evidence:
+
+```sh
+tail -1 .vaerion/refusals.log | cut -c1-200   # the newest refusal entry
+vae center                                     # runs, metering, refusal_log + audit integrity
+vae journal ls                                 # note the FAILED run's id
+vae journal verify <RUN_ID>                    # the failed run's journal STILL verifies
+```
+
+## Verification
+
+- `vae journal verify <RUN_ID>` on the **failed** run reports
+  `ok: true`, `torn: false`, `issues: []` — a refusal is journaled
+  evidence like any other record.
+- `vae center` reports the refusal log's chain integrity alongside the
+  audit ledger; `vae doctor` re-checks both chains any time.
+- Delete the rule entirely instead of flipping it and the broker still
+  refuses — unmatched means deny (`E1301`): the absence of permission is
+  not permission.
+
+## Receipts
+
+The refused run closes with a receipt like any run — that is the point.
+Its `counts.decisions_deny` is `1`; its `journal.head_hash` commits to a
+chain that contains the denial. The refusal log entry is a separate,
+independent chain record:
+
+```json
+{"k":"refusal","i":1,"prev":"000000000000…","at":"2026-09-26T14:36:14.732Z",
+ "run_id":"crn_run_…","decision_id":"01M3F2ACGBA9R99T8XRXVGM8V6",
+ "reason_code":"E1300","domain":"model.invoke","scope":"mockbrain/mock-1", …}
+```
+
+## Expected output
+
+Plain mode, trimmed (ids and hashes are placeholders):
 
 ```text
 command: run
 kind: agent
-run_id: crn_run_01M3F2C34PE2FP8JJWNZFDBDKB
+run_id: crn_run_01JAN5E9T3N7Y2WZ4KPD8RVH1X
 outcome: failed
 steps: 1
 failures: 1
 metrics:
-  tools:
+  model:
     requested: 1
     denied: 1
 receipt:
@@ -62,46 +104,30 @@ receipt:
 journal_verified: true
 ```
 
-The refusal log — a hash chain of its own (genesis `prev` is 64 zeros):
+The CLI exits cleanly (exit `0`): a refusal inside the supervised loop is
+an **outcome**, not a crash. (Broker denial as a run-level exit code —
+`3` — applies where the run itself is the denied action, e.g. `vae run
+demo` against a denied source.)
 
-```text
-{"k":"refusal","i":1,"prev":"000000000000…","at":"2026-09-26T14:36:14.732Z",
- "run_id":"crn_run_01M3F2ACG2TQ228DTTZ7E65FK0","decision_id":"01M3F2ACGBA9R99T8XRXVGM8V6",…}
-```
+## Common mistakes
 
-`vae center` reports the refusal log's chain integrity alongside the
-audit ledger. And the failed run's journal **still verifies** —
-`ok: true` — because a refusal is evidence too.
+- **macOS/BSD `sed -i`** needs an argument (`sed -i '' 's/…/…/'`) — or
+  just flip the word in your editor.
+- **Expecting exit 3** — agent-loop refusals end with `outcome: failed`
+  and exit `0` (the journal verified). Exit 3 is the run-level
+  broker-denied code for other run kinds.
+- **Hand-editing `.vaerion/refusals.log`** — it is a hash chain;
+  tampering breaks `vae center`/`vae doctor` verification loudly. There
+  is no repair for an edited refusal: the chain is the point.
+- **Treating the refusal as a bug** — check the `rationale` in the
+  policy rule that refused; the reason is part of the rule, by law.
 
-## What just happened
+## Next steps
 
-1. The plan's tool step requested `tool.call echo`.
-2. The broker evaluated shape → ceiling → policy. First match wins:
-   the rule now says **deny**.
-3. The step failed honestly — `outcome: failed`, `failures: 1` — while
-   the CLI itself exited cleanly (exit 0): a refusal is an *outcome*,
-   not a crash. The catalog calls this family `E1300 broker_denied`
-   (`spec/errors.yaml`); the measured plain output reports it as the
-   denied counters you see above.
-4. The denial was journaled in the run **and** appended to the
-   workspace refusal log — hash-chained, tamper-evident, independent of
-   the run's own journal.
-5. `vae journal verify` on the failed run: `ok: true`. Trust even in
-   refusal.
-
-## The deeper law
-
-- **Fail-closed**: remove *all* rules and every request is denied —
-  the absence of permission is not permission.
-- **No blanket grants**: a `prompt` effect opens a durable human gate
-  (`vae resume RUN_ID --answer '{…}')` — approvals are journaled as
-  elevation authority, scoped to that request.
-- Try it: delete the `allow-mockbrain-model` rule too and add a model
-  step to the plan — same story, different domain.
-
-## Where to go next
-
-- Policy syntax and the three broker layers:
-  [`docs/guides/permissions.md`](../../docs/guides/permissions.md)
 - The positive path — a brokered action that succeeds:
   [`../verifiable-agent/`](../verifiable-agent/)
+- Policy syntax and the three broker layers:
+  [`../../docs/guides/permissions.md`](../../docs/guides/permissions.md)
+- `PolicyRule` / `evaluatePolicy` / `RefusalEntry` types:
+  [`../../docs/reference/engine-api.md`](../../docs/reference/engine-api.md)
+  (§ Broker)

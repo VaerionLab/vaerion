@@ -23,8 +23,6 @@ const provisionHuman = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  // Canonical of record: the Vercel production URL, until the vaerion.dev
-  // domain connects (flip together with src/app/sitemap.ts + public/robots.txt).
   metadataBase: new URL("https://vaerion.vercel.app"),
   title: "Vaerion — The verification layer for AI agents",
   alternates: {
@@ -51,7 +49,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Auren" }],
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },

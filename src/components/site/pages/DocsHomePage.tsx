@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, TerminalSquare, Download, Braces, Boxes, ShieldCheck, CircleHelp, Wrench, ArrowRight } from "lucide-react";
+import { BookOpen, TerminalSquare, Download, Braces, Boxes, ShieldCheck, CircleHelp, Wrench, Plug, ArrowRight } from "lucide-react";
 import { FACTS } from "../facts";
 import { PageHero, Section, Panel, Callout, ArrowLink, GoldButton, CTARow, Bullets } from "../primitives";
 import DocsNav from "../DocsNav";
@@ -27,8 +27,14 @@ const PAGES = [
   {
     icon: Braces,
     href: "#/docs/sdk",
-    title: "TypeScript SDK",
-    text: "@vaerion/sdk from source: VaeClient, VaeDaemonClient, the loopback pairing token, and the tested CLI parity law.",
+    title: "SDKs",
+    text: "Five languages, one engine: @vaerion/sdk in-process, plus Python, Go, Rust, and Java over the loopback daemon — binding models and test counts stated honestly.",
+  },
+  {
+    icon: Plug,
+    href: "#/integrations",
+    title: "Integrations",
+    text: "The alliance: vae mcp and the five ratified hosts — OpenAI Agents SDK, LangGraph, CrewAI, AutoGen — with the verification story and the attach config.",
   },
   {
     icon: Boxes,
@@ -78,7 +84,7 @@ export default function DocsHomePage() {
 
       <Section
         label="The docs map"
-        title="Eight documents, one engine."
+        title="Nine documents, one engine."
         lead="Each page distills a document of record in the repository. Nothing here claims more than the engine can prove."
       >
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

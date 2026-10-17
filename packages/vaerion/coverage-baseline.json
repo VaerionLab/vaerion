@@ -46,8 +46,8 @@
       "lines": 90.06
     },
     "src/agents/tools.ts": {
-      "funcs": 83.33,
-      "lines": 99
+      "funcs": 88.89,
+      "lines": 100
     },
     "src/api/index.ts": {
       "funcs": 100,
@@ -126,12 +126,16 @@
       "lines": 100
     },
     "src/cli/commands.ts": {
-      "funcs": 70.06,
-      "lines": 83.56
+      "funcs": 73.74,
+      "lines": 85.67
     },
     "src/cli/completions.ts": {
       "funcs": 100,
       "lines": 100
+    },
+    "src/cli/interactive.ts": {
+      "funcs": 100,
+      "lines": 96.08
     },
     "src/cli/io.ts": {
       "funcs": 100,
@@ -145,13 +149,17 @@
       "funcs": 69.23,
       "lines": 48.65
     },
+    "src/cli/suggest.ts": {
+      "funcs": 100,
+      "lines": 100
+    },
     "src/cli/ui.ts": {
       "funcs": 83.96,
-      "lines": 89.63
+      "lines": 89.53
     },
     "src/cli/vae.ts": {
-      "funcs": 80,
-      "lines": 92.75
+      "funcs": 62.5,
+      "lines": 78.49
     },
     "src/cli/workspace.ts": {
       "funcs": 100,
@@ -238,8 +246,8 @@
       "lines": 100
     },
     "src/identity/identity.ts": {
-      "funcs": 71.43,
-      "lines": 96
+      "funcs": 78.57,
+      "lines": 97
     },
     "src/index.ts": {
       "funcs": 100,
@@ -312,6 +320,10 @@
     "src/kernel/tar.ts": {
       "funcs": 100,
       "lines": 97.65
+    },
+    "src/mcp/server.ts": {
+      "funcs": 85.71,
+      "lines": 73.86
     },
     "src/package/build.ts": {
       "funcs": 80,

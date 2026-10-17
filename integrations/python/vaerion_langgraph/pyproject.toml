@@ -1,0 +1,40 @@
+[project]
+name = "vaerion-langgraph"
+version = "0.1.15rc1"
+description = "Official Vaerion integration for LangGraph — MCP-adapter tools bound to the in-engine `vae mcp` verification layer"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Auren", email = "auren@vaerion.dev" }]
+keywords = ["vaerion", "verification", "langgraph", "mcp", "agents"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Software Development :: Agents",
+]
+dependencies = [
+  # Declared (measured 2026-10-03): tests/test_mcp_e2e.py builds a real
+  # StateGraph + ToolNode — the framework itself was previously undeclared.
+  "langgraph>=1.2",
+  "langchain-mcp-adapters>=0.3",
+  # Declared because the public return type of get_tools() is langchain_core
+  # BaseTool and our docs/tests bind against it (the adapter pulls it too).
+  "langchain-core>=0.3",
+  # PIN (measured 2026-10-03): mcp 2.x removes mcp.shared.context.RequestContext,
+  # which langchain-mcp-adapters imports. Cap below 2 until upstream ratifies 2.x.
+  "mcp>=1,<2",
+]
+
+[project.urls]
+Repository = "https://github.com/VaerionLab/vaerion"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]

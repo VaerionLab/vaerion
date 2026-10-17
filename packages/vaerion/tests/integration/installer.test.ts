@@ -46,7 +46,7 @@ describe("installer pipeline — pack → inventory → secrets → install → 
 
       // INSTALL: the real installer resolved engine + runtime deps offline.
       expect(report.steps.map((s) => s.step)).toContain("install");
-      expect(report.vendored).toEqual(["ajv", "hash-wasm", "yaml"]);
+      expect(report.vendored).toEqual(["hash-wasm", "yaml"]); // ajv removed in Phase 59.1 (zero imports — dead dep class closed)
 
       // SMOKE: the installed shim executes the full daily surface.
       const smokeSteps = report.steps.filter((s) => s.step.startsWith("smoke:")).map((s) => s.step);

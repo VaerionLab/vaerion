@@ -78,10 +78,10 @@ telemetry:
 `;
 
 describe("the init template registry (Phase 5)", () => {
-  test("the registry of record is exactly minimal, demo, agent — deterministic names", () => {
-    expect(initTemplateNames()).toEqual(["agent", "demo", "minimal"]);
+  test("the registry of record is exactly agent, automation, demo, enterprise, minimal, multi-agent, tool — deterministic names", () => {
+    expect(initTemplateNames()).toEqual(["agent", "automation", "demo", "enterprise", "minimal", "multi-agent", "tool"]);
     expect(DEFAULT_INIT_TEMPLATE).toBe("minimal");
-    expect(Object.keys(INIT_TEMPLATES).length).toBe(3);
+    expect(Object.keys(INIT_TEMPLATES).length).toBe(7);
   });
 
   test("bare init is byte-identical to the pre-A3 default (evolution without betrayal)", async () => {
@@ -129,7 +129,7 @@ describe("`vae init --template` — the CLI face (Phase 5)", () => {
     expect(code).toBe(ExitCode.usage);
     const text = captured.lines.join("\n");
     expect(text).toContain("E1203");
-    expect(text).toContain("agent, demo, minimal"); // the available set is named (deterministic order)
+    expect(text).toContain("agent, automation, demo, enterprise, minimal, multi-agent, tool"); // the available set is named (deterministic order)
     const { stat } = await import("node:fs/promises");
     expect(await stat(join(dir, "vaerion.yaml")).then(() => true, () => false)).toBe(false);
   });

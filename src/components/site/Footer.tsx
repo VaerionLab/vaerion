@@ -22,6 +22,7 @@ const INDEX_COLS = [
   {
     label: "System",
     links: [
+      { href: "#/console", label: "Console index" },
       { href: "#/playground", label: "Trust playground" },
       { href: "#/laws", label: "Vaerion laws" },
       { href: "#/architecture", label: "Architecture" },
@@ -35,7 +36,8 @@ const INDEX_COLS = [
       { href: "#/docs", label: "Documentation" },
       { href: "#/docs/installation", label: "Install" },
       { href: "#/docs/cli", label: "CLI reference" },
-      { href: "#/docs/sdk", label: "TypeScript SDK" },
+      { href: "#/docs/sdk", label: "SDKs" },
+      { href: "#/integrations", label: "Integrations" },
       { href: "#/docs/faq", label: "FAQ" },
       { href: "#/docs/troubleshooting", label: "Troubleshooting" },
     ],
@@ -80,7 +82,7 @@ export default function Footer() {
                       <a
                         href={l.href}
                         {...("external" in l && l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                        className="inline-flex min-h-[28px] items-center font-mono text-[11.5px] text-mutedfg transition-colors hover:text-body"
+                        className="inline-flex min-h-[44px] items-center font-mono text-[11.5px] text-mutedfg transition-colors hover:text-body sm:min-h-[28px]"
                       >
                         {l.label}
                       </a>

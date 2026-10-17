@@ -28,21 +28,9 @@ vae journal ls                 # collect the run_id (crn_run_…)
 vae journal verify RUN_ID      # recompute the whole blake3 chain
 ```
 
-A green report means integrity **and** completeness: every closed run
-ends with a receipt record that commits to the run's final record count
-and head hash, and the verifier enforces the commitment. Tampering is
-reported with the record-level cause and a fix:
-
-- edit any record → `E1001` (exit 5) — hash mismatch at that record;
-- delete the final record → `E1010` (exit 5) — completeness anchor
-  missing: records were removed after close;
-- delete an internal record and re-chain → `E1005` (seq gap) or `E1010`
-  (receipt count/head commitment) — the certified tail was replaced.
-
 If a crash ever tears a tail, `vae journal recover RUN_ID` truncates
 **only** the torn tail and re-seals with an auditable note — never a
-silent rewrite. If the torn tail was the receipt, recovery
-**re-certifies** the run by folding and appending a fresh one.
+silent rewrite.
 
 ## Verify an artifact
 
@@ -79,8 +67,12 @@ openssl pkeyutl -verify -pubin -inkey release-signing.pub \
 
 Key custody, rotation, and recovery:
 [`../security/SIGNING-CEREMONY.md`](../security/SIGNING-CEREMONY.md).
-The npm package `vaerion@0.1.13-rc1` was published from the exact
-sha256-verified artifact of record — registry bytes ≡ release bytes.
+The npm package published to date, `vaerion@0.1.14-rc1`, came from the exact
+sha256-verified artifact of record — registry bytes ≡ release bytes. From the
+`0.1.15-rc1` one-true-artifact epoch (Phase 61.1), any future publish must
+first prove parity: `tools/verify-artifact-parity.ts` re-derives the packed
+tarball's command surface, templates, and docs claims from the tree before
+the artifact may ship.
 
 ## CI is part of the law
 

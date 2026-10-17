@@ -108,8 +108,11 @@ describe("bare `vae` — the welcome front door (constitution v1.2 D-M′/A2)", 
     // Phase 16 contract resolution: `next` is the designed array of adaptive
     // suggestions (cli-first-run.test.ts pins the same shape; status.hints
     // carries it too) — the single-suggestion object was the earlier draft.
+    // Phase 59.1: `vae start` (the five-minute first agent) now LEADS the
+    // fresh-directory suggestions; init/tour/help follow.
     const next = payload["next"] as string[];
-    expect(next[0]?.startsWith("vae init")).toBe(true);
+    expect(next[0]?.startsWith("vae start")).toBe(true);
+    expect(next.some((s) => s.startsWith("vae init"))).toBe(true);
     expect(typeof payload["read_only"]).toBe("string");
   });
 

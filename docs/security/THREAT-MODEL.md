@@ -1,5 +1,18 @@
 # Vaerion Threat Model — v0.1.7-rc2 (Phase 1)
 
+> **Currency note (honest):** this document's baseline is `v0.1.7-rc2`
+> (Phase 1). It was re-affirmed against the `v0.1.15-rc1` engine of record
+> in the Phase 61.2 final security audit (2026-10-04): the loopback-only
+> daemon (ADR-0010), pairing-token lifecycle (printed once, per-boot
+> rotation, 43-char), refusal chains (E1300/E1301/E1302, E2004), journal
+> integrity (E1001, plus the E1010 completeness anchor added in the
+> 0.1.15-rc1 epoch), and the zero-telemetry network posture were all
+> re-measured live and hold. Surface deltas since the baseline — `verify` /
+> `create` / `start` / `mcp` commands, the SDK daemon clients' in-code
+> loopback enforcement (E2006) — add no new trust boundary: they are
+> client/CLI-local or speak the same loopback-only daemon contract.
+> Deltas to this page itself remain tracked in [`RISK-LEDGER.md`](RISK-LEDGER.md).
+
 Scope: the shipped v0.1 surface — the `vae` CLI, the loopback API daemon,
 the TypeScript SDK, the extension host, the model gateway, and the
 reproducible packaging subsystem. Trust boundaries, adversaries, and the
@@ -74,12 +87,3 @@ owners live in `RISK-LEDGER.md`.
 - **P-REPRODUCIBLE**: identical inputs produce byte-identical bundles
   (blake3 identity, pinned compression), so any tampering with release
   artifacts is detectable by rebuild-and-compare.
-- **P-COMPLETE-RECORD**: every closed run's journal ends with a receipt
-  record that commits to its final record count and head hash; the
-  verifier enforces the commitment (E1010) — tail deletion, re-chained
-  deletion, and receipt removal after close are detectable. Boundary:
-  client-side anchoring is tamper-*evident*, not tamper-*impossible* — a
-  hostile host that rewrites journal and receipt in concert requires
-  external anchoring (`vae snapshot` / published receipts). Tested
-  against a defined attack suite:
-  [`../../VAERION_SECURITY_PROOF_v1.0.md`](../../VAERION_SECURITY_PROOF_v1.0.md).
