@@ -38,7 +38,8 @@ Verify the install: `vae --help` (the whole surface, always current) ·
 Every release ships a full signed artifact set:
 [github.com/VaerionLab/vaerion/releases](https://github.com/VaerionLab/vaerion/releases)
 — source tarball, `vaerion-demo.vxn`, `SHA256SUMS`,
-`MANIFEST.json` + `MANIFEST.json.sig`, `release-signing.pub`, and
+`MANIFEST.json` + `MANIFEST.json.sig`, `release-signing.pub`,
+`dist-report.json` (the packer's own gate record), and
 `VERIFY.md` (the consumer instructions).
 
 The anonymous three-leg verification, exactly as a fresh consumer runs

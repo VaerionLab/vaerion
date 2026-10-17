@@ -12,7 +12,7 @@ telemetry, auditable by construction.
 ![license](https://img.shields.io/badge/license-Apache--2.0-9C9CA6)
 ![telemetry](https://img.shields.io/badge/telemetry-zero_by_construction-9C9CA6)
 
-[Website](https://vaerion.vercel.app) · [Docs](docs/README.md) · [Discussions](https://github.com/VaerionLab/vaerion/discussions) · [Support](SUPPORT.md) · [Security proof](VAERION_SECURITY_PROOF_v1.0.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
+[Website](https://vaerion.vercel.app) · [Docs](docs/README.md) · [Quick start](docs/QUICKSTART.md) · [Contributing](CONTRIBUTING.md) · [Discussions](https://github.com/VaerionLab/vaerion/discussions) · [Support](SUPPORT.md) · [Security proof](VAERION_SECURITY_PROOF_v1.0.md) · [Code of Conduct](CODE_OF_CONDUCT.md)
 
 Vaerion runs AI-assisted work the way a database engine runs
 transactions: every step lands on one versioned event spine, journals
@@ -55,14 +55,14 @@ differ; the shape and the `ok: true` will not.
 
 ## Installation
 
-**Prerequisite: [Bun](https://bun.sh) 1.3+** (the engine executes on the
-Bun runtime — without it, `vae` refuses with a taught error, never a
-cryptic one).
+**Prerequisite: [Bun](https://bun.sh) 1.3+** (the tested floor; the npm
+launcher accepts 1.2+ — the engine executes on the Bun runtime — without
+it, `vae` refuses with a taught error, never a cryptic one).
 
 ```sh
 curl -fsSL https://bun.sh/install | bash    # if Bun is not installed yet
 npm install -g vaerion@rc                    # npm channel — see the version note below
-vae --version                                # → vae 0.1.15-rc1 (tree of record)
+vae --version                                # → vae 0.1.14-rc1 today — see the note below
 ```
 
 > **Version note (honest):** the npm registry still delivers `0.1.14-rc1` —
@@ -140,7 +140,8 @@ Architecture decisions: [`docs/adr/README.md`](docs/adr/README.md).
   head hash; `vae journal verify` enforces the commitment (E1010) —
   editing, re-chaining, or deleting records after close is detectable.
   Tested against a defined attack suite:
-  [`VAERION_SECURITY_PROOF_v1.0.md`](VAERION_SECURITY_PROOF_v1.0.md).
+  [`VAERION_SECURITY_PROOF_v1.0.md`](VAERION_SECURITY_PROOF_v1.0.md)
+  (captured at the `0.1.13-rc1` epoch; every property re-measured since).
 - **One sanctioned egress.** All model I/O crosses a single gateway
   gate; nothing else in the engine may open the network (constitutionally
   enforced, mechanically checked).

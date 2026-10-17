@@ -1,16 +1,18 @@
 # Vaerion CLI Manual — `vae`
 
 > **Provenance and honesty note.** This manual was generated for engine
-> `0.1.14-rc1` from the CLI's single source of truth — the `COMMAND_HELP`
-> registry in `packages/vaerion/src/cli/vae.ts` — and cross-checked against
-> `packages/vaerion/src/cli/commands.ts`, `src/cli/io.ts` (exit codes), and
+> `0.1.15-rc1` (re-verified 2026-10-18) from the CLI's single source of truth
+> — the `COMMAND_HELP` registry in `packages/vaerion/src/cli/vae.ts` — and
+> cross-checked against `packages/vaerion/src/cli/commands.ts`,
+> `src/cli/io.ts` (exit codes), and
 > `src/cli/ui.ts` (rendering profiles). Every command topic listed here was
 > verified by executing `vae <command> --help` on this tree before this file
 > was written, and re-verified against engine `0.1.13-rc1` @ `7e6b751`
 > (2026-10-01) and against engine `0.1.14-rc1` (version-register alignment,
-> 2026-10-03) after the Phase 59.1/59.2 surface growth (`create`, `verify`,
-> `start`, `mcp`, interactive prompts, the 7-template registry). Flags not
-> present in the registry are not documented.
+> 2026-10-03) and `0.1.15-rc1` (2026-10-18) after the Phase 59.1/59.2
+> surface growth (`create`, `verify`, `start`, `mcp`, interactive prompts,
+> the 7-template registry). Flags not present in the registry are not
+> documented.
 >
 > Shell completions are a registry command (`vae completions
 > <bash|zsh|fish|powershell|nushell|xonsh>` — generated from the ONE
@@ -629,10 +631,11 @@ registry commands (all present in `vae --help`) round it out:
 
 ---
 
-*This manual documents the registry of record at engine `0.1.14-rc1`:
-the registry grew content-additively during Phases 59.1/59.2 — the new
-commands `create`, `verify`, `start`, and `mcp`, the interactive prompt
-layer on `create`/`start`, and the 7-template registry (`enterprise`
-added) — all documented above and re-verified against source @ `7e6b751`
-(2026-10-01). The registry is the one authority: if code and this file
-ever disagree, the code wins and this file is a defect.*
+*This manual documents the registry of record at engine `0.1.15-rc1`
+(re-verified 2026-10-18): the registry grew content-additively during
+Phases 59.1/59.2 — the new commands `create`, `verify`, `start`, and `mcp`,
+the interactive prompt layer on `create`/`start`, and the 7-template
+registry (`enterprise` added) — all documented above and re-verified
+against source @ `7e6b751` (2026-10-01). The registry is the one
+authority: if code and this file ever disagree, the code wins and this
+file is a defect.*

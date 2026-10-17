@@ -49,7 +49,7 @@ daemon by default; pass `base=`/`token=` to attach to one you run yourself.
 | `agent.events(run_id)` | the run's SSE event stream (JSON payloads, replay) |
 | `agent.status(run_id)` | the folded status view without waiting |
 | `agent.verify(run_id=None)` | FULL chain recomputation via the CLI of record (`vae verify` semantics) |
-| `agent.answer_gate(run_id, gate_id, answer)` | human authority over a paused (gated) run |
+| `agent.client.answer_gate(run_id, gate_id, answer)` | human authority over a paused (gated) run — the raw-wire client carries it; the facade covers run/workflow/events/status/verify |
 | `VaeDaemonClient(base, token)` | the raw wire client: health/version/openapi, start/get/events/answer/shutdown |
 
 Errors are `VaerionError(code, message, fix)` — the daemon's stable E-codes

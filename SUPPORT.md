@@ -42,8 +42,9 @@ The command surface of record is `vae --help` (run `bun run vae --help` inside
 Exit codes: `0` ok · `1` internal · `2` usage · `3` broker-denied ·
 `4` provider-down · `5` partial-with-repair-hint.
 
-Note: there is no top-level `vae verify` command; verification subcommands exist
-under `journal`, `package`, and `repo` (e.g. `vae journal verify RUN_ID`).
+Note: `vae verify` is a top-level command in the `0.1.15-rc1` tree of record
+(absent from the npm-delivered `0.1.14-rc1` engine). Verification subcommands
+also exist under `journal`, `package`, and `repo` (e.g. `vae journal verify RUN_ID`).
 
 ## Reporting a problem
 

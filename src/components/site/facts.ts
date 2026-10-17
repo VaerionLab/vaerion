@@ -110,7 +110,7 @@ export const FACTS = {
   release: {
     tag: "v0.1.15-rc1",
     signing: "Ed25519 (sha256 + manifest + independent openssl verification)",
-    status: "prerelease — signed, reproducible; GitHub release + npm publish pending the Founder gate (0.1.15-rc1, the one-true-artifact epoch)",
+    status: "prerelease — signed, reproducible; GitHub Release v0.1.15-rc1 LIVE (8 assets, signature + digests verified); npm publish pending the Founder gate (the registry still delivers 0.1.14-rc1)",
   },
 
   install: {
@@ -119,7 +119,7 @@ export const FACTS = {
       { name: "From source", command: "git clone … && bun install --frozen-lockfile", status: "VERIFIED", available: true },
       { name: "GitHub Releases", command: "signed tarball + install.sh", status: "VERIFIED", available: true },
       { name: "npm", command: "npm install -g vaerion@rc", status: "LIVE BUT LAGS THE TREE — the registry delivers 0.1.14-rc1 (an older engine without verify/create/start/mcp) until the Founder-gated 0.1.15-rc1 publish; measured on registry.npmjs.org 2026-10-03. The true engine today: source or the signed release set", available: true },
-      { name: "PyPI", command: "pip install vaerion", status: "wheel build verified — publish is release-train (Founder-gated); registry measured 404 on 2026-10-03", available: false },
+      { name: "PyPI", command: "pip install vaerion", status: "published — vaerion 0.1.15rc1 (sdist + wheel), measured live on pypi.org 2026-10-17", available: true },
       { name: "Homebrew / winget / dmg / rpm", command: "authored in packaging/", status: "UNVERIFIED — host-gated", available: false },
     ] as const,
   },
@@ -282,10 +282,10 @@ export const FACTS = {
   notYet: [
     "No cloud service — the engine is local; cloud seams are reserved (ADR-0017), not sold.",
     "No telemetry, no analytics, no undeclared network — enforced mechanically on every build.",
-    "PyPI publish remains Founder-gated (registry measured 404 on 2026-10-03); npm IS live — install with `npm install -g vaerion@rc`.",
-    "vaerion.dev installer URL goes live with the release train; install from Releases today.",
+    "PyPI is LIVE — `pip install vaerion` (0.1.15rc1, sdist + wheel). npm still delivers 0.1.14-rc1 — install with `npm install -g vaerion@rc` for an older engine.",
+    "vaerion.dev is pending domain provisioning (Founder-gated); install from GitHub Releases or PyPI today.",
     "Single-binary installers (brew/winget/dmg/rpm) are authored but host-gated UNVERIFIED.",
-    "SDK packages and integrations ship from this repository — crates.io / Maven Central / PyPI publication is release-train gated.",
+    "SDK packages and integrations ship from this repository — crates.io / Maven Central publication is Founder-gated; PyPI is live.",
   ] as const,
 
   // The hero terminal — a faithful distillation of docs/QUICKSTART.md §2–4

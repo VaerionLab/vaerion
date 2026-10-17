@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Vaerion — Launch Demo</title>
+<style>
+  :root{
+    --bg:#050508; --ink:#e8eaf2; --dim:#9aa3b8; --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --blue:#5b8cff; --purple:#8b5cf6; --red:#f87171; --green:#34d399; --gold:#d4af37;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%;background:var(--bg);overflow:hidden}
+  body{font-family:var(--mono);color:var(--ink);display:flex;align-items:center;justify-content:center;position:relative}
+  body::before{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(91,140,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(91,140,255,.045) 1px,transparent 1px);
+    background-size:44px 44px;mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 78%)}
+  body::after{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 70% 15%,rgba(139,92,246,.10),transparent 60%),radial-gradient(800px 500px at 20% 85%,rgba(91,140,255,.08),transparent 60%);pointer-events:none}
+  .scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 48px;opacity:0;visibility:hidden;transition:opacity .8s ease}
+  .scene.on{opacity:1;visibility:visible}
+  .scene.out{opacity:0}
+  /* ── Scene 1 ── */
+  .s1-line{font-size:44px;font-weight:700;letter-spacing:-.01em;text-align:center;line-height:1.25;opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s ease}
+  .s1-line.show{opacity:1;transform:none}
+  .s1-line.q{margin-top:26px;background:linear-gradient(90deg,var(--blue),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .s1-line.dim{opacity:.28;transition:opacity 1.2s ease}
+  /* ── Scene 2 ── */
+  .label{font-size:12px;letter-spacing:.34em;color:var(--dim);text-transform:uppercase;margin-bottom:26px;text-align:center}
+  .req-card{width:640px;max-width:100%;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(10,12,22,.85);padding:30px 34px;box-shadow:0 0 90px -30px rgba(91,140,255,.5)}
+  .req-line{font-size:19px;color:var(--ink);padding:9px 0;opacity:0;transform:translateX(-8px);transition:all .6s ease}
+  .req-line.show{opacity:1;transform:none}
+  .req-line .who{color:var(--blue)}
+  .req-cap{margin-top:20px;font-size:15px;color:var(--red);opacity:0;transition:opacity .9s ease;text-align:center}
+  .req-cap.show{opacity:.9}
+  /* ── Scenes 3+4 terminal ── */
+  .term{width:760px;max-width:100%;background:#08090f;border:1px solid rgba(255,255,255,.10);border-radius:14px;overflow:hidden;box-shadow:0 0 120px -40px rgba(139,92,246,.55)}
+  .term-bar{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+  .dots{display:flex;gap:7px}
+  .dots i{width:10px;height:10px;border-radius:50%;background:#26282f;display:block}
+  .term-title{font-size:11.5px;color:#5a6172;letter-spacing:.08em}
+  .term-body{padding:24px 26px;font-size:16.5px;line-height:1.85;min-height:340px}
+  .tl{opacity:0;transform:translateY(6px);transition:all .5s ease;white-space:pre-wrap}
+  .tl.show{opacity:1;transform:none}
+  .cmd{color:var(--ink)}.cmd .p{color:var(--blue)}
+  .meta{color:var(--dim)}
+  .restricted{color:var(--gold);border:1px solid rgba(212,175,55,.4);border-radius:5px;padding:0 8px;font-size:13px}
+  .eval-h{color:var(--purple);letter-spacing:.18em;font-size:14px;margin-top:14px}
+  .policy{color:var(--dim)}
+  .decision{color:var(--dim);letter-spacing:.2em;margin-top:10px}
+  .denied{display:inline-block;color:var(--red);border:1.5px solid rgba(248,113,113,.55);background:rgba(248,113,113,.08);border-radius:8px;padding:4px 18px;font-weight:800;font-size:24px;letter-spacing:.28em;margin-top:8px}
+  .denied-reason{color:var(--dim);font-size:14.5px}
+  .proof{margin-top:16px;font-size:15.5px}
+  .proof .ok{color:var(--green);font-weight:700}
+  .proof .path{color:var(--dim)}
+  /* ── Scene 5 install ── */
+  .inst{width:680px;max-width:100%;border:1px solid rgba(255,255,255,.10);border-radius:14px;background:#08090f;padding:28px 30px;font-size:18px;line-height:2.1;box-shadow:0 0 110px -40px rgba(91,140,255,.55)}
+  .inst .p{color:var(--blue)}
+  .inst .ok{color:var(--green)}
+  /* ── Ending ── */
+  .mark{font-size:64px;font-weight:800;letter-spacing:.02em;background:linear-gradient(90deg,#fff,var(--blue) 60%,var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .mark-sub{margin-top:14px;font-size:19px;color:var(--dim);text-align:center}
+  .mark-cmd{margin-top:44px;font-size:14.5px;color:#5a6172}
+  .caret{display:inline-block;width:10px;height:1.15em;background:var(--blue);vertical-align:text-bottom;animation:blink 1s steps(1) infinite;margin-left:2px}
+  @keyframes blink{50%{opacity:0}}
+  .fadeout{opacity:0!important;transition:opacity 1.4s ease}
+</style>
+</head>
+<body>
+  <!-- SCENE 1 — opening question -->
+  <div class="scene" id="s1">
+    <div class="s1-line" id="s1a">AI agents can act.</div>
+    <div class="s1-line q" id="s1b">But can they prove what they did?</div>
+  </div>
+
+  <!-- SCENE 2 — the agent request -->
+  <div class="scene" id="s2">
+    <div class="label">Incoming agent request</div>
+    <div class="req-card">
+      <div class="req-line" id="r1"><span class="who">agent ›</span> Access protected resource</div>
+      <div class="req-line" id="r2"><span class="who">agent ›</span> Send external output</div>
+      <div class="req-line" id="r3"><span class="who">agent ›</span> Deploy to production</div>
+      <div class="req-cap" id="rcap">Who checked? Who recorded it? Who can prove it later?</div>
+    </div>
+  </div>
+
+  <!-- SCENE 3 — broker evaluation + decision -->
+  <div class="scene" id="s3">
+    <div class="term">
+      <div class="term-bar"><div class="dots"><i></i><i></i><i></i></div><div class="term-title">vaerion · broker · fail-closed</div></div>
+      <div class="term-body">
+        <div class="tl cmd" id="t1"><span class="p">$</span> vae run agent --goal "Ship the pricing change to production"</div>
+        <div class="tl meta" id="t2">planner: inline · policy: production pack · fail-closed: on</div>
+        <div class="tl" id="t3">step 02 · deploy --env production <span class="restricted">RESTRICTED</span></div>
+        <div class="tl policy" id="t4">policy: no matching rule for deploy.production</div>
+        <div class="tl eval-h" id="t5">BROKER EVALUATION</div>
+        <div class="tl policy" id="t6">POLICY CHECK — shape → ceiling → policy … unmatched</div>
+        <div class="tl decision" id="t7">DECISION:</div>
+        <div class="tl" id="t8"><span class="denied">DENIED</span></div>
+        <div class="tl denied-reason" id="t9">E1300 · broker_denied — the agent stopped. nothing deployed.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENE 4 — the refusal becomes evidence -->
+  <div class="scene" id="s4">
+    <div class="term">
+      <div class="term-bar"><div class="dots"><i></i><i></i><i></i></div><div class="term-title">vaerion · evidence · blake3 hash chain</div></div>
+      <div class="term-body">
+        <div class="tl" id="p1">refusal log <span class="path">.vaerion/refusals.log</span> — created</div>
+        <div class="tl proof" id="p2"><span class="ok">HASH VERIFIED ✓</span> <span class="path">· refusal recorded, blake3-chained</span></div>
+        <div class="tl proof" id="p3"><span class="ok">JOURNAL INTEGRITY VERIFIED ✓</span> <span class="path">· 14 records · torn: false</span></div>
+        <div class="tl proof" id="p4"><span class="ok">ok: true</span> <span class="path">· issues: [] — the denial itself is now provable</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCENE 5 — installation -->
+  <div class="scene" id="s5">
+    <div class="inst">
+      <div class="tl cmd" id="i1"><span class="p">$</span> <span id="i1t"></span><span class="caret" id="c1"></span></div>
+      <div class="tl cmd" id="i2"><span class="p">$</span> <span id="i2t"></span><span class="caret" id="c2"></span></div>
+      <div class="tl" id="i3"><span class="ok">journal_verified: true</span> <span class="path">· ok: true · torn: false · issues: []</span></div>
+    </div>
+  </div>
+
+  <!-- ENDING -->
+  <div class="scene" id="s6">
+    <div class="mark">VAERION</div>
+    <div class="mark-sub">The verification layer for AI agents.</div>
+    <div class="mark-cmd">npm install -g vaerion@rc · github.com/VaerionLab/vaerion · Apache-2.0</div>
+  </div>
+
+<script>
+const FAST = new URLSearchParams(location.search).get("fast") === "1";
+const K = FAST ? 0.1 : 1; // compress timeline for QA passes
+const at = (ms, fn) => setTimeout(fn, ms * K);
+const show = id => document.getElementById(id).classList.add("show");
+const swapScene = (fromId, toId) => {
+  if (fromId) { const f = document.getElementById(fromId); f.classList.add("out"); setTimeout(() => f.classList.remove("on","out"), 900*K); }
+  if (toId) document.getElementById(toId).classList.add("on");
+};
+const typeInto = (spanId, caretId, text, ms, done) => {
+  const span = document.getElementById(spanId);
+  let i = 0; const step = Math.max(24, (ms*K)/text.length);
+  const iv = setInterval(() => {
+    span.textContent = text.slice(0, ++i);
+    if (i >= text.length) { clearInterval(iv); setTimeout(() => { document.getElementById(caretId).style.display="none"; done && done(); }, 260*K); }
+  }, step);
+};
+
+/* timeline */
+at(600,  () => { document.getElementById("s1").classList.add("on"); show("s1a"); });
+at(5400, () => { document.getElementById("s1a").classList.add("dim"); show("s1b"); });
+at(10600, () => swapScene("s1","s2"));
+at(12000, () => show("r1"));
+at(15500, () => show("r2"));
+at(19000, () => show("r3"));
+at(21500, () => show("rcap"));
+at(25500, () => swapScene("s2","s3"));
+at(26500, () => show("t1"));
+at(30500, () => show("t2"));
+at(33500, () => show("t3"));
+at(36500, () => show("t4"));
+at(39000, () => show("t5"));
+at(41500, () => show("t6"));
+at(44500, () => show("t7"));
+at(46500, () => show("t8"));
+at(49500, () => show("t9"));
+at(54500, () => swapScene("s3","s4"));
+at(55800, () => show("p1"));
+at(59000, () => show("p2"));
+at(62000, () => show("p3"));
+at(65000, () => show("p4"));
+at(70500, () => swapScene("s4","s5"));
+at(72000, () => show("i1"));
+at(72500, () => typeInto("i1t","c1","npm install -g vaerion@rc", 2400));
+at(77000, () => show("i2"));
+at(77500, () => typeInto("i2t","c2","vae run demo", 1400, () => at(300, () => show("i3"))));
+at(84500, () => swapScene("s5","s6"));
+at(93000, () => document.querySelectorAll(".scene").forEach(s => s.classList.add("fadeout")));
+</script>
+</body>
+</html>

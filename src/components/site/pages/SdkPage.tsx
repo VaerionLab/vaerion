@@ -52,9 +52,9 @@ export default function SdkPage() {
           Bun executes TypeScript directly, so today&apos;s supported consumption is from source inside the repository.
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-3">
-          <Honesty>npm publish — Founder-gated (release train)</Honesty>
+          <Honesty>npm publish — Founder-gated</Honesty>
           <span className="text-sm text-mutedfg">
-            The publishable npm tarball is the CLI distribution; it does not ship the SDK. SDK publication is the release-train step.
+            The publishable npm tarball is the CLI distribution; it does not ship the SDK. SDK publication is a Founder-gated step.
           </span>
         </div>
         <CodeBlock title="install (repository supply-chain law)" code={`bun install --frozen-lockfile`} />

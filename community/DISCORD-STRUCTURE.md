@@ -2,13 +2,14 @@
 
 | | |
 |---|---|
-| **Status** | DRAFT — the server does not exist yet. It is created at the release train (Founder-gated). This document is the build plan, not an invitation. |
+| **Status** | DRAFT — the server does not exist yet. It is pending Founder provisioning (planned; the release train has run without it). This document is the build plan, not an invitation. |
 | **Conduct of record** | `CODE_OF_CONDUCT.md` — applies to all project spaces including any future community surface |
 | **Voice law** | Engineered, declarative, exact |
 
 > **Explicit honesty note.** No Discord server exists for Vaerion today.
 > There is no invite link anywhere, and none is published until the
-> server is created at the release train. `SUPPORT.md` remains accurate:
+> server is created (pending Founder provisioning — the 0.1.15-rc1
+> release train has already run without it). `SUPPORT.md` remains accurate:
 > GitHub Discussions Q&A is the community help surface of record until
 > this plan executes.
 
@@ -93,7 +94,7 @@ Governed by `CODE_OF_CONDUCT.md` without amendment:
 - Security findings never belong in any channel. `SECURITY.md` — private
   disclosure only.
 
-## 6. Launch checklist (executed at the release train)
+## 6. Launch checklist (to execute after the Founder provisions the server)
 
 1. [ ] Founder approval recorded (this document, plus the server's
        existence as a Founder-gated surface —
@@ -106,13 +107,13 @@ Governed by `CODE_OF_CONDUCT.md` without amendment:
 5. [ ] Community onboarding enabled: rules screen quotes
        `CODE_OF_CONDUCT.md`; membership screening requires accepting it.
 6. [ ] `#welcome` embed filled: repo link, quickstart link
-       (`docs/QUICKSTART.md`), honest install line (source or signed
-       tarballs; npm/PyPI Founder-gated), security contact.
+       (`docs/QUICKSTART.md`), honest install line (source, signed
+       tarballs, or PyPI — npm lags the tree), security contact.
 7. [ ] Pinned messages placed: the honesty rule in `#general`, the
        defect-intake checklist in `#bugs`, the proposal ladder in
        `#feature-requests`.
-8. [ ] Invite link published only after the release train goes out —
-       and only in `#announcements`-grade surfaces (release page, repo
-       README, profile README). One canonical invite; no link shorteners.
+8. [ ] Invite link published only after the Founder approves the server
+       launch — and only in `#announcements`-grade surfaces (release page,
+       repo README, profile README). One canonical invite; no link shorteners.
 9. [ ] `SUPPORT.md` updated in the same commit window to add the server
        without removing the Discussions surface of record.

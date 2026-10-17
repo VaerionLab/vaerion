@@ -23,7 +23,7 @@ restart-safe authority **for the same principal** — never a blanket grant.
 
 | Store | Chain | Verified by |
 |---|---|---|
-| Run journals | blake3 hash chain, NDJSON | `vae journal verify`, replay, recovery |
+| Run journals | blake3 hash chain, NDJSON | `vae verify` (workspace) · `vae journal verify RUN_ID` (one run) · replay · recovery |
 | Audit ledger | hash-chained elevations | `vae doctor` continuity check |
 | Refusal log | hash-chained denials | `vae doctor`; surfaced in `explain` |
 | Blob CAS | content-addressed (blake3) | doctor triangulation vs evidence |

@@ -2,8 +2,11 @@
 
 Status: PREPARATION ONLY. This environment cannot execute macOS code
 signing; every step below is recorded so the release train can execute it
-the moment a macOS build host and the Founder key ceremony (risk-ledger
-F-3) exist. Nothing here is claimed as verified.
+the moment a macOS build host exists and the macOS-specific Developer ID
+credentials are provisioned (the engine signing key ceremony — GO/NO-GO
+gate F-3, ledger row R-2 — is already CLOSED at ASCENSION XXV; what
+remains here is Apple's Developer ID + notarization chain, not the engine
+signing key). Nothing here is claimed as verified.
 
 ## 1. Identity requirements
 

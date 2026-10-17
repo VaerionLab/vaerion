@@ -1,6 +1,6 @@
 {
   "name": "vaerion",
-  "version": "0.1.14-rc1",
+  "version": "0.1.15-rc1",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -42,7 +42,8 @@
     "vaerion:observatory": "bun tools/vaerion-pipeline/observatory.ts",
     "vaerion:publish-docs": "bun tools/vaerion-pipeline/publish-documentation.ts",
     "vaerion:verify-documentation": "bun tools/vaerion-pipeline/verify-documentation.ts",
-    "launch:credential-check": "bun tools/launch/credential-check.ts"
+    "launch:credential-check": "bun tools/launch/credential-check.ts",
+    "vaerion:verify-artifact-parity": "bun tools/verify-artifact-parity.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",

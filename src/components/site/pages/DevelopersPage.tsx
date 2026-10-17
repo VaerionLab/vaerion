@@ -95,9 +95,10 @@ export default function DevelopersPage() {
           </div>
         </Panel>
         <div className="mt-6">
-          <Callout kind="honesty" title="Until the release train runs">
-            npm / PyPI publish is Founder-gated. Until then, install from source or the signed release tarball — and verify the signature
-            before you trust it. vaerion.dev installer URLs go live with the release train.
+          <Callout kind="honesty" title="Install honesty">
+            PyPI is live (`pip install vaerion` → 0.1.15rc1) and the signed release set is on GitHub Releases; npm still delivers 0.1.14-rc1
+            until the Founder-gated 0.1.15-rc1 publish. Verify the signature before you trust a tarball. vaerion.dev is pending domain
+            provisioning (Founder-gated) — installer URLs are not live.
           </Callout>
         </div>
       </Section>

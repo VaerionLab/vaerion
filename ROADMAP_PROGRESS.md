@@ -7,8 +7,8 @@
 
 - Engine version of record: `0.1.15-rc1`
 - Constitution of record: `v1.7` (Amendment Log §11)
-- Verification record: RED — 8/9 gates ok (`.vaerion-verification.json`)
-- Measured tests: 712 pass · 7 fail · 5237 expectations · 62 files
+- Verification record: GREEN — 9/9 gates ok (`.vaerion-verification.json`)
+- Measured tests: 719 pass · 0 fail · 5246 expectations · 62 files
 - Coverage floors: bunfig.toml coverageThreshold (OBJ-Q6, ratcheted at MS-6 bundle close: 0.86/0.74/0.86/0.90; held at every ASCENSION phase close)
 
 ## Milestone board (§7)
@@ -61,14 +61,14 @@
 ## Recommended next work (priority order)
 
 1. No campaign is in flight: the D-T ledger records FINAL FOUR PHASES complete through Phase 26 (evidence of record in the constitution's §11 Amendment Log); the next program awaits Founder ratification (P4).
-2. GA remains rehearsed and PENDING FOUNDER GO (P4); the Founder gates (F-2 legal name, F-4 substrate ratification, F-5 publication (registries + hosted site), F-6 real-provider recordings, R-7 public disclosure channel) are the remaining path to full GA (F-3 closed at ASCENSION XXV — the production key signs from CI).
+2. GA remains rehearsed and PENDING FOUNDER GO (P4); the Founder gates (F-2 legal name, F-4 substrate ratification, F-5 publication — GitHub Release + PyPI LIVE, npm publish and the hosted domain pending Founder credentials, F-6 real-provider recordings, R-7 public disclosure channel) are the remaining path to full GA (F-3 closed at ASCENSION XXV — the production key signs from CI).
 3. Host-gated single-binary installers (brew/winget/dmg/rpm authored, awaiting their platforms); the daemon packages route group is DONE (ASCENSION XXVI+ — pack/verify/import over the wire with proven parity).
-4. Release train steps (publish, announce) — Founder-gated; artifacts are reproducible via tools/dist-pack.ts at the release tag.
+4. Remaining publish steps (npm 0.1.15-rc1, announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag.
 
 ## Technical risks (top)
 
 1. Substrate: TypeScript-on-Bun reference implementation is explicitly PROVISIONAL (ADR-0018, Phase 1 finalization) with a recorded migration path; Founder ratification pending.
-2. Release signing uses the bootstrap Ed25519 key; rotation to a held-offline key is Founder-gated (docs/security/RISK-LEDGER.md R-2).
+2. Release signing uses the production Ed25519 key (RELEASE_SIGNING_KEY from CI; R-2 CLOSED at ASCENSION XXV — key of record rotated, ceremony + recovery law in SIGNING-CEREMONY.md); a hardware-custodied re-ceremony remains available via the recorded rotation path (docs/security/RISK-LEDGER.md R-2, residual labeled).
 3. Exec-sandbox hardening matrix (ADR-0015 full profiles) and per-run token scoping are open engineering items (RISK-LEDGER R-1/R-5).
 4. Journal per-record fsync trades durability for throughput; batching decision needed before agent-scale testing.
 5. Provider price table is build-time data (2026-08); provider drift is a data update with a reviewed contract change.

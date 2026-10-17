@@ -10,8 +10,8 @@ documents of record — it does not replace them.
 
 | Version | Status |
 |---|---|
-| `0.1.14-rc1` (current release line) | Supported — fixes land fix-forward on the main line |
-| Earlier rc tags (`v0.1.7-rc1` … `v0.1.11-rc1`) | Not patched — released tags are immutable (never overwritten; see `docs/security/REMOTE-PROTECTION.md`); fixes ship in the next release candidate |
+| `0.1.15-rc1` (current release line) | Supported — fixes land fix-forward on the main line |
+| Earlier rc tags (`v0.1.7-rc1` … `v0.1.14-rc1`) | Not patched — released tags are immutable (never overwritten; see `docs/security/REMOTE-PROTECTION.md`); fixes ship in the next release candidate |
 
 Within v0.1, surfaces evolve additively: nothing is removed or renamed
 (`BETA-ONBOARDING.md`).

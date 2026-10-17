@@ -62,7 +62,7 @@ template → `E1203` (exit 2).
 vae init [--template T] [--name NAME] [--dry-run]
 vae init --template demo
 # → created: vaerion.yaml, .vaerion/journal, .vaerion/blobs, sources/demo.md
-#   config_fingerprint: 41c3410b… (measured, stable) · engine_version: 0.1.14-rc1
+#   config_fingerprint: 41c3410b… (measured, stable) · engine_version: 0.1.15-rc1
 ```
 
 ### `vae create`
@@ -87,7 +87,7 @@ vae start [--template T] [--name NAME] [--interactive] [--no-interactive] [--dry
 The project dashboard: workspace, identity, AI, runs, next steps (read-only).
 ```
 vae status [--json]
-# → {"command":"status","engine_version":"0.1.14-rc1","workspace":{…},
+# → {"command":"status","engine_version":"0.1.15-rc1","workspace":{…},
 #    "runs":{"total":1,"closed":1,"open":0},"hints":[…]}   (measured)
 ```
 
@@ -197,7 +197,7 @@ receipts, exit codes. stdout carries protocol messages only; EOF exits 0.
 ```
 vae mcp
 # (measured initialize) {"protocolVersion":"2024-11-05",
-#   "serverInfo":{"name":"vaerion","version":"0.1.14-rc1"},…}
+#   "serverInfo":{"name":"vaerion","version":"0.1.15-rc1"},…}
 ```
 
 ## Packages & recovery
@@ -279,7 +279,7 @@ pointing, never executes.
 ### `vae account`
 Identity and attribution (read-only): actor law, journal-observed actors,
 commit identity, declared secret PROFILES (names only). Optional local-first
-subcommands: `account create --name NAME [--email E]`, `status`, `login`,
+subcommands: `account create --name NAME [--email=E]`, `status`, `login`,
 `logout`, `export`.
 
 ### `vae ai`
@@ -293,9 +293,16 @@ drop a declared provider (if it owned the default model, the default is
 cleared — the local seeded provider resolves again).
 ```
 vae ai ask --question TEXT [--sources P,P | --capability NAME] [--model P/M] [--seed N]
-vae ai models | setup --provider P --model M | status
-vae ai use --model M | remove --provider P
+vae ai models | setup --provider=P --model=M | status
+vae ai use --model=M | remove --provider=P
 ```
+
+> Flag-form law (measured): this engine's parser accepts space-form values
+> only for a fixed flag allow-list (`cwd`, `sources`, `query`, `name`,
+> `model`, `question`, `goal`, `template`, …); `--provider`, `--file`, and
+> `--email` are NOT on it — with a space they parse as valueless booleans
+> (`--file F` → `E1600` where the flag is required; `--email E` is silently
+> dropped), so the taught forms are `--provider=P`, `--file=F`, `--email=E`.
 
 ### `vae center`
 The operator cockpit (read-only): operations (runs, metering rollup, blobs),
@@ -315,11 +322,11 @@ The help frames for a COMMAND (unknown topics fall back to the main help).
 ### `vae version`
 Print the engine version and exit.
 ```
-vae version      # → vae 0.1.14-rc1   (measured)
+vae version      # → vae 0.1.15-rc1   (measured)
 ```
 
 ---
 *Registry of record: `COMMAND_HELP` in `packages/vaerion/src/cli/vae.ts`;
 pinned by `tests/integration/dx-surface.test.ts` and the version-register
 test. Outputs marked "(measured)" were captured on this tree at
-`0.1.14-rc1` (2026-10-03).*
+`0.1.15-rc1` (2026-10-18; the 0.1.14-rc1 capture epoch is superseded).*

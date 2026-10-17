@@ -24,8 +24,16 @@ same runs, same journals, same receipts, same E-codes.
 Go 1.23+, standard library only — **zero external dependencies** (no
 `go.sum` is required; the module has nothing to hash).
 
+**Published artifacts: none.** The Go module is not on the Go module proxy —
+module publication is Founder-gated, and no public `vaerion-go` repository
+exists yet. Resolve it from source today (zero dependencies, so nothing
+else is hashed):
+
 ```
-go get github.com/VaerionLab/vaerion-go
+git clone https://github.com/VaerionLab/vaerion vaerion
+# from inside your own module, point the import at the local checkout:
+go mod edit -replace github.com/VaerionLab/vaerion-go=../vaerion/sdks/go
+go mod tidy
 ```
 
 A `vae` runtime must be resolvable on the machine (see

@@ -6,6 +6,11 @@
 # — proven in every dist-report), then creates the GitHub Release with the
 # artifacts, checksums, signature, and the release notes of record.
 #
+# Tag law (Phase 64): BOTH tag forms publish — `vX.Y.Z-rcN` release
+# candidates (marked --prerelease, notes from docs/RELEASE-NOTES-<tag>.md)
+# and `vX.Y.Z` General Availability tags (stable, notes from
+# release/<X.Y.Z>/RELEASE-NOTES.md when present, else docs/ first).
+#
 # Rollback law (docs/operations/DEPLOYMENT.md): tags are immutable; a bad
 # release is never rewritten — it is marked, and the previous tag is
 # re-dispatched here. This workflow is idempotent per tag (create-or-update).
@@ -19,7 +24,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'The v* tag of record to publish (e.g. v0.1.13-rc1)'
+        description: 'The v* tag of record to publish (v0.1.15-rc1 or v0.1.15)'
         required: true
         type: string
 
@@ -37,8 +42,9 @@ jobs:
       - name: Validate the tag input (no shell injection into the release path)
         run: |
           case "$TAG" in
-            v[0-9]*.[0-9]*.[0-9]*-rc[0-9]*) echo "tag ok: $TAG" ;;
-            *) echo "REFUSING: '$TAG' is not a vMAJOR.MINOR.PATCH-rcN tag" >&2; exit 2 ;;
+            v[0-9]*.[0-9]*.[0-9]*-rc[0-9]*) echo "tag ok (release candidate): $TAG" ;;
+            v[0-9]*.[0-9]*.[0-9]*)         echo "tag ok (general availability): $TAG" ;;
+            *) echo "REFUSING: '$TAG' is not a vMAJOR.MINOR.PATCH[-rcN] tag" >&2; exit 2 ;;
           esac
 
       - name: Checkout the tag of record (full history — the repository is the evidence)
@@ -107,18 +113,30 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          NOTES_FILE="docs/RELEASE-NOTES-${TAG}.md"
+          # Notes of record, in order: the dated docs/ notes file, then the
+          # release kit's RELEASE-NOTES.md (release/<X.Y.Z>/ — the GA kit
+          # convention), else generated notes.
+          NOTES_FILE=""
+          if [ -f "docs/RELEASE-NOTES-${TAG}.md" ]; then
+            NOTES_FILE="docs/RELEASE-NOTES-${TAG}.md"
+          elif [ -f "release/${TAG#v}/RELEASE-NOTES.md" ]; then
+            NOTES_FILE="release/${TAG#v}/RELEASE-NOTES.md"
+          fi
           EXTRA_ARGS=()
-          if [ -f "$NOTES_FILE" ]; then
+          if [ -n "$NOTES_FILE" ]; then
+            echo "release notes of record: $NOTES_FILE"
             EXTRA_ARGS+=(--notes-file "$NOTES_FILE")
           else
+            echo "no notes file found — falling back to --generate-notes"
             EXTRA_ARGS+=(--generate-notes)
           fi
           # Honesty on the discovery surface: an -rcN tag is a pre-GA release
           # and is MARKED as one (GitHub's prerelease flag) — a consumer
           # browsing the releases page sees the true maturity at a glance.
+          # A GA tag (vX.Y.Z with no -rcN) publishes STABLE: no prerelease flag.
           case "$TAG" in
-            *-rc[0-9]*) EXTRA_ARGS+=(--prerelease) ;;
+            *-rc[0-9]*) echo "prerelease marking: yes (release candidate)"; EXTRA_ARGS+=(--prerelease) ;;
+            *)          echo "prerelease marking: none (General Availability)" ;;
           esac
           if gh release view "$TAG" > /dev/null 2>&1; then
             echo "release $TAG exists — updating assets and body (idempotent re-publish)"
