@@ -10,7 +10,7 @@ exit-code contract. The engine executes on the [Bun](https://bun.sh) runtime
 | Channel | Command | Status |
 |---|---|---|
 | npm | `npm install -g vaerion@rc` | **LIVE — LAGS THE TREE**: the registry delivers `0.1.14-rc1` (an older engine without `verify`/`create`/`start`/`mcp`) until the Founder-gated `0.1.15-rc1` publish; the tree of record and the signed release set carry the true engine |
-| PyPI | `pip install vaerion` | wheel build + venv install **verified**; publish is release-train (Founder-gated) |
+| PyPI | `pip install vaerion` | **published** — `vaerion 0.1.15rc1` (sdist + wheel), venv install verified |
 | Universal installer | `curl -fsSL https://vaerion.dev/install \| sh` | install/update/uninstall **verified** end-to-end; the `vaerion.dev` URL goes live with the release train |
 | Debian | `packaging/linux/make-deb.sh` → `.deb` | build + extraction **verified** (`dpkg-deb`) |
 | Homebrew | `packaging/homebrew/vaerion.rb` | authored; **UNVERIFIED — BREW** (no brew here) |
@@ -128,12 +128,13 @@ verification: `docs/ga/RELEASE-VERIFICATION.md`. The release trust chain
 > published from the exact sha256-verified artifact of record
 > (`15329bb4…`; registry bytes ≡ release bytes). **That artifact is now
 > superseded** by the `0.1.15-rc1` tree of record (the Phase 61.1
-> one-true-artifact epoch): the registry still delivers `0.1.14-rc1` until
+> one-true-artifact epoch): the npm registry still delivers `0.1.14-rc1` until
 > the next Founder-gated publish, and from that train onward
 > `tools/verify-artifact-parity.ts` must prove the packed tarball matches the
 > tree before any publish. GitHub Releases and the
-> source paths remain the signed-download surface. The remaining registry
-> channels (PyPI/Homebrew/winget/Chocolatey/Scoop/APT/RPM) are authored +
+> source paths remain the signed-download surface. PyPI is **LIVE**
+> (`vaerion 0.1.15rc1`, sdist + wheel). The remaining registry
+> channels (Homebrew/winget/Chocolatey/Scoop/APT/RPM) are authored +
 > version-locked; their publication lands with the release train.
 
 ## What installation does NOT do

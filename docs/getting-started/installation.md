@@ -69,7 +69,7 @@ alias vae="bun run packages/vaerion/src/cli/vae.ts"
 | npm (`npm install -g vaerion@rc`) | **LIVE** — `0.1.14-rc1` on registry.npmjs.org, consumer-verified |
 | GitHub Releases (signed tarball) | **LIVE** — three-leg anonymous verification documented |
 | From source | **LIVE** — how the repository verifies itself |
-| PyPI (`pip install vaerion`) | authored + venv-verified; publication pending |
+| PyPI (`pip install vaerion`) | **published — `vaerion 0.1.15rc1` live** (sdist + wheel, venv-verified) |
 | Debian / RPM / AppImage / Homebrew | authored; packaging-host verification pending |
 | Windows (winget / Chocolatey / Scoop) | authored; native-host verification pending |
 | Universal installer (`vaerion.dev/install`) | install/update/uninstall verified end-to-end; the domain is not live yet |
