@@ -1,6 +1,6 @@
 [project]
 name = "vaerion-autogen"
-version = "0.1.15rc1"
+version = "0.1.15"
 description = "Official Vaerion integration for AutoGen — autogen_ext MCP tool adapters bound to the in-engine `vae mcp` verification layer"
 readme = "README.md"
 requires-python = ">=3.10"

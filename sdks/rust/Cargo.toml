@@ -1,6 +1,6 @@
 [package]
 name = "vaerion"
-version = "0.1.15-rc1"
+version = "0.1.15"
 edition = "2021"
 description = "Vaerion Rust SDK — loopback daemon client + Agent facade over the verified journal engine"
 license = "Apache-2.0"

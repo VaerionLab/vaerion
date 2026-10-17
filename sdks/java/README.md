@@ -1,9 +1,9 @@
 # Vaerion Java SDK (`dev.vaerion:vaerion-sdk`)
 
 > **Published artifacts: none.** Maven Central remains Founder-gated; build
-> from source today (`mvn package` → `target/vaerion-sdk-0.1.15-rc1.jar`).
+> from source today (`mvn package` → `target/vaerion-sdk-0.1.15.jar`).
 >
-> **Generated against engine `0.1.15-rc1` (version-register alignment,
+> **Generated against engine `0.1.15` (version-register alignment,
 > 2026-10-03; signatures verified at `815e929`); every signature verified
 > against source** (`packages/vaerion/src/api/routes.ts`, the CLI `--json`
 > renderers, and the Python reference SDK). Wire facts are quoted from these
@@ -61,13 +61,13 @@ try (VaeClient vae = VaeClient.attach("http://127.0.0.1:7897", "<pairing-token>"
 
 Executed against a scratch workspace with this SDK (`java -cp
 target/classes:<deps> dev.vaerion.sdk.examples.Basic /tmp/vaerion-java-demo`,
-representative capture at the `0.1.15-rc1` line of record); ids and hashes
+representative capture at the `0.1.15` line of record); ids and hashes
 differ per run — shapes are real:
 
 ```text
 vaerion java sdk — basic example
 workspace: /tmp/vaerion-java-demo
-health: ok=true engine_version=0.1.15-rc1
+health: ok=true engine_version=0.1.15
 run: run_id=crn_run_01M3V042DYP5DA6W6MJQGYB2QM status=closed journal_ok=true
 receipt: head_hash=8a70e8662b60cc15863446d1df8d535f7dc050239d77f62e916bfcc895cce9f7 records=7
 events replayed: 7 (first: run.opened, agent.run.started, reasoning.note.recorded)
@@ -166,7 +166,7 @@ are strings, never enums (standard §10c).
 ```bash
 export JAVA_HOME=/path/to/jdk21 && export PATH="$JAVA_HOME/bin:/path/to/maven/bin:$PATH"
 mvn test          # 40 tests: 37 unit + 3 integration
-mvn package       # target/vaerion-sdk-0.1.15-rc1.jar
+mvn package       # target/vaerion-sdk-0.1.15.jar
 ```
 
 The integration layer (`VaeClientIntegrationTest`) spawns a REAL daemon in a
@@ -176,7 +176,7 @@ receipt and a REAL verification. It is gated with `Assumptions.assumeTrue` —
 
 ## Honest gaps
 
-- **No standalone daemon verify route** in engine `0.1.15-rc1` — verification
+- **No standalone daemon verify route** in engine `0.1.15` — verification
   is the CLI of record (`vae verify`, `vae journal verify RUN --json`), run in
   the client's workspace directory. A ratified `/journal/{run_id}/verify`
   route is standard §17's first additive candidate; nothing here pretends it

@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  *
  * <p>The daemon ({@code vae serve}) is loopback-only with a first-run pairing
  * token (ADR-0010). This client speaks exactly the published contract
- * ({@code /openapi.json}) of engine 0.1.15-rc1:</p>
+ * ({@code /openapi.json}) of engine 0.1.15:</p>
  *
  * <pre>
  *   GET  /health, /version, /openapi.json   (open metadata routes)

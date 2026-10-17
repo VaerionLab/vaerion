@@ -8,7 +8,7 @@ import { NextResponse } from "next/server";
  */
 export const dynamic = "force-dynamic";
 
-const SITE_VERSION = "0.1.15-rc1";
+const SITE_VERSION = "0.1.15";
 
 export async function GET() {
   return NextResponse.json(

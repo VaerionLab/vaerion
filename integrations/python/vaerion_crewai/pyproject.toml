@@ -1,6 +1,6 @@
 [project]
 name = "vaerion-crewai"
-version = "0.1.15rc1"
+version = "0.1.15"
 description = "Official Vaerion integration for CrewAI — MCPServerAdapter bound to the in-engine `vae mcp` verification layer"
 readme = "README.md"
 requires-python = ">=3.10"

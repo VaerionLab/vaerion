@@ -1,6 +1,6 @@
 //! # vaerion — the Rust SDK for Vaerion
 //!
-//! Generated against engine `0.1.15-rc1` (version-register alignment,
+//! Generated against engine `0.1.15` (version-register alignment,
 //! 2026-10-03; signatures verified against source at `815e929`); every signature in this
 //! crate was verified against engine source (`packages/vaerion/src/api/routes.ts`,
 //! `packages/vaerion/src/api/server.ts`, `packages/vaerion/src/cli/commands.ts`)
@@ -57,7 +57,7 @@
 //! 4. Thin — no caching of run truth, no client-side policy evaluation, no
 //!    second error taxonomy.
 //!
-//! Known honest gaps (standard §17): engine `0.1.15-rc1` has no standalone
+//! Known honest gaps (standard §17): engine `0.1.15` has no standalone
 //! daemon verify route — [`Agent::verify`] executes the CLI of record; raw
 //! journal records and the refusal log are not on the wire.
 #![forbid(unsafe_code)]
@@ -74,7 +74,7 @@ pub use sse::{parse_sse, SseParser};
 
 /// The SDK version of record — tracks the engine minor line it was
 /// conformance-tested against (standard §16c).
-pub const VERSION: &str = "0.1.15-rc1";
+pub const VERSION: &str = "0.1.15";
 
 /// The engine version this SDK was conformance-tested against.
-pub const ENGINE_VERSION_TESTED: &str = "0.1.15-rc1";
+pub const ENGINE_VERSION_TESTED: &str = "0.1.15";

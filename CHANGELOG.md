@@ -6,6 +6,31 @@ reports in `docs/ga/`, and `worklog.md` — not from memory; dates are the
 measured tag dates. Keep a Changelog format; within v0.1 surfaces evolve
 additively — nothing removed or renamed (`BETA-ONBOARDING.md`).
 
+## [0.1.15] - 2026-10-17
+
+General Availability — the first stable release. `v0.1.15-rc1` promotes to GA
+under the Founder's written GO (Phase 67, the release train of record).
+
+### Changed
+- The version of record is `0.1.15` (stable epoch): engine constant, every
+  register surface, the release workflow tag law (stable tags publish without
+  a prerelease flag), and every living documentation surface.
+- npm publishes `0.1.15` under dist-tag `latest` (the rc-era lag disclosure is
+  retired everywhere evidence lives); PyPI uploads `0.1.15` (sdist + wheel);
+  the signed GitHub Release `v0.1.15` publishes with the 8-asset verification
+  set (MANIFEST.json + Ed25519 signature + SHA256SUMS + VERIFY.md +
+  dist-report.json + release-signing.pub + source tarball + demo bundle).
+- The hosted site redeploys with GA facts (channel table, FAQ, install copy).
+
+### Added
+- `docs/RELEASE-NOTES-v0.1.15.md` — the release notes of record (mirrors
+  `release/v0.1.15/RELEASE-NOTES.md` with the measured channel table).
+
+### Compatibility
+- No behavioral change versus `0.1.15-rc1`: the GA engine is the rc engine
+  with exactly one deliberate source change — the version literal itself.
+  Journals and workspaces from rc builds replay byte-identically.
+
 ## [0.1.15-rc1] - 2026-10-03
 
 The one-true-artifact release (Phase 61.1). Removes the final P0 blocker the

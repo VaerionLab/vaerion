@@ -32,7 +32,7 @@ const PREV_VERSION = "0.1.14-rc1";
 /** The engine version of record at THIS tree (kept literal: the test fails
  *  loudly if the register and the engine ever disagree about it; the
  *  version-register test owns this pin — Phase 61.2 D5). */
-const CUR_VERSION = "0.1.15-rc1";
+const CUR_VERSION = "0.1.15";
 
 let home: string | null = null;
 afterAll(() => {

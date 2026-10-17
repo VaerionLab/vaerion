@@ -107,8 +107,8 @@ async function walk(dir: string): Promise<string[]> {
 }
 
 describe("version register — engine-version lockstep is complete and closed", () => {
-  test("the version of record is parseable and in the rc epoch form", () => {
-    expect(VERSION).toMatch(/^0\.\d+\.\d+-rc\d+$/);
+  test("the version of record is parseable and in the epoch form (GA stable, or rc prerelease)", () => {
+    expect(VERSION).toMatch(/^0\.\d+\.\d+(?:-rc\d+)?$/);
   });
 
   test("ENGINE_VERSION === CLI VERSION (the engine never lies to its CLI)", async () => {

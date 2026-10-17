@@ -38,11 +38,11 @@ verification legs (sha256 → engine verifier → openssl cross-check).
 
 | Surface | Status |
 |---|---|
-| Engine | `0.1.15-rc1` — release candidate (prerelease) |
+| Engine | `0.1.15` — general availability (stable) |
 | Verification | 9/9 gates green · 719 tests / 0 failed · 5,246 expectations |
 | GitHub Releases | Live — signed artifacts: https://github.com/VaerionLab/vaerion/releases |
-| npm | Live on the `rc`/`latest` channels at `0.1.14-rc1`; the Founder-gated `0.1.15-rc1` publish awaits a publish-capable npm token |
-| PyPI | **Published** — `vaerion 0.1.15rc1` (sdist + wheel), measured live on pypi.org 2026-10-17 |
+| npm | **Published** — `vaerion 0.1.15` under dist-tag `latest` (measured live on registry.npmjs.org 2026-10-17) |
+| PyPI | **Published** — `vaerion 0.1.15` (sdist + wheel), measured live on pypi.org 2026-10-17 |
 | vaerion.dev installer | Not live — domain provisioning pending (Founder-gated); measured unreachable 2026-10-17; `https://vaerion.vercel.app` is the live canonical of record |
 | Community | GitHub Discussions (announcements, Q&A, ideas, show and tell); Discord planned (pending Founder provisioning) |
 

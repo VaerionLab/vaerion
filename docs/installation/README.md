@@ -10,11 +10,10 @@
 ## Path 1 — npm (live — lags the tree) or PyPI (live)
 
 ```sh
-pip install vaerion        # PyPI — live: vaerion 0.1.15rc1 (sdist + wheel)
+pip install vaerion        # PyPI — live: vaerion 0.1.15 (sdist + wheel)
 # or
-npm install -g vaerion@rc  # npm — live but LAGS THE TREE: the registry still
-vae --version              #   delivers 0.1.14-rc1 (an older engine) until the
-                           #   Founder-gated 0.1.15-rc1 publish
+npm install -g vaerion    # npm — CURRENT: 0.1.15 under dist-tag latest
+vae --version             #   (measured on registry.npmjs.org 2026-10-17)
 ```
 
 ## Path 2 — from source (works today)

@@ -18,7 +18,7 @@ from pathlib import Path
 
 __all__ = ["resolve_vae_command", "VaerionCommandError", "VAERION_TOOL_NAMES"]
 
-#: The ratified MCP tool surface of `vae mcp` (measured, engine 0.1.15-rc1).
+#: The ratified MCP tool surface of `vae mcp` (measured, engine 0.1.15).
 VAERION_TOOL_NAMES = (
     "vaerion_doctor",
     "vaerion_status",

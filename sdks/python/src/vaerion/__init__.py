@@ -20,6 +20,6 @@ from .daemon import VaeDaemonClient
 from .errors import VaerionError
 from .sse import parse_sse
 
-__version__ = "0.1.15rc1"
+__version__ = "0.1.15"
 
 __all__ = ["Agent", "VaeDaemonClient", "VaerionError", "parse_sse", "__version__"]

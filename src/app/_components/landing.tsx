@@ -484,7 +484,7 @@ const INSTALL_STEPS: { title: string; command: string; note?: ReactNode }[] = [
         >
           {"Bun 1.3+"}
         </a>
-        {" · installs from the npm registry — which still delivers 0.1.14-rc1 (an older engine) until the Founder-gated publish of 0.1.15-rc1"}
+        {" · installs from the npm registry — which still delivers 0.1.14-rc1 (an older engine) until the Founder-gated publish of 0.1.15"}
       </>
     ),
   },
@@ -751,7 +751,7 @@ function StatusStrip() {
           release candidate
         </Badge>
         <p className="text-sm leading-relaxed text-zinc-400">
-          <span className="text-zinc-200">{"v0.1.15-rc1"}</span>
+          <span className="text-zinc-200">{"v0.1.15"}</span>
           {
             " is the release candidate of record: 9/9 verification gates green, Ed25519-signed release artifacts, byte-parity-proven against this tree. The npm registry still delivers 0.1.14-rc1 (an older engine) until the Founder-gated publish. Known limitations are documented, not hidden — see "
           }

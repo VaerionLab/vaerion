@@ -174,7 +174,7 @@ const status = {
     })(),
     "GA remains rehearsed and PENDING FOUNDER GO (P4); the Founder gates (F-2 legal name, F-4 substrate ratification, F-5 publication — GitHub Release + PyPI LIVE, npm publish and the hosted domain pending Founder credentials, F-6 real-provider recordings, R-7 public disclosure channel) are the remaining path to full GA (F-3 closed at ASCENSION XXV — the production key signs from CI).",
     "Host-gated single-binary installers (brew/winget/dmg/rpm authored, awaiting their platforms); the daemon packages route group is DONE (ASCENSION XXVI+ — pack/verify/import over the wire with proven parity).",
-    "Remaining publish steps (npm 0.1.15-rc1, announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag.",
+    "Remaining publish steps (announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag.",
   ],
 };
 

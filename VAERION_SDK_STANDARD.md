@@ -4,7 +4,7 @@
 > pending.** This document is the language-neutral contract that every
 > Vaerion SDK — TypeScript, Python, Go, Rust, and Java, all shipped —
 > must satisfy before it may call itself a Vaerion SDK. It is written
-> against engine `0.1.15-rc1` (re-verified 2026-10-18; previously
+> against engine `0.1.15` (re-verified 2026-10-17; previously
 > `0.1.14-rc1` after version-register alignment, 2026-10-03, and
 > `0.1.13-rc1` @ `7e6b751`, 2026-10-01) and
 > verified against source: the daemon route table
@@ -382,7 +382,7 @@ introduce synonyms. Type names are part of the standard's grep surface.
 ## 16. Version compatibility
 
 **(a) Semantic contract.** The versioned surfaces are: the engine
-(`0.1.15-rc1` today, semver `MAJOR.MINOR.PATCH-rcN`), the envelope
+(`0.1.15` today, semver `MAJOR.MINOR.PATCH`; prereleases carry `-rcN`), the envelope
 (`ENVELOPE_VERSION = 1`), and the config schema (`"0.1"`). An SDK must
 know all three and surface them.
 

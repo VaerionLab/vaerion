@@ -8,9 +8,10 @@
 set -eu
 HERE=$(cd "$(dirname "$0")" && pwd)
 ROOT=$(cd "$HERE/../.." && pwd)
-VERSION="${1:-0.1.15-rc1}"
+VERSION="${1:-0.1.15}"
 OUT="${2:-$ROOT/dist/linux}"
-# Debian versions use ~ for pre-release ordering: 0.1.15-rc1 -> 0.1.15~rc1
+# Debian versions use ~ for pre-release ordering: 0.1.15 -> 0.1.15 (a no-op
+# at GA; a prerelease like 1.2.3-rc1 becomes 1.2.3~rc1)
 DEB_VERSION=$(printf '%s' "$VERSION" | sed 's/-/~/')
 
 STAGE=$(mktemp -d)

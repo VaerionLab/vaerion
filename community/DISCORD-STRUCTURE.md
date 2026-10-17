@@ -8,7 +8,7 @@
 
 > **Explicit honesty note.** No Discord server exists for Vaerion today.
 > There is no invite link anywhere, and none is published until the
-> server is created (pending Founder provisioning — the 0.1.15-rc1
+> server is created (pending Founder provisioning — the 0.1.15
 > release train has already run without it). `SUPPORT.md` remains accurate:
 > GitHub Discussions Q&A is the community help surface of record until
 > this plan executes.

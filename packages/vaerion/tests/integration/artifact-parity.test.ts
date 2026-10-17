@@ -118,8 +118,8 @@ describe("artifact parity — SOURCE = PACKAGE = DOCUMENTATION = WEBSITE CLAIMS"
     // disclosure is now part of the docs of record — and if any of these
     // surfaces loses it, the gate refuses (the class cannot regress).
     const PINS: Array<[string, string]> = [
-      ["README.md", "the npm registry still delivers `0.1.14-rc1`"],
-      ["docs/QUICKSTART.md", "the npm registry still delivers `0.1.14-rc1`"],
+      ["README.md", "the npm registry delivers the current engine"],
+      ["docs/QUICKSTART.md", "the npm registry delivers the current engine"],
       ["docs/getting-started/installation.md", "Founder-gated"],
       ["integrations/mcp/README.md", "no `mcp` command"],
     ];
