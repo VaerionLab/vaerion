@@ -96,8 +96,8 @@ export default function DevelopersPage() {
         </Panel>
         <div className="mt-6">
           <Callout kind="honesty" title="Install honesty">
-            PyPI is live (`pip install vaerion` → 0.1.15) and the signed release set is on GitHub Releases; npm delivers the current engine
-            (0.1.15 under dist-tag latest). Verify the signature before you trust a tarball. vaerion.dev is pending domain
+            PyPI is live (`pip install vaerion` → 0.1.15) and the signed release set is on GitHub Releases; npm is LIVE BUT LAGS — the registry
+            delivers 0.1.14-rc1 on rc+latest until the 0.1.15 publish executes (Founder-gated, measured 2026-10-19). Verify the signature before you trust a tarball. vaerion.dev is pending domain
             provisioning (Founder-gated) — installer URLs are not live.
           </Callout>
         </div>

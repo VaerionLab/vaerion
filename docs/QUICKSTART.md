@@ -30,13 +30,15 @@ vae --version
 vae 0.1.14-rc1
 ```
 
-> **Version note (honest):** the npm registry delivers the current engine —
-> `0.1.15` under dist-tag `latest`, with `verify` / `create` / `start` / `mcp`,
-> the did-you-mean system, and the 7-template registry. Every command below
-> exists in the `0.1.15` engine of record; install with
-> `npm install -g vaerion`, run the guide against a source checkout
-> (`bun install && bun run packages/vaerion/src/cli/vae.ts --help`), or use
-> the signed release set.
+> **Version note (honest):** the npm registry delivers `0.1.14-rc1` on
+> `rc`+`latest` (measured 2026-10-19) — LIVE BUT LAGS — until the `0.1.15`
+> publish executes (Founder-gated); PyPI is live at `0.1.15`. The capture
+> above is the truth for the npm path today: the older rc engine without
+> `verify` / `create` / `start` / `mcp`. Every command below exists in the
+> `0.1.15` engine of record; run the guide against a source checkout
+> (`bun install && bun run packages/vaerion/src/cli/vae.ts --help`), use the
+> signed release set, or `npm install -g vaerion` (which resolves to
+> `0.1.14-rc1` until the publish lands).
 
 Alternatives (release tarballs, from-source) and signature verification are
 in [`INSTALL.md`](INSTALL.md). If `vae` is not found after install, check
