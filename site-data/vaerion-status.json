@@ -1,61 +1,61 @@
 {
-  "generatedAt": "2026-10-17T23:24:27.363Z",
+  "generatedAt": "2026-10-19T01:23:25.523Z",
   "engineVersion": "0.1.15",
   "substrate": "TypeScript on Bun (ADR-0018 — provisional with recorded migration path; Founder ratification pending)",
   "verification": {
-    "generatedAt": "2026-10-17T23:22:15.225Z",
-    "ok": false,
+    "generatedAt": "2026-10-19T01:23:25.309Z",
+    "ok": true,
     "gates": [
       {
         "gate": "typecheck-engine",
         "ok": true,
-        "durationMs": 5006
+        "durationMs": 4569
       },
       {
         "gate": "typecheck-sdk",
         "ok": true,
-        "durationMs": 3569
+        "durationMs": 3372
       },
       {
         "gate": "tests",
-        "ok": false,
-        "durationMs": 18169
+        "ok": true,
+        "durationMs": 12091
       },
       {
         "gate": "coverage-ratchet",
         "ok": true,
-        "durationMs": 2
+        "durationMs": 1
       },
       {
         "gate": "layerlint",
         "ok": true,
-        "durationMs": 33
+        "durationMs": 31
       },
       {
         "gate": "constitutional-check",
         "ok": true,
-        "durationMs": 932
+        "durationMs": 177
       },
       {
         "gate": "perf-budget",
         "ok": true,
-        "durationMs": 261
+        "durationMs": 294
       },
       {
         "gate": "a11y-structural",
         "ok": true,
-        "durationMs": 30
+        "durationMs": 25
       },
       {
         "gate": "repo-lint",
         "ok": true,
-        "durationMs": 18952
+        "durationMs": 18800
       }
     ],
     "measured": {
-      "testsPassed": 715,
-      "testsFailed": 4,
-      "expectations": 5225,
+      "testsPassed": 719,
+      "testsFailed": 0,
+      "expectations": 5246,
       "testFiles": 62
     }
   },
@@ -65,9 +65,9 @@
   },
   "tests": {
     "suites": 62,
-    "assertedExpectations": 5225,
-    "totalTests": 715,
-    "testsFailed": 4,
+    "assertedExpectations": 5246,
+    "totalTests": 719,
+    "testsFailed": 0,
     "coverage": {
       "lines": 86.52,
       "branches": 90.6,
@@ -95,44 +95,44 @@
   },
   "contracts": {
     "specFiles": [
-      "spec/schemas/broker-decision.schema.json",
-      "spec/schemas/vaerion-yaml.schema.json",
-      "spec/schemas/evidence-record.schema.json",
-      "spec/schemas/journal-record.schema.json",
-      "spec/schemas/capability-declaration.schema.json",
-      "spec/schemas/receipt.schema.json",
-      "spec/schemas/gate.schema.json",
-      "spec/schemas/envelope.schema.json",
-      "spec/README.md",
-      "spec/events/registry.json",
       "spec/openapi.json",
-      "spec/errors.yaml",
       "spec/wit/vaerion-extension@0.1.0.wit",
+      "spec/errors.yaml",
+      "spec/README.md",
+      "spec/schemas/journal-record.schema.json",
+      "spec/schemas/vaerion-yaml.schema.json",
+      "spec/schemas/broker-decision.schema.json",
+      "spec/schemas/envelope.schema.json",
+      "spec/schemas/evidence-record.schema.json",
+      "spec/schemas/gate.schema.json",
+      "spec/schemas/receipt.schema.json",
+      "spec/schemas/capability-declaration.schema.json",
+      "spec/events/registry.json",
       "spec/CHANGELOG-SPEC.md"
     ],
     "adrCount": 21,
     "adrFiles": [
-      "docs/adr/0004-centralized-permission-broker.md",
-      "docs/adr/0019-single-sanctioned-gateway-egress.md",
-      "docs/adr/0016-reproducible-vxn-bundles.md",
-      "docs/adr/README.md",
       "docs/adr/0003-contract-first-specs-drive-sdk-generation.md",
-      "docs/adr/0014-stable-diagnostics-catalog-ecodes.md",
-      "docs/adr/0020-daemon-http-stack-ts-substrate.md",
-      "docs/adr/0006-event-sourced-run-journals-checkpoint-chaining.md",
-      "docs/adr/0015-per-platform-exec-sandbox-matrix.md",
-      "docs/adr/0008-sqlite-wal-fts5-vec-local-store.md",
-      "docs/adr/0011-tokio-axum-tower-stack.md",
-      "docs/adr/0010-loopback-daemon-pairing-token.md",
-      "docs/adr/0017-reserved-cloud-seams.md",
-      "docs/adr/0007-strict-subset-yaml-vaeryaml-manifests.md",
-      "docs/adr/0001-monorepo-single-version-policy.md",
-      "docs/adr/0009-wasi-p2-components-capability-broker.md",
+      "docs/adr/0012-cassette-mockbrain-hermetic-evals.md",
       "docs/adr/0013-os-keychain-first-secrets-env-fallback.md",
-      "docs/adr/0018-engine-substrate-typescript-bun.md",
+      "docs/adr/0017-reserved-cloud-seams.md",
+      "docs/adr/0004-centralized-permission-broker.md",
       "docs/adr/0002-versioned-event-spine-envelope.md",
+      "docs/adr/0014-stable-diagnostics-catalog-ecodes.md",
+      "docs/adr/0001-monorepo-single-version-policy.md",
+      "docs/adr/0015-per-platform-exec-sandbox-matrix.md",
+      "docs/adr/0018-engine-substrate-typescript-bun.md",
+      "docs/adr/README.md",
+      "docs/adr/0016-reproducible-vxn-bundles.md",
+      "docs/adr/0019-single-sanctioned-gateway-egress.md",
+      "docs/adr/0007-strict-subset-yaml-vaeryaml-manifests.md",
+      "docs/adr/0008-sqlite-wal-fts5-vec-local-store.md",
+      "docs/adr/0020-daemon-http-stack-ts-substrate.md",
+      "docs/adr/0010-loopback-daemon-pairing-token.md",
+      "docs/adr/0009-wasi-p2-components-capability-broker.md",
+      "docs/adr/0006-event-sourced-run-journals-checkpoint-chaining.md",
       "docs/adr/0005-tiered-intelligence-progressive-enhancement.md",
-      "docs/adr/0012-cassette-mockbrain-hermetic-evals.md"
+      "docs/adr/0011-tokio-axum-tower-stack.md"
     ]
   },
   "milestones": [
@@ -188,12 +188,12 @@
     {
       "id": "GA",
       "name": "General Availability",
-      "status": "pending",
-      "progress": 95,
-      "evidence": "REHEARSED AND PENDING FOUNDER GO (v1.5 A5): the three GA exit criteria are met with evidence — burndown archived (docs/ga/BURNDOWN.md), GO/NO-GO dossier archived (docs/ga/GO-NO-GO.md: GO for public beta recommended, full GA blocked only by the Founder gates F-2…F-6 + host-gated channel verification), release train rehearsed end-to-end (docs/ga/RELEASE-TRAIN-REHEARSAL.md) AND EXECUTED THROUGH PUBLICATION (2026-10): GitHub Release v0.1.15-rc1 + PyPI live; npm publish and the hosted domain pending Founder credentials; the GO decision itself is human authority (P4) — automation proposes, the Founder disposes. Earlier: PUBLIC BETA READY declared at Phase 1 close (v0.1.7-rc1)."
+      "status": "complete",
+      "progress": 100,
+      "evidence": "EXECUTED (2026-10): General Availability v0.1.15 shipped — engine constant, manifests, register law, generators and living-docs flipped at 36e3da1 (annotated tag v0.1.15, General Availability); GitHub Release v0.1.15 published 2026-10-17T23:40:16Z with 8 assets verified end-to-end (Ed25519 signature, SHA256SUMS, key-of-record byte-identical, source tarball byte-reproducible); PyPI vaerion 0.1.15 LIVE 2026-10-17T23:43:28Z; verification gates re-measured GREEN at the GA tree (719 pass / 0 fail / 5,255 expectations / 62 files, exit 0). Founder-gated residuals (P4): npm 0.1.15 publish (artifact parity-proven, pipeline prepared), hosted domain, public disclosure channel provisioning."
     }
   ],
-  "overallProgress": 99,
+  "overallProgress": 100,
   "phaseLedger": [
     {
       "id": "dt-0",
@@ -403,18 +403,16 @@
     "measured": true,
     "ready": false,
     "verdict": "BLOCKED",
-    "passed": 7,
+    "passed": 6,
     "total": 12,
     "blockers": [
-      "verification-gates: verification record present (9 gates) — gate evidence absent (fail-closed)",
-      "git-tree-clean: working tree dirty: 0 staged, 121 unstaged, 1 untracked",
-      "release-tag-binding: HEAD is not exactly at a v* release tag",
+      "git-tree-clean: working tree dirty: 0 staged, 5 unstaged, 0 untracked",
       "release-artifacts: artifact set incomplete: dist/MANIFEST.json, dist/MANIFEST.json.sig, dist/SHA256SUMS, dist/VERIFY.md missing"
     ]
   },
   "commandCenter": {
     "workspace": {
-      "root": "/tmp/ga-sync/examples/vaerion-demo",
+      "root": "/home/z/vaerion-public-work/examples/vaerion-demo",
       "runs": 0
     },
     "span": {
@@ -457,20 +455,12 @@
       "measured": true,
       "ready": false,
       "verdict": "BLOCKED",
-      "passed": 7,
+      "passed": 6,
       "total": 12,
       "blockers": [
         {
-          "check": "verification-gates",
-          "detail": "verification record present (9 gates) — gate evidence absent (fail-closed)"
-        },
-        {
           "check": "git-tree-clean",
-          "detail": "working tree dirty: 0 staged, 121 unstaged, 1 untracked"
-        },
-        {
-          "check": "release-tag-binding",
-          "detail": "HEAD is not exactly at a v* release tag"
+          "detail": "working tree dirty: 0 staged, 5 unstaged, 0 untracked"
         },
         {
           "check": "release-artifacts",
@@ -493,7 +483,7 @@
   ],
   "nextWork": [
     "No campaign is in flight: the D-T ledger records FINAL FOUR PHASES complete through Phase 26 (evidence of record in the constitution's §11 Amendment Log); the next program awaits Founder ratification (P4).",
-    "GA remains rehearsed and PENDING FOUNDER GO (P4); the Founder gates (F-2 legal name, F-4 substrate ratification, F-5 publication — GitHub Release + PyPI LIVE, npm publish and the hosted domain pending Founder credentials, F-6 real-provider recordings, R-7 public disclosure channel) are the remaining path to full GA (F-3 closed at ASCENSION XXV — the production key signs from CI).",
+    "GA EXECUTED (2026-10): v0.1.15 is the release of record — GitHub Release + PyPI live and verified end-to-end; the residuals remain Founder-gated (P4): npm publish (pipeline prepared, artifact parity-proven), hosted domain, public disclosure channel provisioning.",
     "Host-gated single-binary installers (brew/winget/dmg/rpm authored, awaiting their platforms); the daemon packages route group is DONE (ASCENSION XXVI+ — pack/verify/import over the wire with proven parity).",
     "Remaining publish steps (announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag."
   ]

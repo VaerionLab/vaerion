@@ -1704,7 +1704,7 @@ export async function cmdDev(ctx: CommandContext): Promise<number> {
     workspace: { root: ws.root, runs: runs.length },
     spec: "spec/ (single source of truth)",
     constitution,
-    next_milestone: `${programOfRecord} · MS-6 complete · GA remains rehearsed and PENDING FOUNDER GO (P4) — the Founder gates F-2…F-6 remain`,
+    next_milestone: `${programOfRecord} · GA executed — v${ENGINE_VERSION} is the release of record (GitHub Release + PyPI LIVE); npm publish and the hosted domain remain Founder-gated residuals (P4)`,
   });
   return ExitCode.ok;
 }

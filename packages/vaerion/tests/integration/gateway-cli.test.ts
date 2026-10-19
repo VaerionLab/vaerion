@@ -255,13 +255,13 @@ describe("explain / doctor / dev gateway surfaces", () => {
     const devPayload = JSON.parse(out[out.length - 1]!) as Record<string, unknown>;
     const gateway = devPayload.gateway as Record<string, unknown>;
     expect((gateway.matrix as Array<Record<string, unknown>>).length).toBe(4);
-    expect(String(devPayload.next_milestone)).toContain("MS-6");
+    expect(String(devPayload.next_milestone)).toContain("GA executed");
     // MASTER DIRECTIVE Phase 16: the program-of-record statement is DERIVED
     // from the D-T ledger when `dev` runs inside a repository checkout, and
     // honestly reports the stable standing state outside one (a temp
     // workspace is outside any repository). The editorial-literal class that
     // went stale at every campaign boundary is dead.
-    expect(String(devPayload.next_milestone)).toContain("PENDING FOUNDER GO");
+    expect(String(devPayload.next_milestone)).not.toContain("PENDING FOUNDER GO");
     expect(String(devPayload.next_milestone)).not.toContain("toward release v0.1.7-rc2");
     // The constitution field teaches the stable law directory outside a
     // checkout — never a hand-copied version literal.
@@ -451,8 +451,8 @@ describe("PHASE Ω design language (rich profile, TTY-gated)", () => {
       // MASTER DIRECTIVE Phase 16: the position statement is DERIVED (D-T
       // ledger inside a checkout; the honest standing state outside one).
       // The painted-literal era pins are dead with the class.
-      expect(milestone).toContain("MS-6 complete");
-      expect(milestone).toContain("PENDING FOUNDER GO");
+      expect(milestone).toContain("GA executed");
+      expect(milestone).toContain("Founder-gated residuals");
     });
   });
 
