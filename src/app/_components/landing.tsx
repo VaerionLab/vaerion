@@ -748,12 +748,12 @@ function StatusStrip() {
             "shrink-0 border-[#5B8CFF]/40 bg-[#5B8CFF]/10 px-2 py-0.5 text-[10px] font-normal uppercase tracking-[0.14em] text-[#9db4ff]"
           )}
         >
-          release candidate
+          general availability
         </Badge>
         <p className="text-sm leading-relaxed text-zinc-400">
           <span className="text-zinc-200">{"v0.1.15"}</span>
           {
-            " is the release candidate of record: 9/9 verification gates green, Ed25519-signed release artifacts, byte-parity-proven against this tree. The npm registry still delivers 0.1.14-rc1 (an older engine) until the Founder-gated publish. Known limitations are documented, not hidden — see "
+            " is the General Availability release of record: 9/9 verification gates green, Ed25519-signed release artifacts, byte-parity-proven against this tree. The npm registry still delivers 0.1.14-rc1 (an older engine) until the Founder-gated publish. Known limitations are documented, not hidden — see "
           }
           <a
             href={`${GITHUB_REPO}/blob/main/docs/LIMITATIONS.md`}

@@ -8,6 +8,7 @@ import "../../generated/css/vaerion-tokens.css";
 import "../vaerion/primitives/primitives.css";
 import "../vaerion/rendering/rendering.css";
 import { Toaster } from "@/components/ui/toaster";
+import { FACTS } from "@/components/site/facts";
 
 // Platform font provisioning for the two registered voices (VS §2.1).
 // Berkeley Mono is commercial and unprovisioned; the registered fallback
@@ -49,6 +50,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Auren" }],
   icons: {
     icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
       { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
       { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
@@ -74,6 +76,24 @@ export const metadata: Metadata = {
   },
 };
 
+// JSON-LD structured data (SoftwareApplication) — a server-rendered string,
+// no client JS. softwareVersion derives from the site's single measured
+// source of truth (FACTS.version in src/components/site/facts.ts); the
+// description is the site's own meta description (single source above).
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Vaerion",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "macOS, Linux, Windows",
+  softwareVersion: FACTS.version,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: { "@type": "Organization", name: "Vaerion Lab" },
+  publisher: { "@type": "Organization", name: "Vaerion Lab" },
+  url: "https://vaerion.vercel.app",
+  description: metadata.description,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -85,6 +105,10 @@ export default function RootLayout({
         className={`${provisionMachine.variable} ${provisionHuman.variable} antialiased`}
       >
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Toaster />
       </body>
     </html>
