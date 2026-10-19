@@ -268,3 +268,25 @@ versioned like a protocol (Visual System §23).
   record are untouched; nothing was published, deployed, or transmitted;
   no secret value entered the tree; silences are filed (IR-021), never
   improvised (P-5); every new artifact is citation-traced (P-4).
+
+### Directive Note — Era II Constitutional Reconciliation (Founder, "GA EXECUTED — ERA II: the law of record reconciles to the measured repository") — RECORDED
+
+- **Instrument:** the Founder's Era II directive, executed through the
+  constitution v1.8 amendment (A8, recorded 2026-10-19).
+- **Effect:** **`docs/constitution/VAERION_CONSTITUTION_v1.8.md` is the
+  amendment of record for the GA/Era II reconciliation** of the
+  product-engineering constitution (a different instrument, governing the
+  engine in `packages/vaerion/` — INDEX §4): General Availability recorded
+  EXECUTED (v0.1.15 — the measured evidence chain in its §7); the D-M′
+  command surface re-ratified at the measured 29 commands with the
+  bidirectional surface pin law; register additions D-Z…D-Z-5 (Era II entry —
+  the Public Maintenance era; npm truth adjudication; shadow verification
+  culture; provenance of record — `PROVENANCE.md` at the repository root;
+  audit erratum of record); the SI-8 spec-changelog note (three retrospective
+  `spec/CHANGELOG-SPEC.md` entries). Also recorded in
+  `constitution/CHANGELOG.md` as [1.9.0].
+- **Constitutional guard:** no Volume IV Article or Section is relaxed; the
+  three ratified documents and their Snapshot Authority digest pins are
+  untouched; the two parallel constitutional systems keep their recorded
+  relationship (INDEX §4, IR-003); this note records the cross-reference and
+  creates no new Volume IV authority.

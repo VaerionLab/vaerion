@@ -64,7 +64,7 @@ Registry or any primitive:
 
 - `docs/history/brand-tokens.json` — pre-ratification brand tokens (relocated from `brand/tokens.json` by the PHASE 16.3 Founder brand purge; `brand/` now holds ONLY `brand/official/`). `brand/BRAND-BOOK.*` and `brand/logo/` were purged outright by the same order (2026-09-24)
 - token block in `src/app/globals.css` — pre-ratification site tokens
-- `docs/constitution/VAERION_CONSTITUTION_v1.0.md` … `v1.7.md` — product-engineering constitution (a different instrument, governing the engine in `packages/vaerion/`)
+- `docs/constitution/VAERION_CONSTITUTION_v1.0.md` … `v1.8.md` — product-engineering constitution (a different instrument, governing the engine in `packages/vaerion/`; the v1.8 Era II amendment is the GA reconciliation of record — cross-referenced in `constitution/CHANGELOG.md` [1.9.0])
 
 Relationship recorded and governed as **IR-003** in the interpretation ledger.
 

@@ -4,6 +4,53 @@ All changes to files under `spec/` are recorded here. Evolution is
 additive-only within a major version; removals require a major bump and a
 deprecation window. Every entry requires two approvals on the change itself.
 
+## 0.1.15 — 2026-10-19 (RECORDED RETROSPECTIVELY in the constitution v1.8 amendment window — the change of record is the GA flip commit `36e3da1`, 2026-10-17; additive only)
+
+- `openapi.json` — `info.version` aligned to the engine lockstep version
+  (0.1.15, regenerated via the sanctioned generator at the General
+  Availability flip; C4 byte-sync holds). Measured delta vs the prior record:
+  `info.version` and `engineVersion` only (0.1.15-rc1 → 0.1.15); the daemon
+  route surface is untouched. The error catalog of record measures 82 codes
+  (E1000–E2312) and the runtime mirror is set-identical.
+- WHY RECORDED LATE: this regeneration shipped without a CHANGELOG-SPEC entry
+  at the GA flip. The Phase 64 audit filed the omission (TD-11) and the
+  constitution v1.8 SI-8 note (§4) closes it. This entry is the retrospective
+  entry of record; it changes nothing that shipped.
+
+## 0.1.14-rc1 — 2026-10-19 (RECORDED RETROSPECTIVELY in the constitution v1.8 amendment window — the change of record is commit `802b7c9`, 2026-09-28, the completeness-closure release; additive only)
+
+- `errors.yaml` — added `E1010` `journal_completeness_anchor_invalid` (the
+  journal completeness anchor is invalid: the terminal receipt is missing or
+  does not certify the records it precedes; the fix teaches
+  restore-from-evidence — never hand-editing a journal). Nothing removed or
+  renamed; the catalog grows 81 → 82 codes (measured at both endpoints of
+  record: 81 codes at the Community Edition drop `41d6df3`, 82 from this
+  change forward, 82 today). Catalog version stays 1; codes are additive and
+  never reused (ADR-0014).
+- WHY RECORDED LATE: the change shipped without a contemporaneous
+  CHANGELOG-SPEC entry. The Phase 64 audit filed the omission (TD-11) and the
+  constitution v1.8 SI-8 note (§4) closes it. This entry is the retrospective
+  entry of record; it changes nothing that shipped.
+
+## 0.1.13-rc1 — 2026-10-19 (RECORDED RETROSPECTIVELY in the constitution v1.8 amendment window — the change of record predates the public lineage and entered the tree of record at the Community Edition drop `41d6df3`, 2026-09-26; additive only)
+
+- `schemas/vaerion-yaml.schema.json` — added the optional
+  `gateway.defaultModel` property (canonical provider/model-id string) to the
+  gateway block: the declared default model the gateway resolves when a run
+  names no model. Optional, so all prior configs remain valid; strict
+  unknown-key rejection is unchanged. Declaring a default grants nothing —
+  every model invocation still crosses the broker single gate (D-J).
+  Correction of record: the Phase 64 audit's shorthand attributed this field
+  to `capability-declaration.schema.json`; the field of record lives in the
+  gateway block of `vaerion-yaml.schema.json` (measured at
+  `spec/schemas/vaerion-yaml.schema.json:261`).
+- WHY RECORDED LATE: the underlying change was made in the pre-drop
+  engineering lineage whose changelog did not survive the curation into the
+  public tree; the field has been part of every public tree since the drop.
+  The Phase 64 audit filed the omission (TD-11) and the constitution v1.8
+  SI-8 note (§4) closes it. This entry is the retrospective entry of record;
+  it changes nothing that shipped.
+
 ## 0.1.8 — 2026-09-02 (ASCENSION XVIII Phase 8 — Git/CI/release intelligence; additive only)
 
 - `errors.yaml` — catalog extended with the 23xx range (E2300–E2312):

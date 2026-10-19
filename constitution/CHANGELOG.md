@@ -6,6 +6,27 @@ The law itself changes only through the amendment ledger.
 
 ---
 
+## [1.9.0] — Era II · GA Reconciliation (Cross-Reference to the Constitution of Record v1.8)
+
+Executed under the Founder's Era II directive — the GA executed; the law of
+record reconciles to the measured repository (2026-10-19). **Cross-reference
+of record:** `docs/constitution/VAERION_CONSTITUTION_v1.8.md` (amendment A8)
+is the amendment of record for the GA/Era II reconciliation of the
+product-engineering constitution — a different instrument, governing the
+engine in `packages/vaerion/` (INDEX §4, IR-003): §7 records General
+Availability EXECUTED (v0.1.15, with the measured evidence chain and the
+Founder-gated residuals carried honestly); the D-M′ command surface is
+re-ratified at the measured 29 commands with the bidirectional pin law;
+register additions D-Z…D-Z-5 (Era II entry — the Public Maintenance era; npm
+truth adjudication; shadow verification culture; provenance of record —
+`PROVENANCE.md` at the repository root; audit erratum of record); the SI-8
+note closes the spec-changelog breach (three retrospective
+`spec/CHANGELOG-SPEC.md` entries). No Volume IV Article or Section is
+relaxed; the three ratified documents and their Snapshot Authority digest
+pins are untouched.
+
+---
+
 ## [1.8.0] — Volume IV · Phase 12 (Launch Preparation & Externalization)
 
 Executed under the Founder's "LAUNCH PREPARATION & EXTERNALIZATION ORDER"

@@ -4,7 +4,6 @@
 |---|---|
 | **Document** | VAERION_CONSTITUTION_v1.8 — the ratified law of the Vaerion engine |
 | **Status** | `RATIFIED — MATERIALIZED INTO REPOSITORY` |
-| **Era** | **II — Public Maintenance** (entered at the executed General Availability, 2026-10; register D-Z) |
 | **Priority chain** | Constitution → Philosophy (P1–P11) → Stage decisions → ADR → code |
 | **Amendment** | Founder authority only (see §9). No agent, reviewer, or contributor may amend. |
 | **Implementation authority** | This repository is the executable expression of this document. Where code and law disagree, the law wins and the code is a defect. |
@@ -87,25 +86,15 @@ operation is a constitutional defect, regardless of intent.
 8. **Open Contracts** — schemas, event registry, error catalog, and API description are versioned specs, additive-only within a major.
 9. **Human Authority** — irreversible or ambiguous power is exercised only through durable human gates.
 
-> **SI-8 changelog note (v1.8 A8).** The Open Contracts invariant binds the spec
-> changelog law (`spec/CHANGELOG-SPEC.md`): a spec change without a changelog
-> entry is rejected. The three spec changes of record that shipped without
-> contemporaneous entries — the `E1010` error-code addition (`spec/errors.yaml`,
-> 81 → 82 codes), the `spec/openapi.json` regeneration at 0.1.15 (82 codes), and
-> the `gateway.defaultModel` schema addition (`spec/schemas/vaerion-yaml.schema.json`)
-> — carry their entries of record as of this amendment window (2026-10-19),
-> recorded retrospectively and marked as such. The violation the Phase 64 audit
-> filed (TD-11) closes here; the changelog law itself is unchanged and remains
-> binding on every future spec change.
+> **SI-8 status note (v1.8 A8).** The Open Contracts changelog law was violated by omission between spec 0.1.8 and 0.1.15 — three spec changes of record shipped without CHANGELOG-SPEC entries (Phase 64 finding TD-11). The retrospective entries of record are restored in the v1.8 window (`spec/CHANGELOG-SPEC.md`: 0.1.13-rc1, 0.1.14-rc1, 0.1.15 — each honestly marked RECORDED RETROSPECTIVELY). The spec-changelog subcheck remains manual; wiring it as a verification gate is the recorded next-train candidate.
 
 ---
 
 ## 5. Ratified Decision Register (implementation-binding)
 
 The following decisions were ratified in the constitutional design sessions (D-A
-through D-O), the ASCENSION XVIII amendment sessions (D-M′, D-P through D-T; see
-§11), and the Era II amendment sessions (D-Z through D-Z-5; see §11-A8). They are
-binding on all implementation. An ADR may refine mechanics; it may
+through D-O) and the ASCENSION XVIII amendment sessions (D-M′, D-P through D-T; see
+§11). They are binding on all implementation. An ADR may refine mechanics; it may
 not contradict these without Founder amendment.
 
 | # | Decision | Binding statement |
@@ -122,7 +111,7 @@ not contradict these without Founder amendment.
 | D-J | Gateway is the single gate | All model I/O crosses the Model Gateway; no component speaks to providers directly. |
 | D-K | Zero telemetry | No network egress except broker-mediated, declared capabilities. Doctor explains, never phones. |
 | D-L | Refusal Log | Every broker denial is journaled and auditable; denials are first-class observable facts. |
-| D-M′ | Command surface law *(supersedes D-M "Daily Seven")* | The CLI command surface grows only by ratified Founder directive, and every command honors the Five Guarantees (D-N). The surface of record is `vae --help` — help and dispatch never disagree. The ratified surface at v1.3 was `init, run, resume, explain, journal, doctor, dev, serve, package, provenance, repo, ci, release, tour, account, ai, center` (17 commands); **re-ratified at v1.8 (A8) at the measured surface of record — 29 commands**: `init, run, resume, explain, journal, doctor, dev, serve, package, provenance, repo, ci, release, tour, account, ai, center, create, status, report, clean, verify, mcp, start, snapshot, restore, help, completions, version`. The count is a measurement, not an estimate: enumerated from the dispatch switch in `src/cli/vae.ts` (29 dispatch verbs) and cross-checked against `COMMAND_CATALOG` in `src/cli/catalog.ts` (29 entries) and `docs/CLI.md` (21 deep-dive topics + 8 additive rows) — the three enumerations agree. **The surface pin is bidirectional (v1.8 A8): the pin test fails on removal of any ratified command AND on growth beyond the ratified register** — a command that ships without ratification is the §9.3 defect exactly as a ratified command removed is; the ratified count and its enumeration move only by Founder amendment (§11-A2/A3 precedent). The bare invocation (`vae` with no command) is the **welcome front door**: a read-only teaching surface that measures this directory and points at the next step — it exits 0 in every output mode and is never a usage error. `init` carries the ratified **template face**: `vae init --template NAME` scaffolds from the deterministic template registry (one L0 source of truth); bare `init` is exactly `--template minimal`. (Supersession rationale in §11-A1; surface growth in §11-A2, §11-A3, and the v1.8 re-ratification in §11-A8.) |
+| D-M′ | Command surface law *(supersedes D-M "Daily Seven")* | The CLI command surface grows only by ratified Founder directive, and every command honors the Five Guarantees (D-N). The surface of record is `vae --help` — help and dispatch never disagree. The ratified surface at v1.3: `init, run, resume, explain, journal, doctor, dev, serve, package, provenance, repo, ci, release, tour, account, ai, center`. The bare invocation (`vae` with no command) is the **welcome front door**: a read-only teaching surface that measures this directory and points at the next step — it exits 0 in every output mode and is never a usage error. `init` carries the ratified **template face**: `vae init --template NAME` scaffolds from the deterministic template registry (one L0 source of truth); bare `init` is exactly `--template minimal`. (Supersession rationale in §11-A1; surface growth in §11-A2 and §11-A3.) At v1.8 (A8, Era II) the surface of record is re-measured at **29 commands** and re-ratified in full: `init, run, resume, explain, journal, doctor, dev, serve, package, provenance, repo, ci, release, tour, account, ai, center, create, status, report, clean, verify, mcp, start, snapshot, restore, help, completions, version`. The surface pin is bidirectional by law: the gate fails on removal of any ratified command AND on growth beyond the ratified register — growth requires a Founder amendment (P4). |
 | D-N | Five Guarantees | (1) `--help` always teaches and never executes; (2) `--json` is stable NDJSON; (3) `--dry-run` is side-effect-free; (4) every run closes with a receipt; (5) exit codes are honest: 0 ok · 2 usage · 3 broker-denied · 4 provider-down · 5 partial-with-repair-hint. |
 | D-O | Research is constitutional | Research is a declared, broker-mediated, journaled subsystem; external content is untrusted and fenced; provenance is mandatory. |
 | D-P | Git identity law | Every commit in this repository is authored `Auren <auren@vaerion.dev>`. No temporary or ambient identities. Protected history is never rewritten; historical identity violations are recorded honestly and remedied only by Founder-approved decision. |
@@ -135,11 +124,11 @@ not contradict these without Founder amendment.
 | D-W | Campaign Close Law *(added v1.7 A7)* | A campaign closes only with the **Remaining Reality Report**, recorded in the worklog and the reports of record, with five sections: Completed (proven by evidence) · Verified (measured) · Unverified (authored but not measurable in this environment) · Remaining (still needed) · Founder Decisions (items requiring human authority). "Complete." alone is never a campaign close. |
 | D-X | Declaration Standard *(added v1.7 A7)* | "Vaerion is ready" may be declared only when ALL of the following hold by measurement: reality recovered, constitution aligned, architecture verified, features complete, packages proven, installations verified, documentation complete, audits passed, release validated, and remaining risks documented. Until every condition is measured, the statement of record is exactly: **"Vaerion is progressing toward readiness."** Readiness is a measured human decision (P4), never an automation claim. |
 | D-Y | The Empty Machine Test *(added v1.7 A7)* | The ultimate experience test binds every release: a developer with an empty machine — no Vaerion installed, no knowledge of the system — can discover, install, verify the installation, initialize, understand the commands, create value quickly, recover from mistakes, upgrade safely, and remove cleanly. Every leg of the journey (discover → install → verify → initialize → use → upgrade → remove) carries D-S evidence per platform or an honest UNVERIFIED label; a package is a product only when it installs, executes, upgrades, and removes — its existence is never its proof. |
-| D-Z | Era II entry *(added v1.8 A8)* | General Availability is **EXECUTED** (the §7 declaration of record); with the executed GA, **Era II — the Public Maintenance era — begins**: the engine of record is v0.1.15, the architecture is carried forward as shipped (evolution under §9 and P11, never rewrite under way), and maintenance is the program of record. Entry evidence: the GA record in §7 (GitHub Release v0.1.15, PyPI 0.1.15, gates GREEN at the GA tree) and §11-A8. |
-| D-Z-2 | npm truth adjudication *(added v1.8 A8)* | The npm registry is the truth for the npm channel. Until the Founder-gated Path A publish executes (P4), the tree speaks **Path B — lag-honest prose**: every surface that describes the npm channel says the registry still delivers 0.1.14-rc1, never that it delivers 0.1.15. The 0.1.15 artifact is parity-proven and byte-reproducible; the lag is a channel-currency defect and is never dressed as shipped. When the Path A publish lands, the prose, the pins, and the facts layer flip in the same commit window that carries it. |
-| D-Z-3 | Shadow verification culture *(added v1.8 A8)* | `src/vaerion/testing` and `tools/vaerion-pipeline` remain **outside the gated verification law** (D-R) — intentionally. They are a shadow verification culture (visual/snapshot engines, verify-everything scripts) whose ratification is documented debt, not smuggled law: they never gate, never replace, and never re-implement the ONE verification authority. Revisit trigger: the next Founder ratification window, where the shadow surface is ratified into the register, pruned, or archived — the debt is carried openly until then. |
-| D-Z-4 | Provenance of record *(added v1.8 A8)* | The public repository is a **curated republication**: its 17-commit lineage of record is rooted at the Community Edition drop `41d6df3` (2026-09-26); the 130+-commit engineering lineage is preserved in `VaerionLab/vaerion-archive` and the private local workspace. `PROVENANCE.md` at the repository root is the record of this decision. **No history rewrite, ever**: the lineage of record is append-only (D-P); provenance questions resolve by reading the provenance record and the archive — never by rewriting refs or re-rooting the lineage. |
-| D-Z-5 | Audit erratum of record *(added v1.8 A8)* | The Phase 64 defect claim that `.github/workflows/verify.yml` line 21 reads `branches: ain]` is adjudicated a **terminal-display artifact**: the bytes are `branches: [main]` (hex-proven; the documented `[m`-eater display-artifact class). Recorded so future audits do not re-trip: display evidence is re-measured at the byte level before it is filed as a repository defect. |
+| D-Z | Era II entry *(added v1.8 A8)* | General Availability is EXECUTED (§7). Era II — the Public Maintenance era — begins with the GA execution reconciliation: the public surface of record (repository, GitHub Releases, PyPI, documentation) tells one measured story, and the remaining publish residuals are Founder-gated (P4) and enumerated in §7. Entry evidence: the GA evidence chain in §7 and `PROVENANCE.md` at the repository root. |
+| D-Z-2 | Registry truth law *(added v1.8 A8)* | A distribution channel's prose may claim only what that channel's registry measures. At the v1.8 window the npm registry delivers 0.1.14-rc1 on `rc`+`latest` (no 0.1.15 publish event exists) while PyPI delivers 0.1.15 — living documentation therefore says LIVE BUT LAGS for npm and LIVE for PyPI; the parity-proven 0.1.15 npm publish is prepared and Founder-gated. When a publish lands, prose, test pins, and facts flip together in one commit window — never one side alone. |
+| D-Z-3 | Shadow verification culture *(added v1.8 A8)* | `src/vaerion/testing/` and `tools/vaerion-pipeline/` are intentionally OUTSIDE the gated verification law (`tools/verify.ts` is the ONE verification authority, D-R). They are retained as unmeasured tooling debt with a recorded revisit trigger (first external contributor or first marketplace publication). They must never be cited as verification evidence. |
+| D-Z-4 | Provenance of record *(added v1.8 A8)* | The public repository is a curated republication whose lineage of record is rooted at the Community Edition drop `41d6df3`; the 130+-commit engineering lineage is preserved in `VaerionLab/vaerion-archive` and the private local workspace. `PROVENANCE.md` at the repository root is the single record of this decision. History is append-only: no force-push, no rebase of protected history, no re-rooting — provenance questions resolve by reading the record, never by rewriting refs. |
+| D-Z-5 | Audit erratum of record *(added v1.8 A8)* | The Phase 64 forensic audit's "verify.yml trigger corruption" finding (`branches: ain]`) is adjudicated a terminal display artifact: the bytes of record are `branches: [main]` (hex-proven independently in the local tree and via the GitHub contents API). Recorded so no future audit re-trips on the same display artifact. |
 
 ---
 
@@ -183,22 +172,24 @@ decisions directly governing this repository phase:
 | MS-6 | Packaging + Hardening | Reproducible bundles; installers; docs sweep; accessibility; performance double-check. |
 | GA | General Availability | Burndown complete; GO/NO-GO archived; release train rehearsed. |
 
-Status of record (reconciled at the Phase 10 boundary by A5; GA reconciled
-at the Era II boundary by A8): MS-0 through MS-5 **complete**; MS-6
-**complete** — the GA campaign (Phases 7–10, §11-A4) executed its remaining
-exit criteria as permanent gated law: the performance double-check is the
-`perf-budget` gate, the accessibility sweep is the `a11y-structural` gate
-plus the browser-measured audit, and distribution packaging remains honestly
-split VERIFIED (npm, PyPI, universal installer, deb) / UNVERIFIED host-gated
-(brew, winget, dmg, rpm — authored, awaiting their platforms). GA is
-**EXECUTED — General Availability EXECUTED 2026-10**: v0.1.15 is the release
-of record; evidence of record: GitHub Release v0.1.15 (published
-2026-10-17T23:40:16Z, 8 assets, Ed25519-signed manifest, SHA256SUMS,
-key-of-record binding, source tarball byte-reproducible), PyPI vaerion 0.1.15
-live (2026-10-17T23:43:28Z), verification gates re-measured GREEN at the GA
-tree (719 pass / 0 fail / 5,246 expectations / 62 files, 9/9 gates, exit 0);
-the train that carried it is archived (docs/ga/RELEASE-TRAIN-REHEARSAL.md,
-docs/ga/BURNDOWN.md, docs/ga/GO-NO-GO.md). Founder-gated residuals (P4 authority unchanged): npm 0.1.15 publish (lag-honest in tree until it lands), hosted domain, public disclosure channel provisioning.
+Status of record (reconciled at the Phase 10 boundary by A5): MS-0 through
+MS-5 **complete**; MS-6 **complete** — the GA campaign (Phases 7–10, §11-A4)
+executed its remaining exit criteria as permanent gated law: the performance
+double-check is the `perf-budget` gate, the accessibility sweep is the
+`a11y-structural` gate plus the browser-measured audit, and distribution
+packaging remains honestly split VERIFIED (npm, PyPI, universal installer,
+deb) / UNVERIFIED host-gated (brew, winget, dmg, rpm — authored, awaiting
+their platforms). General Availability EXECUTED 2026-10: v0.1.15 is the
+release of record. The release train passed end-to-end (Phase 9), the
+burndown is archived (docs/ga/BURNDOWN.md), the GO/NO-GO dossier of record
+is restored in-tree (docs/ga/GO-NO-GO.md), and the GA milestone closed with
+measured evidence: GitHub Release v0.1.15 published 2026-10-17T23:40:16Z
+(8 assets — Ed25519-signed manifest, SHA256SUMS, key-of-record binding,
+source tarball byte-reproducible), PyPI `vaerion` 0.1.15 live
+(2026-10-17T23:43:28Z), and the verification gates re-measured GREEN at the
+GA tree (719 pass / 0 fail / 5,246 expectations / 62 files; 9/9 gates).
+GA remains a human decision (P4): the Founder GO was exercised, and the
+Founder-gated residuals (P4 authority unchanged): npm 0.1.15 publish (lag-honest in tree until it lands), hosted domain, public disclosure channel provisioning.
 
 ---
 
@@ -234,52 +225,6 @@ docs/ga/BURNDOWN.md, docs/ga/GO-NO-GO.md). Founder-gated residuals (P4 authority
 ---
 
 ## 11. Amendment Log
-
-### A8 — v1.7 → v1.8 (ERA II — THE GA EXECUTION RECONCILIATION, recorded 2026-10-19; Founder-authorized by the Era II directive — "the GA is executed; the constitution of record reconciles to the measured repository; Era II is the Public Maintenance era; the dead-reference and spec-changelog defects close in the same amendment window")
-
-- **Why it changed.** The GA train executed on the public lineage and the law
-  of record still declared GA pending — the §9.3 drift class (the law lagging
-  a ratified, executed reality), carried verbatim by the surface pin test.
-  The Phase 64 forensic audit adjudicated the defect ledger of record: the
-  unamended constitution (TD-4 — the GA⇄law contradiction, the dead docs/ga
-  evidence citations the pin test enforced, the stale D-M′ command count) and
-  the spec-governance breach (TD-11 — three spec changes of record with no
-  CHANGELOG-SPEC entries). Simultaneously the evidence-of-record tree was
-  restored in-repository (docs/ga/ 34 files + docs/operations/ 5 files,
-  commit `92bac6a`), so every law citation resolves in-tree again and the
-  dead-reference defect class ends with this amendment.
-- **What changed.** (a) §7: GA moves from the v1.7 pending declaration to
-  **EXECUTED** — the executed-GA declaration of record with its measured
-  evidence chain (GitHub Release v0.1.15, PyPI 0.1.15, gates GREEN 719/0/
-  5,246/62 at the GA tree) and the Founder-gated residuals carried honestly
-  (P4 unchanged). (b) Evidence paths: every docs/ga|operations citation
-  re-verified to resolve in-tree; none required repair (the restore closed
-  the defect). (c) D-M′ re-ratified at the measured surface of record — 29
-  commands, enumerated from the dispatch switch in `src/cli/vae.ts` and
-  cross-checked against `COMMAND_CATALOG` (`src/cli/catalog.ts`) and
-  `docs/CLI.md` — with the BIDIRECTIONAL surface pin law (the pin fails on
-  removal AND on growth). (d) Register additions D-Z…D-Z-5 (Era II entry;
-  npm truth adjudication; shadow verification culture; provenance of record
-  — `PROVENANCE.md` at the repository root; audit erratum of record). (e)
-  SI-8 note: the three outstanding spec changes of record (E1010;
-  openapi.json 0.1.15; gateway.defaultModel) carry restored,
-  retrospectively-marked CHANGELOG-SPEC.md entries. NO existing decision
-  moved: D-A…D-Y retain their binding statements; the Five Guarantees (D-N)
-  are unchanged; the value order (§2) and Sacred Invariants (§4) are
-  untouched; the D-T phase ledger and the synchronization ledger are
-  untouched.
-- **Compatibility impact.** None breaking. Law, register, and ledger text
-  only; no CLI surface change (D-M′ records the surface as measured, it
-  changes nothing); no contract change (the changelog entries record shipped
-  changes, they alter nothing).
-- **Constitutional justification.** §9.2 permits amendment by recorded
-  decision; §9.3 requires the law to hold when reality moves — a pending
-  declaration enforced by a pin while the GA tag ships is the drift defect by
-  the repository's own terms. The value order and Sacred Invariants are
-  untouched, so a version increment (not a new constitution) is the correct
-  vehicle. P4 is strengthened: the executed GA is recorded as measured fact
-  with its evidence chain, and every residual remains Founder-gated.
-- **Version increment.** 1.7 → 1.8.
 
 ### A7 — v1.6 → v1.7 (THE MASTER CONSTITUTIONAL DIRECTIVE, Phases 15–18; Founder-authorized by the MASTER CONSTITUTIONAL DIRECTIVE — "PROMPT 1 — THE LAW OF VAERION: Constitutional Foundation, Engineering Philosophy, Architecture Doctrine, Reality Recovery Protocol", Parts I–IV)
 
@@ -704,3 +649,18 @@ hook) while GitHub main is currently unprotected.
 | 24 | FINAL FOUR PHASES | ✅ complete | Phase XXII — world-class DX: the six measured audit gaps closed at root + pinned (tests/integration/dx-surface.test.ts, 19 tests): DX-1 `--version`/`-V` (plain + NDJSON, byte-agrees with the `version` subcommand), DX-2 `help [COMMAND]` (unknown topics fall back — help always teaches), DX-3 `completions <bash|zsh|fish|powershell>` from ONE model pinned both ways against COMMAND_HELP (bash -n measured on host; zsh/fish/pwsh honest UNVERIFIED markers in-script), DX-4 the unknown-command error through the ONE renderer (the --json NDJSON guarantee restored on the usage path), DX-5 `--quiet` framing-only, DX-6 `VAE_DEBUG=1` stacks; D-M′ parity extended; ALL GATES GREEN 523/0/41; worklog Task 4-a |
 | 25 | FINAL FOUR PHASES | ✅ complete | Phase XXIII — documentation & publication: 18 authored artifacts verified live by the authoring agents (root trust set SECURITY/SUPPORT/CODE_OF_CONDUCT/CHANGELOG from measured records — SUPPORT states there is no top-level `vae verify`, SECURITY follows the repo's R-7 private-disclosure posture; PR/issue templates; examples index; docs/CLI.md from the 17 live topics + measured exit codes + 81 E-codes; docs/SDK.md per real exports + ADR-0010 pairing + the parity law; Dockerfile/.dockerignore/devcontainer/GitLab/Jenkins ports mirroring the single authority with honest UNVERIFIED markers; docs/LIMITATIONS.md traced to source records; docs/RELEASE-NOTES-v0.1.12-rc1.md); the dashboard gained the measured install surface + expanded reports index; the measured audit records PHASE-XXII-DX-AUDIT.md + PHASE-XXIII-PUBLICATION-GAP-AUDIT.md; worklog Tasks 2-b/2-c/4-b/4-c |
 | 26 | FINAL FOUR PHASES | ✅ complete | Phase XXIV — the independent audit: CI measured on real GitHub infrastructure for the first time (run 33805316308 main @ 7a1e44f: all-gates job SUCCESS at step level, 58s; run 33805318732 tag @ 485016f: verify + signed-release SUCCESS); the CI-produced artifact set verified THREE ways (sha256 7/7 → engine dist-verify consumer path ALL CHECKS PASSED → independent openssl Ed25519 cross-check SUCCESS after root-causing my own base64-vs-raw test input by measurement — no engine defect); F-3 disclosed by the CI pack report itself (bootstrap key GENERATED this run); parity 0/0 across local/canonical/GitHub with tag object 888758a byte-identical; the campaign's own defects ledgered (AUR-1..AUR-4 incl. a MultiEdit partial-apply caught by measuring file state, never by trusting the tool); docs/ga/FINAL-FOUR-PHASES-AUDIT.md + REMAINING-REALITY-REPORT.md + FOUNDER-GO-NO-GO-PACKET.md (composite readiness 8.1/10, measured) — GA remains PENDING the Founder gates F-2..F-6 |
+
+### A8 — v1.7 → v1.8 (ERA II — THE GA EXECUTION RECONCILIATION; recorded 2026-10-19 in the Era II Repository Modernization & Synchronization program, Phase 65; Founder-authorized by the modernization directive "Prepare every public-facing and internal repository artifact for long-term maintenance, synchronization, public trust, deployment, and future development")
+
+- **Why it changed.** The Phase 63 post-GA freshness audit and the Phase 64 RULE ZERO forensic audit measured, with evidence, that the repository declared General Availability (engine constant, manifests, register law, ROADMAP, release of record) while the constitution of record still declared GA "rehearsed and pending Founder GO" — a law⇄reality contradiction pinned by a live test (repo-intelligence.test.ts). The same audits measured: a verification status layer carrying two contradictory truths in one commit; the constitution's evidence-of-record tree (`docs/ga/`, `docs/operations/`) absent from the public tree, leaving the law citing dead references; the D-M′ surface register stale (17 ratified vs 29 measured); three spec changes shipped without CHANGELOG-SPEC entries (SI-8 violation by omission); and no in-repository record of the public repository's provenance as a curated republication. By the repository's own law (D-X: drift ahead of law is a defect), shipping GA inside an unamended constitution was a self-declared defect. This amendment reconciles the law with the measured reality — nothing else.
+- **What changed.**
+  1. **§7 (Milestone Law):** the GA milestone is declared **EXECUTED** with the measured evidence chain (GitHub Release v0.1.15 of 2026-10-17T23:40:16Z with 8 verified assets; PyPI 0.1.15 live 2026-10-17T23:43:28Z; verification gates GREEN at the GA tree — 719/0/5,246/62, 9/9), and the Founder-gated residuals are enumerated honestly: npm publish, hosted domain, public disclosure channel provisioning. The A5 "pending" history is preserved unmodified below; the negative pin is scoped to §7 by the pin test.
+  2. **D-M′ (command surface):** re-measured (`vae --help` golden of record) and re-ratified at **29 commands** with the bidirectional surface-pin law — the gate fails on removal of any ratified command AND on growth beyond the ratified register.
+  3. **D-register:** D-Z (Era II entry — the **Public Maintenance era** begins), D-Z-2 (registry truth law — prose claims only what the registry measures; the npm lag-honest adjudication of record), D-Z-3 (shadow verification culture — `src/vaerion/testing/` + `tools/vaerion-pipeline/` retained outside the gated law, revisit trigger recorded), D-Z-4 (**provenance of record** — the public repository is a **curated republication** rooted at `41d6df3`; `PROVENANCE.md` is the single record; history append-only, no rewrite ever), D-Z-5 (audit erratum of record — the "verify.yml trigger corruption" finding adjudicated a terminal display artifact; bytes hex-proven as `branches: [main]`).
+  4. **§4 SI-8 status note:** the Open Contracts changelog-law violation by omission (three spec changes without entries, 0.1.8 → 0.1.15) is closed with retrospective entries of record, honestly marked; the subcheck's gate-wiring is the recorded next-train candidate.
+  5. **Evidence restoration:** `docs/ga/` (34 files), `docs/operations/` (5 files), and `docs/launch/` (9 files) are restored in-tree from the engineering archive (`VaerionLab/vaerion-archive` @ `6fb1896`, byte-exact), so every law citation resolves in-tree. The dead-reference defect class ends here.
+  6. **Verification layer:** `.vaerion-verification.json`, `ROADMAP_PROGRESS.md`, and `site-data/vaerion-status.json` regenerated from one GREEN gate run at the GA tree; the GA milestone (status generator) and the engine dev payload updated to GA-executed truth with their pins moved.
+  7. **npm adjudication (D-Z-2):** Path B executed in-tree — every living surface states the measured registry truth; the Path A publish runbook is prepared and Founder-gated.
+- **What did NOT change.** The Value Order, the Nine Sacred Invariants (substance), P1–P11, D-A…D-Y, the amendment procedure, the Engineering Oath, the Reality Recovery Law, and every historical amendment record (A1–A7) — carried byte-intact. The Two-Lineage Architecture remains intentional (D-Q synchronized remotes; the archive is the historical engineering source of truth).
+- **Era declaration.** With GA executed and the law reconciled, **Era II — the Public Maintenance era — is open**: maintenance, synchronization, and trust are the standing program; every future release train re-uses the ratified pipeline; every claim re-measures before it repeats.
+
