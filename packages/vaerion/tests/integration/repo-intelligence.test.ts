@@ -707,17 +707,27 @@ describe("repo / ci / release CLI contracts (Five Guarantees)", () => {
 /* ───────────────────────────  law & lockstep regression  ─────────────────────────── */
 
 describe("constitution and version lockstep regression (Phase 8)", () => {
-  test("the ratified constitution is v1.7 with the master-directive process law ratified and the honest phase ledger", async () => {
+  test("the ratified constitution is v1.8 with the Era II GA-executed law, the re-ratified surface, and the honest phase ledger", async () => {
     const root = join(import.meta.dir, "..", "..", "..", "..");
-    const constitution = await readFile(join(root, "docs", "constitution", "VAERION_CONSTITUTION_v1.7.md"), "utf8");
-    expect(constitution).toContain("VAERION_CONSTITUTION_v1.7");
+    const constitution = await readFile(join(root, "docs", "constitution", "VAERION_CONSTITUTION_v1.8.md"), "utf8");
+    expect(constitution).toContain("VAERION_CONSTITUTION_v1.8");
     expect(constitution).toContain("D-M′");
     for (const law of ["D-P", "D-Q", "D-R", "D-S", "D-T", "D-U", "D-V", "D-W", "D-X", "D-Y"]) {
       expect(constitution).toContain(`| ${law} |`);
     }
-    // The surface (A3, carried unchanged into v1.7): account, ai, center ratified;
-    // init carries the template face.
+    // The Era II register additions (v1.8 A8): D-Z…D-Z-5.
+    for (const law of ["D-Z", "D-Z-2", "D-Z-3", "D-Z-4", "D-Z-5"]) {
+      expect(constitution).toContain(`| ${law} |`);
+    }
+    // The surface (A3, re-ratified at v1.8 A8 at the measured 29): the v1.3
+    // list is carried inside the law, the growth is enumerated, and init
+    // carries the template face.
     expect(constitution).toContain("tour, account, ai, center`");
+    expect(constitution).toContain(
+      "center, create, status, report, clean, verify, mcp, start, snapshot, restore, help, completions, version`",
+    );
+    expect(constitution).toContain("29 commands");
+    expect(constitution).toContain("fails on removal of any ratified command AND on growth beyond the ratified register");
     expect(constitution).toContain("--template NAME");
     expect(constitution).toContain("welcome front door");
     // The GA campaign (A4), its boundary reconciliation (A5), and the production
@@ -730,8 +740,21 @@ describe("constitution and version lockstep regression (Phase 8)", () => {
     expect(constitution).toContain("the release-train rehearsal");
     expect(constitution).toContain("the GA gate");
     expect(constitution).toContain("zero repository evidence"); // the honest Phase 7 adjudication, quoted in A4
-    expect(constitution).toContain("rehearsed and pending Founder GO"); // §7 after A5
-    expect(constitution).toContain("docs/ga/GO-NO-GO.md"); // the dossier of record
+    // v1.8 A8 — GA is EXECUTED: §7 carries the measured evidence chain and the
+    // honest residuals; the dead pending-declaration is ABSENT from the
+    // milestone law. The A5 history that recorded the pending state is
+    // preserved unmodified, so the negative pin is scoped to §7.
+    expect(constitution).toContain("General Availability EXECUTED 2026-10");
+    expect(constitution).toContain(
+      "Founder-gated residuals (P4 authority unchanged): npm 0.1.15 publish (lag-honest in tree until it lands), hosted domain, public disclosure channel provisioning",
+    );
+    const milestones = constitution.slice(
+      constitution.indexOf("## 7. Milestone Law"),
+      constitution.indexOf("## 8. Release Blockers"),
+    );
+    expect(milestones).toContain("General Availability EXECUTED 2026-10");
+    expect(milestones).not.toContain("rehearsed and pending Founder GO");
+    expect(constitution).toContain("docs/ga/GO-NO-GO.md"); // the dossier of record, restored in-tree
     // A6 — the synchronization protection law: D-Q extended to every synchronized
     // remote, with measured probes, D-S-labeled protection state, and the staged
     // fail-closed elevation of required checks (a check that cannot run is not a check).
@@ -748,6 +771,11 @@ describe("constitution and version lockstep regression (Phase 8)", () => {
     // Standard, and the Empty Machine Test, ratified as register law (D-U…D-Y).
     expect(constitution).toContain("### A7 — v1.6 → v1.7");
     expect(constitution).toContain("THE MASTER CONSTITUTIONAL DIRECTIVE");
+    // A8 — the Era II amendment of record (the GA execution reconciliation).
+    expect(constitution).toContain("### A8 — v1.7 → v1.8");
+    expect(constitution).toContain("ERA II — THE GA EXECUTION RECONCILIATION");
+    expect(constitution).toContain("Public Maintenance era");
+    expect(constitution).toContain("curated republication");
     expect(constitution).toContain("Reality Recovery Law");
     expect(constitution).toContain("Nothing proceeds until reality is measured");
     expect(constitution).toContain("Implementation Rule + Root Cause Law");
@@ -786,6 +814,12 @@ describe("constitution and version lockstep regression (Phase 8)", () => {
     expect(v11).toContain("VAERION_CONSTITUTION_v1.1");
     expect(v11).toContain("2–7");
     await readFile(join(root, "docs", "constitution", "VAERION_CONSTITUTION_v1.0.md"), "utf8");
+    // D-Z-4: the provenance record of the curated republication exists at the
+    // repo root — the law's citation resolves in-tree (the dead-reference
+    // defect class ends here).
+    const provenance = await readFile(join(root, "PROVENANCE.md"), "utf8");
+    expect(provenance).toContain("curated republication");
+    expect(provenance).toContain("41d6df3");
   });
 
   test("version lockstep holds across every measured surface", async () => {
@@ -811,9 +845,9 @@ describe("the ONE derivation + the ONE ledger parser (v1.7 A7, D-B/D-V)", () => 
     const root = join(import.meta.dir, "..", "..", "..", "..");
     const { constitutionOfRecord } = await import("../../src/repo/constitution.ts");
     const record = constitutionOfRecord(root);
-    expect(record.version).toBe("v1.7");
-    expect(record.file).toBe("VAERION_CONSTITUTION_v1.7.md");
-    expect(record.path).toBe("docs/constitution/VAERION_CONSTITUTION_v1.7.md");
+    expect(record.version).toBe("v1.8");
+    expect(record.file).toBe("VAERION_CONSTITUTION_v1.8.md");
+    expect(record.path).toBe("docs/constitution/VAERION_CONSTITUTION_v1.8.md");
     // Fail-closed (P6): no ratified constitution ⇒ no guess, ever.
     const { mkdtemp } = await import("node:fs/promises");
     const { tmpdir } = await import("node:os");
