@@ -822,6 +822,31 @@ describe("constitution and version lockstep regression (Phase 8)", () => {
     expect(provenance).toContain("41d6df3");
   });
 
+  test("the D-M′ surface pin is bidirectional (v1.8 A8): the help of record equals the ratified register exactly — removal AND growth both fail", async () => {
+    const root = join(import.meta.dir, "..", "..", "..", "..");
+    // The help of record is the generated golden fixture (C4: help and dispatch
+    // never disagree; the golden IS the rendered surface of record).
+    const golden = await readFile(
+      join(root, "packages", "vaerion", "fixtures", "golden", "a11y", "main-help.golden.txt"),
+      "utf8",
+    );
+    const measured = [...new Set([...golden.matchAll(/^  ([a-z][a-z-]+)/gm)].map((m) => m[1]!))].sort();
+    // The ratified register at v1.8 A8 (D-M′): the v1.3 seventeen plus the
+    // ratified growth of twelve, re-measured at 29.
+    const ratified = (
+      "init run resume explain journal doctor dev serve package provenance repo ci release tour account ai center " +
+      "create status report clean verify mcp start snapshot restore help completions version"
+    )
+      .trim()
+      .split(/\s+/)
+      .sort();
+    expect(ratified.length).toBe(29);
+    // Bidirectional by law: a removed command fails (measured ⊂ ratified breaks
+    // equality), a grown command fails (ratified ⊂ measured breaks equality) —
+    // growth requires a Founder amendment (D-M′, P4), not a silent test edit.
+    expect(measured).toEqual(ratified);
+  });
+
   test("version lockstep holds across every measured surface", async () => {
     const root = join(import.meta.dir, "..", "..", "..", "..");
     const { VERSION } = await import("../../src/cli/vae.ts");

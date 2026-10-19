@@ -126,6 +126,28 @@ describe("version register — engine-version lockstep is complete and closed", 
     }
   });
 
+  test("the lockfile of record mirrors the workspace manifests (the register law reads the lock — TD-16)", async () => {
+    // Phase 65 (TD-16): the GA flip bumped every manifest but never the lock —
+    // bun.lock's workspace snapshot sat at 0.1.15-rc1 through the GA tag while
+    // every CI/Docker/devcontainer consumer installs with --frozen-lockfile.
+    // The register now reads the lock: each workspace entry in bun.lock must
+    // mirror the version in its own package.json, which is register-pinned to
+    // VERSION above — so a missed `bun install` at a version bump fails here.
+    const lock = await readRepo("bun.lock");
+    const workspaces = ["packages/vaerion", "sdks/typescript", "tools"];
+    for (const ws of workspaces) {
+      const manifest = JSON.parse(await readRepo(`${ws}/package.json`)) as { version?: string };
+      const at = lock.indexOf(`"${ws}"`);
+      expect(at, `bun.lock must carry workspace "${ws}"`).toBeGreaterThanOrEqual(0);
+      const block = lock.slice(at, at + 400);
+      const lockVersion = block.match(/"version":\s*"([^"]+)"/)?.[1];
+      expect(
+        lockVersion,
+        `bun.lock workspace "${ws}" must mirror its manifest version (regenerate the lock at every register bump)`,
+      ).toBe(manifest.version);
+    }
+  });
+
   test("no stale engine-version literal hides in packaging/, sdks/, or integrations/ living files (negative sweep)", async () => {
     // Phase 61.1 (D1): integrations/ joined the sweep — three adapter
     // manifests sat at 0.1.13rc1 through two register bumps because the
