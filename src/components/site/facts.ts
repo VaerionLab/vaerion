@@ -110,7 +110,7 @@ export const FACTS = {
   release: {
     tag: "v0.1.15",
     signing: "Ed25519 (sha256 + manifest + independent openssl verification)",
-    status: "prerelease — signed, reproducible; GitHub Release v0.1.15 LIVE (8 assets, signature + digests verified); npm publish pending the Founder gate (the registry still delivers 0.1.14-rc1)",
+    status: "GA — stable, signed, reproducible; GitHub Release v0.1.15 LIVE (8 assets, signature + digests verified); PyPI LIVE (0.1.15, sdist + wheel); npm LIVE BUT LAGS — the registry delivers 0.1.14-rc1 on rc+latest until the 0.1.15 publish executes (Founder-gated), measured 2026-10-19",
   },
 
   install: {
@@ -118,7 +118,7 @@ export const FACTS = {
     channels: [
       { name: "From source", command: "git clone … && bun install --frozen-lockfile", status: "VERIFIED", available: true },
       { name: "GitHub Releases", command: "signed tarball + install.sh", status: "VERIFIED", available: true },
-      { name: "npm", command: "npm install -g vaerion", status: "published — vaerion 0.1.15 under dist-tag latest, measured live on registry.npmjs.org 2026-10-17; parity-proven before publish", available: true },
+      { name: "npm", command: "npm install -g vaerion", status: "LIVE BUT LAGS — the registry delivers 0.1.14-rc1 on rc+latest until the 0.1.15 publish executes (Founder-gated), measured on registry.npmjs.org 2026-10-19; the publish artifact is parity-proven before publish", available: true },
       { name: "PyPI", command: "pip install vaerion", status: "published — vaerion 0.1.15 (sdist + wheel), measured live on pypi.org 2026-10-17", available: true },
       { name: "Homebrew / winget / dmg / rpm", command: "authored in packaging/", status: "UNVERIFIED — host-gated", available: false },
     ] as const,
@@ -282,7 +282,7 @@ export const FACTS = {
   notYet: [
     "No cloud service — the engine is local; cloud seams are reserved (ADR-0017), not sold.",
     "No telemetry, no analytics, no undeclared network — enforced mechanically on every build.",
-    "PyPI is LIVE — `pip install vaerion` (0.1.15, sdist + wheel). npm is current — `npm install -g vaerion` (0.1.15 under dist-tag latest).",
+    "PyPI is LIVE — `pip install vaerion` (0.1.15, sdist + wheel). npm is LIVE BUT LAGS — `npm install -g vaerion` (0.1.14-rc1 on rc+latest until the Founder-gated 0.1.15 publish executes).",
     "vaerion.dev is pending domain provisioning (Founder-gated); install from GitHub Releases or PyPI today.",
     "Single-binary installers (brew/winget/dmg/rpm) are authored but host-gated UNVERIFIED.",
     "SDK packages and integrations ship from this repository — crates.io / Maven Central publication is Founder-gated; PyPI is live.",

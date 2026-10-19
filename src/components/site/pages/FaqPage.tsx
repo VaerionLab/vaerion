@@ -55,9 +55,10 @@ const QA: { q: string; a: React.ReactNode }[] = [
     a: (
       <>
         <p>
-          Honest answer: yes. The npm registry delivers the current engine —
-          0.1.15 under dist-tag latest (with verify/create/start/mcp). The
-          current engine ships today: PyPI is live (`pip install vaerion` →
+          Honest answer: yes — but it lags. The npm registry delivers
+          0.1.14-rc1 on rc+latest until the 0.1.15 publish executes
+          (Founder-gated, measured 2026-10-19). The current engine ships
+          today: PyPI is live (`pip install vaerion` →
           0.1.15) and the signed v0.1.15 set is on GitHub Releases (signature +
           digests verified).
         </p>

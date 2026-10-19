@@ -43,7 +43,8 @@ Exit codes: `0` ok · `1` internal · `2` usage · `3` broker-denied ·
 `4` provider-down · `5` partial-with-repair-hint.
 
 Note: `vae verify` is a top-level command in the `0.1.15` tree of record
-(absent from the npm-delivered `0.1.14-rc1` engine). Verification subcommands
+(absent from the npm-delivered `0.1.14-rc1` engine — the `0.1.15` npm
+publish is prepared and Founder-gated). Verification subcommands
 also exist under `journal`, `package`, and `repo` (e.g. `vae journal verify RUN_ID`).
 
 ## Reporting a problem

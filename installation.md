@@ -15,13 +15,13 @@ npm install -g vaerion@rc
 vae --version                               # → vae 0.1.14-rc1 (see the note below)
 ```
 
-- **Version note (honest):** the registry's `@rc` channel currently delivers
-  **`0.1.14-rc1`** — an older engine missing `vae verify` / `create` /
-  `start` / `mcp` — the Founder-gated **`0.1.15`** publish shipped (the
-  version of record in the source tree). For the true engine today, install
-  from source (`bun install` in a clone, then
-  `bun run packages/vaerion/src/cli/vae.ts`) or use the signed release set.
-  The same command yields `vae 0.1.15`.
+- **Version note (honest):** LIVE BUT LAGS — the npm registry delivers
+  `0.1.14-rc1` on `rc`+`latest` until the `0.1.15` publish executes
+  (Founder-gated; measured 2026-10-19) — an older engine missing `vae verify` /
+  `create` / `start` / `mcp`; this command does **not** yield `vae 0.1.15`
+  today. For the current engine, install from source (`bun install` in a
+  clone, then `bun run packages/vaerion/src/cli/vae.ts`), use PyPI
+  (`pip install vaerion` — live at `0.1.15`), or use the signed release set.
 - `@rc` is the release-candidate channel. Plain `npm install -g vaerion`
   resolves to the same version today.
 - No account, no telemetry, no network use at runtime unless you

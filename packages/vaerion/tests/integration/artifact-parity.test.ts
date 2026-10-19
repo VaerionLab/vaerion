@@ -117,15 +117,29 @@ describe("artifact parity — SOURCE = PACKAGE = DOCUMENTATION = WEBSITE CLAIMS"
     // vaerion@rc` while the registry still serves the OLD engine. The
     // disclosure is now part of the docs of record — and if any of these
     // surfaces loses it, the gate refuses (the class cannot regress).
+    // 2026-10-19 (npm Path B adjudication): the GA flip had rewritten these
+    // surfaces as if the 0.1.15 publish had already run; the pins moved with
+    // the prose to the lag-honest sentence — the npm registry delivers
+    // 0.1.14-rc1 on rc+latest until the Founder-gated 0.1.15 publish
+    // executes (PyPI is live at 0.1.15). The pin continues to assert that
+    // README + docs/QUICKSTART tell the npm truth — now the lag-honest one —
+    // and the old false "current engine" sentence may never return.
     const PINS: Array<[string, string]> = [
-      ["README.md", "the npm registry delivers the current engine"],
-      ["docs/QUICKSTART.md", "the npm registry delivers the current engine"],
+      ["README.md", "the npm registry delivers `0.1.14-rc1` on"],
+      ["docs/QUICKSTART.md", "the npm registry delivers `0.1.14-rc1` on"],
       ["docs/getting-started/installation.md", "Founder-gated"],
       ["integrations/mcp/README.md", "no `mcp` command"],
     ];
     for (const [rel, anchor] of PINS) {
       const text = await readRepo(rel);
       expect(text).toContain(anchor);
+    }
+    // negative tripwires: the GA-flip false claim (npm already current at
+    // 0.1.15 under latest) must stay out of the pinned teach surfaces
+    for (const rel of ["README.md", "docs/QUICKSTART.md"]) {
+      const text = await readRepo(rel);
+      expect(text).not.toContain("the npm registry delivers the current engine");
+      expect(text).not.toContain("0.1.15` under dist-tag `latest`");
     }
     // The launcher's taught refusal must be real, not folklore: a machine
     // without Bun reaches the E1600 body (node-executable shebang), matching

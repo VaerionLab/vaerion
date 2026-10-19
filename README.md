@@ -62,13 +62,17 @@ it, `vae` refuses with a taught error, never a cryptic one).
 ```sh
 curl -fsSL https://bun.sh/install | bash    # if Bun is not installed yet
 npm install -g vaerion@rc                    # npm channel — see the version note below
-vae --version                                # → vae 0.1.15
+vae --version                                # → vae 0.1.14-rc1 (until the 0.1.15 npm publish)
 ```
 
-> **Version note (honest):** the npm registry delivers the current engine —
-> `0.1.15` under dist-tag `latest`, with `vae verify` / `create` / `start` /
-> `mcp`, the did-you-mean system, and the 7-template registry. Install from
-> npm (`npm install -g vaerion`), from source (`bun install` in a clone, then
+> **Version note (honest):** the npm registry delivers `0.1.14-rc1` on
+> `rc`+`latest` — LIVE BUT LAGS — until the `0.1.15` publish executes
+> (Founder-gated; measured 2026-10-19); PyPI is live at `0.1.15`. The npm
+> badge above renders this same registry truth until the publish lands.
+> The `0.1.15` tree of record adds `vae verify` / `create` / `start` /
+> `mcp`, the did-you-mean system, and the 7-template registry. Install
+> from npm (`npm install -g vaerion` — today it resolves to `0.1.14-rc1`),
+> from source (`bun install` in a clone, then
 > `bun run packages/vaerion/src/cli/vae.ts`), or the signed release set.
 
 Other channels (signed release tarball with three-leg offline
@@ -192,8 +196,10 @@ the engine's own test suite — examples cannot drift from reality.
 `v0.1.15` is **general availability**: 9/9 verification gates green,
 signed release artifacts, the E1010 journal-completeness anchor now
 canonical, and a mechanical artifact-parity system (source = build =
-package = docs). npm distribution is current (`0.1.15` under dist-tag
-`latest`), parity-proven before publish.
+package = docs). npm distribution is LIVE BUT LAGS — the registry
+delivers `0.1.14-rc1` on `rc`+`latest` until the `0.1.15` publish
+executes (Founder-gated; the publish artifact is parity-proven before
+publish, measured 2026-10-19); PyPI is live at `0.1.15`.
 What ships next and what is explicitly *not* done yet:
 [`ROADMAP_PROGRESS.md`](ROADMAP_PROGRESS.md),
 [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md), and

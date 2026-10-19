@@ -20,6 +20,10 @@ under the Founder's written GO (Phase 67, the release train of record).
   the signed GitHub Release `v0.1.15` publishes with the 8-asset verification
   set (MANIFEST.json + Ed25519 signature + SHA256SUMS + VERIFY.md +
   dist-report.json + release-signing.pub + source tarball + demo bundle).
+- npm note (2026-10-19 erratum): the `0.1.15` npm publish is prepared and
+  Founder-gated — the registry currently delivers `0.1.14-rc1` on
+  `rc`+`latest`, so the rc-era lag disclosure above still describes npm
+  today; PyPI `0.1.15` and the signed GitHub Release are live.
 - The hosted site redeploys with GA facts (channel table, FAQ, install copy).
 
 ### Added

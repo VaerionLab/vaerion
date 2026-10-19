@@ -52,6 +52,12 @@ hash chain and refuses on any gap (E1010, the completeness anchor).
 | Homebrew / winget / dmg / rpm | authored, UNVERIFIED host-gated | unchanged — authored, UNVERIFIED host-gated |
 | Hosted site | **LIVE** — vaerion.vercel.app | **LIVE** — redeployed with GA facts |
 
+> **Erratum (npm, measured 2026-10-19):** the npm row above and the
+> `npm install -g vaerion` line in the Install block below record the
+> GA-day intent — the registry in fact delivers `0.1.14-rc1` on `rc` +
+> `latest` until the `0.1.15` npm publish executes (Founder-gated). PyPI
+> (`0.1.15`) and the signed GitHub Release are live today.
+
 ## Install (GA)
 
 ```sh

@@ -12,8 +12,8 @@
 ```sh
 pip install vaerion        # PyPI — live: vaerion 0.1.15 (sdist + wheel)
 # or
-npm install -g vaerion    # npm — CURRENT: 0.1.15 under dist-tag latest
-vae --version             #   (measured on registry.npmjs.org 2026-10-17)
+npm install -g vaerion    # npm — LIVE BUT LAGS: 0.1.14-rc1 on rc+latest
+vae --version             #   until the 0.1.15 publish (Founder-gated; measured 2026-10-19)
 ```
 
 ## Path 2 — from source (works today)

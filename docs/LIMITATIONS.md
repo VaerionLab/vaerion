@@ -103,11 +103,13 @@ From `docs/ga/GO-NO-GO.md` §2 and `docs/ga/FINAL-VERIFIED-REALITY-REPORT.md`
   bootstrap-key disclosure era is recorded in the phase reports.
 - **F-4 — Substrate ratification.** ADR-0018 (TypeScript-on-Bun) remains
   PROVISIONAL pending the Founder decision; migration path recorded.
-- **F-5 — Publication.** ✅ **EXECUTED (measured 2026-10-17):**
-  GitHub Release `v0.1.15` is LIVE (8 signed assets — signature and
-  every digest verified); npm is LIVE (`vaerion 0.1.15` under dist-tag
-  `latest`, parity-proven before publish); PyPI is LIVE (`vaerion 0.1.15`,
-  sdist + wheel); the hosted site is LIVE (`https://vaerion.vercel.app`).
+- **F-5 — Publication.** ✅ **EXECUTED (measured 2026-10-17; npm
+  re-measured 2026-10-19):** GitHub Release `v0.1.15` is LIVE (8 signed
+  assets — signature and every digest verified); PyPI is LIVE
+  (`vaerion 0.1.15`, sdist + wheel); the hosted site is LIVE
+  (`https://vaerion.vercel.app`). npm is LIVE BUT LAGS — the registry
+  delivers `0.1.14-rc1` on `rc`+`latest` until the `0.1.15` publish
+  executes (Founder-gated; parity-proven before publish).
   Still Founder-gated: the `vaerion.dev` domain (measured unreachable),
   homebrew-core / winget submissions, announce, and beta recruitment
   (`docs/ga/PHASE-XXIII-PUBLICATION-GAP-AUDIT.md` history).
