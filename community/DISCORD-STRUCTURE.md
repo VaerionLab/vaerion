@@ -98,7 +98,7 @@ Governed by `CODE_OF_CONDUCT.md` without amendment:
 
 1. [ ] Founder approval recorded (this document, plus the server's
        existence as a Founder-gated surface —
-       `docs/founder/FOUNDER-PACKETS.md` pattern).
+       `docs/ga/FOUNDER-GO-NO-GO-PACKET.md` pattern).
 2. [ ] Server created; icon, description, verification level set per §1.
 3. [ ] Categories and channels created per §2; `#welcome` and
        `#announcements` read-only for members.

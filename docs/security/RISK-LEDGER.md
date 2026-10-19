@@ -7,7 +7,8 @@
 > rotation), journal integrity (E1001 + E1010 live-refused on source and
 > installed artifact), deterministic builds (byte-identical rebuilds —
 > 61.1 record `d9d8f1a7…`; the 61.2 correction build `bd2e5d56…`
-> reproduced identically twice; see `reports/phase-61.2/06-artifact-proof.md`),
+> reproduced identically twice; the parity gate of record is
+> `tools/verify-artifact-parity.ts`),
 > dependency audit (0 vulnerabilities across the declared
 > ranges). No new residual exposure was introduced by the 0.1.15-rc1
 > corrections. Known open DX exposure (no-Bun first-touch: the engine

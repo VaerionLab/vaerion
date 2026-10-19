@@ -82,8 +82,8 @@ verification matrix of record is `packaging/README.md` (measured
   contract are verified against the tree; execution is not (honest
   markers inside `Dockerfile`).
 - **GitHub branch protection: UNVERIFIED TODAY.** The 2026-09 blocker (API
-  403 "Upgrade to GitHub Pro or make this repository public"; worklog.md
-  Task 3 entry) is void now that the repository is public. `.github/ORG-PROFILE.md`
+  403 "Upgrade to GitHub Pro or make this repository public"; recorded in
+  the 2026-09 campaign record) is void now that the repository is public. `.github/ORG-PROFILE.md`
   records protection as enforced; re-verify with an admin token at the next
   Founder session. Nothing the engine can do.
 
@@ -143,6 +143,6 @@ GA EXECUTED (2026-10-17) — the train ran under the Founder's written GO
 ---
 
 *If a limitation above has been closed by later work, the closing record
-lives in `worklog.md` and the phase ledgers — this file defers to the
-records, and any stale line here is a defect to be fixed, not a claim to
-be defended.*
+lives in the CHANGELOG, the constitution amendment log (§11), and the
+`docs/ga/` evidence packets — this file defers to the records, and any
+stale line here is a defect to be fixed, not a claim to be defended.*

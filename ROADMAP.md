@@ -11,6 +11,16 @@
 - The CLI (`vae` — now with `create`/`verify`/`start`/`mcp`, an interactive first-run prompt layer, and the 7-template registry incl. `enterprise`), five SDKs (TypeScript `@vaerion/sdk`, Python, Go, Rust, Java), the framework alliance (`vae mcp` + OpenAI Agents / LangGraph / CrewAI / AutoGen adapters), and the verification law (`tools/verify.ts`)
 - Live: the repository of record (`VaerionLab/vaerion`), PyPI (`0.1.15`), and the signed GitHub Release; the npm channel is LIVE BUT LAGS — `0.1.14-rc1` on `rc`+`latest` until the `0.1.15` publish executes (Founder-gated, parity-proven before publish; measured 2026-10-19)
 
+## Era II — Public Maintenance *(open — constitution v1.8, D-Z)*
+
+GA is **executed** and reconciled with the law: `0.1.15` is the version of record, the verification record is GREEN — 9/9 gates, 719 pass · 0 fail · 5,246 expectations · 62 files — and amendment A8 (constitution v1.8, [§11](docs/constitution/VAERION_CONSTITUTION_v1.8.md)) declares Era II's standing program: maintenance, synchronization, and trust, with every claim re-measured before it repeats.
+
+**Completed (Era I).** MS-0 → MS-6 (skeleton & law-in-repo, runtime spine, permission broker, model gateway, intelligence + agents, surfaces, packaging + hardening), the ASCENSION XVIII–XXVI hardening campaigns, and the GA execution itself. Evidence of record, all in-tree: [`docs/ga/`](docs/ga/) (burndown, go/no-go, release verification, audits, ASCENSION records), the amendment log (constitution §11), and [`PROVENANCE.md`](PROVENANCE.md) — the provenance of record for this curated republication.
+
+**Next milestones.** Founder-gated residuals, enumerated in constitution v1.8 §7: the npm publish of `0.1.15` (the parity-proven artifact is prepared), the hosted domain, and the public disclosure channel. Next-train candidates: the spec-changelog subcheck wired as a verification gate (SI-8), SDK-conformance CI activation ([`.github/workflows/sdk-conformance.yml`](.github/workflows/sdk-conformance.yml) — authored as a non-required check; activation is a recorded decision), the template-dependency removal PR, and editor integrations.
+
+**Technical debt register** (one line each, honest — the maintained ledgers, not this file, are the memory): the Phase 64 forensic ledger is dispositioned by the Era II program and recorded in amendment A8 (constitution §11); the shadow verification culture (`src/vaerion/testing/` + `tools/vaerion-pipeline/`) is intentional unmeasured tooling debt with a recorded revisit trigger (D-Z-3); the branches/statements coverage floors are currently unmeasurable by bun's reporter — floors held, no emission point; the website `src/` tree carries no tests or coverage floors. The honest inventory of what is measured and what is not remains [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md).
+
 ## Next — in order of record
 
 1. **Agent-framework integrations** — ✅ DELIVERED (2026-10-01 @ `7e6b751`): the in-engine `vae mcp` stdio server (six tools over the real CLI contract) plus the alliance adapters for OpenAI Agents, LangGraph, CrewAI, and AutoGen in [`integrations/`](integrations/) — 31/31 tests against the real engine (7 + 8 + 8 + 8), every suite spawning a real `vae mcp` and asserting journals, receipts, and refusals.

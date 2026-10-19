@@ -20,9 +20,9 @@ working tree was restored to the Phase 13 commit (`42d1146`) and the
 never persisted to disk. The six files below were recovered **byte-exact**
 from the delivery CDN URLs attached to the Founder's message, sha256-recorded
 at download, and pixel-verified one by one. The previous session's unpushed
-snapshot commits and `.env.local` were not recoverable; full disclosure in
-`FINAL_LAUNCH_READINESS_REPORT.md` (PHASE 16.4 section) and `worklog.md`
-(Task ID 23).
+snapshot commits and `.env.local` were not recoverable; the full disclosure
+record lives in the private engineering workspace (the Phase 16.4
+launch-readiness record) and is not part of this tree.
 
 Provenance precision: the mapping **CDN file → pixel content** is ground
 truth (every file opened and visually verified). The mapping **original

@@ -1,0 +1,78 @@
+# Vaerion — SDK conformance CI (phase-64 TD-7: the 23 non-bun SDK test files
+# were wired to no CI gate; the conformance counts of record were ungated).
+#
+# STATUS: NON-REQUIRED CHECK — ACTIVATION CANDIDATE.
+#   The ONE verification authority (tools/verify.ts, constitution D-R) already
+#   covers the TypeScript SDK (typecheck-sdk + sdk-parity/daemon-parity gates)
+#   and is the branch-protection check of record. This workflow adds the four
+#   non-bun SDK conformance batteries (VAERION_SDK_STANDARD §18) WITHOUT
+#   forking the verification authority. Each suite is honest by construction:
+#   its real-daemon integration layer SKIPS (never fakes) when no `vae`
+#   runtime exists on the machine, so on CI these legs measure the unit/
+#   conformance layer. Promoting this workflow to a required check (or folding
+#   it into the verify law) is a recorded next-train decision — the Era II
+#   disposition of ungated surfaces (constitution v1.8, D-Z-3 adjacency): a
+#   surface either joins the law or its exclusion is disclosed. It is
+#   disclosed here, and measured here.
+#
+# Supply-chain law (ci-truth, ASCENSION XXVI+): every external action is
+# SHA-pinned with its human-readable tag annotation — the exact refs copied
+# from verify.yml. No new action dependencies are introduced: python3/pip,
+# go, cargo, and maven are preinstalled on GitHub-hosted runners.
+#
+# Fail-isolation law: one matrix leg failing never cancels its siblings
+# (strategy.fail-fast: false) — a red Rust leg must not hide a green Go leg.
+
+name: sdk-conformance
+
+on:
+  workflow_dispatch:
+  push:
+    paths: ["sdks/**"]
+  pull_request:
+    paths: ["sdks/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    name: sdk conformance — ${{ matrix.sdk }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - sdk: python
+            dir: sdks/python
+            setup: python3 -m pip install --quiet pytest
+            test: python3 -m pytest tests/ -v
+          - sdk: go
+            dir: sdks/go
+            setup: ""
+            test: go test ./...
+          - sdk: rust
+            dir: sdks/rust
+            setup: ""
+            test: cargo test --locked
+          - sdk: java
+            dir: sdks/java
+            setup: ""
+            test: mvn --batch-mode --no-transfer-progress test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+
+      - name: Prepare (${{ matrix.sdk }})
+        if: matrix.setup != ''
+        run: ${{ matrix.setup }}
+
+      - name: Conformance suite (${{ matrix.sdk }})
+        working-directory: ${{ matrix.dir }}
+        run: ${{ matrix.test }}
+
+  # typescript: intentionally NOT a leg. The TypeScript SDK is already inside
+  # the ONE verification law (tools/verify.ts: typecheck-sdk, sdk-parity,
+  # daemon-parity) and is enforced by the required `verify` workflow on every
+  # push. Re-running it here would duplicate (not strengthen) the gate.

@@ -248,7 +248,7 @@ function renderMarkdown(x: {
     `| OBJ-Q3 hot-path overhead | < 8 ms p50 / < 25 ms p99 | ${x.q3.n > 0 ? `${x.q3.p50.toFixed(1)} ms p50 · ${x.q3.p99.toFixed(1)} ms p99 (n=${x.q3.n}, full \`run model\` incl. process start + journal fsync)` : "not measured"} | ${x.q3.n > 0 ? verdict(x.q3.p50 < 8 && x.q3.p99 < 25) : "—"} |`,
     `| OBJ-Q4 memory | ≤ 120 MB active / < 45 MB idle daemon | idle ${x.idleRssMb === null ? "not available (no /proc)" : `${x.idleRssMb.toFixed(1)} MB max RSS (n=10 samples)`}; active not sampled this run | ${x.idleRssMb === null ? "—" : verdict(x.idleRssMb < 45)} |`,
     `| OBJ-Q5 index throughput | ≥ 12,000 files/min | ${x.q5FilesPerMin === null ? "not measured" : `${Math.round(x.q5FilesPerMin).toLocaleString()} files/min (${x.fileCount} synthetic files, cold process)`} | ${x.q5FilesPerMin === null ? "—" : verdict(x.q5Ok)} |`,
-    `| OBJ-Q6 coverage gates | floors in bunfig.toml | enforced by the verify gate (see VERIFICATION_REPORT.md) | PASS |`,
+    `| OBJ-Q6 coverage gates | floors in bunfig.toml | enforced by the verify gate (measured record: \`.vaerion-verification.json\`; gate law: \`tools/verify.ts\`) | PASS |`,
     `| OBJ-Q7 zero secrets | asserted in fuzz tests | constitutional C5 + golden redaction + distribution secret scan | PASS |`,
     "",
     "## Honest notes",

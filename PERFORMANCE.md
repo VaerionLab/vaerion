@@ -15,7 +15,7 @@
 | OBJ-Q3 hot-path overhead | < 8 ms p50 / < 25 ms p99 | 113.0 ms p50 · 141.6 ms p99 (n=12, full `run model` incl. process start + journal fsync) | FAIL |
 | OBJ-Q4 memory | ≤ 120 MB active / < 45 MB idle daemon | idle 56.7 MB max RSS (n=10 samples); active not sampled this run | FAIL |
 | OBJ-Q5 index throughput | ≥ 12,000 files/min | 113,008 files/min (240 synthetic files, cold process) | PASS |
-| OBJ-Q6 coverage gates | floors in bunfig.toml | enforced by the verify gate (see VERIFICATION_REPORT.md) | PASS |
+| OBJ-Q6 coverage gates | floors in bunfig.toml | enforced by the verify gate (measured record: `.vaerion-verification.json`; gate law: `tools/verify.ts`) | PASS |
 | OBJ-Q7 zero secrets | asserted in fuzz tests | constitutional C5 + golden redaction + distribution secret scan | PASS |
 
 ## Honest notes
