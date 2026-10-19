@@ -24,7 +24,8 @@ bundles. Zero telemetry, enforced mechanically.
 | `scoop-bucket` *(planned — Founder-gated)* | Windows bucket, pending Founder provisioning |
 
 Planned repos are listed as planned. They are not created until their
-Founder packet executes (`docs/founder/FOUNDER-PACKETS.md` §B).
+Founder packet executes (`docs/ga/FOUNDER-GO-NO-GO-PACKET.md` is the
+founder-gate packet pattern of record in this tree).
 
 ## Trusted-builder line
 

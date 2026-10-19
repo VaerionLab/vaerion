@@ -35,8 +35,9 @@ as UNVERIFIED. -->
       `tools/gen-openapi.ts`
 - [ ] Decisions recorded — behavioral or structural decisions carry an ADR in
       `docs/adr/`
-- [ ] Records appended — `worklog.md` carries the measured record of this
-      change (what was done, what was measured, what remains)
+- [ ] Records appended — the CHANGELOG (user-visible changes) and the ADR of
+      record in `docs/adr/` carry the measured record of this change (what
+      was done, what was measured, what remains)
 - [ ] No fabrication — every claim here is measurable in this repository;
       uncertainties are labeled UNVERIFIED, never dressed as verified
 

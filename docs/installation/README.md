@@ -39,9 +39,10 @@ vae --version   # vae 0.1.14-rc1
 vae doctor      # environment checks, exit 0 when healthy
 ```
 
-A measured, screenshot-backed walkthrough of the whole journey lives in
-[`docs/launch/installation-walkthrough.md`](../launch/installation-walkthrough.md).
-The full reference, including update and uninstall, is [`INSTALL`](../INSTALL.md).
+A measured, command-by-command walkthrough of the whole journey lives in
+[`docs/QUICKSTART.md`](../QUICKSTART.md). (The screenshot-backed walkthrough is
+not part of the public tree.) The full reference, including update and
+uninstall, is [`INSTALL`](../INSTALL.md).
 
 ## Trust note
 

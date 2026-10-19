@@ -1,10 +1,10 @@
 # Changelog
 
 All notable changes to the Vaerion engine. Entries derive from the measured
-records of record — the annotated git tags (`v0.1.7-rc1` … `v0.1.14-rc1`), the
-reports in `docs/ga/`, and `worklog.md` — not from memory; dates are the
-measured tag dates. Keep a Changelog format; within v0.1 surfaces evolve
-additively — nothing removed or renamed (`BETA-ONBOARDING.md`).
+records of record — the annotated git tags (`v0.1.7-rc1` … `v0.1.15`), the
+reports in `docs/ga/`, and the constitution amendment log (§11) — not from
+memory; dates are the measured tag dates. Keep a Changelog format; within
+v0.1 surfaces evolve additively — nothing removed or renamed (`BETA-ONBOARDING.md`).
 
 ## [0.1.15] - 2026-10-17
 

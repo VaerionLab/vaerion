@@ -68,3 +68,14 @@ updates:
       time: "06:00"
       timezone: "Etc/UTC"
     open-pull-requests-limit: 5
+
+  # sdks/python (the Python SDK, its own pyproject.toml) — the previously
+  # unwatched gap (phase-63 P2-6); separate from the packaging/python wheel.
+  - package-ecosystem: "pip"
+    directory: "/sdks/python"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Etc/UTC"
+    open-pull-requests-limit: 5

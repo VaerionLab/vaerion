@@ -3,10 +3,11 @@
 # VERIFICATION STATUS: authored on Linux; no rpmbuild in this environment,
 # so the spec is syntax-reviewed only. Platform marker: UNVERIFIED — RPM.
 # Build (on any RPM host):
-#   rpmbuild -bb packaging/linux/vaerion.spec --define "version 0.1.15.rc1"
-# (RPM versions cannot contain '-'; the dot form 0.1.15.rc1 is the
-#  convention of record here — derived from version_string by replacing
-#  the pre-release hyphen with a dot; the register test pins the derivation.)
+#   rpmbuild -bb packaging/linux/vaerion.spec --define "version 0.1.15"
+# (RPM versions cannot contain '-'; when version_string carries a pre-release
+#  suffix, the dot form — the hyphen replaced by a dot — is the convention of
+#  record here, pinned by the register test. At GA the version is flat:
+#  0.1.15 = version_string = rpm_version.)
 
 %global version_string 0.1.15
 %global rpm_version    0.1.15

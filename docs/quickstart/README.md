@@ -1,8 +1,9 @@
 # Quickstart — your first verified receipt
 
 The whole journey is five commands. Numbers below are from a real measured run
-(npm-shim install path, cold directory); the full transcript with screenshots is
-[`docs/launch/demo-flow.md`](../launch/demo-flow.md).
+(npm-shim install path, cold directory); the full measured transcript is
+[`docs/QUICKSTART.md`](../QUICKSTART.md). (The screenshot-backed demo flow is
+not part of the public tree.)
 
 ## 1. Create the project
 
