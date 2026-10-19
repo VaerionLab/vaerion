@@ -35,6 +35,12 @@ jobs:
   publish:
     name: publish the signed release
     runs-on: ubuntu-latest
+    # GitHub Environment `release` (Phase 64 F-01/TD-14): every dispatch of
+    # this publish job requires the environment's required reviewers, so a
+    # side-branch dispatch can no longer bypass the in-repo tripwires. The
+    # environment (with reviewers) is created founder-side — see
+    # release/v0.1.15/FOUNDER-LANDING-RUNBOOK.md step 4b.
+    environment: release
     timeout-minutes: 30
     env:
       TAG: ${{ inputs.tag }}
