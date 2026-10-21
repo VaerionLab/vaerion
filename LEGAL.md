@@ -17,7 +17,7 @@
 | License | **Apache-2.0** | `LICENSE` at the repository root |
 | Governance | the engineering constitution (`docs/constitution/`) + ADR index (`docs/adr/`) | decision law, amendment path, D-T ledger |
 
-`vaerion.dev` is the project's intended web identity (publisher URL, support contact domain). Domain provisioning is a publication step owned by the Founder (risk-ledger F-5); until it is live, this repository and its GitHub Releases are the only authoritative surfaces.
+`vaerion.dev` is the project's intended web identity (publisher URL, support contact domain). Domain provisioning is a publication step owned by the Founder (risk-ledger F-5); until it is live, the authoritative publication surfaces are this repository and its GitHub Releases, the canonical website (`https://vaerion.vercel.app`), and the package registries of record (npm and PyPI).
 
 ## 2. Ownership statement
 

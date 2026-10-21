@@ -2,9 +2,11 @@
 
 > **Provenance:** every fact below was measured against the engine in this repository
 > (`packages/vaerion/src/mcp/server.ts`, `packages/vaerion/src/cli/vae.ts`) and against a
-> live spawned server on **2026-10-01**, engine version **0.1.15**. The demo at the end
-> of this file was executed and its output captured byte-for-byte in
-> [`captured_output.txt`](./captured_output.txt). No claims are aspirational.
+> live spawned server — re-measured **2026-10-21** against engine **0.1.15** (npm
+> registry build; the `initialize`/`tools/list` handshake and the error discipline
+> probed live). The demo at the end of this file was executed and its output captured
+> byte-for-byte in [`captured_output.txt`](./captured_output.txt). No claims are
+> aspirational.
 
 ## (a) What `vae mcp` is
 

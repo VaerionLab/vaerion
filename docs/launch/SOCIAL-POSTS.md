@@ -4,7 +4,7 @@
 |---|---|
 | **Status** | DRAFT — nothing is published without Founder approval |
 | **Voice law** | `brand/BRAND-BOOK.md` §10. Engineered, declarative, exact. No exclamation marks, no hype, numbers measured. Hashtag discipline: maximum 2 where fitting, none by default. |
-| **Gated items** | npm/PyPI publish, `vaerion.dev`, Discord invite — named as release-train items or not named at all. Never presented as live. |
+| **Channel status** | npm/PyPI are LIVE (npm published 2026-10-21; PyPI 2026-10-17) — name them with their dates. `vaerion.dev` and the Discord invite remain release-train items — named as pending or not named at all. Never presented as live before they are. |
 
 ---
 
@@ -28,8 +28,8 @@ Receipts, or it did not happen.
 Vaerion runs AI-assisted work the way a database engine runs
 transactions.
 
-Measured, not promised: 9 verification gates, 545 tests / 0 failed,
-3,932 expectations, 22,018 engine lines, coverage 86.52/90.6. Every
+Measured, not promised: 9 verification gates, 721 tests / 0 failed,
+5,277 expectations, 25,037 engine lines, coverage 86.52/90.6. Every
 number from the engine's own verification record.
 ```
 
@@ -47,11 +47,12 @@ vae package verify — a pure check. Executes nothing.
 **Tweet 4 — honest channels + link**
 
 ```
-Install today: from source, or the signed release tarballs (sha256 →
-Ed25519 → openssl cross-check). npm/PyPI publish is Founder-gated on
-the release train. vaerion.dev goes live with it.
+Install today: `npm install -g vaerion` — the registry delivers vaerion
+0.1.15 under dist-tag latest (published 2026-10-21). PyPI and signed
+tarballs too (sha256 → Ed25519 → openssl cross-check). vaerion.dev is
+still pending.
 
-Apache-2.0. https://github.com/falconxa0-commits/vaerion
+Apache-2.0. https://github.com/VaerionLab/vaerion
 ```
 
 *(Character counts verified against the 280 limit before posting — see
@@ -86,19 +87,20 @@ and it makes the evidence architectural rather than procedural:
   exactly one value, and a constitutional check fails the build if
   any other network egress appears.
 
-The measured state of the engine of record (0.1.13-rc1): 9
-verification gates, 545 tests with 0 failed, 3,932 expectations,
-22,018 engine lines, Apache-2.0.
+The measured state of the engine of record (0.1.15): 9
+verification gates, 721 tests with 0 failed, 5,277 expectations,
+25,037 engine lines, Apache-2.0.
 
-An honest note on availability: npm and PyPI publication is
-Founder-gated on the release train. Today you install from source or
-from the signed release tarballs, which ship with the instructions to
-verify them. I will not announce a channel before it is real.
+An honest note on availability: npm and PyPI are live — `npm install
+-g vaerion` (npm `0.1.15` under dist-tag `latest`, published
+2026-10-21) and PyPI `0.1.15` (2026-10-17). The signed release
+tarballs remain, and they still ship with the instructions to verify
+them. I did not announce a channel before it was real.
 
 If you find a claim the engine cannot prove from terminal output,
 that is a defect and I want the output: auren@vaerion.dev.
 
-https://github.com/falconxa0-commits/vaerion
+https://github.com/VaerionLab/vaerion
 ```
 
 ---
@@ -143,13 +145,14 @@ Zero telemetry is enforced mechanically: the config guard accepts
 exactly one value (telemetry.enabled: false) and a constitutional
 check fails the build if anything else tries to egress.
 
-State of record for 0.1.13-rc1: 9 verification gates, 545 tests / 0
-failed, 3,932 expectations, coverage 86.52/90.6.
+State of record for 0.1.15: 9 verification gates, 721 tests / 0
+failed, 5,277 expectations, coverage 86.52/90.6.
 
-Install honesty: npm/PyPI publish is Founder-gated on the release
-train and has not happened yet. Today: source, or the signed release
-tarballs (Ed25519, sha256, a shipped VERIFY.md with three verification
-legs). Repo: https://github.com/falconxa0-commits/vaerion
+Install honesty: npm and PyPI are live — `npm install -g vaerion` (npm
+`0.1.15` under dist-tag `latest`, published 2026-10-21; PyPI `0.1.15`,
+2026-10-17). The signed release tarballs remain (Ed25519, sha256, a
+shipped VERIFY.md with three verification legs). Repo:
+https://github.com/VaerionLab/vaerion
 
 Happy to answer design questions — the ADRs and the threat model are
 public.
@@ -197,12 +200,12 @@ The parts an ops person will care about:
   build on undeclared network egress — the config parser accepts
   exactly one value for telemetry: false.
 
-Measured state of the 0.1.13-rc1 engine of record: 9 verification
-gates, 545 tests / 0 failed, 3,932 expectations, 22,018 engine lines.
+Measured state of the 0.1.15 engine of record: 9 verification
+gates, 721 tests / 0 failed, 5,277 expectations, 25,037 engine lines.
 
-Install honesty: npm/PyPI publish is Founder-gated on the release
-train, so today the channels are source and signed release tarballs:
-https://github.com/falconxa0-commits/vaerion
+Install honesty: npm and PyPI are live — `npm install -g vaerion` — and
+the signed release tarballs remain:
+https://github.com/VaerionLab/vaerion
 
 Question for this community: what would an agent trust boundary need
 to look like in your pipeline before you would let it act?
@@ -221,11 +224,12 @@ tool use. Identical inputs build byte-identical bundles.
 
 Zero telemetry — enforced by a gate that fails the build.
 
-9 gates, 545 tests, 0 failed. Engine 0.1.13-rc1.
+9 gates, 721 tests, 0 failed. Engine 0.1.15.
 
-Install: source or signed tarballs; npm/PyPI is Founder-gated.
+Install: `npm install -g vaerion` — npm/PyPI are live; signed tarballs
+too.
 
-https://github.com/falconxa0-commits/vaerion
+https://github.com/VaerionLab/vaerion
 
 #AIagents #OpenSource
 ```
@@ -244,7 +248,7 @@ vae journal verify <RUN_ID>
 The chain holds. Recomputed on your machine, from the bytes — not
 promised by a dashboard.
 
-https://github.com/falconxa0-commits/vaerion
+https://github.com/VaerionLab/vaerion
 ```
 
 **Post B — identical bytes**
@@ -257,7 +261,7 @@ vae package verify         → byte-identical. same inputs, same bytes.
 A pure check: digests recomputed, pins compared, content never
 executed. Reproducibility is a command, not a claim.
 
-https://github.com/falconxa0-commits/vaerion
+https://github.com/VaerionLab/vaerion
 ```
 
 ---
@@ -272,6 +276,7 @@ https://github.com/falconxa0-commits/vaerion
       at the end.
 - [ ] No hashtags beyond the two on the Mastodon post; none on X,
       LinkedIn, or Reddit.
-- [ ] Gated channels (npm/PyPI, vaerion.dev, Discord) appear only with
-      their honest status; delete any post draft that drops the status.
+- [ ] Channels appear only with their honest status (npm/PyPI: live,
+      with dates; vaerion.dev, Discord: still pending); delete any post
+      draft that drops the status.
 - [ ] Founder approval recorded before any post goes out.

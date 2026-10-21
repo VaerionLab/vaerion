@@ -1,5 +1,5 @@
 # JOURNAL COMPLETENESS DESIGN (Part 2 — The Completeness Anchor)
-### PHASE 51 · Status: DESIGN OF RECORD · Companion: `PHASE_51_SECURITY_ANALYSIS.md`
+### PHASE 51 · Status: DESIGN OF RECORD · Companion: `PHASE_51_SECURITY_ANALYSIS.md` (archived: github.com/VaerionLab/vaerion-archive)
 
 ---
 

@@ -2,8 +2,8 @@
 
 > Ready to paste into the `VaerionLab/.github` repository
 > (`profile/README.md`). Status: DRAFT — Founder approval required before
-> the repo is created or published. Migrated from the falconxa0-commits
-> draft in Phase 13 (Task ID 15); content otherwise unchanged.
+> the repo is created or published. The repository migration of record is
+> documented in `LEGAL.md` (§2).
 
 # VaerionLab
 
@@ -40,7 +40,7 @@ verification legs (sha256 → engine verifier → openssl cross-check).
 | Surface | Status |
 |---|---|
 | Engine | `0.1.15` — general availability (stable) |
-| Verification | 9/9 gates green · 719 tests / 0 failed · 5,246 expectations |
+| Verification | 9/9 gates green · 721 tests / 0 failed · 5,277 expectations |
 | GitHub Releases | Live — signed artifacts: https://github.com/VaerionLab/vaerion/releases |
 | npm | **LIVE** — the registry delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21; measured on registry.npmjs.org) |
 | PyPI | **Published** — `vaerion 0.1.15` (sdist + wheel), measured live on pypi.org 2026-10-17 |
