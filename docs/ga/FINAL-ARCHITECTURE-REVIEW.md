@@ -4,7 +4,7 @@
 |---|---|
 | **Scope** | The GA objective 6 architecture sweep: does the shipped architecture hold the constitution under release scrutiny? |
 | **Method** | Every verdict below is measured by a named gate or report — this document reviews and points; it never asserts what a gate did not prove |
-| **Evidence** | [`ARCHITECTURE_REPORT.md`](../../ARCHITECTURE_REPORT.md) (full record) · `tools/layerlint.ts` (95 files / 459 runtime edges / 0 violations) · `tools/constitutional-check.ts` (C1–C9 green) · `tools/verify.ts` (all 6 gates green, 309 tests / 2081 expectations / 31 files) |
+| **Evidence** | [`ARCHITECTURE_REPORT.md`](../../ARCHITECTURE_REPORT.md) (archived: github.com/VaerionLab/vaerion-archive) (full record) · `tools/layerlint.ts` (95 files / 459 runtime edges / 0 violations) · `tools/constitutional-check.ts` (C1–C9 green) · `tools/verify.ts` (all 6 gates green, 309 tests / 2081 expectations / 31 files) |
 
 ## Verdict: **the RC-1 architecture is GA-shaped** — with the honest boundaries below.
 

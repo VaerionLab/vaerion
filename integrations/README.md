@@ -1,7 +1,9 @@
 # Vaerion Framework Integrations — the Alliance
 
 > **Provenance:** this index and every integration beneath it were produced on
-> **2026-10-01** against engine **0.1.15** in this repository. Each README states its
+> **2026-10-01** against engine **0.1.13-rc1** in this repository, and re-measured
+> **2026-10-21** against engine **0.1.15** (npm registry build; the `vae mcp`
+> handshake and tool surface live-verified). Each README states its
 > measured framework versions and each example ships a captured output file. Nothing here
 > is aspirational.
 

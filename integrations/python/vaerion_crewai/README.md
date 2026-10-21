@@ -1,7 +1,7 @@
 # vaerion_crewai — Vaerion × CrewAI
 
 > **Provenance:** every example in this README was executed on **2026-10-01** against
-> engine **0.1.15** and the installed **crewai 1.15.23 / crewai-tools 1.15.23 /
+> engine **0.1.13-rc1** and the installed **crewai 1.15.23 / crewai-tools 1.15.23 /
 > mcpadapt 0.1.20 / mcp 1.28.1** stack — the adapter API below was measured from the
 > installed source (`crewai_tools/adapters/mcp_adapter.py`), not from docs. Captured
 > output: [`examples/captured_output.txt`](./examples/captured_output.txt). The tests
@@ -45,7 +45,7 @@ for anyone hand-rolling this integration.
 ## Install
 
 ```sh
-pip install vaerion-crewai               # + the engine: npm install -g vaerion@rc (needs bun)
+pip install vaerion-crewai               # + the engine: npm install -g vaerion (needs bun)
 # dev checkout instead: pip install -e integrations/python/vaerion_crewai
 ```
 

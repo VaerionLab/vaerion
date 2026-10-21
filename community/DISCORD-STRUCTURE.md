@@ -107,8 +107,10 @@ Governed by `CODE_OF_CONDUCT.md` without amendment:
 5. [ ] Community onboarding enabled: rules screen quotes
        `CODE_OF_CONDUCT.md`; membership screening requires accepting it.
 6. [ ] `#welcome` embed filled: repo link, quickstart link
-       (`docs/QUICKSTART.md`), honest install line (source, signed
-       tarballs, or PyPI — npm lags the tree), security contact.
+       (`docs/QUICKSTART.md`), honest install line (npm, PyPI, or source —
+       npm is the GA channel of record: the registry delivers
+       `vaerion 0.1.15` under dist-tag `latest`, published 2026-10-21;
+       `npm install -g vaerion`), security contact.
 7. [ ] Pinned messages placed: the honesty rule in `#general`, the
        defect-intake checklist in `#bugs`, the proposal ladder in
        `#feature-requests`.

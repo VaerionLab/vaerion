@@ -50,7 +50,7 @@ def resolve_vae_command() -> list[str]:
             return ["bun", "run", str(candidate)]
     raise SystemExit(
         "cannot find the vae CLI (looked at $VAE_BIN, PATH, and the repo layout) — "
-        "install it (npm install -g vaerion@rc) or set VAE_BIN"
+        "install it (npm install -g vaerion) or set VAE_BIN"
     )
 
 

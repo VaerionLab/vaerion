@@ -1,8 +1,10 @@
 # Package Descriptions — draft (Founder approval required to publish)
 
+> **Update (2026-10-21):** these draft texts were updated to the published truth — engine `0.1.15` (GA); the npm registry delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21); PyPI `0.1.15` and the signed GitHub Release `v0.1.15` published 2026-10-17.
+
 | | |
 |---|---|
-| **Status** | DRAFT — registry texts are pasted only at the Founder-gated release train (F-5). Nothing here means a channel is published. |
+| **Status** | DRAFT — registry texts paste only at a Founder-approved release step (F-5). The channels of record are LIVE: npm published 2026-10-21; PyPI and the signed GitHub Release published 2026-10-17. |
 | **Sources of record** | `docs/INSTALL.md` (channel map), `packaging/` (authored manifests), `site-data/vaerion-status.json` (numbers) |
 | **Honesty law** | Every registry text carries the publish status. A description that outruns the release notes is a defect (`docs/operations/ANNOUNCEMENTS.md`). |
 
@@ -16,15 +18,15 @@
   "description": "Local-first trust infrastructure for AI agents: blake3-chained journals, Ed25519-signed receipts, fail-closed governance, reproducible .vxn bundles. Zero telemetry.",
   "license": "Apache-2.0",
   "author": "Auren <auren@vaerion.dev>",
-  "repository": "github:falconxa0-commits/vaerion"
+  "repository": "github:VaerionLab/vaerion"
 }
 ```
 
 **Status line (first line of the npm README):**
 
-> Engine `0.1.13-rc1` (prerelease). npm publication is Founder-gated on
-> the release train — until it lands, install from source or the signed
-> release tarballs: https://github.com/falconxa0-commits/vaerion/releases
+> Engine `0.1.15` (GA). npm is live: the registry delivers `vaerion 0.1.15`
+> under dist-tag `latest` (published 2026-10-21) — `npm install -g vaerion`.
+> Releases: https://github.com/VaerionLab/vaerion/releases
 
 ### npm README intro block (≤3 paragraphs + quickstart)
 
@@ -43,8 +45,8 @@ Zero telemetry is enforced mechanically: the config guard accepts exactly
 one value (`telemetry.enabled: false`), and a constitutional check fails
 the build on any undeclared network egress.
 
-The engine of record is `0.1.13-rc1`: 9 verification gates, 545 tests /
-0 failed, 3,932 expectations, coverage 86.52/90.6, Apache-2.0.
+The engine of record is `0.1.15`: 9 verification gates, 721 tests /
+0 failed, 5,277 expectations, coverage 86.52/90.6, Apache-2.0.
 
 Quickstart:
 
@@ -73,12 +75,12 @@ journals, and reproducible .vxn bundles whose identical inputs produce
 identical bytes. Zero telemetry is enforced mechanically, not by
 policy.
 
-Engine of record 0.1.13-rc1: 9 verification gates, 545 tests / 0
-failed, 3,932 expectations, Apache-2.0.
+Engine of record 0.1.15: 9 verification gates, 721 tests / 0
+failed, 5,277 expectations, Apache-2.0.
 
-Status: PyPI publication is Founder-gated on the release train. Until
-it lands, install from source or the signed release tarballs:
-https://github.com/falconxa0-commits/vaerion/releases
+Status: published — PyPI delivers `vaerion 0.1.15` (sdist + wheel,
+published 2026-10-17). Releases:
+https://github.com/VaerionLab/vaerion/releases
 
 The Python package is a delivery channel, not the substrate: the
 launcher execs the engine, which runs on Bun 1.3+.
@@ -89,10 +91,10 @@ launcher execs the engine, which runs on Bun 1.3+.
 ## 3. GitHub repository About (≤350 chars)
 
 ```
-Local-first trust infrastructure for AI agents: blake3-chained journals, Ed25519-signed receipts, fail-closed governance, reproducible .vxn bundles. Zero telemetry, enforced mechanically. Engine 0.1.13-rc1 · 9 gates · 545 tests / 0 failed. npm/PyPI publish is Founder-gated (release train).
+Local-first trust infrastructure for AI agents: blake3-chained journals, Ed25519-signed receipts, fail-closed governance, reproducible .vxn bundles. Zero telemetry, enforced mechanically. Engine 0.1.15 · 9 gates · 721 tests / 0 failed. npm published 2026-10-21; PyPI 2026-10-17.
 ```
 
-283 characters. Website field: leave empty until `vaerion.dev` is live
+278 characters. Website field: leave empty until `vaerion.dev` is live
 (Founder-gated) — a dead link is a dishonest claim.
 
 ### Topics

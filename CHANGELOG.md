@@ -89,7 +89,8 @@ disagree under one version string.
   `docs/operations/LAUNCH-SEQUENCE.md`; the launch website layer
   (`src/components/launch/`, displayed at the host route pending IR-021);
   `brand/OFFICIAL-LOGO-SLOT.md` (the official-logo reservation — no logo
-  was created or altered); `VAERION_LAUNCH_READINESS_REPORT.md`. No
+  was created or altered); `VAERION_LAUNCH_READINESS_REPORT.md`
+  (archived: github.com/VaerionLab/vaerion-archive). No
   engine code, constitutional law, or ratified value changed.
 - Fixed (fix-forward, no released tag touched): three release surfaces sat
   outside the register at `0.1.9-rc1` (`packaging/python/vaerion/__init__.py`,
@@ -118,7 +119,8 @@ disagree under one version string.
   **No behavioral change** is introduced by this alignment. The private
   lineage's delta versus the public release — the E1010 journal-completeness
   anchor and its test — remains a documented, Founder-gated port
-  (`reports/phase-60.1-60.3/GAP-MATRIX.md`, G25).
+  (`reports/phase-60.1-60.3/GAP-MATRIX.md`, G25; archived:
+  github.com/VaerionLab/vaerion-archive).
 - The release notes of record (`docs/RELEASE-NOTES-v0.1.14-rc1.md`) are ported
   from the public release of record; they document the published artifact.
 - Reality alignment (Phase 60.1): measured site facts (698/60/5,146 tests;

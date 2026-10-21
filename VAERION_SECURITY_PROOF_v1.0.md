@@ -45,7 +45,7 @@ Closure (main line, this phase): the verifier now enforces the invariant —
 
 New diagnostic: **E1010 `journal_completeness_anchor_invalid`**
 (`spec/errors.yaml`). Design of record: `JOURNAL_COMPLETENESS_DESIGN.md`.
-Reconnaissance of record: `PHASE_51_SECURITY_ANALYSIS.md`.
+Reconnaissance of record: `PHASE_51_SECURITY_ANALYSIS.md` (archived: github.com/VaerionLab/vaerion-archive).
 
 ## 3. Tested attacks and verification results
 
@@ -115,6 +115,12 @@ vae doctor                       # refuses an incomplete journal (exit 5)
 3. **Post-receipt appends** (recovery notes, in-flight resumed work) are
    integrity-covered but completeness-covered only up to the last receipt's
    prefix; they anchor when the run closes again.
+
+> Update (2026-10-21): R-2 closed at ASCENSION XXV — release signing uses the
+> production Ed25519 key of record (ceremony + recovery law in
+> SIGNING-CEREMONY.md). The bootstrap-key paragraph below is the v1.0-era
+> record, preserved.
+
 4. **Release signing** still uses the bootstrap Ed25519 key pending the
    offline key ceremony (RISK-LEDGER R-2 / Founder-gated F-3) — disclosed
    wherever it applies.

@@ -16,7 +16,7 @@ you measure? -->
 
 **Why it fits Vaerion**
 
-<!-- The constitution of record is docs/constitution/VAERION_CONSTITUTION_v1.7.md.
+<!-- The constitution of record is docs/constitution/VAERION_CONSTITUTION_v1.8.md.
 Address the ones that apply: -->
 
 - Local-first over cloud-first — does this work on a single machine?

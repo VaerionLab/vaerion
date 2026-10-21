@@ -16,16 +16,16 @@
 | `SOCIAL-POSTS.md` | X thread (4 tweets ≤280 chars), LinkedIn, Reddit r/LocalLLaMA + r/devops, Mastodon, 2 receipt-quote posts | Community (posts), Founder (approves) | DRAFT — Founder approval required |
 | `DEMO-SCRIPT.md` | The 90-second terminal demo: timestamped beats, expected output shapes, 30-second cut, recording palette and notes | Founder (records the engine), Community (may re-record) | DRAFT — Founder approval required |
 | `FOUNDER-INTRODUCTION.md` | First-person founder text for the pinned launch post and About page | Founder | DRAFT — Founder approval required |
-| `PACKAGE-DESCRIPTIONS.md` | Ready-to-paste npm/PyPI/GitHub/Homebrew/winget registry texts with honest status lines | Founder (paste happens at the Founder-gated release train) | DRAFT — Founder approval required |
+| `PACKAGE-DESCRIPTIONS.md` | Ready-to-paste npm/PyPI/GitHub/Homebrew/winget registry texts with honest status lines | Founder (paste happens at a Founder-approved release step) | npm/PyPI/GitHub-Release texts EXECUTED — npm published 2026-10-21; PyPI + signed GitHub Release 2026-10-17; texts updated to published truth 2026-10-21. Homebrew/winget remain DRAFT — Founder approval required |
 | `RELEASE-PAGE-DESIGN.md` | Release-page template for v0.1.13-rc1+: verification-first body, assets table, badges, upgrade notes | Founder (published by the release train) | DRAFT — Founder approval required |
 
 ## Community surfaces (planned — created at the release train)
 
 | File | Purpose | Owner | Status |
 |---|---|---|---|
-| `community/DISCORD-STRUCTURE.md` | Discord plan: channels, roles, bot policy, moderation per `CODE_OF_CONDUCT.md`, launch checklist. The server does not exist yet. | Founder (creates), Community Mod (operates) | DRAFT — server is release-train (Founder-gated) |
+| `community/DISCORD-STRUCTURE.md` | Discord plan: channels, roles, bot policy, moderation per `CODE_OF_CONDUCT.md`, launch checklist. The server does not exist yet. | Founder (creates), Community Mod (operates) | DRAFT — server is Founder-gated; the v0.1.15 release train has run (2026-10-17) and the server is still unprovisioned |
 | `community/GITHUB-DISCUSSIONS-PLAN.md` | Discussions setup: categories (incl. 📣 Refutations & counter-evidence), templates, issue routing, enable checklist | Maintainer (executes), Founder (approves) | DRAFT — 4 categories measured live; the 5th + templates need Founder approval |
-| `.github/ORG-PROFILE.md` | Organization profile README for a `falconxa0-commits/.github` repo: one-liner, pinned repos, trusted-builder line, contact | Founder | DRAFT — Founder approval required |
+| `.github/ORG-PROFILE.md` | Organization profile README for the `VaerionLab/.github` repo: one-liner, pinned repos, trusted-builder line, contact | Founder | DRAFT — Founder approval required |
 
 ## Publishing order (when approval lands)
 
@@ -34,8 +34,10 @@
 2. `LAUNCH-ANNOUNCEMENT.md` posts (blog), numbers re-measured.
 3. Show HN and Product Hunt within the same window; maker comment first.
 4. Social posts follow the launch, never precede it.
-5. `PACKAGE-DESCRIPTIONS.md` texts are pasted **only during** the
-   Founder-gated registry publish step.
+5. `PACKAGE-DESCRIPTIONS.md` texts are pasted **only during** a
+   Founder-approved registry publish step. (Executed for `v0.1.15`:
+   npm published 2026-10-21; PyPI + GitHub Release 2026-10-17. Future
+   trains repeat this step.)
 6. Discord server creation and Discussions structural change execute per
    their checklists.
 

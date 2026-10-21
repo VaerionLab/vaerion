@@ -74,6 +74,9 @@ packs `@vaerion/engine` into an npm-layout tarball, enforces a files
 inventory law (sources + README + package.json only), secret-scans every
 packed byte, installs it with the real `bun install`, and smokes the
 installed shim (help, version, init, doctor, dev, a mockbrain model call).
-External channels (GitHub Releases, npm publish, Homebrew/winget) await a
-ratified release process and network access — the pipeline refuses loudly
-instead of pretending.
+External channels are live: signed GitHub Releases (`v0.1.15`,
+2026-10-17), PyPI (`0.1.15`), and npm (the registry delivers
+`vaerion 0.1.15` under dist-tag `latest`, published 2026-10-21 —
+`npm install -g vaerion` is the GA install of record). Homebrew/winget
+remain authored-but-unpublished (a future release train, Founder-gated);
+the pipeline refuses loudly instead of pretending.

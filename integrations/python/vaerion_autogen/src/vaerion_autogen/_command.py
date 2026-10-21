@@ -56,5 +56,5 @@ def resolve_vae_command() -> list[str]:
             break
     raise VaerionCommandError(
         "cannot find the vae CLI (looked at $VAE_BIN, PATH, and the repo layout)",
-        fix="install it: npm install -g vaerion@rc — or set VAE_BIN to the command that runs vae",
+        fix="install it: npm install -g vaerion — or set VAE_BIN to the command that runs vae",
     )
