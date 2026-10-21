@@ -17,13 +17,15 @@ const TXT = "text-zinc-300";
 const OK = "font-semibold text-emerald-400";
 
 /**
- * The refused action — measured against vaerion@0.1.14-rc1.
+ * The refused action — measured on vaerion 0.1.15 (npm registry build), 2026-10-21.
  *
  * Source of truth: `examples/refused-action` in the public repository
- * and `docs/reference/errors.md` (E1300 · broker_denied). The broker is
- * fail-closed: no matching policy rule means the capability is denied,
- * the run stops, and the refusal itself lands in a hash-chained log
- * while the failed run's journal still verifies (`ok: true · torn: false`).
+ * and `docs/reference/errors.md` (E1300 · broker_denied). The measured
+ * mechanism: the template's one policy rule is flipped allow → deny, and
+ * because agent grants are DERIVED from admitted policy rules, the
+ * permission ceiling refuses the model step — fail-closed. The run stops,
+ * the refusal lands in a hash-chained log, and the failed run's journal
+ * still verifies (`ok: true · torn: false · issues: []`).
  */
 const SCRIPT: Step[] = [
   {
@@ -37,21 +39,21 @@ const SCRIPT: Step[] = [
       </span>
     ),
   },
-  { delay: 420, node: <span className={`block ${DIM}`}>{"  planner: inline · policy: production pack · fail-closed: on"}</span> },
+  { delay: 420, node: <span className={`block ${DIM}`}>{"  planner: inline · policy: allow → deny · fail-closed: on"}</span> },
   { delay: 300, node: <span className="block">{" "}</span> },
   {
     delay: 420,
     node: (
       <span className="block">
-        <span className={TXT}>{"  step 02 · tool: "}</span>
-        <span className="text-violet-300">{"deploy --env production"}</span>
+        <span className={TXT}>{"  step 02 · model: "}</span>
+        <span className="text-violet-300">{"mockbrain/mock-1"}</span>
         <span className="ml-3 rounded border border-amber-500/30 px-1.5 py-0.5 text-[10px] uppercase tracking-[0.14em] text-amber-400/90">
-          {"restricted"}
+          {"no grant"}
         </span>
       </span>
     ),
   },
-  { delay: 380, node: <span className="block"><span className={DIM}>{"  policy: "}</span><span className="text-zinc-500">{"no matching rule for deploy.production"}</span></span> },
+  { delay: 380, node: <span className="block"><span className={DIM}>{"  policy: "}</span><span className="text-zinc-500">{"permission ceiling refuses — grants do not cover model.invoke mockbrain/mock-1"}</span></span> },
   { delay: 300, node: <span className="block">{" "}</span> },
   { delay: 260, node: <span className={`block ${DIM}`}>{"  ┌─ BROKER DECISION ──────────────────────────────"}</span> },
   {
@@ -91,7 +93,7 @@ const SCRIPT: Step[] = [
     delay: 300,
     node: (
       <span className={`block ${TXT}`}>
-        {"  │  capability — the agent stopped. nothing deployed."}
+        {"  │  capability — the agent stopped before it could act."}
       </span>
     ),
   },
@@ -112,7 +114,7 @@ const SCRIPT: Step[] = [
     node: (
       <span className="block">
         <span className={DIM}>{"  run journal  "}</span>
-        <span className="text-zinc-500">{"failed run · 14 records · "}</span>
+        <span className="text-zinc-500">{"failed run · 11 records · "}</span>
         <span className={OK}>{"INTEGRITY VERIFIED ✓"}</span>
       </span>
     ),
@@ -161,7 +163,7 @@ export function DemoTerminal() {
           <span className="size-2.5 rounded-full bg-zinc-800" />
         </div>
         <span className={`${MONO_FONT} text-[11px] text-zinc-600`}>
-          {"refusal · measured on vaerion@0.1.14-rc1"}
+          {"refusal · measured on vaerion 0.1.15 · 2026-10-21"}
         </span>
         <button
           type="button"
@@ -173,7 +175,7 @@ export function DemoTerminal() {
       </div>
       <div
         ref={ref}
-        aria-label="Animated replay of a measured Vaerion refusal: a restricted deploy step is denied by the broker with E1300, and both the refusal log and the failed run journal verify."
+        aria-label="Animated replay of a measured Vaerion refusal: a model step is denied by the broker's permission ceiling with E1300, and both the refusal log and the failed run journal verify."
         role="img"
         className={`${MONO_FONT} min-h-[380px] overflow-x-auto p-4 text-[12.5px] leading-[1.8] sm:min-h-[360px] sm:text-[13px]`}
       >

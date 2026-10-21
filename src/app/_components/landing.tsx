@@ -71,7 +71,7 @@ function HeroTerminal() {
           <span className="size-2.5 rounded-full bg-zinc-800" />
         </div>
         <span className={cnMono("text-[11px] text-zinc-600")}>
-          receipt · measured on 0.1.14-rc1
+          receipt · measured on 0.1.15
         </span>
       </div>
       <pre
@@ -89,7 +89,7 @@ function HeroTerminal() {
         <span className="block">
           {"  "}
           <span className="text-zinc-500">{"run_id: "}</span>
-          <span className="text-[#9db4ff]">crn_run_01M3F2460N5TEREDSJX9HJRE49</span>
+          <span className="text-[#9db4ff]">crn_run_01M5FYKG0ZXZ6J6TWRXJVBNW33</span>
         </span>
         <span className="block text-zinc-500">{"  counts:"}</span>
         <span className="block">{"    records: 13"}</span>
@@ -100,7 +100,7 @@ function HeroTerminal() {
         <span className="block">
           {"    "}
           <span className="text-zinc-500">{"head_hash: "}</span>
-          <span className="text-[#b9afff]">{"7b5e8d78c56306e3…"}</span>
+          <span className="text-[#b9afff]">{"08654c238621b6df…"}</span>
         </span>
         <span className="block">
           <span className="text-zinc-500">{"journal_verified: "}</span>
@@ -432,7 +432,7 @@ function Demo() {
           </h2>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">
             {
-              "A restricted deploy crosses the broker. No matching policy rule, so the engine refuses — fail-closed. Then watch the part nobody else has: the refusal itself becomes verifiable evidence."
+              "An agent run ships toward production — its one policy rule is flipped from allow to deny, and the permission ceiling refuses the model step, fail-closed. Then watch the part nobody else has: the refusal itself becomes verifiable evidence."
             }
           </p>
         </Reveal>
@@ -442,14 +442,14 @@ function Demo() {
         <Reveal delay={0.15}>
           <p className="mt-4 max-w-3xl text-[13px] leading-relaxed text-zinc-500">
             {
-              "Measured against vaerion@0.1.14-rc1 — E1300 · broker_denied, from the shipped error catalog. Run it yourself:"
+              "Measured on vaerion 0.1.15 (2026-10-21) — E1300 · broker_denied, from the shipped error catalog. Run it yourself:"
             }
             <code
               className={cnMono(
                 "mt-2 block w-fit max-w-full break-words rounded border border-white/10 bg-black px-2 py-1 text-[12px] text-[#9db4ff]"
               )}
             >
-              {"cp -r examples/vaerion/demo-workspace refused-action && cd refused-action"}
+              {"vae init --template agent && sed -i 's/effect: allow/effect: deny/' vaerion.yaml"}
             </code>
             <a
               href={`${GITHUB_REPO}/blob/main/examples/refused-action/README.md`}
@@ -518,7 +518,7 @@ function Install() {
               {"First proof in 60 seconds."}
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">
-              {"Four commands from a clean machine to a verified journal. Measured end-to-end on 0.1.14-rc1 — not storyboarded."}
+              {"Four commands from a clean machine to a verified journal. Measured end-to-end on 0.1.15 (2026-10-21) — not storyboarded."}
             </p>
           </Reveal>
           <ol className="mt-8 grid gap-4">
