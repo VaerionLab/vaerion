@@ -1707,7 +1707,7 @@ export async function cmdDev(ctx: CommandContext): Promise<number> {
     workspace: { root: ws.root, runs: runs.length },
     spec: "spec/ (single source of truth)",
     constitution,
-    next_milestone: `${programOfRecord} · GA executed — v${ENGINE_VERSION} is the release of record (GitHub Release, PyPI and npm LIVE); the custom domain and GitHub private vulnerability reporting remain Founder-gated residuals (P4)`,
+    next_milestone: `${programOfRecord} · GA executed — v${ENGINE_VERSION} is the release of record (GitHub Release, PyPI and npm LIVE); the Founder-gated residuals (P4) are the custom domain and the GA-content redeploy of the hosted site — GitHub private vulnerability reporting is live (measured 2026-10-21)`,
   });
   return ExitCode.ok;
 }

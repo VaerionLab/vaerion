@@ -50,7 +50,7 @@ hash chain and refuses on any gap (E1010, the completeness anchor).
 | npm (`@vaerion/sdk`) | unpublished (deliberate) | unchanged — unpublished (deliberate) |
 | crates.io / Maven Central | absent (email gate / deferred) | unchanged — deferred, honestly labeled |
 | Homebrew / winget / dmg / rpm | authored, UNVERIFIED host-gated | unchanged — authored, UNVERIFIED host-gated |
-| Hosted site | **LIVE** — vaerion.vercel.app | **LIVE** — redeployed with GA facts |
+| Hosted site | **LIVE** — vaerion.vercel.app | **LIVE** — redeployed with GA facts **(erratum, measured 2026-10-21: the redeploy did not execute — the live site still serves the `v0.1.15-rc1` epoch, deploy of record 2026-10-17T01:10Z, per the post-deploy verification matrix of `docs/WEBSITE_DEPLOYMENT.md`; the GA-content redeploy remains Founder-gated, residual P4)** |
 
 > **Publish of record (npm, measured 2026-10-21):** the npm row above and
 > the `npm install -g vaerion` line in the Install block below are now

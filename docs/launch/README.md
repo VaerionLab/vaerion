@@ -24,7 +24,7 @@
 | File | Purpose | Owner | Status |
 |---|---|---|---|
 | `community/DISCORD-STRUCTURE.md` | Discord plan: channels, roles, bot policy, moderation per `CODE_OF_CONDUCT.md`, launch checklist. The server does not exist yet. | Founder (creates), Community Mod (operates) | DRAFT — server is Founder-gated; the v0.1.15 release train has run (2026-10-17) and the server is still unprovisioned |
-| `community/GITHUB-DISCUSSIONS-PLAN.md` | Discussions setup: categories (incl. 📣 Refutations & counter-evidence), templates, issue routing, enable checklist | Maintainer (executes), Founder (approves) | DRAFT — 4 categories measured live; the 5th + templates need Founder approval |
+| `community/GITHUB-DISCUSSIONS-PLAN.md` | Discussions setup: categories (incl. 📣 Refutations & counter-evidence), templates, issue routing, enable checklist | Maintainer (executes), Founder (approves) | DRAFT — six default categories measured live (re-measured 2026-10-21: Announcements, General, Ideas, Polls, Q&A, Show and tell); the proposed curation + templates need Founder approval |
 | `.github/ORG-PROFILE.md` | Organization profile README for the `VaerionLab/.github` repo: one-liner, pinned repos, trusted-builder line, contact | Founder | DRAFT — Founder approval required |
 
 ## Publishing order (when approval lands)

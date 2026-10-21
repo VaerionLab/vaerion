@@ -22,7 +22,18 @@ GitHub private vulnerability reporting enablement); **ADR-0018**
 (TypeScript-on-Bun substrate) recorded **RATIFIED** — the v0.1.15 GA
 (2026-10-17) is the ratifying event of record; Era I COMPLETE and Era II
 Foundation COMPLETE (closed 2026-10-21) recorded, next train v0.1.16; the
-hosted-site GA-facts redeploy recorded executed 2026-10-21. Append-only: the
+hosted-site GA-facts redeploy recorded executed 2026-10-21. **Correction
+(re-measured 2026-10-21 UTC, same day, final public-perfection pass):** two
+of the recorded items did not survive re-measurement — (a) the hosted-site
+GA-facts redeploy was **not executed** (the live site serves the
+`v0.1.15-rc1` epoch, deploy of record 2026-10-17T01:10Z, measured via the
+post-deploy verification matrix of `docs/WEBSITE_DEPLOYMENT.md`; the
+redeploy remains Founder-gated, residual P4); (b) GitHub private
+vulnerability reporting measured **ENABLED** 2026-10-21
+(`/security/advisories/new` live for anonymous visitors), so that residual
+leaves the §7 enumeration of record. The full A9 correction note lives in
+`docs/constitution/VAERION_CONSTITUTION_v1.9.md` (end of §A9). Append-only:
+the
 v1.8 body text is retained unmodified; every knowledge-organ correction is a
 dated annotation (11.4; GOVERNANCE.md §1.2). No Volume IV Article or Section
 is relaxed; the three ratified documents and their Snapshot Authority digest

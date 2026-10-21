@@ -5,10 +5,18 @@
 > **Update (2026-10-21):** the v0.1.15 train has since executed the
 > publish subset of this sequence — npm `vaerion 0.1.15` published
 > 2026-10-21 (dist-tag `latest`, from the GA line of the law below), PyPI
-> `0.1.15` and the signed GitHub Release `v0.1.15` published 2026-10-17,
-> and the hosted site redeployed 2026-10-21. The remaining Founder-gated
-> items: the custom domain (`vaerion.dev`, unprovisioned) and GitHub
-> private vulnerability reporting. The sequence below remains the
+> `0.1.15` and the signed GitHub Release `v0.1.15` published 2026-10-17.
+> **Correction (measured 2026-10-21, same day):** an earlier line of this
+> note said the hosted site was redeployed 2026-10-21 — that redeploy did
+> **not** execute. The live site serves the `v0.1.15-rc1` epoch (deploy of
+> record 2026-10-17T01:10Z; measured via the post-deploy verification
+> matrix in `docs/WEBSITE_DEPLOYMENT.md`: `/api` returns version
+> `0.1.15-rc1`, sitemap `lastmod` 2026-10-17, `robots.txt` matches the
+> rc1 epoch, not HEAD). The GA-content redeploy remains Founder-gated
+> (residual P4). The remaining Founder-gated items: the custom domain
+> (`vaerion.dev`, unprovisioned); GitHub private vulnerability reporting
+> is no longer one of them — it measured ENABLED 2026-10-21
+> (`/security/advisories/new` live). The sequence below remains the
 > procedure of record for future trains; the original status line above
 > is preserved as the preparation-epoch snapshot.
 
@@ -32,14 +40,15 @@ remain: `docs/operations/DEPLOYMENT.md` (the release train),
 | F-4 | Substrate ratification (ADR-0018) | open — Founder |
 | F-5 | Publish steps (npm / PyPI / marketplaces / vaerion.dev) | open — Founder |
 | F-6 | Real-provider cassette recordings | open — Founder/host |
-| R-7 | Private vulnerability reporting channel | open — Founder |
+| R-7 | Private vulnerability reporting channel | **half-closed (re-measured 2026-10-21)** — private vulnerability reporting ENABLED on the repository; `security.txt` half remains open — Founder |
 | IR-018 / IR-019 / IR-021 | observatory display path · delivery evidence · launch-layer display path | PROPOSED — Founder rules |
 
 **Update (2026-10-21) on this table:** F-4 is no longer open — ADR-0018
 was ratified at the v0.1.15 GA of record (2026-10-17). F-5 is partially
 executed: npm (2026-10-21), PyPI and the signed GitHub Release
 (2026-10-17) went through the gate; Homebrew, winget, and `vaerion.dev`
-remain gated. R-7 remains open (private vulnerability reporting).
+remain gated. R-7 re-measured 2026-10-21: private vulnerability
+reporting is ENABLED (half-closed; the `security.txt` half stays open).
 Individual rows are preserved as written at preparation time.
 
 ---
