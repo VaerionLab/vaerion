@@ -1,12 +1,12 @@
 # Vaerion — Roadmap Progress
 
 > **GENERATED** by `tools/status.ts` from the measured status of record — never hand-edited
-> (constitution v1.8 — the generator itself was ratified by the generated-roadmap law,
+> (constitution v1.9 — the generator itself was ratified by the generated-roadmap law,
 > v1.6 A6 Phase 11: the roadmap report of record comes from the ONE measured status source).
 > Regenerate with `bun tools/status.ts`; hand edits are defects.
 
 - Engine version of record: `0.1.15`
-- Constitution of record: `v1.8` (Amendment Log §11)
+- Constitution of record: `v1.9` (Amendment Log §11)
 - Verification record: GREEN — 9/9 gates ok (`.vaerion-verification.json`)
 - Measured tests: 721 pass · 0 fail · 5277 expectations · 62 files
 - Coverage floors: bunfig.toml coverageThreshold (OBJ-Q6, ratcheted at MS-6 bundle close: 0.86/0.74/0.86/0.90; held at every ASCENSION phase close)
