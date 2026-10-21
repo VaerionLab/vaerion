@@ -51,7 +51,7 @@ const QA: { q: string; a: React.ReactNode }[] = [
     ),
   },
   {
-    q: "Is Vaerion on npm yet?",
+    q: "Is Vaerion on npm?",
     a: (
       <>
         <p>

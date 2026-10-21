@@ -25,7 +25,7 @@ const ADRS: { n: string; title: string; status: AdrStatus; note?: string }[] = [
   { n: "0015", title: "Per-platform exec sandbox matrix", status: "ratified", note: "for the v0.1 profile; hardening matrix tracked in the risk ledger" },
   { n: "0016", title: "Reproducible .vxn bundles", status: "ratified", note: "byte-identical rebuild test-proven; digest-swap defense enforced" },
   { n: "0017", title: "Reserved cloud-seam interfaces, intentionally unimplemented in v0.1", status: "ratified", note: "C1/C7 fail the run if transport appears without a superseding ADR" },
-  { n: "0018", title: "Engine substrate: TypeScript on Bun", status: "provisional", note: "pending Founder ratification; explicit migration path recorded in the ADR" },
+  { n: "0018", title: "Engine substrate: TypeScript on Bun", status: "ratified", note: "the shipped GA substrate of record — ratified by the v0.1.15 GA release per the founder's Era II finalization directive (record note in the ADR); the original Provisional wording and the explicit WASI-P2 migration path are preserved" },
   { n: "0019", title: "Single sanctioned gateway transport egress", status: "ratified", note: "C7 proves the single egress site" },
   { n: "0020", title: "Daemon HTTP stack on the TypeScript substrate", status: "ratified", note: "loopback-only binding, pairing token, single wire-client site" },
 ];

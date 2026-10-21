@@ -5,10 +5,10 @@ import { PageHero, Section, Panel, Callout, CodeBlock, Pill, Bullets, ArrowLink 
 import DocsNav from "../DocsNav";
 
 /* Distilled from integrations/README.md (the alliance index) and
-   integrations/mcp/README.md (the host guide), both measured 2026-10-01
-   against engine 0.1.14-rc1. The MCP config snippet below is copied
-   verbatim from the host guide; the six tool names are verbatim from
-   `tools/list`. Nothing here is aspirational. */
+   integrations/mcp/README.md (the host guide), both re-measured 2026-10-21
+   against engine 0.1.15 (npm registry build). The MCP config snippet below
+   is copied verbatim from the host guide; the six tool names are verbatim
+   from `tools/list`. Nothing here is aspirational. */
 
 export default function IntegrationsPage() {
   return (

@@ -39,7 +39,7 @@ export const FACTS = {
       "a11y-structural",
       "repo-lint",
     ] as const,
-    tests: { total: 719, suites: 62, expectations: 5246, failed: 0 },
+    tests: { total: 721, suites: 62, expectations: 5277, failed: 0 },
     coverage: { lines: 86.52, branches: 90.6, modulesRatcheted: 127 },
   },
 
@@ -58,7 +58,8 @@ export const FACTS = {
     ecodes: 82,
     adrs: 21,
     specFiles: 14,
-    // version-register.test.ts REGISTER — 25 pinned surfaces (measured 2026-10-04)
+    // version-register.test.ts REGISTER — 25 pinned surfaces, re-measured
+    // 2026-10-21 against engine 0.1.15 (npm registry build)
     versionSurfaces: 25,
   },
 
@@ -66,8 +67,9 @@ export const FACTS = {
     bin: "vae",
     // The dispatched command surface, measured from the dispatch switch in
     // packages/vaerion/src/cli/vae.ts (29 cases, incl. help/completions/version)
-    // — re-measured 2026-10-01 after Phase 59.2 added create/start/verify/
-    // mcp/snapshot/restore/status/report/clean to the earlier 17.
+    // — re-measured 2026-10-21 against engine 0.1.15 (npm registry build);
+    // Phase 59.2 had earlier added create/start/verify/mcp/snapshot/restore/
+    // status/report/clean to the previous 17.
     commands: [
       "init",
       "create",
@@ -100,7 +102,8 @@ export const FACTS = {
       "version",
     ] as const,
     // The deterministic template registry (INIT_TEMPLATES in
-    // packages/vaerion/src/config/templates.ts — 7 entries, measured 2026-10-01).
+    // packages/vaerion/src/config/templates.ts — 7 entries, re-measured
+    // 2026-10-21 against engine 0.1.15 (npm registry build)).
     templates: ["minimal", "demo", "agent", "tool", "automation", "multi-agent", "enterprise"] as const,
     shells: ["bash", "zsh", "fish", "powershell", "nushell", "xonsh"] as const,
   },
@@ -149,6 +152,11 @@ export const FACTS = {
   // verifies journals through the CLI of record (`vae verify --json` /
   // `vae journal verify`) — there is no standalone daemon verify route in
   // engine 0.1.13-rc1, and none of these READMEs pretend otherwise.
+  // Re-checked 2026-10-21 against engine 0.1.15 (npm registry build): the
+  // sdks/*/README.md provenance headers still carry the register-alignment
+  // epochs, the per-SDK suite counts re-count from the suites, and
+  // spec/openapi.json (17 paths) still exposes no standalone daemon verify
+  // route. The conformance suites themselves were not re-run here.
   sdks: [
     {
       language: "TypeScript",
@@ -157,7 +165,7 @@ export const FACTS = {
       binding: "in-process — imports the engine library directly (workspace:*); plus the wire client for vae serve",
       entry: "new VaeClient({ cwd }) · new VaeDaemonClient({ base, token })",
       verify: "in-process journalVerify/verifyRunEvidence + the tested SDK ⇄ CLI parity law",
-      tests: "8 parity tests in the engine suite (sdk-parity + daemon-parity) — part of the engine's 719-test gate",
+      tests: "8 parity tests in the engine suite (sdk-parity + daemon-parity) — part of the engine's 721-test gate",
     },
     {
       language: "Python",
@@ -205,7 +213,10 @@ export const FACTS = {
   // integration ships an executed example with captured output, and every
   // test suite spawns the REAL engine (no mocks of the engine exist in the
   // tree). Suite sizes as measured: openai_agents 7, langgraph 8, crewai 8,
-  // autogen 8 (python -m unittest).
+  // autogen 8 (python -m unittest). Re-checked 2026-10-21 against engine
+  // 0.1.15 (npm registry build): the suite sizes re-count from the tests/
+  // trees (7/8/8/8) and the framework versions still transcribe the
+  // integrations READMEs verbatim.
   integrations: [
     {
       name: "MCP — any host",
@@ -245,10 +256,10 @@ export const FACTS = {
   ] as const,
 
   // `vae mcp` measured facts — integrations/mcp/README.md (measured against a
-  // live spawned server, 2026-10-01, engine 0.1.13-rc1; re-verified live on
-  // 0.1.14-rc1 and again on 0.1.15, 2026-10-03: serverInfo
-  // {"name":"vaerion","version":"0.1.15"}, protocol 2024-11-05, 6 tools);
-  // the six tool names are verbatim from tools/list.
+  // live spawned server; re-measured 2026-10-21 against engine 0.1.15 (npm
+  // registry build): serverInfo {"name":"vaerion","version":"0.1.15"},
+  // protocol 2024-11-05, 6 tools); the six tool names are verbatim from
+  // tools/list.
   mcp: {
     transport: "stdio, newline-delimited JSON-RPC 2.0",
     protocolVersion: "2024-11-05",

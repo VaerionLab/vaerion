@@ -7,9 +7,8 @@ import DocsNav from "../DocsNav";
 
 /* Command reference — distilled from the COMMAND_HELP registry in
    packages/vaerion/src/cli/vae.ts (docs/CLI.md is generated from it). Only
-   flags that exist in the registry are listed. Re-measured 2026-10-01
-   against engine 0.1.14-rc1 (Phase 59.2: interactive first-run layer,
-   7-template registry, doctor next_step law). */
+   flags that exist in the registry are listed. Re-measured 2026-10-21
+   against engine 0.1.15 (npm registry build). */
 
 const COMMANDS: { name: string; purpose: string; synopsis: string; flags: string[]; note?: string }[] = [
   {
@@ -19,7 +18,7 @@ const COMMANDS: { name: string; purpose: string; synopsis: string; flags: string
       "vae init [--template minimal|demo|agent|tool|automation|multi-agent|enterprise] [--name NAME] [--dry-run]",
     flags: [
       "--template minimal — the default; bare vae init is exactly this template",
-      "--template demo — a demo workspace (./docs + ./sources capabilities), ready for vae run demo",
+      "--template demo — a demo workspace (a scaffolded ./sources capability), ready for vae run demo",
       "--template agent — mockbrain planner, declared tools, an explicit policy rule for model.invoke",
       "--template tool — a tool-agent workspace: mockbrain planner + the echo/clock.read tool belt, explicit grants",
       "--template automation — deterministic tool DAGs (no model calls), ready for vae run workflow --dag workflow.json",
@@ -57,7 +56,7 @@ const COMMANDS: { name: string; purpose: string; synopsis: string; flags: string
     name: "vae run",
     purpose: "Execute the constitutional pipelines: research, demo, model, agent, workflow.",
     synopsis:
-      "vae run research --sources P[,P] --query Q [--max-docs N] [--dry-run]\nvae run demo [--sources P,P] [--query Q]\nvae run model --model P/M [--prompt TEXT] [--system TEXT] [--seed N] [--op chat|embed|rerank] [--max-tokens N] [--intent TEXT] [--dry-run]\nvae run agent --goal TEXT [--planner inline|model] [--steps N] [--plan-json JSON]\nvae run workflow --dag FILE [--resume RUN_ID]",
+      "vae run research --sources P[,P] --query Q [--max-docs N] [--dry-run]\nvae run demo [--sources P,P] [--query Q]\nvae run model --model P/M [--prompt TEXT] [--system TEXT] [--seed N] [--op chat|embed|rerank] [--input-json JSON] [--query Q] [--docs-json JSON] [--max-tokens N] [--intent TEXT] [--dry-run]\nvae run agent --goal TEXT [--planner inline|model] [--steps N] [--plan-json JSON]\nvae run workflow --dag FILE [--resume RUN_ID]",
     flags: [
       "research / demo — capability → broker decision per source (journaled) → fingerprint → fence → blob CAS → evidence → index → query → citations → context pack → snapshot → receipt",
       "model — through the gateway single gate: broker decision, keychain-first secret resolution (names journaled, values never), metered usage, receipt",
