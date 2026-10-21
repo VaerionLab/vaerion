@@ -85,9 +85,9 @@ sharing medium.
 
 The beta ends when the open items in `docs/security/RISK-LEDGER.md`
 reach their exit criteria, the remaining Founder-gated publish steps
-complete (npm `0.1.15` — prepared and Founder-gated; measured
-2026-10-19 the registry delivers `0.1.14-rc1` on `rc`+`latest` until it
-executes; marketplaces and the domain remain), and the GA dossier
+complete (npm `0.1.15` — DONE: the registry delivers `vaerion 0.1.15`
+under dist-tag `latest`, published 2026-10-21; marketplaces and the
+domain remain), and the GA dossier
 (this repository, `docs/ga/`) records a green
 GO. Until then: repository wins, evidence wins, and your testing is the
 part of the evidence base we cannot generate ourselves.

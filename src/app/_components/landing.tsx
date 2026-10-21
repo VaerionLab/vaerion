@@ -193,7 +193,7 @@ function Hero() {
             </Button>
           </div>
           <p className={cnMono("mt-6 text-[11px] tracking-[0.08em] text-zinc-600")}>
-            {"npm install -g vaerion@rc — requires Bun 1.3+ · runs entirely on your machine · registry still delivers 0.1.14-rc1 until the Founder-gated publish"}
+            {"npm install -g vaerion — requires Bun 1.3+ · runs entirely on your machine · the registry delivers vaerion 0.1.15 under dist-tag latest (published 2026-10-21)"}
           </p>
         </Reveal>
         <Reveal delay={0.12} className="min-w-0">
@@ -472,7 +472,7 @@ function Demo() {
 const INSTALL_STEPS: { title: string; command: string; note?: ReactNode }[] = [
   {
     title: "Install the CLI",
-    command: "npm install -g vaerion@rc",
+    command: "npm install -g vaerion",
     note: (
       <>
         {"Requires "}
@@ -484,7 +484,7 @@ const INSTALL_STEPS: { title: string; command: string; note?: ReactNode }[] = [
         >
           {"Bun 1.3+"}
         </a>
-        {" · installs from the npm registry — which still delivers 0.1.14-rc1 (an older engine) until the Founder-gated publish of 0.1.15"}
+        {" · installs from the npm registry — which delivers vaerion 0.1.15 under dist-tag latest (published 2026-10-21)"}
       </>
     ),
   },
@@ -669,7 +669,7 @@ const DOC_CARDS = [
   {
     icon: Package,
     title: "npm",
-    body: "vaerion@0.1.14-rc1 — installable today, dist-tag rc.",
+    body: "vaerion@0.1.15 — installable today, dist-tag latest (published 2026-10-21).",
     href: NPM_PACKAGE,
   },
   {
@@ -753,7 +753,7 @@ function StatusStrip() {
         <p className="text-sm leading-relaxed text-zinc-400">
           <span className="text-zinc-200">{"v0.1.15"}</span>
           {
-            " is the General Availability release of record: 9/9 verification gates green, Ed25519-signed release artifacts, byte-parity-proven against this tree. The npm registry still delivers 0.1.14-rc1 (an older engine) until the Founder-gated publish. Known limitations are documented, not hidden — see "
+            " is the General Availability release of record: 9/9 verification gates green, Ed25519-signed release artifacts, byte-parity-proven against this tree. The npm registry delivers it under dist-tag latest (published 2026-10-21). Known limitations are documented, not hidden — see "
           }
           <a
             href={`${GITHUB_REPO}/blob/main/docs/LIMITATIONS.md`}

@@ -112,7 +112,7 @@ describe("artifact parity — SOURCE = PACKAGE = DOCUMENTATION = WEBSITE CLAIMS"
     expect(yamlCodes).toBe(engineCodes);
   });
 
-  test("install-honesty is pinned: the registry-lag disclosure ships on every teach-install surface (Phase 61.2)", async () => {
+  test("install-honesty is pinned: the npm registry-truth sentence ships on every teach-install surface (Phase 61.2, flipped Path A 2026-10-21)", async () => {
     // Phase 61.2: three living surfaces silently taught `npm install -g
     // vaerion@rc` while the registry still serves the OLD engine. The
     // disclosure is now part of the docs of record — and if any of these
@@ -124,22 +124,32 @@ describe("artifact parity — SOURCE = PACKAGE = DOCUMENTATION = WEBSITE CLAIMS"
     // executes (PyPI is live at 0.1.15). The pin continues to assert that
     // README + docs/QUICKSTART tell the npm truth — now the lag-honest one —
     // and the old false "current engine" sentence may never return.
+    // 2026-10-21 (npm Path A executed — runbook §6): the publish of record
+    // landed and was measured on registry.npmjs.org — the npm registry
+    // delivers vaerion 0.1.15 under dist-tag latest (published 2026-10-21;
+    // dist-tags {latest: 0.1.15, rc: 0.1.14-rc1}). Prose, pins, and facts
+    // flipped together: the pins moved with the prose to the
+    // published-truth sentence, and the negative tripwires INVERTED —
+    // they now forbid the stale lag-honest sentence from returning.
     const PINS: Array<[string, string]> = [
-      ["README.md", "the npm registry delivers `0.1.14-rc1` on"],
-      ["docs/QUICKSTART.md", "the npm registry delivers `0.1.14-rc1` on"],
-      ["docs/getting-started/installation.md", "Founder-gated"],
-      ["integrations/mcp/README.md", "no `mcp` command"],
+      ["README.md", "`vaerion 0.1.15` under dist-tag `latest`"],
+      ["docs/QUICKSTART.md", "`vaerion 0.1.15` under dist-tag `latest`"],
+      ["docs/getting-started/installation.md", "`vaerion 0.1.15` under dist-tag `latest`"],
+      ["integrations/mcp/README.md", "engine now ships `vae mcp`"],
     ];
     for (const [rel, anchor] of PINS) {
       const text = await readRepo(rel);
       expect(text).toContain(anchor);
     }
-    // negative tripwires: the GA-flip false claim (npm already current at
-    // 0.1.15 under latest) must stay out of the pinned teach surfaces
+    // negative tripwires (inverted 2026-10-21): the stale lag-honest
+    // sentence — the registry still on the pre-GA rc, the publish still
+    // pending — must stay out of the pinned teach surfaces; the publish
+    // of record is measured
     for (const rel of ["README.md", "docs/QUICKSTART.md"]) {
       const text = await readRepo(rel);
-      expect(text).not.toContain("the npm registry delivers the current engine");
-      expect(text).not.toContain("0.1.15` under dist-tag `latest`");
+      expect(text).not.toContain("LIVE BUT LAGS");
+      expect(text).not.toContain("delivers `0.1.14-rc1`");
+      expect(text).not.toContain("until the `0.1.15` publish");
     }
     // The launcher's taught refusal must be real, not folklore: a machine
     // without Bun reaches the E1600 body (node-executable shebang), matching

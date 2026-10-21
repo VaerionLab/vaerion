@@ -2,7 +2,7 @@
 
 **Version of record:** v0.1.15-rc1 (artifact `bd2e5d56…`, parity-proven) · **Compiled:** Phase 61.2, 2026-10-04 · **Method:** every answer below cites a live measurement or a gate-pinned artifact — nothing is asserted from ambition. Frozen audit copy: this file is the public copy of record (the Phase 61.2 working copy lived in the private engineering workspace and is not part of this tree).
 
-> **Erratum (2026-10-19, post-freeze measurement — the frozen body is otherwise unchanged):** the Q2 npm bullet below ("GA shipped") reflects the GA-day expectation of record. Measured registry truth 2026-10-19: npm delivers `0.1.14-rc1` on `rc`+`latest` until the Founder-gated `0.1.15` publish executes; PyPI `0.1.15` and the signed GitHub Release are live.
+> **Measured note (2026-10-21, post-publish — the frozen body is otherwise unchanged):** the Q2 npm bullet below ("GA shipped") is now measured registry truth — the npm registry delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21), completing F-5 alongside PyPI `0.1.15` and the signed GitHub Release. Supersedes the 2026-10-19 erratum (which recorded the publish as then-pending); that erratum is kept as history in the git record.
 
 ---
 

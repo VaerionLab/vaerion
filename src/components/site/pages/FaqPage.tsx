@@ -55,12 +55,11 @@ const QA: { q: string; a: React.ReactNode }[] = [
     a: (
       <>
         <p>
-          Honest answer: yes — but it lags. The npm registry delivers
-          0.1.14-rc1 on rc+latest until the 0.1.15 publish executes
-          (Founder-gated, measured 2026-10-19). The current engine ships
-          today: PyPI is live (`pip install vaerion` →
-          0.1.15) and the signed v0.1.15 set is on GitHub Releases (signature +
-          digests verified).
+          Honest answer: yes. The npm registry delivers vaerion 0.1.15
+          under dist-tag latest (published 2026-10-21) — the npm channel is
+          LIVE at the engine of record. The same engine ships today via
+          PyPI (`pip install vaerion` → 0.1.15) and the signed v0.1.15 set
+          on GitHub Releases (signature + digests verified).
         </p>
         <p className="mt-3">
           See <a href="#/docs/installation" className="text-gold underline-offset-4 hover:underline">Installation</a> for the honest channel

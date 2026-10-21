@@ -61,19 +61,20 @@ it, `vae` refuses with a taught error, never a cryptic one).
 
 ```sh
 curl -fsSL https://bun.sh/install | bash    # if Bun is not installed yet
-npm install -g vaerion@rc                    # npm channel — see the version note below
-vae --version                                # → vae 0.1.14-rc1 (until the 0.1.15 npm publish)
+npm install -g vaerion                       # npm channel — dist-tag latest, see the version note below
+vae --version                                # → vae 0.1.15
 ```
 
-> **Version note (honest):** the npm registry delivers `0.1.14-rc1` on
-> `rc`+`latest` — LIVE BUT LAGS — until the `0.1.15` publish executes
-> (Founder-gated; measured 2026-10-19); PyPI is live at `0.1.15`. The npm
-> badge above renders this same registry truth until the publish lands.
-> The `0.1.15` tree of record adds `vae verify` / `create` / `start` /
-> `mcp`, the did-you-mean system, and the 7-template registry. Install
-> from npm (`npm install -g vaerion` — today it resolves to `0.1.14-rc1`),
-> from source (`bun install` in a clone, then
-> `bun run packages/vaerion/src/cli/vae.ts`), or the signed release set.
+> **Version note (honest):** the npm registry delivers
+> `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21) — the
+> npm channel is LIVE at the engine of record, alongside PyPI
+> (`0.1.15`) and the signed release set. The npm badge above renders
+> this same registry truth: the shield now shows `0.1.15` by itself. The
+> npm-delivered `0.1.15` engine ships `vae verify` / `create` / `start`
+> / `mcp`, the did-you-mean system, and the 7-template registry. Install
+> from npm (`npm install -g vaerion`), from source (`bun install` in a
+> clone, then `bun run packages/vaerion/src/cli/vae.ts`), or the signed
+> release set.
 
 Other channels (signed release tarball with three-leg offline
 verification, PyPI wheel, Debian, Homebrew, Windows — each labeled with
@@ -196,10 +197,10 @@ the engine's own test suite — examples cannot drift from reality.
 `v0.1.15` is **general availability**: 9/9 verification gates green,
 signed release artifacts, the E1010 journal-completeness anchor now
 canonical, and a mechanical artifact-parity system (source = build =
-package = docs). npm distribution is LIVE BUT LAGS — the registry
-delivers `0.1.14-rc1` on `rc`+`latest` until the `0.1.15` publish
-executes (Founder-gated; the publish artifact is parity-proven before
-publish, measured 2026-10-19); PyPI is live at `0.1.15`.
+package = docs). npm distribution is LIVE — the registry
+delivers `vaerion 0.1.15` under dist-tag `latest` (published
+2026-10-21; the publish artifact was parity-proven before publish);
+PyPI is live at `0.1.15`.
 What ships next and what is explicitly *not* done yet:
 [`ROADMAP_PROGRESS.md`](ROADMAP_PROGRESS.md),
 [`docs/LIMITATIONS.md`](docs/LIMITATIONS.md), and

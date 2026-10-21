@@ -9,7 +9,7 @@ exit-code contract. The engine executes on the [Bun](https://bun.sh) runtime
 
 | Channel | Command | Status |
 |---|---|---|
-| npm | `npm install -g vaerion` | **LIVE BUT LAGS**: the registry delivers `0.1.14-rc1` on `rc`+`latest` until the `0.1.15` publish executes (Founder-gated; measured on registry.npmjs.org 2026-10-19); PyPI (`0.1.15`) and the signed release set carry the engine of record today |
+| npm | `npm install -g vaerion` | **LIVE** — the registry delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21; measured on registry.npmjs.org); PyPI (`0.1.15`) and the signed release set carry the same engine of record |
 | PyPI | `pip install vaerion` | **published** — `vaerion 0.1.15` (sdist + wheel), venv install verified |
 | Universal installer | `curl -fsSL https://vaerion.dev/install \| sh` | install/update/uninstall **verified** end-to-end; the `vaerion.dev` domain is pending provisioning (Founder-gated) — measured unreachable 2026-10-17; `https://vaerion.vercel.app` is the live canonical of record |
 | Debian | `packaging/linux/make-deb.sh` → `.deb` | build + extraction **verified** (`dpkg-deb`) |
@@ -43,17 +43,18 @@ exit-code contract → clean uninstall leaves nothing behind.
 ## Option B — npm
 
 ```sh
-npm install -g vaerion        # requires Bun 1.3+ on PATH (live — lags until publish)
-vae --version                 # → vae 0.1.14-rc1 (until the 0.1.15 npm publish)
+npm install -g vaerion        # requires Bun 1.3+ on PATH
+vae --version                 # → vae 0.1.15
 vae --help
 ```
 
-> **Version note (honest):** the npm registry delivers `0.1.14-rc1` on
-> `rc`+`latest` until the `0.1.15` publish executes (Founder-gated; measured
-> 2026-10-19) — an older engine without `vae verify` / `create` / `start` /
-> `mcp`, the did-you-mean system, and the 7-template registry. PyPI
-> (`vaerion 0.1.15`) and the signed release set carry the engine of record
-> today; the npm publish artifact is parity-proven before publish.
+> **Version note (honest):** the npm registry delivers `vaerion 0.1.15`
+> under dist-tag `latest` (published 2026-10-21; measured on
+> registry.npmjs.org) — the npm channel carries the engine of record, with
+> `vae verify` / `create` / `start` / `mcp`, the did-you-mean system, and
+> the 7-template registry. PyPI (`vaerion 0.1.15`) and the signed release
+> set carry the same engine; the npm publish artifact was parity-proven
+> before publish.
 
 If the system npm prefix is not writable (no sudo), the universal installer
 (`install.sh --method npm`) falls back to a user prefix (`~/.npm-global`)
@@ -125,9 +126,9 @@ package — the bare `--tarball <file>` form is for the engine tree bundle). Run
 verification: `docs/ga/RELEASE-VERIFICATION.md`. The release trust chain
 (who signs, rotation, recovery): `docs/security/SIGNING-CEREMONY.md`.
 
-> Registry status (honest labels): **npm is LIVE BUT LAGS** — the registry
-> delivers `0.1.14-rc1` on `rc`+`latest` until the `0.1.15` publish executes
-> (Founder-gated; measured 2026-10-19). The publish is prepared against the
+> Registry status (honest labels): **npm is LIVE** — the registry
+> delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21;
+> measured on registry.npmjs.org). The publish ran against the
 > exact sha256-verified artifact of record (registry bytes ≡ release bytes is
 > proven by `tools/verify-artifact-parity.ts` before any publish — the Phase
 > 61.1 one-true-artifact epoch law that superseded the rc-era artifact

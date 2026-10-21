@@ -11,19 +11,19 @@ that names the exact fix.
 
 ```sh
 curl -fsSL https://bun.sh/install | bash    # only if Bun is missing
-npm install -g vaerion@rc
-vae --version                               # → vae 0.1.14-rc1 (see the note below)
+npm install -g vaerion
+vae --version                               # → vae 0.1.15
 ```
 
-- **Version note (honest):** LIVE BUT LAGS — the npm registry delivers
-  `0.1.14-rc1` on `rc`+`latest` until the `0.1.15` publish executes
-  (Founder-gated; measured 2026-10-19) — an older engine missing `vae verify` /
-  `create` / `start` / `mcp`; this command does **not** yield `vae 0.1.15`
-  today. For the current engine, install from source (`bun install` in a
-  clone, then `bun run packages/vaerion/src/cli/vae.ts`), use PyPI
-  (`pip install vaerion` — live at `0.1.15`), or use the signed release set.
-- `@rc` is the release-candidate channel. Plain `npm install -g vaerion`
-  resolves to the same version today.
+- **Version note (honest):** LIVE — the npm registry delivers
+  `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21); the
+  command above yields `vae 0.1.15`, the engine of record, complete with
+  `vae verify` / `create` / `start` / `mcp`. PyPI (`pip install vaerion`)
+  and the signed release set carry the same engine; installing from
+  source (`bun install` in a clone, then
+  `bun run packages/vaerion/src/cli/vae.ts`) remains the audit path.
+- `@rc` is the release-candidate channel and still resolves to the
+  pre-GA rc; plain `npm install -g vaerion` is the GA channel of record.
 - No account, no telemetry, no network use at runtime unless you
   explicitly invoke a model provider through the gateway.
 - No sudo? npm prefix fallback:
@@ -67,7 +67,7 @@ alias vae="bun run packages/vaerion/src/cli/vae.ts"
 
 | Channel | Status |
 |---|---|
-| npm (`npm install -g vaerion@rc`) | **LIVE** — `0.1.14-rc1` on registry.npmjs.org, consumer-verified |
+| npm (`npm install -g vaerion`) | **LIVE** — `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21), parity-proven before publish |
 | GitHub Releases (signed tarball) | **LIVE** — three-leg anonymous verification documented |
 | From source | **LIVE** — how the repository verifies itself |
 | PyPI (`pip install vaerion`) | **published — `vaerion 0.1.15` live** (sdist + wheel, venv-verified) |

@@ -45,23 +45,25 @@ hash chain and refuses on any gap (E1010, the completeness anchor).
 | Channel | State at rc | GA state (measured) |
 |---|---|---|
 | GitHub Releases | **LIVE** — signed `v0.1.15-rc1` set (8 assets) | **LIVE** — signed `v0.1.15` set (8 assets) |
-| npm (`vaerion`) | lags: `0.1.14-rc1` on `rc` + `latest` | **LIVE** — `0.1.15` under dist-tag `latest` (parity-proven before publish) |
+| npm (`vaerion`) | lags: the rc-era engine on `rc` + `latest` | **LIVE** — `0.1.15` under dist-tag `latest`, published 2026-10-21 (parity-proven before publish) |
 | PyPI (`vaerion`) | **LIVE** — `0.1.15rc1` (sdist + wheel) | **LIVE** — `0.1.15` (sdist + wheel) |
 | npm (`@vaerion/sdk`) | unpublished (deliberate) | unchanged — unpublished (deliberate) |
 | crates.io / Maven Central | absent (email gate / deferred) | unchanged — deferred, honestly labeled |
 | Homebrew / winget / dmg / rpm | authored, UNVERIFIED host-gated | unchanged — authored, UNVERIFIED host-gated |
 | Hosted site | **LIVE** — vaerion.vercel.app | **LIVE** — redeployed with GA facts |
 
-> **Erratum (npm, measured 2026-10-19):** the npm row above and the
-> `npm install -g vaerion` line in the Install block below record the
-> GA-day intent — the registry in fact delivers `0.1.14-rc1` on `rc` +
-> `latest` until the `0.1.15` npm publish executes (Founder-gated). PyPI
-> (`0.1.15`) and the signed GitHub Release are live today.
+> **Publish of record (npm, measured 2026-10-21):** the npm row above and
+> the `npm install -g vaerion` line in the Install block below are now
+> measured registry truth — the npm registry delivers `vaerion 0.1.15`
+> under dist-tag `latest` (published 2026-10-21). PyPI (`0.1.15`) and the
+> signed GitHub Release are live. (The 2026-10-19 erratum that recorded
+> the GA-day intent as pending is superseded and kept as history in the
+> git record.)
 
 ## Install (GA)
 
 ```sh
-npm install -g vaerion         # npm — current engine, dist-tag latest
+npm install -g vaerion         # npm — current engine, dist-tag latest (published 2026-10-21)
 # or:
 pip install vaerion            # PyPI — current engine
 # or the signed set:
