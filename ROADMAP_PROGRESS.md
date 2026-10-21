@@ -8,7 +8,7 @@
 - Engine version of record: `0.1.15`
 - Constitution of record: `v1.8` (Amendment Log §11)
 - Verification record: GREEN — 9/9 gates ok (`.vaerion-verification.json`)
-- Measured tests: 721 pass · 0 fail · 5275 expectations · 62 files
+- Measured tests: 721 pass · 0 fail · 5277 expectations · 62 files
 - Coverage floors: bunfig.toml coverageThreshold (OBJ-Q6, ratcheted at MS-6 bundle close: 0.86/0.74/0.86/0.90; held at every ASCENSION phase close)
 
 ## Milestone board (§7)
@@ -61,13 +61,13 @@
 ## Recommended next work (priority order)
 
 1. No campaign is in flight: the D-T ledger records FINAL FOUR PHASES complete through Phase 26 (evidence of record in the constitution's §11 Amendment Log); the next program awaits Founder ratification (P4).
-2. GA EXECUTED (2026-10): v0.1.15 is the release of record — GitHub Release + PyPI live and verified end-to-end; the residuals remain Founder-gated (P4): npm publish (pipeline prepared, artifact parity-proven), hosted domain, public disclosure channel provisioning.
+2. GA EXECUTED (2026-10): v0.1.15 is the release of record — GitHub Release + PyPI + npm all live and verified end-to-end (npm delivers vaerion 0.1.15 under dist-tag latest, published 2026-10-21); the residuals remain Founder-gated (P4): GA-content redeploy of the hosted site, public disclosure channel provisioning.
 3. Host-gated single-binary installers (brew/winget/dmg/rpm authored, awaiting their platforms); the daemon packages route group is DONE (ASCENSION XXVI+ — pack/verify/import over the wire with proven parity).
-4. Remaining publish steps (announce) — Founder-gated; GitHub Release + PyPI are live, and artifacts are reproducible via tools/dist-pack.ts at the release tag.
+4. Remaining publish steps (announce) — Founder-gated; GitHub Release + PyPI + npm are live (npm 0.1.15 under dist-tag latest, published 2026-10-21), and artifacts are reproducible via tools/dist-pack.ts at the release tag.
 
 ## Technical risks (top)
 
-1. Substrate: TypeScript-on-Bun reference implementation is explicitly PROVISIONAL (ADR-0018, Phase 1 finalization) with a recorded migration path; Founder ratification pending.
+1. Substrate: TypeScript-on-Bun is the shipped GA substrate of record (ADR-0018 — ratified by the v0.1.15 GA release per the founder's Era II finalization directive); the residual risk is its per-record fsync cost profile — the recorded WASI-P2 compiled-substrate migration remains the long-term performance path (see PERFORMANCE.md).
 2. Release signing uses the production Ed25519 key (RELEASE_SIGNING_KEY from CI; R-2 CLOSED at ASCENSION XXV — key of record rotated, ceremony + recovery law in SIGNING-CEREMONY.md); a hardware-custodied re-ceremony remains available via the recorded rotation path (docs/security/RISK-LEDGER.md R-2, residual labeled).
 3. Exec-sandbox hardening matrix (ADR-0015 full profiles) and per-run token scoping are open engineering items (RISK-LEDGER R-1/R-5).
 4. Journal per-record fsync trades durability for throughput; batching decision needed before agent-scale testing.

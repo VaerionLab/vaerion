@@ -262,10 +262,12 @@ function renderMarkdown(x: {
       "",
       "The OBJ-Q2/OBJ-Q3/OBJ-Q5 budgets were authored for the compiled per-platform",
       "substrate the blueprint targeted. The reference substrate is TypeScript-on-Bun",
-      "(ADR-0018, Proposed — pending Founder ratification): process start and",
+      "(ADR-0018 — the shipped GA substrate of record, ratified by the v0.1.15 GA",
+      "release per the founder's Era II finalization directive): process start and",
       "per-record fsync journal writes dominate the measured path. These numbers are",
-      "recorded as evidence for the substrate decision, not as excuses — a ratified",
-      "substrate change re-baselines the budgets; nothing here weakens a gate.",
+      "recorded as evidence for the substrate decision, not as excuses — the recorded",
+      "compiled-substrate migration path re-baselines the budgets; nothing here",
+      "weakens a gate.",
     );
   }
   if (x.findings.length > 0) {
