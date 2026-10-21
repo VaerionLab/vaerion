@@ -1,5 +1,12 @@
 # ADR-0008: SQLite+WAL+FTS5+sqlite-vec triad as local store
 
+> **Status update (2026-10-21, Era II GA):** the v0.1.15 GA engine ships the
+> blob-CAS store and the NDJSON journal chain — the SQLite/WAL/FTS5/sqlite-vec
+> triad described here is NOT in the GA engine; no derived-store milestone has
+> adopted it. Honest status: **superseded-by-reality / deferred** — the decision
+> stands as written for a future derived store, but it is not the shipped local
+> store of record.
+
 | | |
 |---|---|
 | Status | Accepted |
