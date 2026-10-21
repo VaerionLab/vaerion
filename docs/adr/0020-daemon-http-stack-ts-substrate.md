@@ -1,5 +1,11 @@
 # ADR-0020: Daemon HTTP stack on the TypeScript substrate + the sanctioned wire-client site
 
+> **Status update (2026-10-21, Era II GA):** wording repair only — the Context
+> below described ADR-0018 as "still Proposed"; that predates the GA of record.
+> ADR-0018 is recorded as ratified by the v0.1.15 GA release (2026-10-17; see
+> its status note), and that sentence is aligned in place. No law of this ADR
+> changes.
+
 | | |
 |---|---|
 | Status | Ratified (Phase 1, 2026-08-30) — Accepted and enforced: C7 confines the wire client to this single sanctioned site; loopback-only binding and pairing token are test-proven |
@@ -11,8 +17,9 @@
 
 MS-5 lands the local API daemon (ADR-0010). ADR-0011 pinned tokio + axum +
 tower as the HTTP stack — written when the substrate decision was open. The
-engine substrate is TypeScript on Bun (ADR-0018, still Proposed but the
-shipping reference substrate); tokio/axum/tower cannot be exercised on it.
+engine substrate is TypeScript on Bun (ADR-0018, ratified at the v0.1.15
+GA of record; the shipping reference substrate); tokio/axum/tower cannot
+be exercised on it.
 The daemon therefore needs an HTTP mechanism on the actual substrate without
 re-litigating the LAW ADR-0011 already fixed: loopback binds, pairing-token
 authn, redaction before publication, SSE with journal-cursor replay, and no

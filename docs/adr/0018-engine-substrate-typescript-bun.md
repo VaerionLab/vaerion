@@ -1,5 +1,13 @@
 # ADR-0018: Engine substrate for the reference implementation: TypeScript on Bun
 
+> **Status update (2026-10-21, Era II GA):** the TypeScript-on-Bun substrate IS
+> the shipped GA substrate — verified at the v0.1.15 GA of record (Bun 1.3.14,
+> full engine test suite green). The "Provisional pending Founder ratification"
+> status below is hereby recorded, as a record note, as **ratified by the GA
+> release of record (v0.1.15, 2026-10-17)** per the founder's Era II
+> finalization directive. The provisional text is preserved below unchanged as
+> history.
+
 | | |
 |---|---|
 | Status | **Provisional** (Phase 1 finalization) — explicitly provisional pending Founder ratification; an explicit migration path is recorded below. The decision lapses into final only upon Founder ratification |

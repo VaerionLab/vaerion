@@ -4,6 +4,11 @@ version = "0.1.15"
 edition = "2021"
 description = "Vaerion Rust SDK — loopback daemon client + Agent facade over the verified journal engine"
 license = "Apache-2.0"
+repository = "https://github.com/VaerionLab/vaerion"
+homepage = "https://vaerion.vercel.app"
+readme = "README.md"
+keywords = ["ai", "agents", "verification", "provenance", "journal"]
+categories = ["development-tools"]
 
 [lib]
 name = "vaerion"

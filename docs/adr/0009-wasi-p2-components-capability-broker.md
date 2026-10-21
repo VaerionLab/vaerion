@@ -1,5 +1,13 @@
 # ADR-0009: WASI-P2 components + capability broker substrate
 
+> **Status update (2026-10-21, Era II GA):** the v0.1.15 GA engine ships this
+> ADR's own R-2 contingency as the extension host of record — the digest-pinned
+> subprocess host speaking the same WIT world
+> (`packages/vaerion/src/extensions/host.ts`, world `vaerion:extension@0.1.0`),
+> with broker semantics intact. WASI-P2 components remain the target
+> architecture; the shipped substrate is this ADR's fallback, not the component
+> runtime.
+
 | | |
 |---|---|
 | Status | Accepted |
