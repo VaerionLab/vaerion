@@ -35,7 +35,9 @@ open at this release; all items below are known, bounded, and tracked.
 
 ## Disclosure posture
 
-Until R-7 closes, security reports go directly to the project owner
-(Auren) through private contact. Please do not open public issues for
-security findings. Reports should include reproduction steps and, where
+Preferred channel (measured live 2026-10-21): GitHub **private
+vulnerability reporting** — *Report a vulnerability* on this repository's
+Security tab. Reports can also go directly to the project owner (Auren)
+through private contact. Please do not open public issues for security
+findings. Reports should include reproduction steps and, where
 possible, journal or receipt output demonstrating the finding.

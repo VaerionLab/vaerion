@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-10-21T21:33:59.372Z",
+  "generatedAt": "2026-10-21T22:18:47.550Z",
   "engineVersion": "0.1.15",
   "substrate": "TypeScript on Bun (ADR-0018 — the shipped GA substrate of record; ratified by the v0.1.15 GA release per the founder's Era II finalization directive; the recorded WASI-P2 migration path remains the target architecture)",
   "verification": {
-    "generatedAt": "2026-10-21T21:05:43.352Z",
+    "generatedAt": "2026-10-21T22:18:47.312Z",
     "ok": true,
     "gates": [
       {
         "gate": "typecheck-engine",
         "ok": true,
-        "durationMs": 4735
+        "durationMs": 4399
       },
       {
         "gate": "typecheck-sdk",
         "ok": true,
-        "durationMs": 3546
+        "durationMs": 3296
       },
       {
         "gate": "tests",
         "ok": true,
-        "durationMs": 12250
+        "durationMs": 11827
       },
       {
         "gate": "coverage-ratchet",
@@ -34,22 +34,22 @@
       {
         "gate": "constitutional-check",
         "ok": true,
-        "durationMs": 317
+        "durationMs": 175
       },
       {
         "gate": "perf-budget",
         "ok": true,
-        "durationMs": 298
+        "durationMs": 318
       },
       {
         "gate": "a11y-structural",
         "ok": true,
-        "durationMs": 37
+        "durationMs": 27
       },
       {
         "gate": "repo-lint",
         "ok": true,
-        "durationMs": 18606
+        "durationMs": 18523
       }
     ],
     "measured": {
@@ -406,14 +406,14 @@
     "passed": 5,
     "total": 12,
     "blockers": [
-      "git-tree-clean: working tree dirty: 0 staged, 4 unstaged, 0 untracked",
+      "git-tree-clean: working tree dirty: 0 staged, 17 unstaged, 1 untracked",
       "release-tag-binding: HEAD is not exactly at a v* release tag",
       "release-artifacts: artifact set incomplete: dist/MANIFEST.json, dist/MANIFEST.json.sig, dist/SHA256SUMS, dist/VERIFY.md missing"
     ]
   },
   "commandCenter": {
     "workspace": {
-      "root": "/tmp/vaerion-public/examples/vaerion-demo",
+      "root": "/tmp/wt-fix/examples/vaerion-demo",
       "runs": 0
     },
     "span": {
@@ -461,7 +461,7 @@
       "blockers": [
         {
           "check": "git-tree-clean",
-          "detail": "working tree dirty: 0 staged, 4 unstaged, 0 untracked"
+          "detail": "working tree dirty: 0 staged, 17 unstaged, 1 untracked"
         },
         {
           "check": "release-tag-binding",

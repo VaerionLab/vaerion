@@ -5,8 +5,8 @@
 # surface may re-implement the gates. The pipeline fails on any violation
 # (non-zero gate exit):
 #   typecheck-engine · typecheck-sdk · tests (coverage floors) ·
-#   layerlint · constitutional-check · perf-budget · a11y-structural ·
-#   repo-lint
+#   coverage-ratchet · layerlint · constitutional-check · perf-budget ·
+#   a11y-structural · repo-lint
 # and archives the measured verification record.
 
 stages:

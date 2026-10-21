@@ -27,6 +27,15 @@ under the Founder's written GO (Phase 67, the release train of record).
   registry still serving the pre-GA rc is superseded by this measured
   event and kept as history (append-erratum law).
 - The hosted site redeployed with GA facts (2026-10-21; channel table, FAQ, install copy).
+  **Erratum (measured 2026-10-21, same day):** this redeploy did **not**
+  execute. The live site serves the `v0.1.15-rc1` epoch — the deploy of
+  record 2026-10-17T01:10Z (measured via the post-deploy verification
+  matrix of `docs/WEBSITE_DEPLOYMENT.md`: `GET /api` returns version
+  `0.1.15-rc1`; sitemap `lastmod` 2026-10-17T01:10:04Z; live
+  `robots.txt` matches the rc1 epoch, not HEAD). The GA-content
+  redeploy remains Founder-gated (residual P4); the repository source of
+  record does carry the GA facts. The original line is kept above as
+  recorded history (append-erratum law).
 
 ### Added
 - `docs/RELEASE-NOTES-v0.1.15.md` — the release notes of record (mirrors

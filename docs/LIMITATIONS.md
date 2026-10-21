@@ -13,9 +13,13 @@ record), **Last-known** (recorded history, not re-measured), **UNVERIFIED**
 From `ROADMAP_PROGRESS.md` — "Technical risks (top)" (generated from the
 measured status of record; item numbering below matches that list):
 
-1. **Substrate is provisional.** The TypeScript-on-Bun reference
-   implementation is explicitly PROVISIONAL (ADR-0018) with a recorded
-   migration path; Founder ratification is pending (see §3, F-4).
+1. **Substrate is ratified.** *(Re-measured 2026-10-21.)* The
+   TypeScript-on-Bun reference implementation is the shipped GA substrate —
+   ADR-0018 was ratified by the v0.1.15 GA of record (2026-10-17), recorded
+   in the ADR's dated status note and constitution v1.9 §A9. The recorded
+   migration path remains. The earlier "PROVISIONAL — Founder ratification
+   pending" wording is retained in the git history of this list (and in the
+   preserved ADR body) as history; it no longer describes a limitation.
 2. **Release signing uses the production Ed25519 key of record.** The
    offline key ceremony (F-3) closed at ASCENSION XXV — the production key
    signs from CI (`docs/security/SIGNING-CEREMONY.md`; CHANGELOG `v1.7`
@@ -101,8 +105,11 @@ From `docs/ga/GO-NO-GO.md` §2 and `docs/ga/FINAL-VERIFIED-REALITY-REPORT.md`
   `RELEASE_SIGNING_KEY` provisioned 2026-09-26; the `v0.1.15-rc1` release
   signature verifies against the tracked key of record). Historical: the
   bootstrap-key disclosure era is recorded in the phase reports.
-- **F-4 — Substrate ratification.** ADR-0018 (TypeScript-on-Bun) remains
-  PROVISIONAL pending the Founder decision; migration path recorded.
+- **F-4 — Substrate ratification.** ✅ **CLOSED (re-measured 2026-10-21)** —
+  ADR-0018 (TypeScript-on-Bun) is RATIFIED by the v0.1.15 GA of record
+  (2026-10-17); the ratified-substrate wording is recorded in the ADR's
+  dated status note and constitution v1.9 §A9. The migration path remains
+  recorded.
 - **F-5 — Publication.** ✅ **EXECUTED (measured 2026-10-17; npm
   re-measured 2026-10-21):** GitHub Release `v0.1.15` is LIVE (8 signed
   assets — signature and every digest verified); PyPI is LIVE

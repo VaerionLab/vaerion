@@ -65,9 +65,11 @@ comparing). `vaerion.lock` seals the digest; `vae package verify` and
 
 ## Is the TypeScript-on-Bun substrate permanent?
 
-It is explicitly **provisional** (ADR-0018): the constitutional law binds
-behavior, not the language. A recorded migration path exists; final
-ratification is a Founder decision.
+Yes — it is the **shipped GA substrate of record** (re-measured
+2026-10-21): ADR-0018 was ratified by the v0.1.15 GA (2026-10-17). The
+constitutional law binds behavior, not the language, and the recorded
+migration path remains — the engine could be re-targeted derivationally if
+that decision were ever revisited.
 
 ## How do I report a bug?
 

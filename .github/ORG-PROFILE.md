@@ -45,7 +45,7 @@ verification legs (sha256 → engine verifier → openssl cross-check).
 | npm | **LIVE** — the registry delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21; measured on registry.npmjs.org) |
 | PyPI | **Published** — `vaerion 0.1.15` (sdist + wheel), measured live on pypi.org 2026-10-17 |
 | vaerion.dev installer | Not live — domain provisioning pending (Founder-gated); measured unreachable 2026-10-17; `https://vaerion.vercel.app` is the live canonical of record |
-| Community | GitHub Discussions (announcements, Q&A, ideas, show and tell); Discord planned (pending Founder provisioning) |
+| Community | GitHub Discussions live — the six default categories (Announcements, General, Ideas, Polls, Q&A, Show and tell; measured 2026-10-21); Discord planned (pending Founder provisioning) |
 
 ## Contact
 

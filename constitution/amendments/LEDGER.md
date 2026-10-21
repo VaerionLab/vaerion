@@ -310,7 +310,14 @@ versioned like a protocol (Visual System §23).
   **RATIFIED** — the v0.1.15 GA (2026-10-17: GitHub Release + PyPI) is the
   ratifying event of record; Era I recorded COMPLETE and Era II Foundation
   recorded COMPLETE (closed 2026-10-21), next train v0.1.16; the hosted-site
-  GA-facts redeploy recorded executed 2026-10-21. The Volume IV knowledge
+  GA-facts redeploy recorded executed 2026-10-21. **Correction (re-measured
+  2026-10-21 UTC, same day):** the hosted-site redeploy was **not executed**
+  (live site = the `v0.1.15-rc1` epoch, deploy of record 2026-10-17T01:10Z;
+  measured via the `docs/WEBSITE_DEPLOYMENT.md` matrix — the redeploy
+  remains Founder-gated, residual P4), and GitHub private vulnerability
+  reporting measured **ENABLED** 2026-10-21 (leaving exactly one named
+  Founder-gated residual of record: the custom domain vaerion.dev, plus the
+  hosted-site redeploy). The Volume IV knowledge
   organ's currency pointers corrected by dated, annotate-only edits
   (11.4). Also recorded in `constitution/CHANGELOG.md` as [1.10.0].
 - **Constitutional guard:** append-only — no superseded text deleted; every

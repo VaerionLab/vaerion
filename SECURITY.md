@@ -31,10 +31,13 @@ Include:
 - reproduction steps from a clean state;
 - where possible, journal or receipt output demonstrating the finding.
 
-Honest state: no automated private-vulnerability-reporting channel (security.txt /
-private vulnerability reporting) is provisioned yet. That gap is tracked openly as
-`RISK-LEDGER` R-7 (Founder-gated). This page does not claim a channel that does
-not exist.
+Honest state (re-measured 2026-10-21): GitHub **private vulnerability
+reporting is ENABLED** — the *Report a vulnerability* button
+(`/security/advisories/new`) is live on this repository, measured as an
+anonymous visitor on 2026-10-21; it is now the preferred first reporting
+channel. `security.txt` remains unprovisioned (no `/.well-known/security.txt`
+is served); that half of `RISK-LEDGER` R-7 stays open and is tracked openly
+there. This page states exactly what exists — no more, no less.
 
 ## Security documentation of record
 
