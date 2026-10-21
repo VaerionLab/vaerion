@@ -22,23 +22,23 @@ Vaerion executes on the [Bun](https://bun.sh) runtime (1.3+):
 
 ```sh
 curl -fsSL https://bun.sh/install | bash   # if you do not have Bun yet
-npm install -g vaerion@rc                  # the published CLI package
+npm install -g vaerion                     # the published CLI package
 vae --version
 ```
 
 ```text
-vae 0.1.14-rc1
+vae 0.1.15
 ```
 
-> **Version note (honest):** the npm registry delivers `0.1.14-rc1` on
-> `rc`+`latest` (measured 2026-10-19) — LIVE BUT LAGS — until the `0.1.15`
-> publish executes (Founder-gated); PyPI is live at `0.1.15`. The capture
-> above is the truth for the npm path today: the older rc engine without
-> `verify` / `create` / `start` / `mcp`. Every command below exists in the
-> `0.1.15` engine of record; run the guide against a source checkout
-> (`bun install && bun run packages/vaerion/src/cli/vae.ts --help`), use the
-> signed release set, or `npm install -g vaerion` (which resolves to
-> `0.1.14-rc1` until the publish lands).
+> **Version note (honest):** the npm registry delivers
+> `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21) — the
+> npm channel is LIVE at the engine of record; PyPI is live at `0.1.15`
+> too. The capture
+> above is the truth for the npm path: the full engine with `verify` /
+> `create` / `start` / `mcp`. Every command below exists in the `0.1.15`
+> engine of record and runs the same from a source checkout (`bun install
+> && bun run packages/vaerion/src/cli/vae.ts --help`) or the signed
+> release set.
 
 Alternatives (release tarballs, from-source) and signature verification are
 in [`INSTALL.md`](INSTALL.md). If `vae` is not found after install, check

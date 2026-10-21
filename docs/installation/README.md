@@ -7,13 +7,13 @@
   of failing cryptically.
 - Linux, macOS, or Windows (WSL2). No account, no network key, no telemetry.
 
-## Path 1 — npm (live — lags the tree) or PyPI (live)
+## Path 1 — npm (live) or PyPI (live)
 
 ```sh
 pip install vaerion        # PyPI — live: vaerion 0.1.15 (sdist + wheel)
 # or
-npm install -g vaerion    # npm — LIVE BUT LAGS: 0.1.14-rc1 on rc+latest
-vae --version             #   until the 0.1.15 publish (Founder-gated; measured 2026-10-19)
+npm install -g vaerion    # npm — LIVE: vaerion 0.1.15 under dist-tag latest
+vae --version             #   (published 2026-10-21, measured on registry.npmjs.org)
 ```
 
 ## Path 2 — from source (works today)
@@ -30,12 +30,12 @@ bun run packages/vaerion/src/cli/vae.ts --version
 A `Dockerfile` rides in the repository root; a dev container lives in
 `.devcontainer/`. Platform packages (Homebrew, winget, chocolatey, scoop, snap,
 flatpak, deb, rpm, dmg, pkg) are rehearsed under [`packaging/`](../../packaging/README.md)
-and open one channel at a time (Founder-gated; npm is live but lags the tree).
+and open one channel at a time (Founder-gated; npm itself is live at `0.1.15`).
 
 ## Verify the install
 
 ```sh
-vae --version   # vae 0.1.14-rc1
+vae --version   # vae 0.1.15
 vae doctor      # environment checks, exit 0 when healthy
 ```
 

@@ -26,14 +26,14 @@ bun --version          # ≥ 1.3
 ## 1. Install (1 minute)
 
 ```sh
-npm install -g vaerion@rc
+npm install -g vaerion
 vae --version
 ```
 
 Measured:
 
 ```text
-vae 0.1.14-rc1
+vae 0.1.15
 ```
 
 No account, no telemetry, no network calls — the install drops the

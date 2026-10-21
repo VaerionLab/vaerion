@@ -20,10 +20,12 @@ under the Founder's written GO (Phase 67, the release train of record).
   the signed GitHub Release `v0.1.15` publishes with the 8-asset verification
   set (MANIFEST.json + Ed25519 signature + SHA256SUMS + VERIFY.md +
   dist-report.json + release-signing.pub + source tarball + demo bundle).
-- npm note (2026-10-19 erratum): the `0.1.15` npm publish is prepared and
-  Founder-gated — the registry currently delivers `0.1.14-rc1` on
-  `rc`+`latest`, so the rc-era lag disclosure above still describes npm
-  today; PyPI `0.1.15` and the signed GitHub Release are live.
+- npm publish of record (2026-10-21): `vaerion 0.1.15` is live under
+  dist-tag `latest` — the npm registry delivers the engine of record
+  (measured on registry.npmjs.org; the rc-era lag disclosure is retired
+  everywhere evidence lives). The 2026-10-19 erratum that recorded the
+  registry still serving the pre-GA rc is superseded by this measured
+  event and kept as history (append-erratum law).
 - The hosted site redeploys with GA facts (channel table, FAQ, install copy).
 
 ### Added

@@ -67,12 +67,13 @@ openssl pkeyutl -verify -pubin -inkey release-signing.pub \
 
 Key custody, rotation, and recovery:
 [`../security/SIGNING-CEREMONY.md`](../security/SIGNING-CEREMONY.md).
-The npm package published to date, `vaerion@0.1.14-rc1`, came from the exact
+The npm package `vaerion@0.1.14-rc1` came from the exact
 sha256-verified artifact of record — registry bytes ≡ release bytes. From the
-`0.1.15-rc1` one-true-artifact epoch (Phase 61.1), any future publish must
+`0.1.15-rc1` one-true-artifact epoch (Phase 61.1), every publish must
 first prove parity: `tools/verify-artifact-parity.ts` re-derives the packed
 tarball's command surface, templates, and docs claims from the tree before
-the artifact may ship.
+the artifact may ship — the gate that gated the `vaerion@0.1.15` publish
+(dist-tag `latest`, published 2026-10-21).
 
 ## CI is part of the law
 

@@ -43,11 +43,12 @@ The six ratified tools (verbatim from `tools/list`):
 
 **Which command to use:**
 
-- **Installed CLI** (`npm install -g vaerion@rc` puts `vae` on PATH): use `vae mcp`.
-  **Version note (honest):** the npm registry still delivers `0.1.14-rc1` —
-  an older engine with **no `mcp` command** — until the Founder-gated
-  `0.1.15` publish. Until then, use the repository path below (or the
-  signed release set).
+- **Installed CLI** (`npm install -g vaerion` puts `vae` on PATH): use `vae mcp`.
+  **Version note (honest):** the npm registry delivers
+  `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21) —
+  the npm-delivered engine now ships `vae mcp`; no repository path is
+  required. (The rc-era engine lacked the command; the repository path
+  below remains the dev-checkout route.)
 - **This repository (dev checkout)**: the engine entry is TypeScript; run it with
   `bun run <path-to-repo>/packages/vaerion/src/cli/vae.ts mcp` (bun ≥ 1.3 is required —
   the engine runs on bun).
