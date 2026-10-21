@@ -2969,7 +2969,7 @@ export async function cmdTour(ctx: CommandContext): Promise<number> {
     {
       step: 1,
       title: "What Vaerion is",
-      measured: [`engine ${ENGINE_VERSION}`, "substrate: typescript on bun (ADR-0018, Provisional)"],
+      measured: [`engine ${ENGINE_VERSION}`, "substrate: typescript on bun (ADR-0018 — ratified at the v0.1.15 GA of record)"],
       try: "vae dev",
       note: "An AI-native development engine — not an IDE, not a chat wrapper, not a cloud service. Three load-bearing ideas: one source-of-truth chain, one Event Spine, one Permission Broker.",
     },
