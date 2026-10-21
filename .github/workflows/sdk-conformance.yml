@@ -20,6 +20,17 @@
 # from verify.yml. No new action dependencies are introduced: python3/pip,
 # go, cargo, and maven are preinstalled on GitHub-hosted runners.
 #
+# AMENDMENT (2026-10-21, final-polish): actions/setup-java — SHA-pinned with
+# its tag annotation, same discipline as above — joined the pinned set. The
+# ubuntu runner's default JDK cannot compile the java pom's `release 21`
+# target ("release version 21 not supported"), which the conformance gate
+# caught as a red leg on main. One pinned, annotated action keeps the
+# supply-chain law intact; no unpinned surface is introduced.
+#
+# Self-trigger amendment (same date): changes to THIS workflow file or to
+# the SDK standard of record now re-run the battery — the paths filter only
+# covered sdks/** before, so the workflow could never observe its own drift.
+#
 # Fail-isolation law: one matrix leg failing never cancels its siblings
 # (strategy.fail-fast: false) — a red Rust leg must not hide a green Go leg.
 
@@ -28,9 +39,15 @@ name: sdk-conformance
 on:
   workflow_dispatch:
   push:
-    paths: ["sdks/**"]
+    paths:
+      - "sdks/**"
+      - ".github/workflows/sdk-conformance.yml"
+      - "VAERION_SDK_STANDARD.md"
   pull_request:
-    paths: ["sdks/**"]
+    paths:
+      - "sdks/**"
+      - ".github/workflows/sdk-conformance.yml"
+      - "VAERION_SDK_STANDARD.md"
 
 permissions:
   contents: read
@@ -67,6 +84,13 @@ jobs:
       - name: Prepare (${{ matrix.sdk }})
         if: matrix.setup != ''
         run: ${{ matrix.setup }}
+
+      - name: Prepare JDK (java)
+        if: matrix.sdk == 'java'
+        uses: actions/setup-java@cf277c60eb25467037889841efdb72551f06f6c3 # v4.9.1
+        with:
+          distribution: temurin
+          java-version: "21"
 
       - name: Conformance suite (${{ matrix.sdk }})
         working-directory: ${{ matrix.dir }}
