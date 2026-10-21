@@ -32,7 +32,7 @@ FROM oven/bun:1.3.14-slim AS runtime
 RUN useradd --create-home --uid 1000 vae
 WORKDIR /app
 
-# The engine resolves its runtime dependencies (ajv, hash-wasm, yaml)
+# The engine resolves its runtime dependencies (hash-wasm, yaml)
 # through the workspace node_modules; @vaerion/sdk reaches the engine via
 # the workspace link it declares. Copy only what the CLI runs.
 COPY --from=deps --chown=vae:vae /app/node_modules ./node_modules

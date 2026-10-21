@@ -93,6 +93,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://vaerion.dev/vaerion.git"
+    "url": "git+https://github.com/VaerionLab/vaerion.git"
   }
 }

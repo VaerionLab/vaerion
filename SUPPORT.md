@@ -1,7 +1,8 @@
 # Support
 
-Vaerion is the local-first verification layer for AI agents, currently a public beta
-(engine `0.1.15`). Support is grounded in the repository's own surfaces —
+Vaerion is the local-first verification layer for AI agents. The supported
+release is `v0.1.15` — the first stable release, general availability
+(published 2026-10-17). Support is grounded in the repository's own surfaces —
 measured, never assumed.
 
 ## Community
@@ -73,9 +74,8 @@ Never open a public issue for a security finding.
 
 ## Scope honesty
 
-- This is a beta: performance is unoptimized and some platform hardening is
-  tracked openly (`docs/security/RISK-LEDGER.md`; the audit records in
-  `docs/ga/`).
+- Performance is unoptimized and some platform hardening is tracked openly
+  (`docs/security/RISK-LEDGER.md`; the audit records in `docs/ga/`).
 - Cross-version upgrade is UNVERIFIED as of the Empty Machine Test of record
   (`docs/ga/ASCENSION-XX-EMPTY-MACHINE-TEST.md`); same-version upgrade and
   clean removal are measured.

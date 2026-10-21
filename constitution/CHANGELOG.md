@@ -6,6 +6,30 @@ The law itself changes only through the amendment ledger.
 
 ---
 
+## [1.10.0] — Era II · Zero-Stale Completion (Cross-Reference to the Constitution of Record v1.9)
+
+Executed under the Founder's Zero-Stale Completion Directive (2026-10-21) —
+every governing surface reconciled to published reality. **Cross-reference of
+record:** `docs/constitution/VAERION_CONSTITUTION_v1.9.md` (amendment **A9 —
+Registry Execution & Substrate Ratification Erratum**) is the erratum of
+record for the product-engineering constitution (a different instrument,
+governing the engine in `packages/vaerion/` — INDEX §4, IR-003): the **D-Z-2
+registry-truth flip** is recorded — npm `vaerion` **0.1.15** published
+**2026-10-21** under dist-tag `latest`, npm **LIVE**, the v1.8 "LIVE BUT
+LAGS" adjudication superseded; §7's Founder-gated residuals re-enumerated
+(npm publish **EXECUTED**; remaining: the custom domain vaerion.dev and
+GitHub private vulnerability reporting enablement); **ADR-0018**
+(TypeScript-on-Bun substrate) recorded **RATIFIED** — the v0.1.15 GA
+(2026-10-17) is the ratifying event of record; Era I COMPLETE and Era II
+Foundation COMPLETE (closed 2026-10-21) recorded, next train v0.1.16; the
+hosted-site GA-facts redeploy recorded executed 2026-10-21. Append-only: the
+v1.8 body text is retained unmodified; every knowledge-organ correction is a
+dated annotation (11.4; GOVERNANCE.md §1.2). No Volume IV Article or Section
+is relaxed; the three ratified documents and their Snapshot Authority digest
+pins are untouched.
+
+---
+
 ## [1.9.0] — Era II · GA Reconciliation (Cross-Reference to the Constitution of Record v1.8)
 
 Executed under the Founder's Era II directive — the GA executed; the law of
@@ -65,7 +89,8 @@ altered, nothing published, nothing deployed, no logo created; Stages
 - **Logo reservation** — `brand/OFFICIAL-LOGO-SLOT.md`: the official-logo
   slot documented with the full integration map and replacement
   procedure; every existing brand asset byte-untouched (IR-003).
-- **Launch record** — `VAERION_LAUNCH_READINESS_REPORT.md`: architecture
+- **Launch record** — `VAERION_LAUNCH_READINESS_REPORT.md`
+  (archived: github.com/VaerionLab/vaerion-archive): architecture
   state, completed systems, remaining external actions, required
   credentials, required assets, release steps, verification commands —
   with the honest gaps (F-2/F-4/F-5/F-6/R-7, IR-018/019/021, the three

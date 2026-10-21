@@ -126,7 +126,7 @@ desc "Local-first trust infrastructure for AI agents"
 train):** the formula builds from the released source tarball with the
 checksum pinned at train time; no tap exists yet
 (`falconxa0-commits/homebrew-vaerion` is a packet in
-`docs/founder/FOUNDER-PACKETS.md` §B).
+`docs/founder/FOUNDER-PACKETS.md` §B (archived: github.com/VaerionLab/vaerion-archive)).
 
 ---
 
@@ -145,7 +145,7 @@ PackageDescription: |-
 **Status line for the winget submission packet:** the channel is
 authored and version-locked, labeled UNVERIFIED — host until a Windows
 host measures it (`docs/INSTALL.md`); submission is a Founder act
-(`docs/founder/FOUNDER-PACKETS.md` §B).
+(`docs/founder/FOUNDER-PACKETS.md` §B (archived: github.com/VaerionLab/vaerion-archive)).
 
 ---
 

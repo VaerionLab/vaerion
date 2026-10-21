@@ -54,6 +54,8 @@ a frozen repo with zero releases — Phase 64 TD-15, founder-side item.
 
 ## 4. Channel states (measured 2026-10-19)
 
+> Update 2026-10-21: npm registry truth flipped — `vaerion` 0.1.15 published, dist-tag `latest` (the 2026-10-19 npm-lag states below are the frozen verification-day record).
+
 | Channel | Measured state | Source |
 |---|---|---|
 | GitHub Release `v0.1.15` | LIVE — 8 assets, 17 downloads, Latest, not prerelease | [P64] releases audit (authenticated API); `ASSET_MANIFEST.md` |

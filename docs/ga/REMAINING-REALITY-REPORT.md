@@ -75,7 +75,7 @@ publication act (packet §A.3), not an engineering gap.
 |---|---|---|
 | F-2 full legal name in the identity layer | Founder | `Auren` pseudonym consistent everywhere; LEGAL.md §6 records the sweep |
 | F-4 substrate ratification (ADR-0018) | Founder | PROVISIONAL with a recorded migration path |
-| F-5 publication: npm/PyPI/Homebrew/winget/Chocolatey/Scoop/APT/RPM + `vaerion.dev` | Founder + registries | every channel authored + version-locked; GitHub Releases LIVE; **the packets are signature-ready: `docs/founder/FOUNDER-PACKETS.md`** |
+| F-5 publication: npm/PyPI/Homebrew/winget/Chocolatey/Scoop/APT/RPM + `vaerion.dev` | Founder + registries | every channel authored + version-locked; GitHub Releases LIVE; **the packets are signature-ready: `docs/founder/FOUNDER-PACKETS.md`** (archived: github.com/VaerionLab/vaerion-archive) |
 | F-6 live provider recordings | Founder (+ provider accounts) | recorder + failure cassettes ready; packet §D |
 | R-7 public security-reporting channel | Founder | private route live; security.txt awaits the domain (packet §C/§E) |
 | Registry/store review timelines | external platforms | cannot be executed or measured from here |

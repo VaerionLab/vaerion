@@ -34,7 +34,7 @@ where they disagree, this directory is authoritative and the code is a defect.
 | `schemas/vaerion-yaml.schema.json` | `vaerion.yaml` configuration | 0.1 |
 | `events/registry.json` | Registered event types (envelope v1) | v1 |
 | `errors.yaml` | Diagnostic catalog (E####) | v1 |
-| `openapi.json` | Generated daemon route description (ADR-0010/ADR-0020) | 0.1.4 |
+| `openapi.json` | Generated daemon route description (ADR-0010/ADR-0020) | 0.1.15 |
 | `wit/vaerion-extension@0.1.0.wit` | Extension world (ADR-0009; R-2 host implements it over stdio) | 0.1.0 |
 | `CHANGELOG-SPEC.md` | Contract version history | — |
 

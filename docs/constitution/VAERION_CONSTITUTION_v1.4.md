@@ -1,3 +1,5 @@
+> SUPERSEDED — historical record; constitution of record: v1.9 (2026-10-21).
+
 # VAERION CONSTITUTION — v1.4
 
 | | |

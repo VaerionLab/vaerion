@@ -56,7 +56,7 @@
 | Runtime pinning | `engines: bun ≥ 1.2`; dependency resolution pinned in `bun.lock` (workspace `*` references authoritative; version-string sync limitation recorded honestly) |
 | Provider hermeticity | cassettes + MockBrain (ADR-0012) mean tests and demos never require network or real credentials |
 | Zero telemetry | structural (C6); there is no phone-home surface to harden |
-| Loopback daemon | pairing-token authn (CSPRNG, print-once, timing-safe); non-loopback bind refused (`E2006`); listener never egresses (C7) |
+| Loopback daemon | pairing-token authn (CSPRNG, print-once, timing-safe); non-loopback bind refused (`E2006` **[Update 2026-10-21: corrected code — the daemon's bind refusal is `E2001` (`daemon_bind_refused`); `E2006` is the wire client's refusal of a non-loopback address, per `spec/errors.yaml`]**); listener never egresses (C7) |
 
 ## 6. Residual risks (honest remainder)
 

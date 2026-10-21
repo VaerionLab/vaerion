@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Status law** | Every file in this kit is a DRAFT. **Nothing is published without the Founder's written approval** — the same gate that governs npm/PyPI publication, `vaerion.dev`, and the Discord server (`docs/founder/FOUNDER-PACKETS.md`; constitution P4: automation proposes, humans dispose). |
+| **Status law** | Every file in this kit is a DRAFT. **Nothing is published without the Founder's written approval** — the same gate that governs npm/PyPI publication, `vaerion.dev`, and the Discord server (`docs/founder/FOUNDER-PACKETS.md` (archived: github.com/VaerionLab/vaerion-archive); constitution P4: automation proposes, humans dispose). |
 | **Number law** | Every number must be re-measured from `site-data/vaerion-status.json` at publish time. A stale number is a false claim. |
 | **Voice law** | `brand/BRAND-BOOK.md` §10 — engineered, declarative, exact. No exclamation marks, no hype, no emoji in body copy (Discussion category names excepted). |
 

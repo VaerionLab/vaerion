@@ -671,7 +671,7 @@ The JSON Schema of record is
   (`packages/vaerion/src/api/routes.ts`), and the generated OpenAPI
   (`spec/openapi.json`). The wire surface the `VaeDaemonClient` speaks;
   see [`../SDK.md`](../SDK.md) for the client view.
-- **CLI** — the 25-command surface: [`cli.md`](cli.md).
+- **CLI** — the 29-command surface: [`cli.md`](cli.md).
 - **Research pipeline, evals, extensions** — exported from the same barrel
   (`research/*`, `evals/*`, `extensions/*`); documented in
   [`../../docs/book/guides/research-and-intel.md`](../../docs/book/guides/research-and-intel.md)

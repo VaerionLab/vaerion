@@ -6,11 +6,12 @@
  * History (the defect class this module kills): the canonical store's
  * protection hook was provisioned by ad-hoc shell at every campaign — the
  * hook bytes existed nowhere in the repository, so every session boundary
- * that lost `/home/z/vaerion-canonical.git` also lost the protection law's
- * enforcement until a human re-typed it (it was lost TWICE — measured at the
- * GA campaign and again at this campaign's start). The law now lives in the
- * engine: one string of record, byte-pinned by tests, installed by the ONE
- * sanctioned provisioner (`tools/canonical-provision.ts`) and proven by
+ * that lost the canonical store (a machine-local path) also lost the
+ * protection law's enforcement until a human re-typed it (it was lost
+ * TWICE — measured at the GA campaign and again at this campaign's start).
+ * The law now lives in the engine: one string of record, byte-pinned by
+ * tests, installed by the ONE sanctioned provisioner
+ * (`tools/canonical-provision.ts`) and proven by
  * adversarial probes on every provisioning (D-Q).
  *
  * Determinism (C2): the hook text is a pure constant — identical bytes on
@@ -19,6 +20,9 @@
  * the only writer, and it writes ONLY the bare store's hook file — never
  * refs, never the working repository.
  */
+
+import { homedir } from "node:os";
+import { join } from "node:path";
 
 /** The zero SHA (SHA-1 repositories — 40 bits of nothing). */
 const ZERO_SHA = "0000000000000000000000000000000000000000";
@@ -75,8 +79,12 @@ done
 exit $status
 `;
 
-/** The canonical store path of record for this environment (D-S: presence is measured, never assumed). */
-export const CANONICAL_STORE_PATH = "/home/z/vaerion-canonical.git" as const;
+/**
+ * The canonical store path of record for this environment (D-S: presence is
+ * measured, never assumed). The default derives from the running user's home
+ * directory — the engine carries no machine-specific path.
+ */
+export const CANONICAL_STORE_PATH = join(homedir(), ".vaerion", "canonical.git");
 
 export interface ProvisionStep {
   readonly argv: readonly string[];

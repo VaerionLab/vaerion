@@ -51,7 +51,7 @@ record) is filed as **IR-004**, not interpreted in place.
 | Ledger | Path | Contents |
 |--------|------|----------|
 | Amendments | `constitution/amendments/LEDGER.md` | **F-001…F-007 (RATIFIED)** — Foundation Amendments |
-| Interpretation requests | `constitution/interpretations/LEDGER.md` | IR-001, IR-002, IR-003, IR-004 (PROPOSED) |
+| Interpretation requests | `constitution/interpretations/LEDGER.md` | IR-001, IR-003…IR-021 PROPOSED; IR-002 RATIFIED (Founder's Stage 9 order) — re-measured 2026-10-21 (A9) |
 | Trace Index | `constitution/trace-index/trace-index.md` | citation ↔ artifact mapping (Constitution P-4) |
 | Changelog | `constitution/CHANGELOG.md` | versioned like a protocol (Constitution 11.3) |
 
@@ -62,9 +62,9 @@ preserved as history and are never deleted (Constitution 11.4), but they hold
 **no authority** over Volume IV surfaces and must not be consumed by the
 Registry or any primitive:
 
-- `docs/history/brand-tokens.json` — pre-ratification brand tokens (relocated from `brand/tokens.json` by the PHASE 16.3 Founder brand purge; `brand/` now holds ONLY `brand/official/`). `brand/BRAND-BOOK.*` and `brand/logo/` were purged outright by the same order (2026-09-24)
+- `docs/history/brand-tokens.json` — pre-ratification brand tokens (relocated from `brand/tokens.json` by the PHASE 16.3 Founder brand purge of 2026-09-24 — at that order `brand/` held ONLY `brand/official/`, and `brand/BRAND-BOOK.*` and `brand/logo/` were purged outright). The official brand kit was subsequently re-established under `brand/` (tokens regenerated via `tools/brand-render.ts`; logo, wordmark, png, and OG assets; `brand/OFFICIAL-LOGO-SLOT.md`) — recorded 2026-10-21, erratum A9. All brand artifacts remain non-authoritative (IR-003)
 - token block in `src/app/globals.css` — pre-ratification site tokens
-- `docs/constitution/VAERION_CONSTITUTION_v1.0.md` … `v1.8.md` — product-engineering constitution (a different instrument, governing the engine in `packages/vaerion/`; the v1.8 Era II amendment is the GA reconciliation of record — cross-referenced in `constitution/CHANGELOG.md` [1.9.0])
+- `docs/constitution/VAERION_CONSTITUTION_v1.0.md` … `v1.9.md` — product-engineering constitution (a different instrument, governing the engine in `packages/vaerion/`; the v1.9 A9 erratum — the Zero-Stale Completion reconciliation, 2026-10-21 — is the current amendment of record, cross-referenced in `constitution/CHANGELOG.md` [1.10.0]; the v1.8 Era II amendment remains the GA reconciliation of record — cross-referenced at [1.9.0])
 
 Relationship recorded and governed as **IR-003** in the interpretation ledger.
 

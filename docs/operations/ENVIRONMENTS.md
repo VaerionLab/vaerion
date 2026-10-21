@@ -26,7 +26,7 @@ Everything else that a hosted product would need is either owned by the user
 
 | Environment | What it is | Substrate | Status |
 |---|---|---|---|
-| **Development** | The working repository + the status dashboard in dev mode | the campaign sandbox (`/home/z/my-project`, dev server on the sandbox port, SQLite `db/custom.db`) | live; the only writable substrate in this environment |
+| **Development** | The working repository + the status dashboard in dev mode | the campaign sandbox (`<engineer checkout>`, dev server on the sandbox port, SQLite `db/custom.db`) | live; the only writable substrate in this environment |
 | **Staging** | Every push to `main`, verified on real infrastructure before anything ships | GitHub Actions (`verify.yml`): 8 gates, pinned Bun 1.3.14, frozen lockfile | live and measured — 20+ runs, step-level GREEN history |
 | **Production (artifacts)** | Signed release artifacts + GitHub Releases, published by the per-tag pipeline | GitHub Releases via `release-publish.yml`; artifacts packed deterministically on the tag | live; first production-signed release `v0.1.13-rc1` (measured, three-way verified) |
 | **Production (registries)** | npm / PyPI / Homebrew / winget / Chocolatey / Scoop / APT / RPM channels | external registries | **NOT PROVISIONED — Founder-gated (F-5)**: needs registry accounts, the publication decision, and platform review timelines |

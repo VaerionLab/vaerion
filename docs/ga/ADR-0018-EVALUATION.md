@@ -1,5 +1,7 @@
 # ADR-0018 Final Evaluation — the substrate decision package
 
+> **Update (2026-10-21):** this evaluation packet is frozen history — annotated, not rewritten. The decision box below was exercised: **ADR-0018 was ratified by the v0.1.15 GA of record (2026-10-17)** per the Founder's Era II finalization directive (see the ADR's own status update of 2026-10-21). Option A ("ratify TS-on-Bun for GA") is the option that shipped; §5 below is therefore historical. The §2 budget rows are the RC-1 epoch's measurements against the original blueprint budgets — read as history (the ratified ADR keeps binary-size/latency goals on the substrate migration path).
+
 | | |
 |---|---|
 | **Status** | EVALUATION COMPLETE — decision reserved to the Founder (FOUNDER LAW) |

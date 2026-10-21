@@ -19,7 +19,7 @@
 
 import { describe, expect, test } from "bun:test";
 import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { homedir, tmpdir } from "node:os";
 import { join } from "node:path";
 import { CANONICAL_STORE_PATH, PRE_RECEIVE_HOOK, provisionPlan } from "../../../../packages/vaerion/src/repo/canonical.ts";
 import { probeStore, provisionStore, renderProbeReport } from "../../../../tools/canonical-provision.ts";
@@ -133,8 +133,11 @@ describe("the adversarial probes are real executions (D-Q: probed after every pr
 });
 
 test("the canonical store path of record is the environment's law (D-S: presence measured at runtime)", () => {
-  expect(CANONICAL_STORE_PATH).toBe("/home/z/vaerion-canonical.git");
+  // The default derives from the running user's home directory — the engine
+  // carries no machine-specific path (zero-stale fix 2026-10-21).
+  const expected = join(homedir(), ".vaerion", "canonical.git");
+  expect(CANONICAL_STORE_PATH).toBe(expected);
   const plan = provisionPlan(CANONICAL_STORE_PATH);
-  expect(plan.hookPath).toBe("/home/z/vaerion-canonical.git/hooks/pre-receive");
+  expect(plan.hookPath).toBe(`${expected}/hooks/pre-receive`);
   expect(plan.steps.length).toBe(3);
 });

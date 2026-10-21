@@ -182,7 +182,7 @@ The parts an ops person will care about:
 
 - Exit codes are law: 0 ok, 1 internal, 2 usage, 3 broker-denied,
   4 provider-down, 5 partial-with-findings. Every failure maps to a
-  stable E-code (81 today, additive-only, never reused) with a Fix:
+  stable E-code (82 today, additive-only, never reused) with a Fix:
   hint and a doc anchor.
 - `vae ci validate` parses your workflows and refuses gate logic that
   re-implements the verification authority instead of re-running it.

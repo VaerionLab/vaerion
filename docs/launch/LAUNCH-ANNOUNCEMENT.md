@@ -1,5 +1,7 @@
 # Launch Announcement — draft (Founder approval required to publish)
 
+> **Update (2026-10-21):** the facts below were updated to the published truth — engine of record `0.1.15` (GA); npm delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21); PyPI and the signed GitHub Release `v0.1.15` published 2026-10-17; repo of record `https://github.com/VaerionLab/vaerion`.
+
 # Vaerion: trust infrastructure for AI agents
 
 **Suggested subtitle:** Receipts, fail-closed governance, and reproducible
@@ -59,17 +61,17 @@ land in their own hash-chained log.
 ## Measured, not promised
 
 Every number below comes from the engine's own verification record
-(`.vaerion-verification.json`, engine `0.1.13-rc1`):
+(`.vaerion-verification.json`, engine `0.1.15`, measured 2026-10-21):
 
 | Measurement | Value |
 |---|---|
 | Verification gates | 9 (all green, enforced before every commit and in CI) |
-| Tests | 545 passed / 0 failed, 3,932 expectations |
+| Tests | 721 passed / 0 failed, 5,277 expectations (62 skipped) |
 | Coverage (lines / branches) | 86.52% / 90.6% (floors ratchet, never drop) |
-| Engine | 107 files, 22,018 lines |
-| Architecture decision records | 21 |
+| Engine | 25,037 lines |
+| Architecture decision records | 20 |
 | API paths (loopback daemon) | 17 |
-| Stable diagnostic E-codes | 81 (additive-only, never reused) |
+| Stable diagnostic E-codes | 82 (additive-only, never reused) |
 | License | Apache-2.0 |
 
 Zero telemetry is not a settings toggle here. The config guard accepts
@@ -79,27 +81,32 @@ imports network primitives. The engine cannot ship with a phone home.
 
 ## Install (honest channels)
 
-Today, two real channels exist:
+Today, three real channels exist:
 
 ```sh
+# npm — the one-command install
+npm install -g vaerion          # vaerion 0.1.15, dist-tag latest (published 2026-10-21)
+
 # from source — the audit path
-git clone https://github.com/falconxa0-commits/vaerion.git vaerion && cd vaerion
+git clone https://github.com/VaerionLab/vaerion.git vaerion && cd vaerion
 bun install
 bun run tools/verify.ts        # all 9 gates must be green
 alias vae="bun run packages/vaerion/src/cli/vae.ts"
 ```
 
-Or the signed release tarballs — every release carries `SHA256SUMS`, an
-Ed25519-signed `MANIFEST.json`, the public key, and a `VERIFY.md` that
-teaches three verification legs (sha256 → engine verifier → openssl
-cross-check):
+PyPI delivers `vaerion 0.1.15` too (`pip install vaerion`, published
+2026-10-17). And the signed release tarballs remain — every release
+carries `SHA256SUMS`, an Ed25519-signed `MANIFEST.json`, the public
+key, and a `VERIFY.md` that teaches three verification legs (sha256 →
+engine verifier → openssl cross-check):
 
-> https://github.com/falconxa0-commits/vaerion/releases
+> https://github.com/VaerionLab/vaerion/releases
 
-Registry publication (npm, PyPI, Homebrew, winget) is authored and
-version-locked but **Founder-gated on the release train**. The
-`vaerion.dev` installer URL goes live with that same train. We will not
-announce those channels before they are real.
+npm (2026-10-21), PyPI and the signed GitHub Release `v0.1.15`
+(2026-10-17) are live. Homebrew and winget remain authored and
+version-locked but **Founder-gated on the release train**; the
+`vaerion.dev` installer URL is still pending. We will not announce
+those channels before they are real.
 
 Then, in about fifteen minutes (`docs/QUICKSTART.md`):
 
@@ -118,10 +125,11 @@ vae doctor
   daemon binds loopback only and refuses any non-loopback bind.
 - **Not telemetry-free as a claim — as a mechanism.** Enforced by the
   constitutional gates on every build.
-- **Not published to registries yet.** npm/PyPI publish is Founder-gated;
-  source and signed tarballs are the real channels today.
-- **Not a release-quality product.** Engine `0.1.13-rc1` is a
-  prerelease. Exit codes (0–5) and E-codes are stable and additive within
+- **Not on every registry yet.** npm (published 2026-10-21), PyPI,
+  and the signed GitHub Release (2026-10-17) are live at `0.1.15`;
+  Homebrew and winget remain Founder-gated on the release train.
+- **Not a rewrite promise.** Engine `0.1.15` is the first stable
+  release. Exit codes (0–5) and E-codes are stable and additive within
   v1; cross-version upgrade paths carry honest UNVERIFIED labels until
   measured.
 - **Not a model.** Vaerion governs and records agent work; models are
@@ -130,8 +138,8 @@ vae doctor
 
 ## Links
 
-- Repository: https://github.com/falconxa0-commits/vaerion
-- Releases (signed artifacts + VERIFY.md): https://github.com/falconxa0-commits/vaerion/releases
+- Repository: https://github.com/VaerionLab/vaerion
+- Releases (signed artifacts + VERIFY.md): https://github.com/VaerionLab/vaerion/releases
 - Quickstart: `docs/QUICKSTART.md` · Demo workspace: `examples/vaerion-demo/`
 - Threat model and risk ledger: `docs/security/`
 - Security reports: `auren@vaerion.dev` (private; see `SECURITY.md`)

@@ -43,7 +43,7 @@ exit-code contract → clean uninstall leaves nothing behind.
 ## Option B — npm
 
 ```sh
-npm install -g vaerion        # requires Bun 1.3+ on PATH
+npm install -g vaerion        # requires Bun >= 1.2 on PATH (engines floor; verified on 1.3.x)
 vae --version                 # → vae 0.1.15
 vae --help
 ```
@@ -153,7 +153,7 @@ verification: `docs/ga/RELEASE-VERIFICATION.md`. The release trust chain
 
 | Component | Requirement |
 |---|---|
-| Runtime | Bun 1.3+ (engine and CLI) |
+| Runtime | Bun >= 1.2 (the shipped package's `engines` floor) — developed and verified on 1.3.x; CI pins 1.3.14 |
 | OS | Linux / macOS / Windows (WSL2 for the POSIX channels; native winget channel prepared) |
 | Network | None required for local operation; the model gateway is the single sanctioned egress and only runs when you invoke it |
 | Disk | Workspace-local `.vaerion/` store |

@@ -8,7 +8,7 @@ owningSystem: Stage 11 — Documentation Architecture (src/vaerion/docs)
 authorityCitations: VAERION_DESIGN_BIBLE_v1.0; VAERION_VISUAL_SYSTEM_v1.0.1; VAERION_IMPLEMENTATION_CONSTITUTION_v1.0; Implementation Constitution P-1; Implementation Constitution P-4; Implementation Constitution P-5; Implementation Constitution Part XI; Foundation Amendments F-001-F-007; Visual System §0; Stage 11 execution order Deliverable 2
 relatedArtifacts: constitution/; src/vaerion/; tools/vaerion-pipeline/; constitution/trace-index/trace-index.md; constitution/docs/GOVERNANCE.md; constitution/docs/DEVELOPER_JOURNEY.md
 confidence: verified
-lastVerified: 2026-09-22
+lastVerified: 2026-10-21
 verificationCommand: bun run vaerion:verify-documentation
 -->
 
@@ -98,7 +98,9 @@ authority — and, since Stage 11, the knowledge organ (`constitution/docs/`).
 
 **The governance ledgers:** amendments (F-001…F-007), interpretation
 requests (IR-001…IR-021; IR-002 RATIFIED), the trace index (T-001…T-080,
-obligation O-3), and the changelog (protocol-versioned, [1.8.0]).
+obligation O-3), and the changelog (protocol-versioned, current [1.10.0] —
+the A9 Era II Zero-Stale Completion erratum, 2026-10-21; [1.9.0] — the Era II
+GA reconciliation; [1.8.0] retained).
 
 **The discipline:** engineers implement; they do not redesign (1.4). Where
 the law is silent, they stop and file (P-5). Conformance is binary (P-3).

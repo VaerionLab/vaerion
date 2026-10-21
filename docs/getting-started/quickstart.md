@@ -74,6 +74,9 @@ vae run demo --query "What guarantees does Vaerion make about evidence?"
 
 Measured (trimmed):
 
+> Receipt captured on `0.1.14-rc1` during the rc verification train; the
+> current release of record is `0.1.15`.
+
 ```text
 receipt:
   run_id: crn_run_01M3F2460N5TEREDSJX9HJRE49

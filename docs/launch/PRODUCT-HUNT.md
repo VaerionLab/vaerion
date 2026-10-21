@@ -1,10 +1,12 @@
 # Product Hunt Kit — draft (Founder approval required to publish)
 
+> **Update (2026-10-21):** the facts below were updated to the published truth — engine of record `0.1.15` (GA); npm delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21); PyPI and the signed GitHub Release `v0.1.15` published 2026-10-17.
+
 | | |
 |---|---|
 | **Status** | DRAFT — nothing is published without Founder approval |
 | **Voice law** | `brand/BRAND-BOOK.md` §10: engineered, declarative, exact. No hype, no exclamation marks. Claims carry evidence or an UNVERIFIED marker. |
-| **Honesty law** | npm/PyPI publish, `vaerion.dev`, and the Discord server are release-train items (Founder-gated). Never presented as live. |
+| **Honesty law** | npm and PyPI are LIVE (npm published 2026-10-21; PyPI 2026-10-17) — name them with their dates. `vaerion.dev` and the Discord server remain release-train items (Founder-gated); never presented as live. |
 
 ---
 
@@ -34,7 +36,7 @@ capture, never mock-ups.
 | 2 | Every step lands on the journal | One versioned event spine. Append-only NDJSON, single writer, blake3 hash-chained. Every run closes with a receipt folded from the journal — it verifies independently of the process that produced it. | Screenshot: `vae journal verify <RUN_ID>` → `ok: true`. |
 | 3 | Nothing acts without authority | A fail-closed permission broker decides every source read, model call, and tool use. Deny stops the run. A prompt pauses it with a durable human gate. Refusals land in their own hash-chained log. | Screenshot: a broker decision panel from a `vae run demo` transcript. |
 | 4 | Identical inputs. Identical bytes. | `vae package build` folds declared inputs into a `.vxn` bundle. `vae package verify` recomputes every digest and executes nothing. Build it twice; compare the blake3 digests yourself. | Side-by-side terminal: two builds, matching digests. |
-| 5 | Local-first. Zero telemetry. Enforced. | Config accepts exactly one value: `telemetry.enabled: false`. A constitutional gate fails the build if anything else tries to phone home. 9 gates, 545 tests, 3,932 expectations — green before every commit. | Screenshot: `vae doctor` summary panel; status line of the verification record. |
+| 5 | Local-first. Zero telemetry. Enforced. | Config accepts exactly one value: `telemetry.enabled: false`. A constitutional gate fails the build if anything else tries to phone home. 9 gates, 721 tests, 5,277 expectations — green before every commit. | Screenshot: `vae doctor` summary panel; status line of the verification record. |
 
 ## First comment (maker comment — posted by Auren)
 
@@ -52,19 +54,20 @@ capture, never mock-ups.
 > A few things I will not claim today, because honesty is load-bearing
 > here:
 >
-> - npm/PyPI publish is Founder-gated on the release train. Install today
->   is from source or the signed release tarballs (Ed25519, with a
->   VERIFY.md that teaches three verification legs).
-> - The engine is at 0.1.13-rc1 — a prerelease. Stable within v1: exit
->   codes 0–5 and the 81-code E-catalog. Cross-version upgrades carry
->   honest UNVERIFIED labels until measured.
+> - npm and PyPI are live. Install today is `npm install -g vaerion`
+>   (vaerion 0.1.15 under dist-tag latest, published 2026-10-21); PyPI
+>   delivered 0.1.15 on 2026-10-17. The signed release tarballs remain
+>   (Ed25519, with a VERIFY.md that teaches three verification legs).
+> - The engine of record is 0.1.15 — the first stable release. Stable
+>   within v1: exit codes 0–5 and the 82-code E-catalog. Cross-version
+>   upgrades carry honest UNVERIFIED labels until measured.
 > - Zero telemetry is enforced mechanically: the config guard accepts
 >   exactly one value, and a constitutional check fails the build if any
 >   other egress appears. That is not a promise in a privacy policy; it
 >   is a gate that goes red.
 >
-> The measured state of the engine of record: 9 verification gates, 545
-> tests / 0 failed, 3,932 expectations, 22,018 engine lines, 21 ADRs,
+> The measured state of the engine of record: 9 verification gates, 721
+> tests / 0 failed, 5,277 expectations, 25,037 engine lines, 20 ADRs,
 > Apache-2.0.
 >
 > If you find something the engine cannot prove, that is not a bug in
@@ -90,11 +93,11 @@ network. Secrets resolve from the OS keychain behind broker decisions and
 never enter journals, receipts, or bundles.
 
 **Q: Is it production-ready?**
-No, and the release says so. Engine `0.1.13-rc1` is a prerelease; the
-remaining-risk ledger is public (`docs/security/RISK-LEDGER.md`). What is
-stable within v1: exit codes 0–5, the additive-only E-code catalog, the
-`--json` machine contract, and the verification law (all 9 gates green
-before any commit, re-run by CI on every push).
+Engine `0.1.15` is the first stable release; the remaining-risk ledger
+is public (`docs/security/RISK-LEDGER.md`). What is stable within v1:
+exit codes 0–5, the additive-only E-code catalog, the `--json` machine
+contract, and the verification law (all 9 gates green before any
+commit, re-run by CI on every push).
 
 ## Topics (suggested)
 

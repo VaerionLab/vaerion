@@ -26,7 +26,7 @@ under the Founder's written GO (Phase 67, the release train of record).
   everywhere evidence lives). The 2026-10-19 erratum that recorded the
   registry still serving the pre-GA rc is superseded by this measured
   event and kept as history (append-erratum law).
-- The hosted site redeploys with GA facts (channel table, FAQ, install copy).
+- The hosted site redeployed with GA facts (2026-10-21; channel table, FAQ, install copy).
 
 ### Added
 - `docs/RELEASE-NOTES-v0.1.15.md` — the release notes of record (mirrors

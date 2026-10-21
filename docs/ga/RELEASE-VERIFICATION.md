@@ -4,6 +4,11 @@ This document defines how a Vaerion release is produced and how anyone —
 maintainer, tester, or auditor — verifies it. The current release is
 `v0.1.7-rc1`.
 
+> **Update (2026-10-21):** this process document was written at the
+> `v0.1.7-rc1` epoch; the release of record is now `v0.1.15` (GA,
+> 2026-10-17) — see `CHANGELOG.md`. The three verification legs it
+> teaches remain the process of record for every release.
+
 ## Production (maintainer side)
 
 Release artifacts are produced by a single fail-closed tool:

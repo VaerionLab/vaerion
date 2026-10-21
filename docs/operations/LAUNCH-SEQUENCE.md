@@ -1,6 +1,17 @@
 # THE LAUNCH SEQUENCE — From Preparation to Public Existence
 
 **Status: PREPARED — every step is armed and gated; none is executed.**
+
+> **Update (2026-10-21):** the v0.1.15 train has since executed the
+> publish subset of this sequence — npm `vaerion 0.1.15` published
+> 2026-10-21 (dist-tag `latest`, from the GA line of the law below), PyPI
+> `0.1.15` and the signed GitHub Release `v0.1.15` published 2026-10-17,
+> and the hosted site redeployed 2026-10-21. The remaining Founder-gated
+> items: the custom domain (`vaerion.dev`, unprovisioned) and GitHub
+> private vulnerability reporting. The sequence below remains the
+> procedure of record for future trains; the original status line above
+> is preserved as the preparation-epoch snapshot.
+
 **Order authority:** Phase 12 — Launch Preparation & Externalization Order
 (sections 5, 6, 8). The Founder controls final branding, credentials,
 public release timing, and external publishing.
@@ -23,6 +34,13 @@ remain: `docs/operations/DEPLOYMENT.md` (the release train),
 | F-6 | Real-provider cassette recordings | open — Founder/host |
 | R-7 | Private vulnerability reporting channel | open — Founder |
 | IR-018 / IR-019 / IR-021 | observatory display path · delivery evidence · launch-layer display path | PROPOSED — Founder rules |
+
+**Update (2026-10-21) on this table:** F-4 is no longer open — ADR-0018
+was ratified at the v0.1.15 GA of record (2026-10-17). F-5 is partially
+executed: npm (2026-10-21), PyPI and the signed GitHub Release
+(2026-10-17) went through the gate; Homebrew, winget, and `vaerion.dev`
+remain gated. R-7 remains open (private vulnerability reporting).
+Individual rows are preserved as written at preparation time.
 
 ---
 

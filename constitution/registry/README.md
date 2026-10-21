@@ -37,6 +37,16 @@ Foundation Amendments:
 | `constitution/releases/` | Stage 9 release engine |
 | `generated/` (artifact law, `generated/README.md`) | Stage 2 compiler output |
 
+**Stage-number annotation (recorded 2026-10-21, Zero-Stale Completion erratum
+A9).** The stage numbers in the table above pre-date the Founder's stage
+re-sequencing directive (recorded in the amendments ledger, "Stage 5/6
+Execution Order"). The implementation pairs of record, post re-sequencing:
+the snapshot infrastructure is at **Stage 9 — Testing Infrastructure** (was
+Stage 8); the release engine is at **Stage 10 — Release Engine** (was Stage
+9); the rendering engine whose output the Snapshot Authority consumes is at
+**Stage 7** (was Stage 5). The establishment-era numbers above are preserved
+unmodified (11.4); the re-sequenced numbers are the numbers of record.
+
 ---
 
 ## 1. The Canonical Registry (Constitution 2.1)

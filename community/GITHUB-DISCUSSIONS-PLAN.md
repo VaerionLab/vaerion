@@ -2,13 +2,27 @@
 
 | | |
 |---|---|
-| **Status** | DRAFT — four categories are enabled and measured (recorded in `SUPPORT.md`); the plan below formalizes them, adds one, and defines templates and routing. Founder approval required before structural changes. |
+| **Status** | DRAFT — the live Discussions repo runs the GitHub default category set, measured 2026-10-21: Announcements, General, Ideas, Polls, Q&A, Show and tell (six categories, active today; recorded in `SUPPORT.md`). Routing preferences are unchanged: support → Q&A, showcase → Show and tell. The plan below is curation on top of that live state — one added category, descriptions, templates, routing. Founder approval required before structural changes. |
 | **Flow of record** | `docs/operations/ANNOUNCEMENTS.md` (announcements), `CONTRIBUTING.md` (where proposals and questions start) |
 | **Security exception** | Security findings never enter Discussions. Private, per `SECURITY.md`. |
 
 ---
 
 ## 1. Categories
+
+**Live state (measured 2026-10-21).** The repository runs the GitHub default
+category set — six categories, active today: **Announcements**, **General**,
+**Ideas**, **Polls**, **Q&A**, **Show and tell**. Routing preferences are
+unchanged by the default set: support questions go to Q&A, showcases to Show
+and tell, announcements stay maintainer-only. The links taught in
+`SUPPORT.md` and the issue-template contact router (`config.yml` → General)
+resolve against this live set.
+
+**Curation plan (planned — Founder approval required).** What follows is the
+curation this plan formalizes — one added category, curated display names and
+descriptions, templates, and routing. The drafted display names (emoji
+included) are proposals against the live default names, not the current
+state:
 
 | Category (display name) | GitHub type | Purpose | Who posts |
 |---|---|---|---|
@@ -20,11 +34,14 @@
 
 Notes:
 
-- The emoji are part of the category names as listed; they appear
-  nowhere else in project copy (voice law — no emoji in body
+- The emoji are part of the drafted display names, not the live
+  category names (the live default categories carry no emoji); they
+  appear nowhere else in project copy (voice law — no emoji in body
   copy).
 - Q&A uses GitHub's Q&A type so accepted answers are a first-class
-  surface; the other three are General with pinned template topics.
+  surface; in the plan, Ideas, Show and tell, and Refutations are
+  General with pinned template topics. The live default set already
+  includes a Q&A category, so this is a curation target, not a gap.
 
 ## 2. Category descriptions (paste into each category)
 
@@ -144,15 +161,17 @@ Notes:
 | Security finding | **No public surface** | Private email to `auren@vaerion.dev` per `SECURITY.md` |
 
 Routing is already taught in `CONTRIBUTING.md` and `SUPPORT.md` (Q&A,
-Ideas, Announcements, Show and tell links); when the fifth category is
-added, both documents gain the Refutations link in the same commit.
+Ideas, Announcements, Show and tell links); when the Refutations
+category is added to the live default set, both documents gain the
+Refutations link in the same commit.
 
 ## 5. Enable checklist (step by step)
 
 1. [ ] Settings → General → Discussions: **on** (measured enabled during
        the ASCENSION XXV campaign; re-verify state before editing).
-2. [ ] Confirm the four existing categories match the table in §1
-       (names, types, permissions).
+2. [ ] Confirm the six live categories (GitHub default set, measured
+       2026-10-21) match the live state recorded in §1 (names, types,
+       permissions).
 3. [ ] Create **📣 Refutations & counter-evidence** (type: General) with
        the description from §2.
 4. [ ] Set Announcements to maintainer-only posting; confirm everyone
