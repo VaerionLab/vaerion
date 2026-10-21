@@ -1687,7 +1687,7 @@ export async function cmdDev(ctx: CommandContext): Promise<number> {
   r(ctx).result({
     command: "dev",
     engine_version: ENGINE_VERSION,
-    substrate: "typescript on bun (ADR-0018, Provisional — migration path recorded)",
+    substrate: "typescript on bun (ADR-0018 — ratified at the v0.1.15 GA of record)",
     layers: {
       L0: ["kernel(errors,ids,clock,canonical,redact,hash)", "config"],
       L1: ["spine", "journal", "store(blob-cas)", "receipts", "broker/contracts", "gateway"],
@@ -1695,7 +1695,10 @@ export async function cmdDev(ctx: CommandContext): Promise<number> {
       L4: ["cli"],
     },
     daily_seven: ["init", "run", "resume", "explain", "journal", "doctor", "dev"],
-    additive_commands: ["serve (MS-5 daemon, ADR-0010)", "package (MS-6 bundles, ADR-0016)", "provenance (Ω — artifact evidence)", "repo (XVIII-8 — git trust, D-P/D-Q)", "ci (XVIII-8 — CI understanding, D-R)", "release (XVIII-8 — measured readiness, D-S/D-T)", "tour (XVIII-2 — the guided, read-only walk)", "account (XVIII-3 — identity & attribution, P5/D-D/D-P)", "ai (XVIII-4 — the grounded question, P8/D-J/D-O)", "center (XVIII-6 — the operator cockpit, one measured core)"],
+    additive_commands: ["serve (MS-5 daemon, ADR-0010)", "package (MS-6 bundles, ADR-0016)", "provenance (Ω — artifact evidence)", "repo (XVIII-8 — git trust, D-P/D-Q)", "ci (XVIII-8 — CI understanding, D-R)", "release (XVIII-8 — measured readiness, D-S/D-T)", "tour (XVIII-2 — the guided, read-only walk)", "account (XVIII-3 — identity & attribution, P5/D-D/D-P)", "ai (XVIII-4 — the grounded question, P8/D-J/D-O)", "center (XVIII-6 — the operator cockpit, one measured core)",
+      "create (project scaffolding, 7-template registry)", "verify (journal + receipt verification)", "start (guided first run)", "mcp (Model Context Protocol server)",
+      "status (workspace status)", "report (run reporting)", "snapshot (run snapshots)", "restore (workspace restore)", "clean (workspace hygiene)",
+      "completions (shell completions)", "help (command help)", "version (engine version)"],
     gateway: {
       single_gate: "gateway/service.ts — decide(model.invoke) → journal → act",
       egress: "gateway/transport.ts — the ONE sanctioned egress site",
@@ -1704,7 +1707,7 @@ export async function cmdDev(ctx: CommandContext): Promise<number> {
     workspace: { root: ws.root, runs: runs.length },
     spec: "spec/ (single source of truth)",
     constitution,
-    next_milestone: `${programOfRecord} · GA executed — v${ENGINE_VERSION} is the release of record (GitHub Release + PyPI LIVE); npm publish and the hosted domain remain Founder-gated residuals (P4)`,
+    next_milestone: `${programOfRecord} · GA executed — v${ENGINE_VERSION} is the release of record (GitHub Release, PyPI and npm LIVE); the custom domain and GitHub private vulnerability reporting remain Founder-gated residuals (P4)`,
   });
   return ExitCode.ok;
 }

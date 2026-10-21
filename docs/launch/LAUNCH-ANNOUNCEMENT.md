@@ -66,7 +66,7 @@ Every number below comes from the engine's own verification record
 | Measurement | Value |
 |---|---|
 | Verification gates | 9 (all green, enforced before every commit and in CI) |
-| Tests | 721 passed / 0 failed, 5,277 expectations (62 skipped) |
+| Tests | 721 passed / 0 failed, 5,277 expectations (across 62 test files) |
 | Coverage (lines / branches) | 86.52% / 90.6% (floors ratchet, never drop) |
 | Engine | 25,037 lines |
 | Architecture decision records | 20 |

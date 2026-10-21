@@ -6,7 +6,7 @@
 
 ## Now — General Availability `v0.1.15`
 
-- 9/9 verification gates green — 721 engine tests passing (re-measured 2026-10-21 @ the `0.1.15` tree of record, incl. the 12-test journal-completeness attack suite), 0 failures · 5,277 expectations · 62 skipped
+- 9/9 verification gates green — 721 engine tests passing (re-measured 2026-10-21 @ the `0.1.15` tree of record, incl. the 12-test journal-completeness attack suite), 0 failures · 5,277 expectations · across 62 test files
 - The engine: event spine, fail-closed broker, blake3-chained journals, receipts, reproducible `.vxn` bundles
 - The CLI (`vae` — now with `create`/`verify`/`start`/`mcp`, an interactive first-run prompt layer, and the 7-template registry incl. `enterprise`), five SDKs (TypeScript `@vaerion/sdk`, Python, Go, Rust, Java), the framework alliance (`vae mcp` + OpenAI Agents / LangGraph / CrewAI / AutoGen adapters), and the verification law (`tools/verify.ts`)
 - Live, everywhere measured: the repository of record (`VaerionLab/vaerion`), PyPI (`0.1.15`), npm (`0.1.15` under dist-tag `latest` — published 2026-10-21, parity-proven before publish), and the signed GitHub Release

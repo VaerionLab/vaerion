@@ -348,7 +348,7 @@ public final class VaeClient implements AutoCloseable {
         }
         throw new VaerionError("E1601",
                 "cannot find the vae CLI (looked at $VAE_BIN, PATH, and the repo layout)",
-                "install it: npm install -g vaerion@rc — or set VAE_BIN to the command that runs vae");
+                "install it: npm install -g vaerion — or set VAE_BIN to the command that runs vae");
     }
 
     /** The repo's vae.ts entrypoint (found by walking up from this class or cwd), or null. */
