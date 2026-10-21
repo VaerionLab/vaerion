@@ -76,8 +76,9 @@ Never open a public issue for a security finding.
 
 - Performance is unoptimized and some platform hardening is tracked openly
   (`docs/security/RISK-LEDGER.md`; the audit records in `docs/ga/`).
-- Cross-version upgrade is UNVERIFIED as of the Empty Machine Test of record
-  (`docs/ga/ASCENSION-XX-EMPTY-MACHINE-TEST.md`); same-version upgrade and
+- Cross-version upgrade (vN -> vN+1, source-install path) is MEASURED and
+  guarded by a permanent regression test (`cross-version-upgrade.test.ts`,
+  ASCENSION XXVI+ B-4 — see `docs/LIMITATIONS.md`); same-version upgrade and
   clean removal are measured.
 - No hosted support channel (chat, forum, hosted email desk) is provided by
   this repository today. GitHub Discussions Q&A is the community help

@@ -107,7 +107,7 @@ pub fn vae_command() -> Result<Vec<String>, VaerionError> {
         "cannot find the vae CLI (looked at $VAE_BIN, PATH, and the repo layout)",
     )
     .with_fix(
-        "install it: npm install -g vaerion@rc — or set VAE_BIN to the command that runs vae",
+        "install it: npm install -g vaerion — or set VAE_BIN to the command that runs vae",
     ))
 }
 
@@ -182,7 +182,7 @@ impl Agent {
             .spawn()
             .map_err(|e| {
                 VaerionError::new("E1601", format!("cannot spawn the vae runtime: {e}")).with_fix(
-                    "install it: npm install -g vaerion@rc — or set VAE_BIN to the command that runs vae",
+                    "install it: npm install -g vaerion — or set VAE_BIN to the command that runs vae",
                 )
             })?;
         let base = format!("http://127.0.0.1:{port}");

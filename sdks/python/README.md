@@ -35,7 +35,7 @@ this package conforms to it for the Python idiom.
 pip install ./sdks/python        # or: pip install -e ./sdks/python
 ```
 
-The SDK needs the `vae` CLI available (`npm install -g vaerion@rc`, or
+The SDK needs the `vae` CLI available (`npm install -g vaerion`, or
 `VAE_BIN` pointing at a launch command) — `Agent` spawns and stops its own
 daemon by default; pass `base=`/`token=` to attach to one you run yourself.
 
