@@ -54,7 +54,7 @@
 | CI on main at close | **VERIFIED** | run for `21234b6`: success (API-measured) | Auren |
 | Three-remote parity at close | **VERIFIED** | local = canonical = github = `21234b6` | Auren |
 | Release of record (v0.1.13-rc1) | **VERIFIED** | live, 8 assets, production-signed, three-way verified at XXV; unchanged this campaign | Auren |
-| npm publication | **BLOCKED — FOUNDER** | registry 404 (name unclaimed); no npm credential in the environment | Founder (packet: `docs/founder/FOUNDER-PACKETS.md` §A) |
+| npm publication | **BLOCKED — FOUNDER** | registry 404 (name unclaimed); no npm credential in the environment | Founder (packet: `docs/founder/FOUNDER-PACKETS.md` §A (archived: github.com/VaerionLab/vaerion-archive)) |
 | PyPI publication | **BLOCKED — FOUNDER** | registry 404; no PyPI credential | Founder (packet §A) |
 | Homebrew tap | **BLOCKED — FOUNDER** | no tap exists; formula authored; a tap is a new public repo under the Founder's account — a P4 decision, packet-ready | Founder (packet §B) |
 | winget submission | **EXTERNAL** | manifest authored + version-locked; submission = PR to microsoft/winget-pkgs + Microsoft review | Founder → external |
@@ -75,7 +75,7 @@ Every engineering item the GA gap named is now closed with measured,
 permanently-pinned evidence; the product is consumable, verifiable, and
 upgradeable today; and what remains before GA is exactly the Founder's
 signature set (publication, credentials, domain, hosts) — packet-ready in
-`docs/founder/FOUNDER-PACKETS.md` — plus the external platforms' own
+`docs/founder/FOUNDER-PACKETS.md` (archived: github.com/VaerionLab/vaerion-archive) — plus the external platforms' own
 timelines, and nothing else.
 
 *Never claim completion without measurement. Never hide failures. Never convert UNVERIFIED into VERIFIED. Reality first. Evidence always.*

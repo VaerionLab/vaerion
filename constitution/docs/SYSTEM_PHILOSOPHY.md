@@ -8,7 +8,7 @@ owningSystem: Stage 11 — Documentation Architecture (src/vaerion/docs)
 authorityCitations: VAERION_DESIGN_BIBLE_v1.0 Part One; VAERION_DESIGN_BIBLE_v1.0 Part Two; VAERION_DESIGN_BIBLE_v1.0 Part Six; Bible Art. II; Bible Art. III; Bible Art. VIII; Bible Art. XI; Implementation Constitution P-3; Implementation Constitution P-6; Implementation Constitution 1.1; Implementation Constitution 1.2; Visual System §0; Visual System §2.1
 relatedArtifacts: constitution/bible/VAERION_DESIGN_BIBLE_v1.0.md; constitution/implementation-constitution/VAERION_IMPLEMENTATION_CONSTITUTION_v1.0.md; constitution/visual-system/VAERION_VISUAL_SYSTEM_v1.0.1.md
 confidence: verified
-lastVerified: 2026-09-22
+lastVerified: 2026-10-21
 verificationCommand: bun run vaerion:verify-documentation
 -->
 
@@ -100,4 +100,4 @@ From the Bible, Art. XI: a pixel, a color, a motion curve, a copy string, a
 state, a rule — if it cannot be traced to an Article, a Section, or a rule of
 the Implementation Constitution, it does not ship. The enforcement instrument
 is the Constitutional Trace Index (`constitution/trace-index/trace-index.md`,
-T-001…T-076) and, mechanically, the gates of Part IX.
+T-001…T-080) and, mechanically, the gates of Part IX.

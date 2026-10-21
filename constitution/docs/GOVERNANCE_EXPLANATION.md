@@ -8,7 +8,7 @@ owningSystem: Stage 11 — Documentation Architecture (src/vaerion/docs)
 authorityCitations: Implementation Constitution Part XI; Implementation Constitution 11.1; Implementation Constitution 11.2; Implementation Constitution 11.3; Implementation Constitution 11.4; Implementation Constitution 11.6; Implementation Constitution P-5; Implementation Constitution P-1; constitution/INDEX.md; constitution/amendments/LEDGER.md; constitution/interpretations/LEDGER.md; constitution/trace-index/trace-index.md
 relatedArtifacts: constitution/INDEX.md; constitution/amendments/LEDGER.md; constitution/interpretations/LEDGER.md; constitution/trace-index/trace-index.md; constitution/CHANGELOG.md; src/vaerion/foundation/stages.ts; src/vaerion/foundation/gate.ts; src/vaerion/foundation/prerequisites.ts
 confidence: verified
-lastVerified: 2026-09-22
+lastVerified: 2026-10-21
 verificationCommand: bun run vaerion:verify-documentation
 -->
 
@@ -45,9 +45,9 @@ implementations, and citations in `constitution/amendments/LEDGER.md`.
 
 1. **Interpretation request** — asks how existing law applies to a new case.
    The Authority answers with a citation; the answer enters the Trace Index.
-   Filed in `constitution/interpretations/LEDGER.md`. Current open requests:
-   IR-001, IR-003…IR-019 (IR-002 is RATIFIED — the Founder's Stage 9 order
-   is its ruling instrument).
+   Filed in `constitution/interpretations/LEDGER.md`. Current open requests
+   (re-measured 2026-10-21, erratum A9): IR-001, IR-003…IR-021 (IR-002 is
+   RATIFIED — the Founder's Stage 9 order is its ruling instrument).
 2. **Amendment proposal** — seeks to change law. Must name the Article
    affected, the necessity, and the migration plan; ratified only after
    review against **every** prior Article (11.3 — a change legal under one
@@ -58,7 +58,8 @@ implementations, and citations in `constitution/amendments/LEDGER.md`.
 The affected constitutional document(s), the registries, the Snapshot
 Authority, the Trace Index, and the changelog —
 `constitution/CHANGELOG.md` — which is versioned like a protocol (current:
-[1.6.0], Volume IV · Stage 10).
+[1.10.0], A9 — Era II Zero-Stale Completion, 2026-10-21; the [1.6.0] pin this
+section previously carried predated the Era II entries).
 
 ## 5. Deprecation, Removal, and Historical Truth (11.4)
 

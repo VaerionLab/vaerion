@@ -19,7 +19,7 @@ inherited. Several were false:
 | A GA dossier exists (`docs/ga/` with GO-NO-GO, BETA-ONBOARDING, RELEASE-CHECKLIST, SECURITY-HARDENING, FINAL-ARCHITECTURE-REVIEW, KNOWN-LIMITATIONS) | **None of those files existed anywhere in the repository.** They were built for real in this phase. |
 | Release tooling `dist-pack-cli.ts` exists | **Absent.** `tools/` had 6 files; `tools/dist-pack.ts` + `tools/dist-verify.ts` were built and executed. |
 | HEAD was a specific older commit | Measured HEAD was `e3eed6a`; 16 commits; one commit carried a UUID as its message (`a6ac652`) — history preserved, not falsified. |
-| Commit identity | 14 of 16 commits authored `Z User <z@container>`. Identity moved to `Auren <auren@vaerion.dev>`; every Phase 1 commit is authored Auren. |
+| Commit identity | 14 of 16 commits authored `Auren (Vaerion Founder)`. Identity moved to `Auren <auren@vaerion.dev>`; every Phase 1 commit is authored Auren. *Identity corrected per the Founder-authorized provenance program (see PROVENANCE_IDENTITY_CHANGE.md, 2026-10-21).* |
 | License | **No LICENSE file**; OpenAPI declared `UNLICENSED`. Apache-2.0 finalized this phase. |
 | `examples/` contained the demo workspace | Only the Next.js websocket demo. The Vaerion demo workspace was built and **executed**. |
 | Versions in lockstep | Package manifests said `0.1.0-ms1` while the spec series had reached `0.1.6` — a drift class. Lockstep now enforced at 10 measured surfaces (below). |

@@ -1,5 +1,7 @@
 # Hacker News Kit — draft (Founder approval required to publish)
 
+> **Update (2026-10-21):** the facts below were updated to the published truth — engine of record `0.1.15` (GA); npm delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21); PyPI and the signed GitHub Release `v0.1.15` published 2026-10-17; ADR-0018 ratified at the v0.1.15 GA of record; repo of record `https://github.com/VaerionLab/vaerion`.
+
 | | |
 |---|---|
 | **Status** | DRAFT — nothing is published without Founder approval |
@@ -34,16 +36,17 @@ constitutional check fails the build if any module outside the single
 gateway egress imports network primitives. Models (OpenAI, Anthropic,
 Ollama, plus MockBrain — a deterministic local provider) sit behind one
 sanctioned gateway. The daemon is loopback-only and refuses non-loopback
-binds. State of record for 0.1.13-rc1: 9 verification gates, 545 tests /
-0 failed, 3,932 expectations, coverage 86.52/90.6, 22,018 engine lines,
-21 ADRs, Apache-2.0.
+binds. State of record for 0.1.15: 9 verification gates, 721 tests /
+0 failed, 5,277 expectations, coverage 86.52/90.6, 25,037 engine lines,
+20 ADRs, Apache-2.0.
 
-Honest install status: today the real channels are source and the signed
-release tarballs (three verification legs taught in the shipped
-VERIFY.md). npm/PyPI publication is gated on the release train and has
-not happened; the installer URL goes live with it. Repo:
-https://github.com/falconxa0-commits/vaerion — the quickstart is 15
-minutes from clone to a verified run and a byte-identical bundle pair.
+Honest install status: npm is live — the registry delivers `vaerion
+0.1.15` under dist-tag `latest` (published 2026-10-21); PyPI `0.1.15`
+and the signed GitHub Release published 2026-10-17. The signed release
+tarballs remain, still shipping the three verification legs taught in
+the shipped VERIFY.md. Repo: https://github.com/VaerionLab/vaerion —
+the quickstart is 15 minutes from `npm install -g vaerion` to a
+verified run and a byte-identical bundle pair.
 ```
 
 ## First-reply set (post these as replies in the first hours)
@@ -62,14 +65,15 @@ minutes from clone to a verified run and a byte-identical bundle pair.
 
 ### 2. "Why TypeScript/Bun?"
 
-> It is an honest provisional choice, recorded as such. ADR-0018 names
-> the substrate provisional with a migration path; ratification is
-> explicitly pending. What is treated as durable is the contract layer:
+> It is an honest provisional choice, recorded as such — and since
+> ratified. ADR-0018 named the substrate provisional with a migration
+> path and was ratified at the v0.1.15 GA of record (2026-10-17). What
+> is treated as durable is the contract layer:
 > specs under `spec/` (error catalog, event registry, schemas, OpenAPI)
 > are additive-only within a major version, error codes are never reused,
 > and a verification gate asserts the implementation stays in sync with
 > the spec. If the substrate changes, the contracts carry. I would rather
-> ship a measured 22,018-line implementation under 9 gates than a promise
+> ship a measured 25,037-line implementation under 9 gates than a promise
 > about a rewrite.
 
 ### 3. "What about prompt injection?"
@@ -115,14 +119,16 @@ minutes from clone to a verified run and a byte-identical bundle pair.
 
 ### 7. "Can I actually use it today?"
 
-> Yes, with the honest caveats. Install is from source or the signed
-> release tarballs; every artifact set ships SHA256SUMS, an Ed25519-signed
-> MANIFEST.json, the public key, and a VERIFY.md teaching three
-> verification legs (sha256 → engine verifier → openssl cross-check).
-> Engine of record is 0.1.13-rc1 — a prerelease. Stable within v1: exit
-> codes 0–5, the 81-code E-catalog, the `--json` machine contract.
-> npm/PyPI publication is gated on the release train and has not
-> happened; I will not pretend otherwise.
+> Yes, with the honest caveats. Install is `npm install -g vaerion` —
+> the registry delivers vaerion 0.1.15 under dist-tag latest (published
+> 2026-10-21); PyPI 0.1.15 and the signed GitHub Release published
+> 2026-10-17. The signed release tarballs remain; every artifact set
+> ships SHA256SUMS, an Ed25519-signed MANIFEST.json, the public key,
+> and a VERIFY.md teaching three verification legs (sha256 → engine
+> verifier → openssl cross-check). Engine of record is 0.1.15 — the
+> first stable release. Stable within v1: exit codes 0–5, the 82-code
+> E-catalog, the `--json` machine contract. I did not announce a
+> channel before it was real.
 
 ### 8. "Isn't reproducible packaging just tar plus a hash?"
 

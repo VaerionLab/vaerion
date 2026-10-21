@@ -8,7 +8,7 @@ owningSystem: Stage 11 — Documentation Architecture (src/vaerion/docs)
 authorityCitations: Stage 11 execution order Deliverable 4; Implementation Constitution P-4; Implementation Constitution 1.1; Implementation Constitution 9.1; Implementation Constitution 11.2; Visual System §0; Bible Art. XIII; Bible Art. XIV; constitution/docs/GOVERNANCE.md
 relatedArtifacts: constitution/docs/pathways/; constitution/docs/VAERION_CODEX_v1.0.md; constitution/docs/ARCHITECTURE_MAP.md; src/vaerion/docs/DEPENDENCY_GRAPH.md; tools/vaerion-pipeline/README.md
 confidence: verified
-lastVerified: 2026-09-22
+lastVerified: 2026-10-21
 verificationCommand: bun run vaerion:verify-documentation
 -->
 
@@ -41,7 +41,7 @@ Every file path and command in the pathways is mechanically checked by
    is recorded in `tools/vaerion-pipeline/README.md` and re-derived by the
    documentation gate.
 3. **Follow the trace.** Every engineering decision maps to a citation in
-   `constitution/trace-index/trace-index.md` (T-001…T-076). An uncitable
+   `constitution/trace-index/trace-index.md` (T-001…T-080). An uncitable
    decision is a violation by definition (P-4).
 4. **When the law is silent, stop.** File an interpretation request
    (`constitution/interpretations/LEDGER.md`); never improvise (P-5).

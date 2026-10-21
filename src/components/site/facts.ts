@@ -45,12 +45,12 @@ export const FACTS = {
 
   code: {
     engineFiles: 116,
-    engineLines: 24921,
-    engineTestLines: 15693,
+    engineLines: 25037,
+    engineTestLines: 15864,
     // TypeScript SDK source lines (sdks/typescript/src) — the four wire SDKs
     // add ~6,600 more across Python/Go/Rust/Java (mixed LOC bases).
-    sdkLines: 802,
-    toolLines: 7299,
+    sdkLines: 805,
+    toolLines: 7851,
   },
 
   contracts: {

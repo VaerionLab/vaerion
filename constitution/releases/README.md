@@ -21,11 +21,23 @@ a release that cannot name the engine and rule set that verified it
 constitution/
     releases/
         README.md        <- this authority document
+        index.json       <- the append-only release index (the chain of record)
+        receipts/        <- issued Release Receipts (10.3–10.4), one file per release
 ```
 
 **No release receipts exist yet.** The first Release Receipt is issued by the
 Release Engine at **Stage 9**, after every constitutional gate has been
 demonstrated on the exact shipped artifact (Constitution 10.1–10.2).
+
+**Status note (recorded 2026-10-21, Zero-Stale Completion erratum A9).** The
+first Release Receipt **HAS been issued** — `rel_769da4b7bf84ad3b`
+(version `1.0.10.r1`), recorded under
+`receipts/rel_769da4b7bf84ad3b.receipts.json` with the append-only
+`index.json` shown in the structure above. The receipt was issued by the
+Release Engine at **Stage 10** (the establishment-era text above predates the
+Founder's stage re-sequencing directive, which moved the Release Engine from
+Stage 9 to Stage 10, and is preserved unmodified — 11.4). The chain is
+append-only and the receipts are immutable (10.4).
 
 ## 3. Law of Release Records
 

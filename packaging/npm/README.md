@@ -18,8 +18,8 @@ vae doctor            # verify config, journals, blobs, audit chain
 | `bin/vae.js` | Bun launcher → `engine/cli/vae.ts` `main()` |
 | `engine/` | The complete engine source (self-contained TypeScript, layerlint-governed L0–L4) |
 
-Runtime dependencies (declared): `ajv` (strict config validation),
-`hash-wasm` (blake3 content identity), `yaml` (strict vaeryaml parsing).
+Runtime dependencies (declared): `hash-wasm` (blake3 content identity),
+`yaml` (strict vaeryaml parsing).
 
 ## Build the publishable tarball
 
@@ -28,8 +28,9 @@ sh packaging/npm/make-package.sh          # assembles engine/ + `npm pack`
 # -> dist/npm/vaerion-<version>.tgz (byte-verifiable via sha256sum)
 ```
 
-Publishing to the npm registry is a release-train step and remains
-Founder-gated (risk-ledger F-5); the tarball itself is verifiable offline:
+npm `vaerion` is **published** — `0.1.15` under dist-tag `latest`
+(published 2026-10-21); rebuilding locally reproduces the same package
+for offline verification:
 
 ```sh
 npm install -g --prefix <dir> vaerion-<version>.tgz

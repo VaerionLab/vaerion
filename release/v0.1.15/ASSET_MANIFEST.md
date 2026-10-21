@@ -60,6 +60,8 @@
 | PyPI `vaerion 0.1.15` (sdist + wheel) | pypi.org/project/vaerion | LIVE — 2026-10-17T23:43:28Z |
 | This packet `release/v0.1.15/` | the repository | the GA packet of record (CHANGELOG.md cites `release/v0.1.15/RELEASE-NOTES.md`) |
 
+> Update 2026-10-21: Path A executed — npm `vaerion` 0.1.15 published under dist-tag `latest` (the npm row above is the frozen verification-day record; `NPM-PUBLISH-RUNBOOK.md` is the executed procedure).
+
 ## Release-history context (measured now, same API capture)
 
 | Release | Published | Assets | Downloads |

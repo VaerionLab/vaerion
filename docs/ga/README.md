@@ -4,6 +4,15 @@ Everything the General Availability decision needs, in one governed place.
 This directory is part of the C8 docs-drift law: every relative link in it
 must resolve, like any other documentation in the repository.
 
+> **Update (2026-10-21):** the dossier below was written for the Release
+> Candidate 1 preparation epoch — the GO/NO-GO record's "**currently
+> NO-GO**" state dates from that snapshot. The GA decision has since been
+> **executed**: v0.1.15 (GA, 2026-10-17) is the release of record — see
+> `FOUNDER-GO-NO-GO.md`, `CHANGELOG.md`, and
+> `docs/RELEASE-NOTES-v0.1.15.md`. The table below indexes the RC-1
+> dossier core; the directory now holds the full 34-record GA audit
+> archive beneath these entries.
+
 | Document | What it is |
 |---|---|
 | [`ADR-0018-EVALUATION.md`](ADR-0018-EVALUATION.md) | the substrate decision package — measured budget evidence, options, advisory recommendation, **Founder decision box** |

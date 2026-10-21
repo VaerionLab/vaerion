@@ -261,7 +261,7 @@ versioned like a protocol (Visual System §23).
   (`docs/operations/LAUNCH-SEQUENCE.md`; CI/CD of record untouched; no
   deployment). Credential readiness (`tools/launch/credential-check.ts`,
   existence-only, environment-only). `VAERION_LAUNCH_READINESS_REPORT.md`
-  issued.
+  (archived: github.com/VaerionLab/vaerion-archive) issued.
 - **Constitutional guard:** no Article or Section relaxed; the ten-surface
   product registry (4.6), the Spine's enumerated set (3.11), the three
   ratified constitutions and their digest pins, and the F-006 release
@@ -290,3 +290,32 @@ versioned like a protocol (Visual System §23).
   untouched; the two parallel constitutional systems keep their recorded
   relationship (INDEX §4, IR-003); this note records the cross-reference and
   creates no new Volume IV authority.
+
+### Directive Note — A9 — Registry Execution & Substrate Ratification Erratum (Era II Zero-Stale Completion) (Founder, "Zero-Stale Completion" constitution reconciliation amendment) — RECORDED
+
+- **Instrument:** the Founder's Zero-Stale Completion Directive (2026-10-21)
+  — the constitution reconciliation amendment ("A9") ordering that every
+  governing surface of the constitution match published reality, executed as
+  `docs/constitution/VAERION_CONSTITUTION_v1.9.md` (v1.8 + the A9 erratum,
+  append-only; v1.8 retained unmodified as historical record).
+- **Effect:** **`docs/constitution/VAERION_CONSTITUTION_v1.9.md` is the
+  constitution of record (v1.9, effective 2026-10-21)** for the
+  product-engineering constitution (a different instrument, governing the
+  engine in `packages/vaerion/` — INDEX §4, IR-003): the D-Z-2 registry-truth
+  flip is recorded (npm `vaerion` **0.1.15** published **2026-10-21**, dist-tag
+  `latest` — npm LIVE; the v1.8 "LIVE BUT LAGS" adjudication superseded);
+  §7's Founder-gated residuals re-enumerated (npm publish EXECUTED; remaining:
+  the custom domain vaerion.dev and GitHub private vulnerability reporting
+  enablement); **ADR-0018** (the TypeScript-on-Bun substrate) recorded
+  **RATIFIED** — the v0.1.15 GA (2026-10-17: GitHub Release + PyPI) is the
+  ratifying event of record; Era I recorded COMPLETE and Era II Foundation
+  recorded COMPLETE (closed 2026-10-21), next train v0.1.16; the hosted-site
+  GA-facts redeploy recorded executed 2026-10-21. The Volume IV knowledge
+  organ's currency pointers corrected by dated, annotate-only edits
+  (11.4). Also recorded in `constitution/CHANGELOG.md` as [1.10.0].
+- **Constitutional guard:** append-only — no superseded text deleted; every
+  correction is a dated annotation (the SI-8/A5 erratum pattern); the three
+  ratified documents and their Snapshot Authority digest pins are untouched
+  (3/3 SHA-256 re-verified 2026-10-21); the two parallel constitutional
+  systems keep their recorded relationship (INDEX §4, IR-003); this note
+  records the cross-reference and creates no new Volume IV authority.

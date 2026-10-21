@@ -5,7 +5,9 @@ lives in [`../INSTALL.md`](../INSTALL.md) (the full channel map).
 
 ## Recommended — npm (measured, live)
 
-**Prerequisite: [Bun](https://bun.sh) 1.3+.** The engine executes on the
+**Prerequisite: [Bun](https://bun.sh) >= 1.2** (the shipped package's
+`engines` floor) — developed and verified on Bun 1.3.x; CI pins 1.3.14.
+The engine executes on the
 Bun runtime; without it, `vae` refuses with a taught error (exit 2)
 that names the exact fix.
 

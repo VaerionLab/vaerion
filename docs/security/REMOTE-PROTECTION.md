@@ -3,6 +3,17 @@
 > **GENERATED** by `tools/remote-protect.ts` — the ONE sanctioned applier/prober of the
 > synchronization protection law on the remote of record `falconxa0-commits/vaerion` (branch `main`).
 > Hand edits are defects; re-measure with the tool.
+>
+> **Update (2026-10-21):** the remote of record has moved — the repository's
+> prior location `falconxa0-commits/vaerion` was migrated to
+> **`github.com/VaerionLab/vaerion`** per the migration of record
+> (`LEGAL.md` §2, Phase 13 Task ID 15). The measurements below were taken
+> against the pre-migration remote and are preserved as the epoch record;
+> the descriptor (no force-push, no deletion, linear history, admins
+> enforced) is re-measured against `VaerionLab/vaerion` at the next
+> Founder session by re-running `tools/remote-protect.ts` with the
+> Founder-provisioned token. This annotation is a record note — the
+> measured body below is retained unchanged per the file's own law.
 
 | | |
 |---|---|

@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { MotionConfig } from "framer-motion";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import { useHashRoute } from "./useHashRoute";
@@ -117,6 +118,7 @@ export default function SiteShell({ status }: { status: Status | null }) {
   const route = useHashRoute();
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="vx-root">
       <a
         href="#main"
@@ -135,5 +137,6 @@ export default function SiteShell({ status }: { status: Status | null }) {
         <Footer />
       </div>
     </div>
+    </MotionConfig>
   );
 }

@@ -2,23 +2,23 @@
 
 The Vaerion Developer Workspace Experience for Neovim 0.10+.
 
-> **HONESTY MARKER (Honesty Law):** this plugin is authored but has **never been executed** in the Vaerion build environment — no `nvim` binary exists there, so no activation, rendering, or command-routing claim is made. The CLI contracts it consumes (`status`, `doctor`, `report`, `ai status`, `journal ls/show`, `--json` catalog) **are** verified by the repository's own test suite. If anything drifts, the drift is in this Lua layer — please report it.
+> **HONESTY MARKER (Honesty Law, updated 2026-10-21):** this plugin is a **scaffold** — `lua/vaerion/init.lua` is currently a **0-byte placeholder**, not a working module. As committed, `require("vaerion").setup({})` will fail, none of the `:Vaerion*` commands are defined, and the `statusline()` API does not exist. The command and API surfaces below are the **design contract**, not a working implementation; they are tracked to be authored for **v0.1.16**. The CLI contracts the design consumes (`status`, `doctor`, `report`, `ai status`, `journal ls/show`, `--json` catalog) **are** verified by the repository's own test suite — the gap is in this Lua layer, and this file no longer claims otherwise.
 
-## Install
+## Planned install (not functional yet)
 
 ```lua
--- lazy.nvim
+-- lazy.nvim — the intended shape once the module is authored
 {
   dir = "<path-to-vaerion>/editors/nvim",
   config = function() require("vaerion").setup({}) end,
 }
 ```
 
-Install the CLI first (`docs/INSTALL.md`) — the plugin is a window, the CLI is the engine.
+Install the CLI first (`docs/INSTALL.md`) — the plugin is a window, the CLI is the engine. Until the module lands, the CLI is usable directly from any shell.
 
-## Commands
+## Planned command surface (design contract — not yet implemented)
 
-| Command | What it does | How it runs |
+| Command | What it will do | How it will run |
 | --- | --- | --- |
 | `:Vaerion status` | workspace, identity, AI, runs, next hints | headless `vae status --json` → centered float |
 | `:Vaerion doctor` | full health audit, findings teach (cause → impact → fix) | headless `vae doctor --json` → float |
@@ -30,7 +30,7 @@ Install the CLI first (`docs/INSTALL.md`) — the plugin is a window, the CLI is
 | `:VaerionInteractive run demo` | a full constitutional run | `:terminal` — streams live, developer-owned |
 | `:VaerionInteractive init` / `clean` / `snapshot` | scaffold / maintenance / recovery | `:terminal` |
 
-## Statusline
+## Planned statusline (design contract — not yet implemented)
 
 ```lua
 -- e.g. in lualine: require("vaerion").statusline()
@@ -39,7 +39,7 @@ Install the CLI first (`docs/INSTALL.md`) — the plugin is a window, the CLI is
 
 Computed only when the statusline evaluates it (no timers, no polling).
 
-## Laws honored
+## Laws honored (binding on the future implementation)
 
 - **Editors call the CLI** — zero business logic in Lua; it parses the stable `--json` contract only.
 - **No secrets** — the plugin never touches env/keychains; `vae ai setup` runs in a terminal, by law.

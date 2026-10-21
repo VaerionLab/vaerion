@@ -121,12 +121,13 @@ thing allowed to blink.
 ### 1:22 – 1:30 — Close card
 
 - **Narration:** "Every frame here is re-runnable on your machine.
-  Install today: source, or the signed release tarballs. Receipts, or
-  it did not happen."
+  Install today: `npm install -g vaerion` — npm, PyPI, and the signed
+  release tarballs are live. Receipts, or it did not happen."
 - **On-screen:** ink card — repo URL
-  `github.com/falconxa0-commits/vaerion`, engine version line
-  `0.1.13-rc1 · 9 gates · 545 tests / 0 failed`, and the honest install
-  line: "npm/PyPI publish is Founder-gated on the release train."
+  `github.com/VaerionLab/vaerion`, engine version line
+  `0.1.15 · 9 gates · 721 tests / 0 failed`, and the honest install
+  line: "npm published 2026-10-21; PyPI and the signed GitHub Release
+  2026-10-17."
 
 ---
 

@@ -8,7 +8,7 @@ owningSystem: Stage 11 — Documentation Architecture (src/vaerion/docs)
 authorityCitations: Implementation Constitution P-4; Implementation Constitution P-5; Implementation Constitution Part XI; Implementation Constitution 11.2; Implementation Constitution 11.3; Implementation Constitution 11.6; constitution/INDEX.md; Stage 11 execution order Deliverable 4; constitution/docs/GOVERNANCE.md
 relatedArtifacts: constitution/INDEX.md; constitution/amendments/LEDGER.md; constitution/interpretations/LEDGER.md; constitution/trace-index/trace-index.md; constitution/CHANGELOG.md; src/vaerion/foundation/gate.ts; src/vaerion/foundation/prerequisites.ts; constitution/snapshot-authority/manifests/canonical-documents.json
 confidence: verified
-lastVerified: 2026-09-22
+lastVerified: 2026-10-21
 verificationCommand: bun run vaerion:verify-documentation
 -->
 
@@ -30,7 +30,7 @@ identity.
    changes law and must survive review against **every** prior Article
    (11.3).
 3. **The trace discipline** (P-4): every decision carries a citation; the
-   trace index is the consolidated map (T-001…T-076); an uncitable decision
+   trace index is the consolidated map (T-001…T-080); an uncitable decision
    is a violation by definition; the audit samples and verifies.
 4. **The transcription discipline** (F-001; P-6): ratified texts are
    transcribed verbatim, digest-pinned in

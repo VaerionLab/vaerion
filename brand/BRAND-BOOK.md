@@ -313,6 +313,8 @@ identity — is enforced:
   intentionally unchanged — they are the record of what happened, not
   live branding.
 
+> Update 2026-10-21: the tree again carries `tools/brand-render.ts` and `brand/og-image.svg` — the generated OG card is the shipped social asset of record today; the `REMOVED`/`Deleted` rows above describe the PHASE 16.1 state, not the current tree (and `public/og-image.svg` no longer exists — `public/og-image.png` + `brand/og-image.svg` are the current pair).
+
 ## ADDENDUM — PHASE 16.2: ABSOLUTE BRAND LAW (2026-09-24)
 
 The Founder's absolute directive — the uploaded files are the ONE AND

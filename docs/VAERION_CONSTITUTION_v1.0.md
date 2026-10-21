@@ -1,3 +1,15 @@
+> **Provenance header (added 2026-10-21 — Zero-Stale Completion erratum A9).** This
+> root-level document is the **Founder-session canon of record**: the complete
+> ratified constitution compiled in the Founder's design sessions
+> (`VAERION_CONSTITUTION_v1.0` — Articles I–XV, Stages 1–22, the complete canon).
+> It is a **distinct instrument** from the same-basename
+> `docs/constitution/VAERION_CONSTITUTION_v1.0.md`, which is the *materialized
+> engineering v1.0* — the first version of the product-engineering constitution
+> lineage materialized into the repository (v1.0 … v1.9; v1.9 is the current
+> constitution of record). The two files share a basename, not content or
+> office; neither is a duplicate of the other. This header is provenance only —
+> the canon text below is preserved unmodified.
+
 # VAERION CONSTITUTION — v1.0
 
 | Field | Value |

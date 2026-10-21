@@ -29,14 +29,16 @@ finalization pass (2026-08-30). No decision is left unclear.
 | [0015](0015-per-platform-exec-sandbox-matrix.md) | Per-platform exec sandbox matrix | Ratified for v0.1 profile; hardening matrix tracked in the risk ledger |
 | [0016](0016-reproducible-vxn-bundles.md) | Reproducible `.vxn` bundles | Ratified — byte-identical rebuild test-proven; digest-swap defense enforced |
 | [0017](0017-reserved-cloud-seams.md) | Reserved cloud-seam interfaces, intentionally unimplemented in v0.1 | Ratified — seams stay unimplemented; C1/C7 fail the run if transport appears without a superseding ADR |
-| [0018](0018-engine-substrate-typescript-bun.md) | Engine substrate: TypeScript on Bun | **Provisional** — pending Founder ratification; explicit migration path recorded in the ADR |
+| [0018](0018-engine-substrate-typescript-bun.md) | Engine substrate: TypeScript on Bun | **Provisional → Ratified at the v0.1.15 GA of record (2026-10-17)** — see the ADR's 2026-10-21 status note; migration path remains recorded in the ADR |
 | [0019](0019-single-sanctioned-gateway-egress.md) | Single sanctioned gateway transport egress | Ratified — C7 proves the single egress site |
 | [0020](0020-daemon-http-stack-ts-substrate.md) | Daemon HTTP stack on the TypeScript substrate | Ratified — loopback-only binding, pairing token, single wire-client site |
 
 ## Shipping-impact summary (Phase 1 directive)
 
-- **Substrate (ADR-0018):** provisional with a recorded migration path —
-  ratification is the Founder's decision and has not been exercised.
+- **Substrate (ADR-0018):** ratified — the TypeScript-on-Bun substrate is
+  the shipped GA substrate, ratified by the v0.1.15 GA of record
+  (2026-10-17; see the ADR's 2026-10-21 status note). The recorded
+  migration path is preserved as history.
 - **Transport/security (ADR-0019, ADR-0020):** ratified; enforced by the
   constitutional egress-confinement check on every verification run.
 - **Packaging (ADR-0016):** ratified; reproducibility is test-proven and the

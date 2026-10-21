@@ -8,7 +8,7 @@ owningSystem: Stage 11 — Documentation Architecture (src/vaerion/docs)
 authorityCitations: Implementation Constitution P-4; Implementation Constitution P-1; Implementation Constitution 2.1; Implementation Constitution 2.7; Implementation Constitution 8.0; Bible Art. XI; Foundation Amendment F-002; Foundation Amendment F-004; Foundation Amendment F-005; Foundation Amendment F-006; Visual System §0; Visual System §1.4
 relatedArtifacts: constitution/INDEX.md; src/vaerion/; src/vaerion/foundation/paths.ts; src/vaerion/foundation/stages.ts; generated/; tools/vaerion-pipeline/; constitution/trace-index/trace-index.md; src/vaerion/docs/DEPENDENCY_GRAPH.md
 confidence: verified
-lastVerified: 2026-09-22
+lastVerified: 2026-10-21
 verificationCommand: bun run vaerion:verify-documentation
 -->
 
@@ -49,7 +49,8 @@ Governed by `constitution/INDEX.md` (the Authority Registry). The organs:
 Governance ledgers: `constitution/amendments/LEDGER.md` (F-001…F-007),
 `constitution/interpretations/LEDGER.md` (IR-001…IR-021; IR-002 RATIFIED),
 `constitution/trace-index/trace-index.md` (T-001…T-080),
-`constitution/CHANGELOG.md` (protocol-versioned; current 1.8.0).
+`constitution/CHANGELOG.md` (protocol-versioned; current 1.10.0 — A9, Era II
+Zero-Stale Completion, 2026-10-21).
 
 **Precedence (P-1):** VAERION_DESIGN_BIBLE_v1.0 >
 VAERION_VISUAL_SYSTEM_v1.0.1 > VAERION_IMPLEMENTATION_CONSTITUTION_v1.0.

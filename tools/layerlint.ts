@@ -86,7 +86,7 @@ for (const file of files) {
     const statement = m[0] ?? "";
     const spec = m[1] as string;
     const isTypeOnly = /^\s*import\s+type\s/.test(statement) || /^\s*export\s+type\s/.test(statement);
-    // Resolve relative specifiers only; bare specifiers (hash-wasm, yaml, ajv) are external.
+    // Resolve relative specifiers only; bare specifiers (hash-wasm, yaml) are external.
     if (!spec.startsWith(".")) continue;
     const abs = resolve(dirname(file), spec);
     const resolvedRel = relative(SRC, abs).replaceAll("\\", "/");

@@ -91,6 +91,10 @@ of CI (measured: verify ~60 s, pack ~90 s, publish ~30 s).
 - No auto-deploy of the dashboard to external hosting (F-5, Founder-gated).
 - No registry publication step (F-5) — the manifest surfaces are authored,
   version-locked, and awaiting the Founder's publication decision.
+  **Update (2026-10-21):** this pipeline section predates the v0.1.15
+  train — a registry publication step now exists and executed: npm
+  published 2026-10-21, PyPI and the signed GitHub Release 2026-10-17.
+  The bullets above are preserved as the pre-GA pipeline snapshot.
 - No signing of macOS/Windows native installers (Apple Developer ID /
   Authenticode certificates are Founder acquisitions; prep documented in
   `packaging/macos/SIGNING-PREP.md` and the channel manifests).

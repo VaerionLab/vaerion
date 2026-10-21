@@ -80,3 +80,7 @@ tool-results/
 
 # Vaerion test/journal residue — evidence artifacts are never tracked
 .vaerion/
+
+# registry credential files are never committed
+.npmrc
+.pypirc

@@ -35,12 +35,23 @@ The registry exists so that:
 constitution/
     announcement-registry/
         README.md        <- this authority document
+        stage4-proposed-strings.json   <- PROPOSED Stage 4 string set (IR-009) — inert until ratified
+        stage6-proposed-strings.json   <- PROPOSED Stage 6 string set (IR-012) — inert until ratified
 ```
 
 **No announcement strings are ratified yet.** Strings enter this registry when
 Stage 6 — Interaction Engine — implements the announcement system against the
 law defined here; each proposed string is then ratified through governance
 (Implementation Constitution 11.2–11.3) before first render.
+
+**Structure note (recorded 2026-10-21, Zero-Stale Completion erratum A9).**
+The two PROPOSED string sets this authority governs are held here as
+`stage4-proposed-strings.json` (IR-009) and `stage6-proposed-strings.json`
+(IR-012) — both consumed by identifier in the implementation
+(trace-index T-032 / T-038) and both still **PROPOSED** (inert until
+ratified through governance, 11.2–11.3). They are listed above so the
+structure section names everything the tree holds; the establishment-era
+text above is preserved unmodified (11.4).
 
 ## 3. Law of Copy (binding on all future entries)
 

@@ -870,9 +870,9 @@ describe("the ONE derivation + the ONE ledger parser (v1.7 A7, D-B/D-V)", () => 
     const root = join(import.meta.dir, "..", "..", "..", "..");
     const { constitutionOfRecord } = await import("../../src/repo/constitution.ts");
     const record = constitutionOfRecord(root);
-    expect(record.version).toBe("v1.8");
-    expect(record.file).toBe("VAERION_CONSTITUTION_v1.8.md");
-    expect(record.path).toBe("docs/constitution/VAERION_CONSTITUTION_v1.8.md");
+    expect(record.version).toBe("v1.9");
+    expect(record.file).toBe("VAERION_CONSTITUTION_v1.9.md");
+    expect(record.path).toBe("docs/constitution/VAERION_CONSTITUTION_v1.9.md");
     // Fail-closed (P6): no ratified constitution ⇒ no guess, ever.
     const { mkdtemp } = await import("node:fs/promises");
     const { tmpdir } = await import("node:os");

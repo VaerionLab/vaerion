@@ -6,6 +6,10 @@
 **Supremacy:** this authority governs; it never implements. The Snapshot
 Authority *infrastructure* (capture, comparison, enforcement) is implemented at
 **Stage 8 — Testing Infrastructure** against the law defined here.
+*(Stage-number annotation, recorded 2026-10-21, erratum A9: post the
+Founder's stage re-sequencing directive, the stage of record for the testing
+infrastructure is **Stage 9 — Testing Infrastructure**; the establishment-era
+"Stage 8" is preserved unmodified — 11.4.)*
 
 ---
 
@@ -32,6 +36,11 @@ constitution/
   (Implementation Constitution Part IX; Visual System §11 modes). **Empty at
   establishment.** No snapshots are ratified yet; capture begins at Stage 8
   with the rendering engine's output (Stage 5), never before.
+  *(Stage-number annotation, recorded 2026-10-21, erratum A9: post the
+  Founder's stage re-sequencing directive, capture begins at **Stage 9** with
+  the rendering engine's output — the rendering engine is at **Stage 7**; the
+  establishment-era numbers are preserved unmodified — 11.4. "No snapshots
+  are ratified yet" remains true (IR-015 open).)*
 - `manifests/` — holds integrity manifests: pinned digests of canonical
   artifacts. The first ratified manifest is `manifests/canonical-documents.json`
   (Foundation Amendment F-001), which pins the SHA-256 digests of the three
