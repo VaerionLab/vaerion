@@ -739,8 +739,10 @@ laws (exit codes, `--json`, `--dry-run`) that every later tutorial assumes.
 
 ## Prerequisites
 
-- **[Bun](https://bun.sh) ≥ 1.2** (the engine is developed and verified on
-  Bun 1.3.x). Check with `bun --version`.
+- **[Bun](https://bun.sh) ≥ 1.2** (the shipped package's `engines` floor,
+  `bun >= 1.2.0`). The engine is developed and verified on Bun 1.3.x — CI
+  pins 1.3.14, the version the v0.1.15 GA was verified on. Check with
+  `bun --version`.
 - A terminal. That is all — the engine is local-first: no accounts, no
   telemetry, no network required for anything in this tutorial.
 
@@ -821,7 +823,7 @@ the engine's own test suite — every command in its README is known to work.
 ## Pitfalls
 
 - **Do not run `vae serve` on a shared machine casually** — it is
-  loopback-only by law and refuses non-loopback binds (`E2006`), but the
+  loopback-only by law and refuses non-loopback binds (`E2001`), but the
   pairing token still grants run authority to anyone on your machine.
 - **Do not edit generated artifacts** (`llms.txt`, `spec/openapi.json`) —
   they are derived; a gate fails the tree if they drift.

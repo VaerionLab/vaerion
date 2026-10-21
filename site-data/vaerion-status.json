@@ -1,25 +1,25 @@
 {
-  "generatedAt": "2026-10-21T19:01:53.246Z",
+  "generatedAt": "2026-10-21T21:33:59.372Z",
   "engineVersion": "0.1.15",
   "substrate": "TypeScript on Bun (ADR-0018 — the shipped GA substrate of record; ratified by the v0.1.15 GA release per the founder's Era II finalization directive; the recorded WASI-P2 migration path remains the target architecture)",
   "verification": {
-    "generatedAt": "2026-10-21T15:54:11.063Z",
+    "generatedAt": "2026-10-21T21:05:43.352Z",
     "ok": true,
     "gates": [
       {
         "gate": "typecheck-engine",
         "ok": true,
-        "durationMs": 4648
+        "durationMs": 4735
       },
       {
         "gate": "typecheck-sdk",
         "ok": true,
-        "durationMs": 3353
+        "durationMs": 3546
       },
       {
         "gate": "tests",
         "ok": true,
-        "durationMs": 11820
+        "durationMs": 12250
       },
       {
         "gate": "coverage-ratchet",
@@ -29,27 +29,27 @@
       {
         "gate": "layerlint",
         "ok": true,
-        "durationMs": 29
+        "durationMs": 32
       },
       {
         "gate": "constitutional-check",
         "ok": true,
-        "durationMs": 167
+        "durationMs": 317
       },
       {
         "gate": "perf-budget",
         "ok": true,
-        "durationMs": 278
+        "durationMs": 298
       },
       {
         "gate": "a11y-structural",
         "ok": true,
-        "durationMs": 24
+        "durationMs": 37
       },
       {
         "gate": "repo-lint",
         "ok": true,
-        "durationMs": 19300
+        "durationMs": 18606
       }
     ],
     "measured": {
@@ -60,8 +60,8 @@
     }
   },
   "constitution": {
-    "file": "VAERION_CONSTITUTION_v1.8.md",
-    "version": "v1.8"
+    "file": "VAERION_CONSTITUTION_v1.9.md",
+    "version": "v1.9"
   },
   "tests": {
     "suites": 62,
@@ -78,11 +78,11 @@
   "code": {
     "engine": {
       "files": 116,
-      "lines": 25037
+      "lines": 25048
     },
     "engineTests": {
       "files": 62,
-      "lines": 15864
+      "lines": 15867
     },
     "sdk": {
       "files": 3,
@@ -406,14 +406,14 @@
     "passed": 5,
     "total": 12,
     "blockers": [
-      "git-tree-clean: working tree dirty: 0 staged, 31 unstaged, 0 untracked",
+      "git-tree-clean: working tree dirty: 0 staged, 4 unstaged, 0 untracked",
       "release-tag-binding: HEAD is not exactly at a v* release tag",
       "release-artifacts: artifact set incomplete: dist/MANIFEST.json, dist/MANIFEST.json.sig, dist/SHA256SUMS, dist/VERIFY.md missing"
     ]
   },
   "commandCenter": {
     "workspace": {
-      "root": "/home/z/polish-public/examples/vaerion-demo",
+      "root": "/tmp/vaerion-public/examples/vaerion-demo",
       "runs": 0
     },
     "span": {
@@ -461,7 +461,7 @@
       "blockers": [
         {
           "check": "git-tree-clean",
-          "detail": "working tree dirty: 0 staged, 31 unstaged, 0 untracked"
+          "detail": "working tree dirty: 0 staged, 4 unstaged, 0 untracked"
         },
         {
           "check": "release-tag-binding",
