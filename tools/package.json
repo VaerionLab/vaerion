@@ -11,7 +11,7 @@
     "status": "bun run ./status.ts"
   },
   "dependencies": {
-    "yaml": "^2.8.0"
+    "yaml": "^2.9.1"
   },
   "license": "Apache-2.0",
   "author": "Auren"
