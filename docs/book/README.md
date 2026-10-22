@@ -3,8 +3,10 @@
 The documentation set for the Vaerion engine. Every claim here is checked
 against the implementation; the generated AI corpus (`llms.txt`,
 `llms-full.txt` at the repository root) is derived from these files by
-`tools/gen-docs.ts`, and constitutional check C8 fails when the corpus drifts
-from the book or when a relative link is broken.
+`tools/gen-docs.ts` — regenerate it after any book edit and keep the
+committed corpus byte-fresh (`tools/gen-docs.ts --check` verifies on
+demand; docs freshness rests on regeneration discipline, GA audit R-7 —
+there is deliberately no automated corpus gate).
 
 ## Tracks (blueprint §13)
 

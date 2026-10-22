@@ -13,8 +13,10 @@
  *   bun run tools/gen-docs.ts           regenerate the corpus files
  *   bun run tools/gen-docs.ts --check   verify byte-freshness (exit 1 on drift)
  *
- * Constitutional check C8 calls --check logic: the committed corpus must
- * match the book exactly, or the gate fails.
+ * Corpus freshness rests on regeneration discipline (GA audit R-7: docs
+ * freshness is deliberately NOT an automated gate — never claim an
+ * automated "C8" docs check exists). After any book edit, regenerate and
+ * keep the committed corpus byte-fresh (`--check` verifies on demand).
  */
 
 import { readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";

@@ -1,8 +1,10 @@
 # The GA Dossier — Release Candidate 1 preparation
 
 Everything the General Availability decision needs, in one governed place.
-This directory is part of the C8 docs-drift law: every relative link in it
-must resolve, like any other documentation in the repository.
+Relative links here must resolve like in any other documentation in the
+repository — enforced by review discipline and the regeneration law (GA
+audit R-7: docs freshness rests on regeneration discipline; no automated
+corpus gate exists).
 
 > **Update (2026-10-21):** the dossier below was written for the Release
 > Candidate 1 preparation epoch — the GO/NO-GO record's "**currently
