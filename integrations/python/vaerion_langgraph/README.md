@@ -93,9 +93,9 @@ tool node calls `vaerion_run_demo`, verify with `vae verify`. Captured output
 workspace: /tmp/vaerion-langgraph-example-k9pvs69h
 tools: ['vaerion_doctor', 'vaerion_journal_ls', 'vaerion_run_agent', 'vaerion_run_demo', 'vaerion_status', 'vaerion_verify_journal']
 run_id:    crn_run_01M3V0F86VPN08R6SGXB8K6FPM
-head_hash: 2b52fd6f132bde22a6f7b2a2044c3a3e5b39437c4a447428a2f5dcd69c1c2f68
+head_hash: 6c83475cc8fed5b3cb1fac4bdb79ae713869a09ee6d66977528248c23f376a06
 summary:   indexed 1 documents; 1 hits for "prove the langgraph path"
-vae verify: {"command":"verify","run_id":"crn_run_01M3V0F86VPN08R6SGXB8K6FPM","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"3959957de3c6b8201eac3f7c3daef1258220011c5967c1fa900447ba9c4c0d23","torn":false,"issues":[],"next":["vae explain crn_run_01M3V0F86VPN08R6SGXB8K6FPM","vae status"]}
+vae verify: {"command":"verify","run_id":"crn_run_01M3V0F86VPN08R6SGXB8K6FPM","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"14346b149a12fb01212a87cc9c7bebb2ba45b4a8291adb758659ee953f2270d7","torn":false,"issues":[],"next":["vae explain crn_run_01M3V0F86VPN08R6SGXB8K6FPM","vae status"]}
 ```
 
 ## Verification (receipts + `vae verify`)
