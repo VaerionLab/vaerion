@@ -14,7 +14,7 @@
 Vaerion v{MAJOR}.{MINOR}.{PATCH}-rc{N} — {one-line theme of record}
 ```
 
-Example for the current release:
+Example (the v0.1.13-rc1 epoch, this kit's declared source of record):
 
 ```
 Vaerion v0.1.13-rc1 — production release trust (production-key signing, branch protection, legal identity)

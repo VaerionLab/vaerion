@@ -1,3 +1,8 @@
+> SUPERSEDED — historical record; constitution of record: v1.9 (2026-10-21).
+> v1.8 remains the GA reconciliation of record (A8); its D-Z-2 npm-lag
+> adjudication was superseded by the v1.9 A9 erratum after the 2026-10-21
+> npm publish (0.1.15 under dist-tag `latest`).
+
 # VAERION CONSTITUTION — v1.8
 
 | | |
