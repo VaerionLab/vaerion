@@ -5,7 +5,10 @@
     "context": ".."
   },
   "remoteUser": "vae",
-  "postCreateCommand": "bun install --frozen-lockfile",
+  // The runtime image ships pre-frozen node_modules and no root package.json
+  // or bun.lock (supply-chain law), so a post-create install cannot succeed;
+  // post-create instead verifies the pinned substrate boots the engine of record.
+  "postCreateCommand": "bun run packages/vaerion/src/cli/vae.ts --version",
   "customizations": {
     "vscode": {
       "extensions": [
