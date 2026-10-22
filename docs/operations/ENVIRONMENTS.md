@@ -15,7 +15,8 @@ There is no server-side Vaerion to operate — no database cluster, no API fleet
 2. the **release pipeline** that packs, signs, and publishes artifacts
    (`verify.yml` + `release-publish.yml`),
 3. the **distribution surface** where consumers get those artifacts
-   (GitHub Releases; registries pending F-5),
+   (GitHub Releases; the npm + PyPI registries are LIVE — measured
+   2026-10-17/21; the remaining channels stay Founder-gated, F-5),
 4. the **human surface** (the status dashboard) and the **trust surfaces**
    (this repository, the three-remote mirror).
 

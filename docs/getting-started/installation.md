@@ -24,8 +24,9 @@ vae --version                               # → vae 0.1.15
   and the signed release set carry the same engine; installing from
   source (`bun install` in a clone, then
   `bun run packages/vaerion/src/cli/vae.ts`) remains the audit path.
-- `@rc` is the release-candidate channel and still resolves to the
-  pre-GA rc; plain `npm install -g vaerion` is the GA channel of record.
+- The `@rc` dist-tag is the retired rc-era channel: it still resolves to the
+  pre-GA engine (`0.1.14-rc1`) for old pins, but it is no longer a taught
+  channel — plain `npm install -g vaerion` is the GA channel of record.
 - No account, no telemetry, no network use at runtime unless you
   explicitly invoke a model provider through the gateway.
 - No sudo? npm prefix fallback:
