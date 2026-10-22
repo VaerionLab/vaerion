@@ -19,14 +19,21 @@ written by a human or produced by the compiler.
 
 ```
 generated/
-    bindings/    <- generated per-platform bindings (one set per target platform)
-    tokens/      <- generated compiled token sets (the Registry's compiled form)
+    bindings/    <- per-platform bindings (one set per target platform)
+    tokens/      <- compiled token set — the Registry's compiled form (registry.json)
+    css/         <- compiled CSS custom-property bindings (vaerion-tokens.css)
+    typescript/  <- compiled TypeScript token bindings (tokens.ts)
 ```
 
-Both directories are **empty at establishment**. Generation begins at Stage 2
-(Registry System), when the canonical compiler exists. Empty directories are
-marked with `.gitkeep`; their emptiness is honest (Bible Art. VIII) — no
-placeholder artifacts are fabricated to fill them.
+At establishment (F-005) this root held two empty directories marked with
+`.gitkeep`; their emptiness was honest (Bible Art. VIII) — no placeholder
+artifacts were fabricated to fill them. Generation began at Stage 2 (Registry
+System): the canonical compiler (`src/vaerion/registry/compiler.ts`,
+Constitution 2.7) now writes the three compiled binding sets —
+`tokens/registry.json`, `css/vaerion-tokens.css`, and
+`typescript/tokens.ts` — whose sha256 digests are pinned by the pipeline
+verifier and the release receipts. `bindings/` remains empty (`.gitkeep`)
+until a per-platform target exists.
 
 ## 3. Law of Generated Artifacts
 
@@ -48,9 +55,11 @@ placeholder artifacts are fabricated to fill them.
 6. **Drift is failure.** Where committed generated output is the comparison
    base, output that differs from a clean regeneration fails the pipeline —
    the same drift law the documentation pipeline obeys (Stage 10 contract;
-   Constitution 9.1). The distribution policy (committed vs. rebuilt-in-CI) is
-   ratified with the Stage 2 compiler and recorded here when decided; until
-   then no generated artifact exists to distribute.
+   Constitution 9.1). The distribution policy is ratified with the Stage 2
+   compiler: the compiled binding sets are committed under this root, and a
+   committed artifact that differs from a fresh compilation is a violation
+   (F-005), enforced by the pipeline verifier's sha256 pins and the release
+   receipts.
 
 ## 4. What Never Belongs Here
 
