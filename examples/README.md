@@ -16,9 +16,8 @@ and the `ok: true` will not.
 | [`replay-machine/`](replay-machine/) | determinism you can hold | scratch dir → `vae init` + a `package:` block → `vae package build` twice → `sha256sum` → flip one byte → `vae package verify` | identical inputs → byte-identical `.vxn` bundles; the pure check refuses tampering with exit 5 |
 | [`vaerion-demo/`](vaerion-demo/) | the 15-minute demo workspace (the canonical external-tester workspace; pairs with [`docs/QUICKSTART.md`](../docs/QUICKSTART.md)) | `vae run demo --query "determinism"` → `vae journal verify RUN` → `vae package build` + `vae package verify .vaerion/package/vaerion-demo.vxn` | the research pipeline end-to-end: declared sources, fenced evidence, receipt, reproducible bundle |
 | [`vaerion/demo-workspace/`](vaerion/demo-workspace/) | committed DAG + agent-plan assets | copy the dir → `vae run workflow --dag workflow.json` and `vae run agent --planner inline --goal "run the echo plan" --plan-json "$(cat plans/echo-plan.json)"` | deterministic topological workflow execution and an inline-planned agent run, both journaled and receipted |
-| [`websocket/`](websocket/) | standalone WebSocket sample (site stack) | see its sources (`server.ts`, `frontend.tsx`) | nothing about the engine — an independent transport demo that does **not** exercise `packages/vaerion/` |
 
-The first five are walkthroughs: their READMEs teach with real CLI
+Every walkthrough above is index-complete: their READMEs teach with real CLI
 commands against a scratch workspace, never claiming files exist that do
 not. The committed assets live in `vaerion-demo/` and
 `vaerion/demo-workspace/`.
