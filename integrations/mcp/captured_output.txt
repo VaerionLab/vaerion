@@ -1,5 +1,5 @@
 [1] vae command resolved: bun run <repo-root>/packages/vaerion/src/cli/vae.ts
-[2] temp workspace: /tmp/vaerion-mcp-demo-k5axu6a4
+[2] temp workspace: /tmp/vaerion-mcp-demo-65twi6t2
 [3] spawning `vae mcp` (stdio, JSON-RPC 2.0, protocol 2024-11-05)
 [4] initialize ->
 {
@@ -11,19 +11,19 @@
   },
   "serverInfo": {
     "name": "vaerion",
-    "version": "0.1.13-rc1"
+    "version": "0.1.15"
   },
   "instructions": "Vaerion \u2014 the verification layer for AI agents. Every tool call is broker-decided, journaled and receipted; verify anything with vaerion_verify_journal."
 }
 [5] tools/list -> 6 tools: vaerion_doctor, vaerion_status, vaerion_journal_ls, vaerion_verify_journal, vaerion_run_demo, vaerion_run_agent
 [6] tools/call vaerion_status -> isError: False
-{"command":"status","engine_version":"0.1.13-rc1","workspace":{"state":"workspace","name":"my-project","config_fingerprint":"41c3410b862ac152f5d6176a5888686f9d649ab65ca0d55a7fcccdaa69d25ffc"},"account":{"present":false},"ai":{"default_model":null,"credentials":[{"provider":"mockbrain","credential":"not-required"},{"provider":"anthropic","credential":"unset"},{"provider":"openai","credential":"unset"},{"provider":"ollama","credential":"not-required"}]},"runs":{"total":0,"closed":0,"open":0},"recent":[],"hints":["vae doctor — audit this workspace: config, journals, blobs, evidence, audit chain","vae center — the operator cockpit: runs, receipts, metering, integrity"],"read_only":"nothing was created or modified"}
+{"command":"status","engine_version":"0.1.15","workspace":{"state":"workspace","name":"my-project","config_fingerprint":"41c3410b862ac152f5d6176a5888686f9d649ab65ca0d55a7fcccdaa69d25ffc"},"account":{"present":false},"ai":{"default_model":null,"credentials":[{"provider":"mockbrain","credential":"not-required"},{"provider":"anthropic","credential":"unset"},{"provider":"openai","credential":"unset"},{"provider":"ollama","credential":"not-required"}]},"runs":{"total":0,"closed":0,"open":0},"recent":[],"hints":["vae doctor — audit this workspace: config, journals, blobs, evidence, audit chain","vae center — the operator cockpit: runs, receipts, metering, integrity"],"read_only":"nothing was created or modified"}
 [7] tools/call vaerion_run_demo -> isError: False
 {
   "command": "run",
   "kind": "demo",
-  "run_id": "crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ",
-  "trace_id": "t_7ph2vqspax",
+  "run_id": "crn_run_01M5HD0Z070A288CVNEK6XWJ1B",
+  "trace_id": "t_qevhhxyzjp",
   "documents": 1,
   "query": "prove the MCP path end to end",
   "hits": 1,
@@ -37,15 +37,15 @@
     "blocks": 2,
     "dropped": 0,
     "tokens_estimated": 151,
-    "pack_fingerprint": "3b99bbab82e7a37599a6d421156f7f38b32b32431a7b98edf07c4256c24743fb"
+    "pack_fingerprint": "67acb1675141e355d9eb85728b0b16c70cd12e711706b89e03c1800aee81886e"
   },
   "receipt": {
-    "run_id": "crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ",
-    "trace_id": "t_7ph2vqspax",
-    "engine_version": "0.1.13-rc1",
+    "run_id": "crn_run_01M5HD0Z070A288CVNEK6XWJ1B",
+    "trace_id": "t_qevhhxyzjp",
+    "engine_version": "0.1.15",
     "config_fingerprint": "41c3410b862ac152f5d6176a5888686f9d649ab65ca0d55a7fcccdaa69d25ffc",
-    "opened_at": "2026-10-01T05:42:24.362Z",
-    "closed_at": "2026-10-01T05:42:24.378Z",
+    "opened_at": "2026-10-22T08:53:12.842Z",
+    "closed_at": "2026-10-22T08:53:12.858Z",
     "counts": {
       "records": 13,
       "events": 10,
@@ -66,13 +66,13 @@
     ],
     "journal": {
       "records": 13,
-      "head_hash": "2aaefae9183d3acdaaa64f112bc445156bfe431ee001d7eb606ceb4c0066d8fc"
+      "head_hash": "1a133bac97836b0bc667be0ce3c08d92e952ba5a8d9bfcdfbc1c5c91c86a89af"
     },
     "summary": "indexed 1 documents; 1 hits for \"prove the MCP path end to end\""
   },
   "journal_verified": true
 }
 [8] vae verify (CLI of record — chain recomputed from disk bytes)
-{"command":"verify","run_id":"crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"7708b1fa3a93d2e08949521f00858c16b875383c8430a3cc79b596659784a96c","torn":false,"issues":[],"next":["vae explain crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ","vae status"]}
+{"command":"verify","run_id":"crn_run_01M5HD0Z070A288CVNEK6XWJ1B","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"976bcd5d4e1bd03c08b68f7b9451b35784c76e84c13aff6a197611e581898feb","torn":false,"issues":[],"next":["vae explain crn_run_01M5HD0Z070A288CVNEK6XWJ1B","vae status"]}
 [9] server exited with code 0 after EOF (law: exit 0)
 DEMO OK

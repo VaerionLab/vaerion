@@ -72,7 +72,7 @@ with vae_mcp_tools(cwd="/path/to/workspace") as tools:
 ```text
 workspace: /tmp/vaerion-crewai-example-rzutlwy6
 tools: ['vaerion_doctor', 'vaerion_journal_ls', 'vaerion_run_agent', 'vaerion_run_demo', 'vaerion_status', 'vaerion_verify_journal']
-status: {"command":"status","engine_version":"0.1.15","workspace":{"state":"workspace","name":"my-project","config_fingerprint":"41c3410b862ac152f5d6176a5888686f9d6…
+status: {"command":"status","engine_version":"0.1.13-rc1","workspace":{"state":"workspace","name":"my-project","config_fingerprint":"41c3410b862ac152f5d6176a5888686f9d6…
 run_id:    crn_run_01M3V0MFDHQT0RR5KDQ4P41Q2J
 head_hash: ced246a8385090c9b6227410f2467ad09220c8e8d4885ecc29d551017a8a99e9
 summary:   indexed 1 documents; 1 hits for "prove the crewai path"

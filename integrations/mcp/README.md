@@ -5,8 +5,9 @@
 > live spawned server — re-measured **2026-10-21** against engine **0.1.15** (npm
 > registry build; the `initialize`/`tools/list` handshake and the error discipline
 > probed live). The demo at the end of this file was executed and its output captured
-> byte-for-byte in [`captured_output.txt`](./captured_output.txt). No claims are
-> aspirational.
+> byte-for-byte in [`captured_output.txt`](./captured_output.txt) (re-captured
+> **2026-10-22** against engine **0.1.15** from a fresh clone; the earlier capture
+> file was the 2026-10-01 `0.1.13-rc1` session). No claims are aspirational.
 
 ## (a) What `vae mcp` is
 
@@ -170,23 +171,23 @@ Captured output of an actual run (full text: [`captured_output.txt`](./captured_
 {
   "command": "run",
   "kind": "demo",
-  "run_id": "crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ",
-  "trace_id": "t_7ph2vqspax",
+  "run_id": "crn_run_01M5HD0Z070A288CVNEK6XWJ1B",
+  "trace_id": "t_qevhhxyzjp",
   "documents": 1,
   "hits": 1,
   ...
   "receipt": {
-    "run_id": "crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ",
+    "run_id": "crn_run_01M5HD0Z070A288CVNEK6XWJ1B",
     "engine_version": "0.1.15",
     "counts": { "records": 13, "events": 10, "decisions_allow": 1, "decisions_deny": 0, ... },
     "blob_refs": [ { "alg": "blake3", "hash": "a1ca3c65…", "size": 291 } ],
-    "journal": { "records": 13, "head_hash": "2aaefae9183d3acdaaa64f112bc445156bfe431ee001d7eb606ceb4c0066d8fc" },
+    "journal": { "records": 13, "head_hash": "1a133bac97836b0bc667be0ce3c08d92e952ba5a8d9bfcdfbc1c5c91c86a89af" },
     "summary": "indexed 1 documents; 1 hits for \"prove the MCP path end to end\""
   },
   "journal_verified": true
 }
 [8] vae verify (CLI of record — chain recomputed from disk bytes)
-{"command":"verify","run_id":"crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"7708b1fa3a93d2e08949521f00858c16b875383c8430a3cc79b596659784a96c","torn":false,"issues":[],"next":["vae explain crn_run_01M3TZRFV5C5VVNB6JTX5VBEJJ","vae status"]}
+{"command":"verify","run_id":"crn_run_01M5HD0Z070A288CVNEK6XWJ1B","verdict":"VERIFIED","ok":true,"records":14,"events":10,"head_hash":"976bcd5d4e1bd03c08b68f7b9451b35784c76e84c13aff6a197611e581898feb","torn":false,"issues":[],"next":["vae explain crn_run_01M5HD0Z070A288CVNEK6XWJ1B","vae status"]}
 [9] server exited with code 0 after EOF (law: exit 0)
 DEMO OK
 ```
