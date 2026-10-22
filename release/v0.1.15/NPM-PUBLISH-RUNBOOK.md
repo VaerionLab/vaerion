@@ -9,6 +9,11 @@
 > tree says today** (`docs/constitution/VAERION_CONSTITUTION_v1.8.md`, D-Z-2
 > — the registry truth law). Executing THIS runbook supersedes Path B.
 >
+> **Update (2026-10-21, measured):** Path A EXECUTED — npm now delivers
+> `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21,
+> parity-proven; evidence in `ASSET_MANIFEST.md` + `VERIFICATION_EVIDENCE.md`).
+> This runbook is retained verbatim as the executed procedure of record;
+> the "Path B … today" sentence above describes the pre-publish state.
 > Publishing is **[FOUNDER]**-only at every step that touches the registry
 > (publish law: risk-ledger F-5 class; no automation and no agent may run
 > it). Measured registry pre-state: npm `vaerion` versions

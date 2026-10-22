@@ -96,7 +96,9 @@ pip install vaerion            # PyPI — current engine, live today
 git clone https://github.com/VaerionLab/vaerion && cd vaerion
 bun install --frozen-lockfile
 alias vae="bun run packages/vaerion/src/cli/vae.ts"
-# npm (LIVE BUT LAGS — delivers 0.1.14-rc1 until the Founder-gated publish):
+# npm (measured 2026-10-19 as LIVE BUT LAGS — delivers 0.1.14-rc1 until the
+# Founder-gated publish; the publish has since EXECUTED: 0.1.15 under
+# dist-tag latest, 2026-10-21 — see ASSET_MANIFEST.md):
 npm install -g vaerion
 vae --version                  # always check what you actually got
 ```

@@ -100,6 +100,12 @@ done
 
 ## 5. Known honest states during the transition
 
+> **Update (2026-10-21, measured):** the npm leg of the matrix below has
+> CLOSED — the registry delivers `vaerion 0.1.15` under dist-tag `latest`
+> (published 2026-10-21, parity-proven; `ASSET_MANIFEST.md` §npm). The
+> site leg remains open until this runbook executes. The matrix is
+> retained verbatim as the transition-time record.
+
 - Until this runbook executes, the four-version visitor matrix stands
   (repo 0.1.15 / PyPI 0.1.15 / npm 0.1.14-rc1 / site 0.1.15-rc1) — Phase 64
   TD-2/TD-5. This runbook closes the site leg; `NPM-PUBLISH-RUNBOOK.md`
