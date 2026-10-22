@@ -1,12 +1,12 @@
 # Vaerion for JetBrains IDEs
 
-> **HONESTY MARKER (Honesty Law):** this skeleton has **never been compiled or executed** — no IntelliJ SDK or Gradle toolchain exists in the Vaerion build environment. It is a credible starting point (plugin.xml + one `AnAction` calling `vae status --json`), not a verified integration. The CLI contract it parses **is** verified by the repository's own test suite (editor protocol v1). Compile it locally with IntelliJ IDEA 2023.2+:
+> **HONESTY MARKER (Honesty Law, updated 2026-10-22):** this skeleton has **never been compiled or executed** — no IntelliJ SDK or Gradle toolchain exists in the Vaerion build environment. It is a **scaffold**: `plugin.xml` is real, and the Kotlin action source (`src/main/kotlin/dev/vaerion/editors/jetbrains/VaerionStatusAction.kt`) is currently a **0-byte placeholder** tracked to be authored for **v0.1.16** (same disclosure discipline as the nvim plugin) — the `Tools → Vaerion Status` action and the `vae status --json` call below are the design contract, not a working implementation. The CLI contract the design parses **is** verified by the repository's own test suite (editor protocol v1). Compile it locally with IntelliJ IDEA 2023.2+:
 
 ```sh
 cd editors/jetbrains && gradle buildPlugin
 ```
 
-## What it does today
+## What it is specified to do (design contract — not yet implemented)
 
 - **Tools → Vaerion Status** — runs `vae status --json --cwd <project>` and shows the payload. Exit codes are surfaced honestly (2 usage · 3 broker-denied · 4 provider-down).
 

@@ -15,7 +15,7 @@ function arg(name: string): string | undefined {
   return i >= 0 ? process.argv[i + 1] : undefined;
 }
 
-const port = arg("--port") ?? "3777";
+const port = arg("--port") ?? "7897";
 const token = arg("--token") ?? process.env.VAE_TRUST;
 
 if (!token) {

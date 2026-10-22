@@ -4,6 +4,12 @@
 **Order authority:** Phase 12 (reservation) · Phase 16 — Final Launch
 Readiness Mission, TASK 1 (official replacement).
 
+> **STATUS ANNOTATION (2026-10-22, freshness audit).** The 2026-10-21 brand
+> re-establishment of record (constitution `INDEX.md` §4, erratum A9) restored
+> `tools/brand-render.ts` and the generated identity kit to the tree. The
+> Phase-16 enforcement records below are preserved verbatim as history; their
+> present-tense removal claims no longer describe the tree.
+
 > **PHASE 16.2 ABSOLUTE BRAND LAW RECORD (2026-09-24).** The Founder's
 > absolute directive is enforced: every SVG identity carrier removed
 > (`brand/logo/**` ×11, `public/logo.svg`, `public/favicon.svg` — the site

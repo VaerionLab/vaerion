@@ -9,10 +9,10 @@
 
 | Signal | Mechanism | Measured state |
 |---|---|---|
-| Change health | GitHub Actions `verify.yml` on every push — 8 gates, one authority (`tools/verify.ts`) | live; 20+ runs, step-level GREEN history; failures are surfaced by the run (the registry-flake incident, Task 3, was caught and root-caused from run logs in minutes) |
+| Change health | GitHub Actions `verify.yml` on every push — 9 gates, one authority (`tools/verify.ts`) | live; 20+ runs, step-level GREEN history; failures are surfaced by the run (the registry-flake incident, Task 3, was caught and root-caused from run logs in minutes) |
 | Release health | `release-publish.yml` step summaries + the pack report in every release (gates green, production-key tripwire, reproducibility proof) | live; the report travels inside every release — the consumer can audit the pack run itself |
 | Consumer trust chain | The three verification legs taught in every `VERIFY.md` (sha256 → engine `dist-verify` → independent openssl cross-check) | live; measured on every release close |
-| Human surface | The status dashboard (the sandbox dev surface until hosting lands, F-5) — engine version, gate/audit-ledger integrity, refusal log | live in development |
+| Human surface | The hosted human surface (`vaerion.vercel.app` — live; serves the 2026-10-17 rc1-epoch build, GA-content redeploy Founder-gated P4) plus the status dashboard in dev — engine version, gate/audit-ledger integrity, refusal log | live; measured (corrected 2026-10-22 from the pre-hosting wording) |
 | Uptime / APM | Not applicable — no hosted service exists to monitor; the product runs on user machines | honest non-feature by design |
 
 ## 2. Logging

@@ -11,8 +11,9 @@
 ```
 commit on main
    └─> verify.yml (GitHub Actions, ~60 s, measured)
-         ├─ 8 gates through tools/verify.ts (typecheck ×2, tests + coverage floors,
-         │   layerlint, constitutional-check, perf-budget, a11y-structural, repo-lint)
+         ├─ 9 gates through tools/verify.ts (typecheck ×2, tests + coverage floors,
+         │   coverage-ratchet, layerlint, constitutional-check, perf-budget,
+         │   a11y-structural, repo-lint)
          └─ on a v* tag: dist-pack.ts — re-runs ALL gates internally, packs the
              deterministic artifact set, signs it with RELEASE_SIGNING_KEY
              (fail-closed to a disclosed bootstrap key if the secret is absent)

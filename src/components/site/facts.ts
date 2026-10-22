@@ -56,7 +56,7 @@ export const FACTS = {
   contracts: {
     apiPaths: 17,
     ecodes: 82,
-    adrs: 21,
+    adrs: 20, // numbered records of record (register index excluded — status.ts law, 2026-10-22)
     specFiles: 14,
     // version-register.test.ts REGISTER — 25 pinned surfaces, re-measured
     // 2026-10-21 against engine 0.1.15 (npm registry build)
