@@ -6,15 +6,18 @@
  *
  *   bun run tools/brand-render.ts          # regenerate every brand artifact
  *
- * Outputs:
+ * Outputs (the LAWFUL set — PHASE 16.2 raster law, BRAND-BOOK errata:
+ * public/favicon.svg, public/logo.svg, public/og-image.svg and
+ * public/brand/wordmark*.svg are deliberately NOT emitted; the served
+ * public/ set is raster-only plus the og-image pair):
  *   brand/logo/*.svg      vector masters (seal, monogram, wordmark, lockups, editions)
  *   brand/logo/editions/*  gold / white / black / mono editions
  *   brand/png/*.png       raster editions (sharp, deterministic)
  *   brand/tokens.json     the design tokens, machine-readable
  *   brand/terminal.ascii.txt  the canonical terminal mark
- *   public/favicon.svg + public/icon-192.png + public/icon-512.png
- *   public/apple-touch-icon.png + public/favicon-32.png + public/logo.svg
- *   public/og-image.png (+ public/og-image.svg, brand/og-image.svg)
+ *   brand/og-image.svg + public/og-image.png  the social card pair
+ *   public/icon-512.png + icon-192.png + apple-touch-icon.png
+ *   public/favicon-32.png + favicon-16.png  (raster favicon set)
  *
  * THE MARK — the Ledger V (v3). One stroke, one deposit: the outer V is
  * the ACTION an agent takes — a stroke, motion, transient. The solid
@@ -434,14 +437,9 @@ ${markGroup(MARK, "currentColor")}
   { path: "brand/logo/vaerion-logo-light.svg", svg: lockupSvg(t.porcelain, t.ink) },
   // Social avatar — edge-to-edge plate (GitHub / Discord / social profiles)
   { path: "brand/logo/vaerion-avatar.svg", svg: avatarSvg(t.ink, "", true), png: [{ width: 1024, name: "avatar-1024.png" }] },
-  // OG / social preview
-  { path: "public/og-image.svg", svg: ogSvg() },
+  // OG / social preview — public/og-image.png is emitted by emitOgPng below;
+  // the public/ SVG variants stay deleted (PHASE 16.2 raster law)
   { path: "brand/og-image.svg", svg: ogSvg(), png: [{ width: 1200, name: "og-image.png" }] },
-  // Generic public logo path (the gold seal)
-  { path: "public/logo.svg", svg: sealSvg({ container: "fill", mark: t.gold, containerFill: t.ink, gradient: true }) },
-  // Web nav wordmarks (the real letterforms — never re-typeset VAERION)
-  { path: "public/brand/wordmark.svg", svg: wordmarkSvg(t.ink).svg },
-  { path: "public/brand/wordmark-light.svg", svg: wordmarkSvg(t.porcelain).svg },
 ];
 
 async function emitOgPng(): Promise<void> {
@@ -463,8 +461,8 @@ async function main(): Promise<void> {
   writeFileSync(join(ROOT, "brand", "terminal.ascii.txt"), TERMINAL_ASCII, "utf8");
   writeFileSync(join(ROOT, "brand", "tokens.json"), tokensJson(), "utf8");
 
-  // favicon: the compact seal — the nest survives 16 px
-  writeFileSync(join(ROOT, "public", "favicon.svg"), sealSvg({ container: "fill", mark: t.goldBright, containerFill: t.ink, geo: MARK_COMPACT, gradient: true, gradientId: "vx-gold-fav" }), "utf8");
+  // favicon: the raster set below is the lawful favicon system (PHASE 16.2);
+  // the compact seal geometry it renders comes from the same source of truth
 
   for (const a of artifacts) {
     const abs = join(ROOT, a.path);

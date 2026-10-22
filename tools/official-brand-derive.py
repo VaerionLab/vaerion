@@ -5,7 +5,9 @@ PHASE 16.4: the official set of record was REPLACED by the Founder
 (six new uploads received via CDN recovery; see brand/official/MANIFEST.md —
 the ONE source of truth). This tool ADAPTS FORMATS ONLY — it crops and
 resizes OFFICIAL pixels. It never draws, restyles, vectorizes, or invents
-artwork. No SVG capacity exists in this tool or in the tree.
+artwork. No SVG capacity exists in this tool — it adapts official pixels
+only (the brand/logo/ vector marks in the tree are outputs of the restored
+generator `tools/brand-render.ts`, never inputs here).
 
 Sources (brand/official/):
   - official-app-icon-gold.png     (Founder-labeled "APP ICON" card —
