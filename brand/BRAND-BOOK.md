@@ -44,6 +44,16 @@ from the stroke and its cap line. The generator measures the gaps and
 *refuses to emit any asset* if an edit violates them — bad geometry cannot
 reach the repository.
 
+> **Currency note (2026-10-22, freshness audit).** The `public/` slots in
+> the table below are subject to the PHASE 16.2 raster law (see the errata
+> at the bottom of this book and `brand/OFFICIAL-LOGO-SLOT.md`): the served
+> favicon/social set is PNG-only — `public/favicon-16.png`, `-32.png`,
+> `public/icon-192.png`, `-512.png`, `public/apple-touch-icon.png`,
+> `public/og-image.png` (vector master: `brand/og-image.svg`).
+> `public/favicon.svg`, `public/logo.svg`, `public/og-image.svg`, and
+> `public/brand/wordmark*.svg` are not in the tree, and the restored
+> `tools/brand-render.ts` emits exactly the lawful set.
+
 | Asset | File | Use |
 |---|---|---|
 | Seal — signature (gold gradient on ink) | `brand/logo/vaerion-icon.svg` | app icon source, hero surfaces |
