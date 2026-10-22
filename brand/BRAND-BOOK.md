@@ -315,6 +315,13 @@ identity — is enforced:
 
 > Update 2026-10-21: the tree again carries `tools/brand-render.ts` and `brand/og-image.svg` — the generated OG card is the shipped social asset of record today; the `REMOVED`/`Deleted` rows above describe the PHASE 16.1 state, not the current tree (and `public/og-image.svg` no longer exists — `public/og-image.png` + `brand/og-image.svg` are the current pair).
 
+> **STATUS ANNOTATION (2026-10-22, freshness audit).** The 2026-10-21 brand
+> re-establishment of record (constitution `INDEX.md` §4, erratum A9) restored
+> `tools/brand-render.ts`, the Ledger V vector marks (`brand/logo/*.svg`),
+> `brand/og-image.svg`, `brand/terminal.ascii.txt`, and `brand/BRAND-BOOK.pdf`
+> to the tree. The removal statements in §16 and in the addendum below are
+> preserved verbatim as Phase-16 history; they no longer describe the tree.
+
 ## ADDENDUM — PHASE 16.2: ABSOLUTE BRAND LAW (2026-09-24)
 
 The Founder's absolute directive — the uploaded files are the ONE AND

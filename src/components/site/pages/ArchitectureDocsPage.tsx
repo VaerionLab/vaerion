@@ -101,9 +101,9 @@ export default function ArchitectureDocsPage() {
         </div>
 
         <div className="mt-6">
-          <Callout kind="honesty" title="The substrate is provisional — stated in the register, not footnoted">
+          <Callout kind="honesty" title="The substrate is ratified — stated in the register, not footnoted">
             ADR-0018 binds behavior, not the language: the journal format, envelope schema, event registry, error catalog, and bundle format are
-            defined in <code className="font-mono">spec/</code> and are language-neutral. If the Founder ratifies a different substrate for the
+            defined in <code className="font-mono">spec/</code> and are language-neutral. If the Founder ever ratifies a different substrate for the
             shipping milestones, the migration is derivational — port the mirror against stable law, replay the golden fixtures, rebuild the
             reference bundle byte-identically, pass the parity suites. A port that cannot reproduce the goldens is a fork, not the migration.
           </Callout>
@@ -116,7 +116,7 @@ export default function ArchitectureDocsPage() {
               <Bullets
                 items={[
                   "docs/adr/README.md — the register of record with links to every ADR",
-                  "docs/adr/0018-engine-substrate-typescript-bun.md — the provisional substrate and its migration path",
+                  "docs/adr/0018-engine-substrate-typescript-bun.md — the ratified GA substrate and its preserved migration path",
                   "docs/adr/0019 + 0020 — the security seams: one egress site, loopback daemon",
                 ]}
               />

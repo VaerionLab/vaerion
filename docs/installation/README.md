@@ -2,7 +2,7 @@
 
 ## Requirements
 
-- **Bun `>= 1.3`** — the engine runs on Bun. If you launch `vae` under node, it
+- **Bun `1.3+` (tested floor; the npm launcher accepts `>= 1.2.0` per the `engines` field)** — the engine runs on Bun. If you launch `vae` under node, it
   refuses with an educated `E1600` error and shows you how to install Bun instead
   of failing cryptically.
 - Linux, macOS, or Windows (WSL2). No account, no network key, no telemetry.

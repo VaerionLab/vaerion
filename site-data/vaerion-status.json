@@ -1,55 +1,55 @@
 {
-  "generatedAt": "2026-10-21T22:18:47.550Z",
+  "generatedAt": "2026-10-22T03:09:04.627Z",
   "engineVersion": "0.1.15",
   "substrate": "TypeScript on Bun (ADR-0018 — the shipped GA substrate of record; ratified by the v0.1.15 GA release per the founder's Era II finalization directive; the recorded WASI-P2 migration path remains the target architecture)",
   "verification": {
-    "generatedAt": "2026-10-21T22:18:47.312Z",
+    "generatedAt": "2026-10-22T00:48:31.205Z",
     "ok": true,
     "gates": [
       {
         "gate": "typecheck-engine",
         "ok": true,
-        "durationMs": 4399
+        "durationMs": 4759
       },
       {
         "gate": "typecheck-sdk",
         "ok": true,
-        "durationMs": 3296
+        "durationMs": 3516
       },
       {
         "gate": "tests",
         "ok": true,
-        "durationMs": 11827
+        "durationMs": 12232
       },
       {
         "gate": "coverage-ratchet",
         "ok": true,
-        "durationMs": 1
+        "durationMs": 2
       },
       {
         "gate": "layerlint",
         "ok": true,
-        "durationMs": 32
+        "durationMs": 29
       },
       {
         "gate": "constitutional-check",
         "ok": true,
-        "durationMs": 175
+        "durationMs": 171
       },
       {
         "gate": "perf-budget",
         "ok": true,
-        "durationMs": 318
+        "durationMs": 312
       },
       {
         "gate": "a11y-structural",
         "ok": true,
-        "durationMs": 27
+        "durationMs": 25
       },
       {
         "gate": "repo-lint",
         "ok": true,
-        "durationMs": 18523
+        "durationMs": 18506
       }
     ],
     "measured": {
@@ -77,8 +77,8 @@
   },
   "code": {
     "engine": {
-      "files": 116,
-      "lines": 25048
+      "files": 115,
+      "lines": 24829
     },
     "engineTests": {
       "files": 62,
@@ -90,7 +90,7 @@
     },
     "tools": {
       "files": 48,
-      "lines": 7851
+      "lines": 7852
     }
   },
   "contracts": {
@@ -110,7 +110,7 @@
       "spec/CHANGELOG-SPEC.md",
       "spec/README.md"
     ],
-    "adrCount": 21,
+    "adrCount": 20,
     "adrFiles": [
       "docs/adr/0007-strict-subset-yaml-vaeryaml-manifests.md",
       "docs/adr/0017-reserved-cloud-seams.md",
@@ -129,7 +129,6 @@
       "docs/adr/0019-single-sanctioned-gateway-egress.md",
       "docs/adr/0003-contract-first-specs-drive-sdk-generation.md",
       "docs/adr/0002-versioned-event-spine-envelope.md",
-      "docs/adr/README.md",
       "docs/adr/0005-tiered-intelligence-progressive-enhancement.md",
       "docs/adr/0004-centralized-permission-broker.md",
       "docs/adr/0008-sqlite-wal-fts5-vec-local-store.md"
@@ -406,7 +405,7 @@
     "passed": 5,
     "total": 12,
     "blockers": [
-      "git-tree-clean: working tree dirty: 0 staged, 17 unstaged, 1 untracked",
+      "git-tree-clean: working tree dirty: 11 staged, 23 unstaged, 0 untracked",
       "release-tag-binding: HEAD is not exactly at a v* release tag",
       "release-artifacts: artifact set incomplete: dist/MANIFEST.json, dist/MANIFEST.json.sig, dist/SHA256SUMS, dist/VERIFY.md missing"
     ]
@@ -461,7 +460,7 @@
       "blockers": [
         {
           "check": "git-tree-clean",
-          "detail": "working tree dirty: 0 staged, 17 unstaged, 1 untracked"
+          "detail": "working tree dirty: 11 staged, 23 unstaged, 0 untracked"
         },
         {
           "check": "release-tag-binding",

@@ -60,7 +60,8 @@ const engineTests = countLines(join(ROOT, "packages", "vaerion", "tests"), (p) =
 const sdk = countLines(join(ROOT, "sdks", "typescript", "src"), (p) => p.endsWith(".ts"));
 const tools = countLines(join(ROOT, "tools"), (p) => p.endsWith(".ts"));
 const specFiles = walk(join(ROOT, "spec")).map((p) => relative(ROOT, p));
-const adrFiles = walk(join(ROOT, "docs", "adr")).map((p) => relative(ROOT, p));
+const adrFiles = walk(join(ROOT, "docs", "adr")).map((p) => relative(ROOT, p))
+  .filter((p) => !/(^|\/)README\.md$/.test(p)); // numbered records only — the register index is not a decision (2026-10-22)
 
 // Milestone law (constitution §7)
 const milestones = [

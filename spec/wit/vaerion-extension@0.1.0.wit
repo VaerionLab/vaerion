@@ -1,5 +1,12 @@
 // Vaerion extension world — v0.1.0 (MS-5, ADR-0009).
 //
+// STATUS NOTE (2026-10-22, freshness audit): the shipped GA substrate is
+// TypeScript-on-Bun (ADR-0018, ratified at the v0.1.15 GA of record,
+// 2026-10-17). WASI Preview 2 remains the recorded substrate migration path,
+// and the R-2 stdio host named below is the shipped transport. The paragraph
+// below predates the GA flip and is preserved verbatim; the world definition
+// itself is unchanged.
+//
 // THE contract surface for Vaerion extensions. The ratified substrate is
 // WASI Preview 2 components; until the component toolchain lands, the
 // contingency R-2 host (packages/vaerion/src/extensions/host.ts) implements

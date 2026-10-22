@@ -27,10 +27,10 @@ Everything else that a hosted product would need is either owned by the user
 | Environment | What it is | Substrate | Status |
 |---|---|---|---|
 | **Development** | The working repository + the status dashboard in dev mode | the campaign sandbox (`<engineer checkout>`, dev server on the sandbox port, SQLite `db/custom.db`) | live; the only writable substrate in this environment |
-| **Staging** | Every push to `main`, verified on real infrastructure before anything ships | GitHub Actions (`verify.yml`): 8 gates, pinned Bun 1.3.14, frozen lockfile | live and measured — 20+ runs, step-level GREEN history |
+| **Staging** | Every push to `main`, verified on real infrastructure before anything ships | GitHub Actions (`verify.yml`): 9 gates, pinned Bun 1.3.14, frozen lockfile | live and measured — 20+ runs, step-level GREEN history |
 | **Production (artifacts)** | Signed release artifacts + GitHub Releases, published by the per-tag pipeline | GitHub Releases via `release-publish.yml`; artifacts packed deterministically on the tag | live; first production-signed release `v0.1.13-rc1` (measured, three-way verified) |
-| **Production (registries)** | npm / PyPI / Homebrew / winget / Chocolatey / Scoop / APT / RPM channels | external registries | **NOT PROVISIONED — Founder-gated (F-5)**: needs registry accounts, the publication decision, and platform review timelines |
-| **Production (website)** | `vaerion.dev` — the hosted human surface | external hosting | **NOT PROVISIONED — Founder-gated (F-5)**; the repository page + README + the sandbox dashboard carry the role meanwhile |
+| **Production (registries)** | npm / PyPI / Homebrew / winget / Chocolatey / Scoop / APT / RPM channels | external registries | **LIVE — npm + PyPI (measured):** npm delivers `vaerion 0.1.15` under dist-tag `latest` (published 2026-10-21); PyPI ships `0.1.15` (2026-10-17). Homebrew / winget / Chocolatey / Scoop / APT / RPM remain **NOT PROVISIONED — Founder-gated (F-5)** (corrected 2026-10-22 from the pre-publish wording) |
+| **Production (website)** | `vaerion.vercel.app` — the hosted human surface | external hosting | **LIVE** (serves the 2026-10-17 `0.1.15-rc1`-epoch build; the GA-content redeploy is Founder-gated (P4), recorded in the dated errata); the `vaerion.dev` domain remains **NOT PROVISIONED — Founder-gated (F-5)** (corrected 2026-10-22 from the pre-hosting wording) |
 
 ## 3. Why there is no "staging server"
 

@@ -115,10 +115,11 @@ const QA: { q: string; a: React.ReactNode }[] = [
     q: "Is the TypeScript-on-Bun substrate permanent?",
     a: (
       <p>
-        It is explicitly <strong className="text-body">provisional</strong> (ADR-0018): the constitutional law binds behavior, not the language.
+        Yes — ADR-0018 was <strong className="text-body">ratified at the v0.1.15 GA of record (2026-10-17)</strong>: the constitutional law binds behavior, not the language.
         The journal format, envelope schema, error catalog, and bundle format are defined language-neutrally in <code className="font-mono">spec/</code>,
-        and a recorded migration path exists — replay the golden fixtures, rebuild the reference bundle byte-identically, pass the parity
-        suites. Final ratification is a named Founder decision, not an engineering assumption.
+        and a recorded migration path remains — replay the golden fixtures, rebuild the reference bundle byte-identically, pass the parity
+        suites. The shipped substrate is the substrate of record; revisiting that decision would be a new named Founder decision, not an
+        engineering assumption.
       </p>
     ),
   },

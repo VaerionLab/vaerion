@@ -127,7 +127,7 @@ export default function AboutPage() {
                   items={[
                     `${FACTS.contracts.adrs} ADRs — the decision register, each record with its status`,
                     "docs/security/ — threat model, mitigation record, risk ledger, signing ceremony",
-                    "docs/adr/0018 — the provisional substrate, with its recorded migration path",
+                    "docs/adr/0018 — the ratified GA substrate, with its preserved migration path",
                   ]}
                 />
               </div>

@@ -85,11 +85,12 @@ verification matrix of record is `packaging/README.md` (measured
   builds and runs them.** The entrypoint path and the frozen-lockfile
   contract are verified against the tree; execution is not (honest
   markers inside `Dockerfile`).
-- **GitHub branch protection: UNVERIFIED TODAY.** The 2026-09 blocker (API
-  403 "Upgrade to GitHub Pro or make this repository public"; recorded in
-  the 2026-09 campaign record) is void now that the repository is public. `.github/ORG-PROFILE.md`
-  records protection as enforced; re-verify with an admin token at the next
-  Founder session. Nothing the engine can do.
+- **GitHub branch protection: ENFORCED (measured 2026-10-21).** The 2026-09
+  blocker (API 403 "Upgrade to GitHub Pro or make this repository public";
+  recorded in the 2026-09 campaign record) is void now that the repository is
+  public. Measured enforcement of record: a direct push to `main` is declined
+  by the protection hook, and PRs #44–#49 merged only through the required
+  `verification (all gates)` check at green CI. Nothing the engine can do.
 
 ## 3. Founder-gated items (P4 — no automation may close these)
 

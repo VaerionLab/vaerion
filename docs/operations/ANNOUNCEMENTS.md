@@ -18,9 +18,12 @@
    (production key fingerprint unchanged? rotation happened?), and the
    upgrade path section from the notes. Comments stay open; questions move to
    Q&A (one topic, one surface).
-3. **The README status line** — the repository landing surface carries the
-   current status badge line (`Status: PUBLIC BETA` + the version of record);
-   it is updated in the same commit window as the release.
+3. **The README status of record** — the repository landing surface carries
+   the release truth of record (the Roadmap section states that `v0.1.15` is
+   **general availability** with 9/9 gates green, plus the npm/PyPI registry
+   truth); it is updated in the same commit window as the release. (2026-10-22
+   correction: the README carries no `Status: PUBLIC BETA` badge line — the
+   landing truth of record is the GA statement.)
 4. **The CHANGELOG** — already updated before the tag (the version-register
    test refuses a release whose changelog entry is missing); it is the
    cumulative announcement history.

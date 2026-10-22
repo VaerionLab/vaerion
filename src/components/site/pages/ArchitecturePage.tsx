@@ -212,8 +212,8 @@ vae journal export <RUN_ID> [--out PATH]   # redacted, independently verifiable 
         </div>
         <div className="mt-8 flex flex-col gap-5">
           <Callout kind="honesty" title="The honest corner of the register">
-            ADR-0018 (TypeScript-on-Bun substrate) is explicitly provisional: ratification is a named human decision that has not been
-            exercised, with a recorded migration path. Superseded records (ADR-0011) stay published — history is not rewritten.
+            ADR-0018 (TypeScript-on-Bun substrate) is the <strong className="text-body">shipped GA substrate — ratified at the v0.1.15 GA of record (2026-10-17)</strong>,
+            with its migration path preserved as history. Superseded records (ADR-0011) stay published — history is not rewritten.
           </Callout>
           <CTARow
             primary={

@@ -296,3 +296,12 @@ Notes:
   untouched).
 - This initial set is the mirror target for the runtime modules verified in
   MS-1; `tools/verify.ts` asserts spec/mirror sync.
+
+## Annotation — 2026-10-22 (freshness audit)
+
+- `wit/vaerion-extension@0.1.0.wit` — dated status note added to the file
+  header (comment-only): the header paragraph predating the GA flip described
+  WASI Preview 2 as the ratified substrate; the shipped GA substrate is
+  TypeScript-on-Bun (ADR-0018, ratified at the v0.1.15 GA of record,
+  2026-10-17), WASI-P2 remains the recorded migration path, and the R-2 stdio
+  host is the shipped transport. World definition unchanged.
